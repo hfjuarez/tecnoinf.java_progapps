@@ -1,5 +1,9 @@
 package logica.instituto;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+
 import logica.entidades.Instituto;
 
 public class ObtenerInstituto {
@@ -28,4 +32,4 @@ public class ObtenerInstituto {
         }
 
     }
-}mr.
+}

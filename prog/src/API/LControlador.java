@@ -8,7 +8,7 @@ import logica.*;
 
 public class LControlador implements ILogica {
 
-        private static final LControlador controller = null;
+        private static LControlador controller = null;
 
         public static LControlador getController() {
                 if (controller == null) {

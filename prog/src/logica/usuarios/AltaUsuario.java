@@ -1,6 +1,6 @@
 package logica.usuarios;
 
-import javax.persiste.nce.EntityManager;
+import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
