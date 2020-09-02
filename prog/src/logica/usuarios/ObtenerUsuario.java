@@ -11,23 +11,34 @@ import logica.entidades.Docente;
 import logica.entidades.Estudiante;
 
 public class ObtenerUsuario {
-    private String nick;
-    private String mail;
 
     /*
      * public ObtenerUsuario(String nickname, String email) { nick = nickname; mail
      * = email; }
      */
 
-    public ObtenerUsuario(String nickname) {
-        nick = nickname;
-        mail = "";
+    public ObtenerUsuario() {
     }
 
-    public Estudiante getEstudianteByNickname() {
+    public boolean isEstudiante(String nickname) {
+        boolean ret = false;
+        EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("UsuarioJPA");
+        EntityManager entitymanager = emfactory.createEntityManager();
 
-        ExisteUsuario existeUsuario = new ExisteUsuario(nick, mail);
-        if (existeUsuario.existeNickname()) {
+        Estudiante est = null;
+        est = entitymanager.find(Estudiante.class, nickname);
+
+        if (est != null) {
+            ret = true;
+        }
+        entitymanager.close();
+        emfactory.close();
+        return ret;
+    }
+
+    public Estudiante getEstudianteByNickname(String nick) {
+
+        if (new existeUsuario.existeNickname(nick)) {
 
             EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("UsuarioJPA");
             EntityManager entitymanager = emfactory.createEntityManager();
@@ -46,10 +57,9 @@ public class ObtenerUsuario {
 
     }
 
-    public Docente getDocenteByNickname() {
+    public Docente getDocenteByNickname(String nick) {
 
-        ExisteUsuario existeUsuario = new ExisteUsuario(nick, mail);
-        if (existeUsuario.existeNickname()) {
+        if (new existeUsuario.existeNickname(nick)) {
 
             EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("UsuarioJPA");
             EntityManager entitymanager = emfactory.createEntityManager();
