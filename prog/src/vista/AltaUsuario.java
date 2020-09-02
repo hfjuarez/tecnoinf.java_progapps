@@ -7,6 +7,10 @@ import java.awt.Checkbox;
 import javax.swing.JRadioButton;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+import javax.swing.event.ChangeListener;
+import javax.swing.event.ChangeEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class AltaUsuario extends JInternalFrame {
 	private JTextField textField;
@@ -41,15 +45,6 @@ public class AltaUsuario extends JInternalFrame {
 		setClosable(true);
 		setBounds(100, 100, 450, 300);
 		getContentPane().setLayout(null);
-		
-		JRadioButton rdbtnDocente = new JRadioButton("Docente");
-		rdbtnDocente.setSelected(true);
-		rdbtnDocente.setBounds(10, 10, 149, 23);
-		getContentPane().add(rdbtnDocente);
-		
-		JRadioButton rdbtnEstudiante = new JRadioButton("Estudiante");
-		rdbtnEstudiante.setBounds(166, 10, 149, 23);
-		getContentPane().add(rdbtnEstudiante);
 		
 		JLabel lblNickname = new JLabel("Nickname");
 		lblNickname.setBounds(10, 43, 150, 15);
@@ -105,6 +100,20 @@ public class AltaUsuario extends JInternalFrame {
 		textField_5.setBounds(160, 168, 250, 19);
 		getContentPane().add(textField_5);
 		textField_5.setColumns(10);
+		
+		JRadioButton rdbtnDocente = new JRadioButton("Docente");
+		rdbtnDocente.addChangeListener(new ChangeListener() {
+			public void stateChanged(ChangeEvent arg0) {
+				if(rdbtnDocente.isSelected()) {
+					textField_5.setEditable(true);
+				}else {
+					textField_5.setEditable(false);
+				}
+			}
+		});
+		rdbtnDocente.setSelected(true);
+		rdbtnDocente.setBounds(10, 10, 149, 23);
+		getContentPane().add(rdbtnDocente);
 
 	}
 }
