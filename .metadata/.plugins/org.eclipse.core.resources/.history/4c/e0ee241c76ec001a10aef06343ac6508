@@ -1,0 +1,47 @@
+package logica.usuarios;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+import java.sql.Date;
+
+import logica.entidades.Usuario;
+
+public class AltaUsuario {
+
+    /*
+     * private String nick="asdf"; private String name="asdfdfsa"; private String
+     * ape="asdfsdfddd"; private String mail="sadf@asdf"; private String
+     * nomIma=nick; private Date nacDate= new Date(07/04/2000);
+     */
+    AltaUsuario() {
+    }
+
+    public static void main(String[] args) {
+        String nick = "asdf";
+        String name = "asdfdfsa";
+        String ape = "asdfsdfddd";
+        String mail = "sadf@asdf";
+        String nomIma = nick;
+        String fecha="2015-04-23";
+        Date nacDate = Date.valueOf(str);//converting string into sql date  
+        EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("UsuarioJPA");
+        EntityManager entitymanager = emfactory.createEntityManager();
+        entitymanager.getTransaction().begin();
+
+        Usuario usuario = new Usuario();
+        usuario.setNickname(nick);
+        usuario.setNombre(name);
+        usuario.setApellido(ape);
+        usuario.setEmail(mail);
+        usuario.setFechaNac(nacDate);
+        usuario.setNombreImagen(nomIma);
+
+        entitymanager.persist(usuario);
+        entitymanager.getTransaction().commit();
+
+        entitymanager.close();
+        emfactory.close();
+    }
+
+}

@@ -1,0 +1,22 @@
+package logica.entidades;
+
+import java.io.Serializable;
+import javax.persistence.*;
+import logica.entidades.Usuario;
+
+/**
+ * Entity implementation class for Entity: Estudiante
+ *
+ */
+@Entity
+@Table()
+
+public class Estudiante extends Usuario {
+
+	// private static final long serialVersionUID = 1L;
+
+	public Estudiante() {
+		super();
+	}
+
+}

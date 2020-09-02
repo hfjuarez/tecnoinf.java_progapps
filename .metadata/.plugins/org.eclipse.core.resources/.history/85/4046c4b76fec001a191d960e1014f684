@@ -1,0 +1,48 @@
+package logica.usuarios;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+
+import logica.entidades.Usuario;
+
+public class AltaUsuario {
+
+    private String nick;
+    private String name;
+    private String ape;
+    private String mail;
+    private String nomIma;
+    private Date nacDate;
+
+    public static void main(String[] args) {
+        EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("Eclipselink_JPA_Usuario");
+        EntityManager entitymanager = emfactory.createEntityManager();
+        entitymanager.getTransaction().begin();
+
+        Usuario usuarios = new Usuario();
+        usuarios.setNickname(nick);
+        usuarios.setNombreUsuario(name);
+        usuarios.setApellido(ape);
+        usuarios.setEmail(mail);
+        usuarios.setFechaNac(nacDate);
+        usuarios.setNombreImagen(nomIma);
+
+        ExisteUsuario eu = new ExisteUsuario("asd");
+        if (eu.existe()) {
+            System.out.println("existe");
+        } else {
+            System.out.println("no existe");
+
+        }
+
+        entitymanager.persist(usuarios);
+        entitymanager.getTransaction().commit();
+
+        entitymanager.close();
+        emfactory.close();
+    }
+
+    AltaUsuario() {
+    }
+}
