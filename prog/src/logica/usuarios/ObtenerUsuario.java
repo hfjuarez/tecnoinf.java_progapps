@@ -14,10 +14,10 @@ public class ObtenerUsuario {
     private String nick;
     private String mail;
 
-    public ObtenerUsuario(String nickname, String email) {
-        nick = nickname;
-        mail = email;
-    }
+    /*
+     * public ObtenerUsuario(String nickname, String email) { nick = nickname; mail
+     * = email; }
+     */
 
     public ObtenerUsuario(String nickname) {
         nick = nickname;
@@ -28,12 +28,14 @@ public class ObtenerUsuario {
 
         ExisteUsuario existeUsuario = new ExisteUsuario(nick, mail);
         if (existeUsuario.existeNickname()) {
-            Estudiante Uret = new Estudiante();
 
             EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("UsuarioJPA");
             EntityManager entitymanager = emfactory.createEntityManager();
             entitymanager.getTransaction().begin();
+
+            Estudiante Uret = new Estudiante();
             Uret = entitymanager.find(Estudiante.class, nick);
+
             entitymanager.close();
             emfactory.close();
             return Uret;
@@ -48,12 +50,14 @@ public class ObtenerUsuario {
 
         ExisteUsuario existeUsuario = new ExisteUsuario(nick, mail);
         if (existeUsuario.existeNickname()) {
-            Docente Uret = new Docente();
 
             EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("UsuarioJPA");
             EntityManager entitymanager = emfactory.createEntityManager();
             entitymanager.getTransaction().begin();
+
+            Docente Uret = new Docente();
             Uret = entitymanager.find(Docente.class, nick);
+
             entitymanager.close();
             emfactory.close();
             return Uret;

@@ -2,6 +2,10 @@ package logica.instituto;
 
 import logica.entidades.Instituto;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+
 public class ObtenerInstituto {
     private String nombre;
 
@@ -28,4 +32,4 @@ public class ObtenerInstituto {
         }
 
     }
-}mr.
+}

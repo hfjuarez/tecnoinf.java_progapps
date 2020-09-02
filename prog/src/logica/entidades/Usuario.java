@@ -18,7 +18,7 @@ public class Usuario implements Serializable {
 	private String nickname;
 	private String nombre;
 	private String apellido;
-	private String email;
+	private String mail;
 	private Date fechaNac;
 	private String nombreImagen;
 	// private static final long serialVersionUID = 2L;
@@ -27,12 +27,12 @@ public class Usuario implements Serializable {
 		super();
 	}
 
-	public Usuario(String nick, String name, String ape, String mail, Date nac) {
+	public Usuario(String nick, String name, String ape, String email, Date nac) {
 		super();
 		nickname = nick;
 		nombre = name;
 		apellido = ape;
-		email = mail;
+		mail = email;
 		fechaNac = nac;
 		nombreImagen = nickname;
 	}
@@ -61,12 +61,12 @@ public class Usuario implements Serializable {
 		this.apellido = apellido;
 	}
 
-	public String getEmail() {
-		return this.email;
+	public String getMail() {
+		return this.mail;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
+	public void setMail(String email) {
+		this.mail = email;
 	}
 
 	public Date getFechaNac() {

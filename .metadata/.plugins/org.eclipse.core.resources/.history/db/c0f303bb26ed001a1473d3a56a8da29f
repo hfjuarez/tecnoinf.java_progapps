@@ -1,0 +1,88 @@
+package logica.entidades;
+
+import java.io.Serializable;
+import java.lang.String;
+import java.sql.Date;
+import javax.persistence.*;
+
+/**
+ * Entity implementation class for Entity: Usuario
+ *
+ */
+@Entity
+@Table
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+public class Usuario implements Serializable {
+
+	@Id
+	private String nickname;
+	private String nombre;
+	private String apellido;
+	private String email;
+	private Date fechaNac;
+	private String nombreImagen;
+	// private static final long serialVersionUID = 2L;
+
+	public Usuario() {
+		super();
+	}
+
+	public Usuario(String nick, String name, String ape, String mail, Date nac) {
+		super();
+		nickname = nick;
+		nombre = name;
+		apellido = ape;
+		email = mail;
+		fechaNac = nac;
+		nombreImagen = nickname;
+	}
+
+	public String getNickname() {
+		return this.nickname;
+	}
+
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
+	}
+
+	public String getNombre() {
+		return this.nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public String getApellido() {
+		return this.apellido;
+	}
+
+	public void setApellido(String apellido) {
+		this.apellido = apellido;
+	}
+
+	public String getEmail() {
+		return this.email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public Date getFechaNac() {
+		return this.fechaNac;
+	}
+
+	public void setFechaNac(Date fechaNac) {
+		this.fechaNac = fechaNac;
+	}
+
+	public String getNombreImagen() {
+		return this.nombreImagen;
+	}
+
+	public void setNombreImagen(String nombreImagen) {
+		this.nombreImagen = nombreImagen;
+	}
+
+}
