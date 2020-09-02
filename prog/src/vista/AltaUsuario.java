@@ -11,14 +11,20 @@ import javax.swing.event.ChangeListener;
 import javax.swing.event.ChangeEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JButton;
+import java.awt.Choice;
+import javax.swing.JList;
+import javax.swing.JFormattedTextField;
 
 public class AltaUsuario extends JInternalFrame {
 	private JTextField textField;
 	private JTextField textField_1;
 	private JTextField textField_2;
 	private JTextField textField_3;
-	private JTextField textField_4;
 	private JTextField textField_5;
+	private JTextField textField_4;
+	private JTextField textField_6;
+	private JTextField textField_7;
 
 	/**
 	 * Launch the application.
@@ -40,6 +46,7 @@ public class AltaUsuario extends JInternalFrame {
 	 * Create the frame.
 	 */
 	public AltaUsuario() {
+		setResizable(true);
 		setTitle("Alta de usuario");
 		setMaximizable(true);
 		setClosable(true);
@@ -90,16 +97,26 @@ public class AltaUsuario extends JInternalFrame {
 		getContentPane().add(textField_3);
 		textField_3.setColumns(10);
 		
-		textField_4 = new JTextField();
-		textField_4.setBounds(160, 143, 250, 19);
-		getContentPane().add(textField_4);
-		textField_4.setColumns(10);
-		
 		textField_5 = new JTextField();
 		textField_5.setEditable(false);
 		textField_5.setBounds(160, 168, 250, 19);
 		getContentPane().add(textField_5);
 		textField_5.setColumns(10);
+		
+		textField_4 = new JTextField();
+		textField_4.setBounds(160, 143, 70, 19);
+		getContentPane().add(textField_4);
+		textField_4.setColumns(10);
+		
+		textField_6 = new JTextField();
+		textField_6.setBounds(250, 143, 70, 19);
+		getContentPane().add(textField_6);
+		textField_6.setColumns(10);
+		
+		textField_7 = new JTextField();
+		textField_7.setBounds(340, 143, 70, 19);
+		getContentPane().add(textField_7);
+		textField_7.setColumns(10);
 		
 		JRadioButton rdbtnDocente = new JRadioButton("Docente");
 		rdbtnDocente.addChangeListener(new ChangeListener() {
@@ -114,6 +131,21 @@ public class AltaUsuario extends JInternalFrame {
 		rdbtnDocente.setSelected(true);
 		rdbtnDocente.setBounds(10, 10, 149, 23);
 		getContentPane().add(rdbtnDocente);
-
+		
+		JButton btnAgregar = new JButton("Agregar");
+		btnAgregar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				System.out.println(textField.getText());
+				System.out.println(textField_4.getText());
+				System.out.println(textField_1.getText());
+				System.out.println(textField_2.getText());
+				System.out.println(textField_3.getText());
+				System.out.println(textField_5.getText());
+				System.out.println(textField_4.getText()+" "+textField_6.getText()+" "+textField_7.getText());
+			}
+		});
+		btnAgregar.setBounds(290, 214, 117, 25);
+		getContentPane().add(btnAgregar);
+		
 	}
 }
