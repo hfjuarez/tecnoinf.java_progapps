@@ -3,11 +3,11 @@
 ### Orden de los casos de uso:
 
 1.  alta instituto -- LISTO
-2.  alta usuario -- Falta
-3.  modificar usuario
-4.  Alta curso
-5.  Alta edición de un Curso
-6.  Crear programa formación
+2.  alta usuario -- LISTO
+3.  modificar usuario -- PROCESO
+4.  Alta curso -- POR COMENZAR
+5.  Alta edición de un Curso -- POR COMENZAR
+6.  Crear programa formación -- POR COMENZAR
 7.  Agregar curso programa formación
 8.  Inscripcion edicion de Curso
 9.  Consulta edicion de Curso
