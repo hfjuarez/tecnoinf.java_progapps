@@ -19,7 +19,6 @@ public class AltaUsuario {
     private String name;
     private String ape;
     private String mail;
-    private String nomIma;
     private Date nacDate;
 
     AltaUsuario(String nickname, String nombre, String apellido, String email, Date nac) {
@@ -27,18 +26,9 @@ public class AltaUsuario {
         name = nombre;
         ape = apellido;
         mail = email;
-        nomIma = nickname;
         nacDate = nac;
     }
 
-    AltaUsuario(String nickname, String nombre, String apellido, String email, Date nac, File image) {
-        nick = nickname;
-        name = nombre;
-        ape = apellido;
-        mail = email;
-        nomIma = nickname;
-        nacDate = nac;
-    }
 
     private boolean hasErrorEmpty() {
         if (nick.isEmpty())
@@ -48,8 +38,6 @@ public class AltaUsuario {
         if (ape.isEmpty())
             return true;
         if (mail.isEmpty())
-            return true;
-        if (nomIma.isEmpty())
             return true;
         if (nacDate.toString().isEmpty())
             return true;
@@ -127,12 +115,12 @@ public class AltaUsuario {
         ;
         String fecha = "2015-04-23";
         Date nacDate = Date.valueOf(fecha);
-        AltaUsuario au1 = new AltaUsuario("nick1", "nombre", "apellido", "mail", nacDate);
-        // AltaUsuario au2 = new AltaUsuario("nick3", "nombdsfre", "apelsdfsdflido",
-        // "maildsfsdf", nacDate);
-        String es = au1.createEstudiante();
-        System.out.println(es);
-        // String dos = au2.createDocente("ss");
-
+        //AltaUsuario au1 = new AltaUsuario("nick1", "nombre", "apellido", "mail", nacDate);
+        AltaUsuario au2 = new AltaUsuario("nick1", "nombdsfre", "apelsdfsdflido","mail", nacDate);
+        
+        //String es = au1.createEstudiante();
+        
+        String dos = au2.createDocente("Fing");
+        System.out.println(dos);
     }
 }

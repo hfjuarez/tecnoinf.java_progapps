@@ -15,7 +15,8 @@ import logica.entidades.Usuario;
 @Table
 public class Docente extends Usuario {
 
-	// private Instituto instituto;
+	@ManyToOne
+	private Instituto instituto;
 	// private static final long serialVersionUID = 1L;
 
 	public Docente() {
@@ -24,15 +25,15 @@ public class Docente extends Usuario {
 
 	public Docente(String nick, String name, String ape, String mail, Date nac, Instituto ins) {
 		super(nick, name, ape, mail, nac);
-		// instituto = ins;
+		 instituto = ins;
 	}
 
 	public Instituto getInstituto() {
-		// return this.instituto;
+		 return this.instituto;
 	}
 
 	public void setInstituto(Instituto instituto) {
-		// this.instituto = instituto;
+		 this.instituto = instituto;
 	}
 
 }

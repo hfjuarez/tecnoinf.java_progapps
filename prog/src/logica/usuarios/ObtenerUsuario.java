@@ -38,7 +38,7 @@ public class ObtenerUsuario {
 
     public Estudiante getEstudianteByNickname(String nick) {
 
-        if (new existeUsuario.existeNickname(nick)) {
+        if (new ExisteUsuario().existeNickname(nick)) {
 
             EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("UsuarioJPA");
             EntityManager entitymanager = emfactory.createEntityManager();
@@ -59,7 +59,7 @@ public class ObtenerUsuario {
 
     public Docente getDocenteByNickname(String nick) {
 
-        if (new existeUsuario.existeNickname(nick)) {
+        if (new ExisteUsuario().existeNickname(nick)) {
 
             EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("UsuarioJPA");
             EntityManager entitymanager = emfactory.createEntityManager();

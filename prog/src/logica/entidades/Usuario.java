@@ -20,7 +20,6 @@ public class Usuario implements Serializable {
 	private String apellido;
 	private String mail;
 	private Date fechaNac;
-	private String nombreImagen;
 	// private static final long serialVersionUID = 2L;
 
 	public Usuario() {
@@ -34,7 +33,6 @@ public class Usuario implements Serializable {
 		apellido = ape;
 		mail = email;
 		fechaNac = nac;
-		nombreImagen = nickname;
 	}
 
 	public String getNickname() {
@@ -75,14 +73,6 @@ public class Usuario implements Serializable {
 
 	public void setFechaNac(Date fechaNac) {
 		this.fechaNac = fechaNac;
-	}
-
-	public String getNombreImagen() {
-		return this.nombreImagen;
-	}
-
-	public void setNombreImagen(String nombreImagen) {
-		this.nombreImagen = nombreImagen;
 	}
 
 }
