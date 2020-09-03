@@ -2,9 +2,9 @@
 
 ### Orden de los casos de uso:
 
-1.  alta instituto -- LISTO
-2.  alta usuario -- LISTO
-3.  modificar usuario -- PROCESO
+1.  Alta instituto -- LISTO
+2.  Alta usuario -- LISTO
+3.  Modificar usuario -- PROCESO
 4.  Alta curso -- POR COMENZAR
 5.  Alta edición de un Curso -- POR COMENZAR
 6.  Crear programa formación -- POR COMENZAR
@@ -21,14 +21,41 @@
 
 # Package: logica
 
-### logica.entidades	
+## logica.entidades
 
-*   Contendrá toda las clases entidades.
+Contiene todas las clases entidades.
 
-### logica.institutos
+*   Instituto
+*   Usuario
+*   Docente
+*   Estudiante
+*   Curso
+*   Edición
+*   Formación
 
-*   Alta instituto ***(NO SE DEBE IMPLEMENTAR EN SWING)***
-*   existe Instituto
+## Package: logica.institutos
+
+​	Contiene todo lo necesario para  manejar la clase entidad Intituto.
+
+###### ExisteInstituto
+
+
+
+##### Clase: AltaInstituto
+
+Esta clase contiene un main donde por asignación a la variable "nombreInstituto" (de tipo String) se crea un Instituto nuevo con el valor que contenga la variable previamente mencionada. 
+
+**Dependencias:**
+
+*   Instituto (clase entidad).
+
+*   ExisteInstituto - Se usa para consultar si ya existe un instituto con igual nombre.
+
+
+
+
+
+
 
 ### logica.usuarios
 
