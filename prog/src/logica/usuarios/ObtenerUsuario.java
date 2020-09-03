@@ -42,7 +42,6 @@ public class ObtenerUsuario {
 
             EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("UsuarioJPA");
             EntityManager entitymanager = emfactory.createEntityManager();
-            entitymanager.getTransaction().begin();
 
             Estudiante Uret = new Estudiante();
             Uret = entitymanager.find(Estudiante.class, nick);
@@ -63,7 +62,6 @@ public class ObtenerUsuario {
 
             EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("UsuarioJPA");
             EntityManager entitymanager = emfactory.createEntityManager();
-            entitymanager.getTransaction().begin();
 
             Docente Uret = new Docente();
             Uret = entitymanager.find(Docente.class, nick);
