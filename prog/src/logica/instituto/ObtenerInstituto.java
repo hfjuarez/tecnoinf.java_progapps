@@ -21,7 +21,6 @@ public class ObtenerInstituto {
 
             EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("InstitutoJPA");
             EntityManager entitymanager = emfactory.createEntityManager();
-            entitymanager.getTransaction().begin();
             ret = entitymanager.find(Instituto.class, nombre);
             entitymanager.close();
             emfactory.close();
