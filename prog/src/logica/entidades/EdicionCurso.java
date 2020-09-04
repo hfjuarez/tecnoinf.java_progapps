@@ -78,7 +78,7 @@ public class EdicionCurso {
 	}
 
 	public void setDocentes(List docentes) {
-		this.docentes = docentes;
+		this.docentes = docentses;
 	}
 	
 	public void addDocente(Docente docente) {

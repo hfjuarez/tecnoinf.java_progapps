@@ -21,7 +21,7 @@ public class AltaCurso {
 
     private int cant_credito;
 
-    private String curURL;;
+    private String curURL;
     private Date fech_alta;
 
     // @OneToMany(targetEntity=Curso.class)
@@ -50,7 +50,6 @@ public class AltaCurso {
         return false;
     }
 
-    // Falta implementar
     private String hasErrorAlredyExists() {
         ExisteCurso existeCurso = new ExisteCurso();
         String ret = "";
@@ -60,7 +59,7 @@ public class AltaCurso {
         return ret;
     }
 
-    public String createCurso(String nombreInstituto) {
+    public String createCurso(String nombreInstituto, List<String> nombrePrevias) {
         /*
          * String fecha = "2015-04-23"; Date nacDate = Date.valueOf(fecha);// converting
          * string into sql date
@@ -79,6 +78,14 @@ public class AltaCurso {
 
                 Curso curso = new Curso(nom_cur, des_cur, dur_mes, cant_horas, cant_credito, curURL, fech_alta,
                         instituto);
+
+                List<Cursos> previas = new ArrayList();
+                ObtenerCurso oc = new ObtenerCurso();
+                for (String previaString : nombrePrevias) {
+                    Curso previa = oc.getCurso(previaString);
+                    previas.add(previa);
+                }
+                curso.setPrevias(previas);
 
                 entitymanager.persist(curso);
 
