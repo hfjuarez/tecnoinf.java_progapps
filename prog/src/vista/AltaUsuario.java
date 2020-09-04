@@ -21,7 +21,6 @@ public class AltaUsuario extends JInternalFrame {
 	private JTextField textField_1;
 	private JTextField textField_2;
 	private JTextField textField_3;
-	private JTextField textField_5;
 	private JTextField textField_4;
 	private JTextField textField_6;
 	private JTextField textField_7;
@@ -97,12 +96,6 @@ public class AltaUsuario extends JInternalFrame {
 		getContentPane().add(textField_3);
 		textField_3.setColumns(10);
 		
-		textField_5 = new JTextField();
-		textField_5.setEditable(false);
-		textField_5.setBounds(160, 168, 250, 19);
-		getContentPane().add(textField_5);
-		textField_5.setColumns(10);
-		
 		textField_4 = new JTextField();
 		textField_4.setBounds(160, 143, 70, 19);
 		getContentPane().add(textField_4);
@@ -146,6 +139,15 @@ public class AltaUsuario extends JInternalFrame {
 		});
 		btnAgregar.setBounds(290, 214, 117, 25);
 		getContentPane().add(btnAgregar);
+		
+		JButton btnCancelar = new JButton("Cancelar");
+		btnCancelar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+			}
+		});
+		btnCancelar.setBounds(160, 214, 117, 25);
+		getContentPane().add(btnCancelar);
 		
 	}
 }

@@ -4,6 +4,7 @@ import java.awt.EventQueue;
 
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
@@ -52,11 +53,26 @@ public class AltaInstituto extends JInternalFrame {
 		btnAgregar = new JButton("Agregar");
 		btnAgregar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				if(!textField.getText().equals("")) {
+					JOptionPane.showMessageDialog(null,"Agregado");
+					textField.setText("");
+				}else {
+					JOptionPane.showMessageDialog(null,"El campo no debe ser vacio");
+				}
 				
 			}
 		});
 		btnAgregar.setBounds(143, 123, 117, 25);
 		getContentPane().add(btnAgregar);
+		
+		JButton btnCancelar = new JButton("Cancelar");
+		btnCancelar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				dispose();
+			}
+		});
+		btnCancelar.setBounds(14, 123, 117, 25);
+		getContentPane().add(btnCancelar);
 
 	}
 }
