@@ -22,8 +22,10 @@ public class AltaUsuario extends JInternalFrame {
 	private JTextField textField_2;
 	private JTextField textField_3;
 	private JTextField textField_4;
+	private JTextField textField_5;
 	private JTextField textField_6;
 	private JTextField textField_7;
+	private JTextField textField_8;
 
 	/**
 	 * Launch the application.
@@ -101,6 +103,10 @@ public class AltaUsuario extends JInternalFrame {
 		getContentPane().add(textField_4);
 		textField_4.setColumns(10);
 		
+		//textField_5.setBounds(160, 170, 200, 19);
+		//getContentPane().add(textField_5);
+		//textField_5.setColumns(10);
+		
 		textField_6 = new JTextField();
 		textField_6.setBounds(250, 143, 70, 19);
 		getContentPane().add(textField_6);
@@ -115,9 +121,9 @@ public class AltaUsuario extends JInternalFrame {
 		rdbtnDocente.addChangeListener(new ChangeListener() {
 			public void stateChanged(ChangeEvent arg0) {
 				if(rdbtnDocente.isSelected()) {
-					textField_5.setEditable(true);
+					//textField_5.setEditable(true);
 				}else {
-					textField_5.setEditable(false);
+					//textField_5.setEditable(false);
 				}
 			}
 		});
