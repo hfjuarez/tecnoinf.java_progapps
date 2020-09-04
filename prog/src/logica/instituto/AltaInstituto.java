@@ -29,6 +29,5 @@ public class AltaInstituto {
             entitymanager.close();
             emfactory.close();
         }
-
     }
 }
