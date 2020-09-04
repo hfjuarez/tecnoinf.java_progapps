@@ -3,6 +3,7 @@ package vista;
 import java.awt.EventQueue;
 
 import javax.swing.JInternalFrame;
+import java.awt.GridLayout;
 
 public class AltaCurso extends JInternalFrame {
 
@@ -30,6 +31,7 @@ public class AltaCurso extends JInternalFrame {
 		setMaximizable(true);
 		setClosable(true);
 		setBounds(100, 100, 450, 300);
+		getContentPane().setLayout(new GridLayout(7, 3, 0, 0));
 
 	}
 
