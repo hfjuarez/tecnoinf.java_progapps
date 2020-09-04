@@ -19,7 +19,6 @@ public class AltaUsuario {
     private String name;
     private String ape;
     private String mail;
-    private String nomIma;
     private Date nacDate;
 
     AltaUsuario(String nickname, String nombre, String apellido, String email, Date nac) {
@@ -27,18 +26,9 @@ public class AltaUsuario {
         name = nombre;
         ape = apellido;
         mail = email;
-        nomIma = nickname;
         nacDate = nac;
     }
 
-    AltaUsuario(String nickname, String nombre, String apellido, String email, Date nac, File image) {
-        nick = nickname;
-        name = nombre;
-        ape = apellido;
-        mail = email;
-        nomIma = nickname;
-        nacDate = nac;
-    }
 
     private boolean hasErrorEmpty() {
         if (nick.isEmpty())
@@ -49,20 +39,19 @@ public class AltaUsuario {
             return true;
         if (mail.isEmpty())
             return true;
-        if (nomIma.isEmpty())
-            return true;
         if (nacDate.toString().isEmpty())
             return true;
         return false;
     }
 
     private String hasErrorAlredyExists() {
-        ExisteUsuario existeUsuario = new ExisteUsuario(nick, mail);
-        if (existeUsuario.existeNickname())
-            return "ERROR: Ya existe el usuario con nickname: " + nick;
-        if (existeUsuario.existeMail())
-            return "ERROR: Ya existe el usuario con mail: " + mail;
-        return "";
+        ExisteUsuario existeUsuario = new ExisteUsuario();
+        String ret ="";
+        if (existeUsuario.existeNickname(nick))
+            ret = ret+"ERROR: Ya existe el usuario con nickname: " + nick +"\n";
+        if (existeUsuario.existeMail(mail))
+            ret = ret+"ERROR: Ya existe el usuario con mail: " + mail+ "\n";
+        return ret;
     }
 
     public String createEstudiante() {
@@ -110,8 +99,8 @@ public class AltaUsuario {
                 Docente docente = new Docente(nick, name, ape, mail, nacDate, instituto);
 
                 entitymanager.persist(docente);
-                entitymanager.getTransaction().commit();
 
+                entitymanager.getTransaction().commit();
                 entitymanager.close();
                 emfactory.close();
             } else {
@@ -126,10 +115,12 @@ public class AltaUsuario {
         ;
         String fecha = "2015-04-23";
         Date nacDate = Date.valueOf(fecha);
-        AltaUsuario au1 = new AltaUsuario("nick1", "nombre", "apellido", "mail", nacDate);
-        AltaUsuario au2 = new AltaUsuario("nick3", "nombdsfre", "apelsdfsdflido", "maildsfsdf", nacDate);
-        String es = au1.createEstudiante();
-        String dos = au2.createDocente("ss");
-
+        //AltaUsuario au1 = new AltaUsuario("nick1", "nombre", "apellido", "mail", nacDate);
+        AltaUsuario au2 = new AltaUsuario("nick1", "nombdsfre", "apelsdfsdflido","mail", nacDate);
+        
+        //String es = au1.createEstudiante();
+        
+        String dos = au2.createDocente("Fing");
+        System.out.println(dos);
     }
 }

@@ -14,41 +14,49 @@ public class ModificarUsuario {
     private String nick;
     private String name;
     private String ape;
-    private String nomIma;
     private Date nacDate;
 
     public ModificarUsuario() {
 
     }
 
-    public ModificarUsuario(String nickName, String nombre, String apellido, String nombreImagen, Date fechaNaci) {
+    public ModificarUsuario(String nickName, String nombre, String apellido, Date fechaNaci) {
         nick = nickName;
+        name = nombre;
         ape = apellido;
-        nomIma = nombreImagen;
+        nacDate = fechaNaci;
     }
 
     private String hasErrorNotExists() {
-        ExisteUsuario existeUsuario = new ExisteUsuario(nick);
-        if (!existeUsuario.existeNickname())
+        ExisteUsuario existeUsuario = new ExisteUsuario();
+        if (!existeUsuario.existeNickname(nick))
             return "ERROR: NO existe el usuario con nickname: " + nick;
         return "";
     }
 
-    public String ModifEst() {
+    public String ModificarEstudiante() {
         String retorno = hasErrorNotExists();
         if (retorno.isEmpty()) {
             EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("UsuarioJPA");
             EntityManager entitymanager = emfactory.createEntityManager();
             entitymanager.getTransaction().begin();
-            ObtenerUsuario obtusr = new ObtenerUsuario(nick);
-            Estudiante usr = new Estudiante();
-            usr = obtusr.getEstudianteByNickname();
-            usr.setNombre(name);
-            usr.setApellido(ape);
-            usr.setFechaNac(nacDate);
-            usr.setNombreImagen(nomIma);
 
-            entitymanager.refresh(usr);
+            Estudiante usr = new ObtenerUsuario().getEstudianteByNickname(nick);
+
+            if (!name.isEmpty()) {
+                usr.setNombre(name);
+            }
+            if (!ape.isEmpty()) {
+                usr.setApellido(ape);
+            }
+            if (!ape.isEmpty()) {
+                usr.setApellido(ape);
+            }
+            if (!nacDate.toString().isEmpty()) {
+                usr.setFechaNac(nacDate);
+            }
+
+            entitymanager.persist(usr);
             entitymanager.getTransaction().commit();
 
             entitymanager.close();
@@ -58,22 +66,30 @@ public class ModificarUsuario {
         return retorno;
     }
 
-    public String ModifDoc(String Inst) {
+    public String ModificarDocente() {
         String retorno = hasErrorNotExists();
+
         if (retorno.isEmpty()) {
             EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("UsuarioJPA");
             EntityManager entitymanager = emfactory.createEntityManager();
             entitymanager.getTransaction().begin();
-            ObtenerUsuario obtusr = new ObtenerUsuario(nick);
-            Docente usr = new Docente();
-            usr = obtusr.getDocenteByNickname();
-            usr.setNombre(name);
-            usr.setApellido(ape);
-            usr.setFechaNac(nacDate);
-            usr.setNombreImagen(nomIma);
-            usr.setInstituto(Inst);
 
-            entitymanager.refresh(usr);
+            Docente usr = new ObtenerUsuario().getDocenteByNickname(nick);
+
+            if (!name.isEmpty()) {
+                usr.setNombre(name);
+            }
+            if (!ape.isEmpty()) {
+                usr.setApellido(ape);
+            }
+            if (!ape.isEmpty()) {
+                usr.setApellido(ape);
+            }
+            if (!nacDate.toString().isEmpty()) {
+                usr.setFechaNac(nacDate);
+            }
+
+            entitymanager.persist(usr);
             entitymanager.getTransaction().commit();
 
             entitymanager.close();

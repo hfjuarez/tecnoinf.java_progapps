@@ -11,29 +11,41 @@ import logica.entidades.Docente;
 import logica.entidades.Estudiante;
 
 public class ObtenerUsuario {
-    private String nick;
-    private String mail;
 
-    public ObtenerUsuario(String nickname, String email) {
-        nick = nickname;
-        mail = email;
+    /*
+     * public ObtenerUsuario(String nickname, String email) { nick = nickname; mail
+     * = email; }
+     */
+
+    public ObtenerUsuario() {
     }
 
-    public ObtenerUsuario(String nickname) {
-        nick = nickname;
-        mail = "";
+    public boolean isEstudiante(String nickname) {
+        boolean ret = false;
+        EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("UsuarioJPA");
+        EntityManager entitymanager = emfactory.createEntityManager();
+
+        Estudiante est = null;
+        est = entitymanager.find(Estudiante.class, nickname);
+
+        if (est != null) {
+            ret = true;
+        }
+        entitymanager.close();
+        emfactory.close();
+        return ret;
     }
 
-    public Estudiante getEstudianteByNickname() {
+    public Estudiante getEstudianteByNickname(String nick) {
 
-        ExisteUsuario existeUsuario = new ExisteUsuario(nick, mail);
-        if (existeUsuario.existeNickname()) {
-            Estudiante Uret = new Estudiante();
+        if (new ExisteUsuario().existeNickname(nick)) {
 
             EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("UsuarioJPA");
             EntityManager entitymanager = emfactory.createEntityManager();
-            entitymanager.getTransaction().begin();
+
+            Estudiante Uret = new Estudiante();
             Uret = entitymanager.find(Estudiante.class, nick);
+
             entitymanager.close();
             emfactory.close();
             return Uret;
@@ -44,16 +56,16 @@ public class ObtenerUsuario {
 
     }
 
-    public Docente getDocenteByNickname() {
+    public Docente getDocenteByNickname(String nick) {
 
-        ExisteUsuario existeUsuario = new ExisteUsuario(nick, mail);
-        if (existeUsuario.existeNickname()) {
-            Docente Uret = new Docente();
+        if (new ExisteUsuario().existeNickname(nick)) {
 
             EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("UsuarioJPA");
             EntityManager entitymanager = emfactory.createEntityManager();
-            entitymanager.getTransaction().begin();
+
+            Docente Uret = new Docente();
             Uret = entitymanager.find(Docente.class, nick);
+
             entitymanager.close();
             emfactory.close();
             return Uret;
