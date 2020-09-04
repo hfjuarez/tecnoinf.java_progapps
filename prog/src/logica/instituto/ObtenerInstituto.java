@@ -6,6 +6,10 @@ import javax.persistence.Persistence;
 
 import logica.entidades.Instituto;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+
 public class ObtenerInstituto {
     private String nombre;
 
@@ -21,7 +25,6 @@ public class ObtenerInstituto {
 
             EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("InstitutoJPA");
             EntityManager entitymanager = emfactory.createEntityManager();
-            entitymanager.getTransaction().begin();
             ret = entitymanager.find(Instituto.class, nombre);
             entitymanager.close();
             emfactory.close();

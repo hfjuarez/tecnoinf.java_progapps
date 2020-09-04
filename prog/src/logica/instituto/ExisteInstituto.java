@@ -21,6 +21,10 @@ public class ExisteInstituto {
 
         Instituto instituto = null;
         instituto = entitymanager.find(Instituto.class, id);
+        
+        entitymanager.close();
+        emfactory.close();
+        
         if (instituto != null) {
             ret = true;
         }

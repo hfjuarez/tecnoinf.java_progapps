@@ -7272,3 +7272,163 @@ user global configuration and to define the default location to store repositori
 not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
 EGit might behave differently since they see different configuration options.
 This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+!SESSION 2020-09-02 09:16:52.990 -----------------------------------------------
+eclipse.buildId=4.16.0.I20200604-0540
+java.version=13.0.2
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=es_UY
+Framework arguments:  -product org.eclipse.epp.package.jee.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.jee.product
+
+!ENTRY org.eclipse.jface 2 0 2020-09-02 09:18:37.702
+!MESSAGE Keybinding conflicts occurred.  They may interfere with normal accelerator operation.
+!SUBENTRY 1 org.eclipse.jface 2 0 2020-09-02 09:18:37.702
+!MESSAGE A conflict occurred for CTRL+SHIFT+T:
+Binding(CTRL+SHIFT+T,
+	ParameterizedCommand(Command(org.eclipse.jdt.ui.navigate.open.type,Open Type,
+		Open a type in a Java editor,
+		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@3e7da4cb,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+Binding(CTRL+SHIFT+T,
+	ParameterizedCommand(Command(org.eclipse.lsp4e.symbolinworkspace,Go to Symbol in Workspace,
+		,
+		Category(org.eclipse.lsp4e.category,Language Servers,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@37ad818e,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+
+!ENTRY org.eclipse.egit.ui 2 0 2020-09-02 09:20:48.615
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\herfj'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+!SESSION 2020-09-02 09:33:44.763 -----------------------------------------------
+eclipse.buildId=4.16.0.I20200604-0540
+java.version=13.0.2
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=es_UY
+Framework arguments:  -product org.eclipse.epp.package.jee.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.jee.product
+
+!ENTRY org.eclipse.jface 2 0 2020-09-02 09:36:39.321
+!MESSAGE Keybinding conflicts occurred.  They may interfere with normal accelerator operation.
+!SUBENTRY 1 org.eclipse.jface 2 0 2020-09-02 09:36:39.321
+!MESSAGE A conflict occurred for CTRL+SHIFT+T:
+Binding(CTRL+SHIFT+T,
+	ParameterizedCommand(Command(org.eclipse.jdt.ui.navigate.open.type,Open Type,
+		Open a type in a Java editor,
+		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@5d00e30e,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+Binding(CTRL+SHIFT+T,
+	ParameterizedCommand(Command(org.eclipse.lsp4e.symbolinworkspace,Go to Symbol in Workspace,
+		,
+		Category(org.eclipse.lsp4e.category,Language Servers,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@3cdc5155,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+
+!ENTRY org.eclipse.egit.ui 2 0 2020-09-02 09:38:35.174
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\herfj'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+!SESSION 2020-09-02 10:46:01.251 -----------------------------------------------
+eclipse.buildId=4.16.0.I20200604-0540
+java.version=13.0.2
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=es_UY
+Framework arguments:  -product org.eclipse.epp.package.jee.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.jee.product
+
+!ENTRY org.eclipse.jface 2 0 2020-09-02 10:47:00.028
+!MESSAGE Keybinding conflicts occurred.  They may interfere with normal accelerator operation.
+!SUBENTRY 1 org.eclipse.jface 2 0 2020-09-02 10:47:00.028
+!MESSAGE A conflict occurred for CTRL+SHIFT+T:
+Binding(CTRL+SHIFT+T,
+	ParameterizedCommand(Command(org.eclipse.jdt.ui.navigate.open.type,Open Type,
+		Open a type in a Java editor,
+		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@3a2881d6,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+Binding(CTRL+SHIFT+T,
+	ParameterizedCommand(Command(org.eclipse.lsp4e.symbolinworkspace,Go to Symbol in Workspace,
+		,
+		Category(org.eclipse.lsp4e.category,Language Servers,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@69a031a4,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+
+!ENTRY org.eclipse.egit.ui 2 0 2020-09-02 10:48:28.856
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\herfj'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.eclipse.jpt.jpa.core 4 0 2020-09-02 22:12:14.427
+!MESSAGE 
+!STACK 0
+java.lang.NullPointerException
+	at org.eclipse.jpt.common.core.internal.resource.java.source.SourceType.resolveTypes(SourceType.java:184)
+	at org.eclipse.jpt.common.core.internal.resource.java.source.SourceTypeCompilationUnit.resolveTypes(SourceTypeCompilationUnit.java:101)
+	at org.eclipse.jpt.jpa.core.internal.AbstractJpaProject.resolveInternalJavaTypes(AbstractJpaProject.java:1686)
+	at org.eclipse.jpt.jpa.core.internal.AbstractJpaProject.internalProjectChanged(AbstractJpaProject.java:1618)
+	at org.eclipse.jpt.jpa.core.internal.AbstractJpaProject.projectChanged(AbstractJpaProject.java:1604)
+	at org.eclipse.jpt.jpa.core.internal.InternalJpaProjectManager.projectChanged_(InternalJpaProjectManager.java:765)
+	at org.eclipse.jpt.jpa.core.internal.InternalJpaProjectManager$ProjectChangeEventHandlerCommand.execute(InternalJpaProjectManager.java:747)
+	at org.eclipse.jpt.common.core.internal.utility.command.JobCommandJob.run(JobCommandJob.java:42)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+
+!ENTRY org.eclipse.jpt.jpa.core 4 0 2020-09-02 22:12:21.294
+!MESSAGE duplicate listener: AbstractJpaProject.ResourceModelListener[1C-91-F5-5C](GenericJpaProject[0C-D4-A7-1C](prog))
+!STACK 0
+java.lang.IllegalArgumentException: duplicate listener: AbstractJpaProject.ResourceModelListener[1C-91-F5-5C](GenericJpaProject[0C-D4-A7-1C](prog))
+	at org.eclipse.jpt.common.utility.internal.ListenerList.add_(ListenerList.java:89)
+	at org.eclipse.jpt.common.utility.internal.ListenerList.add(ListenerList.java:84)
+	at org.eclipse.jpt.common.core.resource.xml.JptXmlResource.addResourceModelListener(JptXmlResource.java:270)
+	at org.eclipse.jpt.jpa.core.internal.AbstractJpaProject.addJpaFileMaybe_(AbstractJpaProject.java:593)
+	at org.eclipse.jpt.jpa.core.internal.AbstractJpaProject.addJpaFileMaybe(AbstractJpaProject.java:566)
+	at org.eclipse.jpt.jpa.core.internal.AbstractJpaProject.checkForChangedFileContent(AbstractJpaProject.java:1669)
+	at org.eclipse.jpt.jpa.core.internal.AbstractJpaProject.synchronizeJpaFiles(AbstractJpaProject.java:1653)
+	at org.eclipse.jpt.jpa.core.internal.AbstractJpaProject$InternalResourceDeltaVisitor.fileChangeIsSignificant(AbstractJpaProject.java:1634)
+	at org.eclipse.jpt.jpa.core.internal.AbstractJpaProject$ResourceDeltaVisitor.fileChanged(AbstractJpaProject.java:1826)
+	at org.eclipse.jpt.jpa.core.internal.AbstractJpaProject$ResourceDeltaVisitor.visit(AbstractJpaProject.java:1818)
+	at org.eclipse.core.internal.events.ResourceDelta.accept(ResourceDelta.java:67)
+	at org.eclipse.core.internal.events.ResourceDelta.accept(ResourceDelta.java:77)
+	at org.eclipse.core.internal.events.ResourceDelta.accept(ResourceDelta.java:77)
+	at org.eclipse.core.internal.events.ResourceDelta.accept(ResourceDelta.java:77)
+	at org.eclipse.core.internal.events.ResourceDelta.accept(ResourceDelta.java:51)
+	at org.eclipse.jpt.jpa.core.internal.AbstractJpaProject$ResourceDeltaVisitor.visitDelta(AbstractJpaProject.java:1801)
+	at org.eclipse.jpt.jpa.core.internal.AbstractJpaProject.internalProjectChanged(AbstractJpaProject.java:1612)
+	at org.eclipse.jpt.jpa.core.internal.AbstractJpaProject.projectChanged(AbstractJpaProject.java:1604)
+	at org.eclipse.jpt.jpa.core.internal.InternalJpaProjectManager.projectChanged_(InternalJpaProjectManager.java:765)
+	at org.eclipse.jpt.jpa.core.internal.InternalJpaProjectManager$ProjectChangeEventHandlerCommand.execute(InternalJpaProjectManager.java:747)
+	at org.eclipse.jpt.common.core.internal.utility.command.JobCommandJob.run(JobCommandJob.java:42)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+
+!ENTRY org.eclipse.jpt.jpa.core 4 0 2020-09-02 22:12:35.960
+!MESSAGE 
+!STACK 0
+java.lang.NullPointerException
+	at org.eclipse.jpt.common.core.internal.resource.java.source.SourceType.resolveTypes(SourceType.java:184)
+	at org.eclipse.jpt.common.core.internal.resource.java.source.SourceTypeCompilationUnit.resolveTypes(SourceTypeCompilationUnit.java:101)
+	at org.eclipse.jpt.jpa.core.internal.AbstractJpaProject.resolveInternalJavaTypes(AbstractJpaProject.java:1686)
+	at org.eclipse.jpt.jpa.core.internal.AbstractJpaProject.internalProjectChanged(AbstractJpaProject.java:1618)
+	at org.eclipse.jpt.jpa.core.internal.AbstractJpaProject.projectChanged(AbstractJpaProject.java:1604)
+	at org.eclipse.jpt.jpa.core.internal.InternalJpaProjectManager.projectChanged_(InternalJpaProjectManager.java:765)
+	at org.eclipse.jpt.jpa.core.internal.InternalJpaProjectManager$ProjectChangeEventHandlerCommand.execute(InternalJpaProjectManager.java:747)
+	at org.eclipse.jpt.common.core.internal.utility.command.JobCommandJob.run(JobCommandJob.java:42)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
