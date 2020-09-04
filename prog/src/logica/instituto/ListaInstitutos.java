@@ -27,8 +27,7 @@ public class ListaInstitutos {
         List<Instituto> list = getList();
         List<DTInstituto> listOfDT = new ArrayList();
         for (Instituto instituto : list) {
-            DTInstituto dtInstituto = new DTInstituto();
-            dtInstituto.nombreInstituto = instituto.getNombreInstituto();
+            DTInstituto dtInstituto = new DTInstituto(instituto);
             listOfDT.add(dtInstituto);
         }
         return listOfDT;
