@@ -20,7 +20,7 @@ public interface ILogica {
 
    // Alta Instituto
 
-   public boolean crearInstituto(String nombre);
+   public String crearInstituto(String nombre);
 
    // Alta de Usuario
 

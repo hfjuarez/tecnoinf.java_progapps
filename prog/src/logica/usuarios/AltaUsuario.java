@@ -21,14 +21,13 @@ public class AltaUsuario {
     private String mail;
     private Date nacDate;
 
-    AltaUsuario(String nickname, String nombre, String apellido, String email, Date nac) {
+    public AltaUsuario(String nickname, String nombre, String apellido, String email, Date nac) {
         nick = nickname;
         name = nombre;
         ape = apellido;
         mail = email;
         nacDate = nac;
     }
-
 
     private boolean hasErrorEmpty() {
         if (nick.isEmpty())
@@ -46,11 +45,11 @@ public class AltaUsuario {
 
     private String hasErrorAlredyExists() {
         ExisteUsuario existeUsuario = new ExisteUsuario();
-        String ret ="";
+        String ret = "";
         if (existeUsuario.existeNickname(nick))
-            ret = ret+"ERROR: Ya existe el usuario con nickname: " + nick +"\n";
+            ret = ret + "ERROR: Ya existe el usuario con nickname: " + nick + "\n";
         if (existeUsuario.existeMail(mail))
-            ret = ret+"ERROR: Ya existe el usuario con mail: " + mail+ "\n";
+            ret = ret + "ERROR: Ya existe el usuario con mail: " + mail + "\n";
         return ret;
     }
 
@@ -109,18 +108,5 @@ public class AltaUsuario {
 
         }
         return retorno;
-    }
-
-    public static void main(String[] args) {
-        ;
-        String fecha = "2015-04-23";
-        Date nacDate = Date.valueOf(fecha);
-        //AltaUsuario au1 = new AltaUsuario("nick1", "nombre", "apellido", "mail", nacDate);
-        AltaUsuario au2 = new AltaUsuario("nick1", "nombdsfre", "apelsdfsdflido","mail", nacDate);
-        
-        //String es = au1.createEstudiante();
-        
-        String dos = au2.createDocente("Fing");
-        System.out.println(dos);
     }
 }

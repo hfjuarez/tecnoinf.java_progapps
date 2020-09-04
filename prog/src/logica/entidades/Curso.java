@@ -13,9 +13,8 @@ import java.util.List;
  */
 @Entity
 @Table
-public class Curso  {
+public class Curso {
 
-	   
 	@Id
 	private String nombreCurso;
 	private String descCurso;
@@ -26,14 +25,14 @@ public class Curso  {
 	private Date fechaAlta;
 	@ManyToOne
 	private Instituto instituto;
-	@OneToMany(targetEntity=Curso.class)
+	@OneToMany(targetEntity = Curso.class)
 	private List previas;
-	//private static final long serialVersionUID = 1L;
+	// private static final long serialVersionUID = 1L;
 
 	public Curso() {
 		super();
-	}   
-	
+	}
+
 	public Curso(String nombreCurso, String descCurso, int duracionMeses, int cantidadHoras, int cantidadCreditos,
 			String uRL, Date fechaAlta, Instituto instituto) {
 		super();
@@ -53,49 +52,56 @@ public class Curso  {
 
 	public void setNombreCurso(String nombreCurso) {
 		this.nombreCurso = nombreCurso;
-	}   
+	}
+
 	public String getDescCurso() {
 		return this.descCurso;
 	}
 
 	public void setDescCurso(String descCurso) {
 		this.descCurso = descCurso;
-	}   
+	}
+
 	public int getDuracionMeses() {
 		return this.duracionMeses;
 	}
 
 	public void setDuracionMeses(int duracionMeses) {
 		this.duracionMeses = duracionMeses;
-	}   
+	}
+
 	public int getCantidadHoras() {
 		return this.cantidadHoras;
 	}
 
 	public void setCantidadHoras(int cantidadHoras) {
 		this.cantidadHoras = cantidadHoras;
-	}   
+	}
+
 	public int getCantidadCreditos() {
 		return this.cantidadCreditos;
 	}
 
 	public void setCantidadCreditos(int cantidadCreditos) {
 		this.cantidadCreditos = cantidadCreditos;
-	}   
+	}
+
 	public String getURL() {
 		return this.URL;
 	}
 
 	public void setURL(String URL) {
 		this.URL = URL;
-	}   
+	}
+
 	public Date getFechaAlta() {
 		return this.fechaAlta;
 	}
 
 	public void setFechaAlta(Date fechaAlta) {
 		this.fechaAlta = fechaAlta;
-	}   
+	}
+
 	public Instituto getInstituto() {
 		return this.instituto;
 	}
@@ -111,9 +117,9 @@ public class Curso  {
 	public void setPrevias(List previas) {
 		this.previas = previas;
 	}
-	
+
 	public void addPrevia(Curso cursoPrevio) {
 		this.previas.add(cursoPrevio);
 	}
-   
+
 }
