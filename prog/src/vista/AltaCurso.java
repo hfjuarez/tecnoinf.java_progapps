@@ -29,7 +29,7 @@ public class AltaCurso extends JInternalFrame {
 	private JTextField textField_7;
 	private final JButton btnNewButton = new JButton("Cancelar");
 	private JTextField textField_8;
-	public static ArrayList<String> previas;
+	public static ArrayList<String> previas= new ArrayList<>();
 	private ListaCursos listaCursos=null;
 
 	/**
@@ -64,6 +64,12 @@ public class AltaCurso extends JInternalFrame {
 		getContentPane().add(lblInstituto);
 		
 		JComboBox comboBox = new JComboBox();
+		comboBox.addItem("");
+		comboBox.addItem("Matematica");
+		comboBox.addItem("Matematica 1");
+		comboBox.addItem("Matematica 2");
+		comboBox.addItem("Matematica 3");
+		comboBox.addItem("Matematica 4");
 		getContentPane().add(comboBox);
 		
 		JLabel lblCursos = new JLabel("Nombre curso");
@@ -170,15 +176,47 @@ public class AltaCurso extends JInternalFrame {
 		JButton btnAceptar = new JButton("Aceptar");
 		btnAceptar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				for(String p: previas) {
-					System.out.println(p);
+				if(!previas.isEmpty()) {
+					for(String p: previas) {
+						System.out.println(p);
+					}
 				}
-				JOptionPane.showMessageDialog(null,"Se agrego los datos del curso");
-				dispose();
+				
+				if(validarFormulario()) {
+					JOptionPane.showMessageDialog(null,"Se agrego los datos del curso");
+					resetFormulario();
+					//dispose();
+				}else {
+					JOptionPane.showMessageDialog(null,"No pueden haber campos vacios");
+				}
 			}
 		});
 		getContentPane().add(btnAceptar);
 
+	}
+	
+	Boolean validarFormulario() {
+		if(!textField.getText().equals("") && !textField_1.getText().equals("") && !textField_2.getText().equals("") &&
+				!textField_3.getText().equals("") && !textField_4.getText().equals("") && !textField_5.getText().equals("") &&
+				!textField_6.getText().equals("") && !textField_7.getText().equals("") && !textField_8.getText().equals("")) {
+			
+			return true;
+		}else {
+			return false;
+		}
+		
+	}
+	
+	void resetFormulario() {
+		textField.setText("");
+		textField_1.setText("");
+		textField_2.setText("");
+		textField_3.setText("");
+		textField_4.setText("");
+		textField_5.setText("");
+		textField_6.setText("");
+		textField_7.setText("");
+		textField_8.setText("");
 	}
 
 }
