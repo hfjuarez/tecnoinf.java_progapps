@@ -14,6 +14,7 @@ import javax.swing.JButton;
 import java.awt.Point;
 import java.awt.Font;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 
 public class AltaCurso extends JInternalFrame {
@@ -137,7 +138,25 @@ public class AltaCurso extends JInternalFrame {
 		JButton btnNewButton_1 = new JButton("Agregar previas");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				
+				ArrayList<String> cursos =  new ArrayList<>();
+				cursos.add("Carlos");
+				cursos.add("Carlos");
+				cursos.add("Carlos");
+				cursos.add("Carlos");
+				cursos.add("Carlos");
+				cursos.add("Carlos");
+				cursos.add("Carlos");
+				cursos.add("Carlos");
+				cursos.add("Carlos");
+				cursos.add("Carlos");
+				cursos.add("Carlos");
+				cursos.add("Carlos");
+				cursos.add("Carlos");
+				cursos.add("Carlos");
+				cursos.add("Carlos");
+				ListaCursos lc = new ListaCursos(cursos);
+				VentanaPrincipal.desktopPane.add(lc);
+				lc.setVisible(true);
 			}
 		});
 		getContentPane().add(btnNewButton_1);

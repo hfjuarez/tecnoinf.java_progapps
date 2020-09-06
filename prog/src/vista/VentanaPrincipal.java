@@ -18,7 +18,7 @@ import java.awt.event.ActionEvent;
 public class VentanaPrincipal extends JFrame {
 
 	private JPanel contentPane;
-	public JDesktopPane desktopPane;
+	public static JDesktopPane desktopPane;
 
 	/**
 	 * Launch the application.
