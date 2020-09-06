@@ -10,4 +10,9 @@ public class DTInstituto {
 		super();
 		nombreInstituto = instituto.getNombreInstituto();
 	}
+
+	@Override
+	public String toString() {
+		return "DTInstituto [nombreInstituto=" + nombreInstituto + "]";
+	}
 }

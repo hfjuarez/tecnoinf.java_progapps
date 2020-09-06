@@ -44,7 +44,7 @@ public class TesterUsuario {
         // nacDate);
         ModificarUsuario aud = new ModificarUsuario("herfj", "tomi cambisda asd fe", "fabricaasd fsad f cambio",
                 nacDate);
-        String es = aud.ModificarEstudiante();
+        String es = aud.modificarEstudiante();
 
         System.out.println(es);
     }
@@ -55,7 +55,7 @@ public class TesterUsuario {
         // AltaUsuario au1 = new AltaUsuario("nick1", "nombre", "apellido", "mail",
         // nacDate);
         ModificarUsuario aud = new ModificarUsuario("herfj4", "jacocomoomo", "fabrica jacmomomo", nacDate);
-        String es = aud.ModificarDocente();
+        String es = aud.modificarDocente();
 
         System.out.println(es);
     }

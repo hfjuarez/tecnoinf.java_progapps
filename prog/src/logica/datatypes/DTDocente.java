@@ -23,4 +23,10 @@ public DTDocente(Docente docente) {
 		instituto = ins;
 	}
 
+	@Override
+	public String toString() {
+		return "DTDocente [instituto=" + instituto + ", nickname=" + nickname + ", nombre=" + nombre + ", apellido="
+				+ apellido + ", mail=" + mail + ", fechaNac=" + fechaNac + ", image=" + image + "]";
+	}
+
 }

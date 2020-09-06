@@ -13,7 +13,7 @@ public class ExisteCurso {
 
     public boolean existeNombreCur(String nombreCurso) {
         boolean ret = false;
-        EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("UsuarioJPA");
+        EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("CursoJPA");
         EntityManager entitymanager = emfactory.createEntityManager();
 
         Curso est = null;

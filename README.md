@@ -4,8 +4,8 @@
 
 1.  Alta instituto -- LISTO
 2.  Alta usuario -- LISTO
-3.  Modificar usuario --TESTEO
-4.  Alta curso -- TESTEO
+3.  Modificar usuario -- LISTO
+4.  Alta curso -- LISTO
 5.  Alta edición de un Curso -- POR COMENZAR
 6.  Crear programa formación -- POR COMENZAR
 7.  Agregar curso programa formación

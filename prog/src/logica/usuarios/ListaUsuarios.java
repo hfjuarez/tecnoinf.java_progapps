@@ -21,7 +21,7 @@ public class ListaUsuarios {
         EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("UsuarioJPA");
         EntityManager entitymanager = emfactory.createEntityManager();
 
-        Query query = entitymanager.createQuery("Select e from Estudiante e");
+        Query query = entitymanager.createQuery("Select e from Estudiante as e");
         list = (List<Estudiante>) query.getResultList();
 
         entitymanager.close();
@@ -44,7 +44,7 @@ public class ListaUsuarios {
         EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("UsuarioJPA");
         EntityManager entitymanager = emfactory.createEntityManager();
 
-        Query query = entitymanager.createQuery("Select d from Docente d");
+        Query query = entitymanager.createQuery("Select d from Docente as d");
         list = (List<Docente>) query.getResultList();
 
         entitymanager.close();

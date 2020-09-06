@@ -14,7 +14,7 @@ public class ListaInstitutos {
         EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("InstitutoJPA");
         EntityManager entitymanager = emfactory.createEntityManager();
 
-        Query query = entitymanager.createQuery("Select i from Instituto i");
+        Query query = entitymanager.createQuery("Select i from Instituto as i");
         list = (List<Instituto>) query.getResultList();
 
         entitymanager.close();

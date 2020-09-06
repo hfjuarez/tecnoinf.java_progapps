@@ -18,4 +18,10 @@ public class DTEstudiante extends DTUsuario {
 		super(nick, name, ape, mail, nac);
 	}
 
+	@Override
+	public String toString() {
+		return "DTEstudiante [nickname=" + nickname + ", nombre=" + nombre + ", apellido=" + apellido + ", mail=" + mail
+				+ ", fechaNac=" + fechaNac + ", image=" + image + "]";
+	}
+
 }

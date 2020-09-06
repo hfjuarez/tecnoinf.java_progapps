@@ -4,13 +4,17 @@ import java.sql.Date;
 import java.util.List;
 import java.io.File;
 
+import logica.datatypes.DTInstituto;
+import logica.instituto.AltaInstituto;
+import logica.instituto.ListaInstitutos;
+
 import logica.usuarios.AltaUsuario;
 import logica.usuarios.ModificarUsuario;
 import logica.usuarios.ObtenerUsuario;
 import logica.usuarios.ExisteUsuario;
-import logica.datatypes.DTInstituto;
-import logica.instituto.AltaInstituto;
-import logica.instituto.ListaInstitutos;
+
+import logica.curso.ExisteCurso;
+import logica.curso.AltaCurso;
 
 public class LControlador implements ILogica {
 
@@ -74,20 +78,22 @@ public class LControlador implements ILogica {
                                 return new ModificarUsuario(nick, nombre, apellido, fechaNac).modificarDocente();
                         }
                 } else {
-                        return "ERROR: No existe es nickname, por favor ingrese uno correcto!";
+                        return "ERROR: No existe ese nickname, por favor ingrese uno correcto!";
                 }
 
         }
 
-        // // Alta Curso
+        // Alta Curso
 
-        // public boolean existeCurso(String nombreCurso, String nombreInstituto) {
-        // }
-
-        // public String crearCurso(String nombre, String desc, int Duracion, int
-        // CantHoras, int CantCred, String URL,
-        // Date Fecha) {
-        // }
+        public String crearCurso(String nombre, String desc, int Duracion, int CantHoras, int CantCred, String URL,
+                        Date Fecha, List<String> previas, String nombreInstituto) {
+                if (!new ExisteCurso().existeNombreCur(nombre)) {
+                        return new AltaCurso(nombre, desc, Duracion, CantHoras, CantCred, URL, Fecha)
+                                        .createCurso(nombreInstituto, previas);
+                } else {
+                        return "ERROR: YA existe ese nombre de curso, por favor ingrese uno nuevo!";
+                }
+        }
 
         // // Alta edicion de Curso
 

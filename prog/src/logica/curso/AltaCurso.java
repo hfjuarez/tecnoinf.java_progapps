@@ -26,7 +26,7 @@ public class AltaCurso {
     private String curURL;
     private Date fech_alta;
 
-    AltaCurso(String nombreCurso, String descCurso, int duracionMeses, int cantidadHoras, int cantidadCreditos,
+    public AltaCurso(String nombreCurso, String descCurso, int duracionMeses, int cantidadHoras, int cantidadCreditos,
             String URL, Date fechaAlta) {
         nom_cur = nombreCurso;
         des_cur = descCurso;
@@ -59,7 +59,10 @@ public class AltaCurso {
     }
 
     public String createCurso(String nombreInstituto, List<String> nombrePrevias) {
+        boolean tienePrevias = false;
         String retorno = "";
+        List<Curso> previas = new ArrayList();
+
         if (hasErrorEmpty() || nombreInstituto.isEmpty()) {
             retorno = retorno + "ERROR: No se permiten campos nulos, por favor complete todos los campos!\n";
         }
@@ -67,29 +70,32 @@ public class AltaCurso {
 
         if (retorno.isEmpty()) {
 
-            List<Curso> previas = new ArrayList();
-            ObtenerCurso oc = new ObtenerCurso();
-            for (String previaString : nombrePrevias) {
-                Curso previa = oc.getCurso(previaString);
-                if (previa == null) {
-                    return retorno + "ERROR: No existe el curso: " + previaString
-                            + ", por favor ingrese un curso existente!\n";
-                }
+            if (!nombrePrevias.isEmpty()) {
+                tienePrevias = true;
+                ObtenerCurso oc = new ObtenerCurso();
+                for (String previaString : nombrePrevias) {
+                    Curso previa = oc.getCurso(previaString);
+                    if (previa == null) {
+                        return retorno + "ERROR: No existe el curso: " + previaString
+                                + ", por favor ingrese un curso existente!\n";
+                    }
 
-                previas.add(previa);
+                    previas.add(previa);
+                }
             }
 
             Instituto instituto = new ObtenerInstituto(nombreInstituto).getInstituto();
 
             if (instituto != null) {
-                EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("UsuarioJPA");
+                EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("CursoJPA");
                 EntityManager entitymanager = emfactory.createEntityManager();
                 entitymanager.getTransaction().begin();
 
                 Curso curso = new Curso(nom_cur, des_cur, dur_mes, cant_horas, cant_credito, curURL, fech_alta,
                         instituto);
-
-                curso.setPrevias(previas);
+                if (tienePrevias) {
+                    curso.setPrevias(previas);
+                }
 
                 entitymanager.persist(curso);
 
@@ -103,19 +109,4 @@ public class AltaCurso {
         }
         return retorno;
     }
-
-    // public static void main(String[] args) {
-    // ;
-    // String fecha = "2015-04-23";
-    // Date nacDate = Date.valueOf(fecha);
-    // // AltaUsuario au1 = new AltaUsuario("nick1", "nombre", "apellido", "mail",
-    // // nacDate);
-    // AltaUsuario au2 = new AltaUsuario("nick1", "nombdsfre", "apelsdfsdflido",
-    // "mail", nacDate);
-
-    // // String es = au1.createEstudiante();
-
-    // String dos = au2.createDocente("Fing");
-    // System.out.println(dos);
-    // }
 }
