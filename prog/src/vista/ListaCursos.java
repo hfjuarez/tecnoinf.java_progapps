@@ -30,7 +30,7 @@ public class ListaCursos extends JInternalFrame {
 		JPanel panel = new JPanel();
 		panel.setBounds(12, 12, 450, 200);
 		getContentPane().add(panel);
-		panel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+		panel.setLayout(new FlowLayout(FlowLayout.LEFT, 3, 5));
 
 		this.cursos = cursos;
 		getContentPane().setLayout(null);
@@ -43,6 +43,18 @@ public class ListaCursos extends JInternalFrame {
 		
 		
 		JButton btnNewButton = new JButton("Aceptar");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				ArrayList<String> previas = new ArrayList<>();
+				for(int i=0;i<cursos.size();i++) {
+					if(cb[i].isSelected()) {
+						previas.add(cb[i].getText());
+					}
+				}
+				AltaCurso.previas = previas;
+				setVisible(false);
+			}
+		});
 		btnNewButton.setBounds(297, 234, 117, 25);
 		getContentPane().add(btnNewButton);
 		

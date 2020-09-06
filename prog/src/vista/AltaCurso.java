@@ -5,6 +5,7 @@ import java.awt.EventQueue;
 import javax.swing.JInternalFrame;
 import java.awt.GridLayout;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JComboBox;
 import javax.swing.JTextField;
 import javax.swing.JTextArea;
@@ -28,6 +29,8 @@ public class AltaCurso extends JInternalFrame {
 	private JTextField textField_7;
 	private final JButton btnNewButton = new JButton("Cancelar");
 	private JTextField textField_8;
+	public static ArrayList<String> previas;
+	private ListaCursos listaCursos=null;
 
 	/**
 	 * Launch the application.
@@ -139,24 +142,20 @@ public class AltaCurso extends JInternalFrame {
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				ArrayList<String> cursos =  new ArrayList<>();
-				cursos.add("Carlos");
-				cursos.add("Carlos");
-				cursos.add("Carlos");
-				cursos.add("Carlos");
-				cursos.add("Carlos");
-				cursos.add("Carlos");
-				cursos.add("Carlos");
-				cursos.add("Carlos");
-				cursos.add("Carlos");
-				cursos.add("Carlos");
-				cursos.add("Carlos");
-				cursos.add("Carlos");
-				cursos.add("Carlos");
-				cursos.add("Carlos");
-				cursos.add("Carlos");
-				ListaCursos lc = new ListaCursos(cursos);
-				VentanaPrincipal.desktopPane.add(lc);
-				lc.setVisible(true);
+				cursos.add("Matematiaca 1");
+				cursos.add("Matematiaca 2");
+				cursos.add("Programacion");
+				cursos.add("Fisica 2");
+				cursos.add("Filosofia");
+				cursos.add("Educacion fisica");
+				cursos.add("Literatura");
+				cursos.add("Dibujo");
+				
+				if(listaCursos == null) {
+					listaCursos = new ListaCursos(cursos);
+					VentanaPrincipal.desktopPane.add(listaCursos);
+				}
+				listaCursos.setVisible(true);
 			}
 		});
 		getContentPane().add(btnNewButton_1);
@@ -171,6 +170,11 @@ public class AltaCurso extends JInternalFrame {
 		JButton btnAceptar = new JButton("Aceptar");
 		btnAceptar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				for(String p: previas) {
+					System.out.println(p);
+				}
+				JOptionPane.showMessageDialog(null,"Se agrego los datos del curso");
+				dispose();
 			}
 		});
 		getContentPane().add(btnAceptar);
