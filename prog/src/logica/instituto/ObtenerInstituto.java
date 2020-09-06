@@ -1,6 +1,7 @@
 package logica.instituto;
 
 import logica.entidades.Instituto;
+import logica.datatypes.DTInstituto;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -30,5 +31,10 @@ public class ObtenerInstituto {
             return null;
         }
 
+    }
+
+    public DTInstituto geDTInstituto() {
+        Instituto instituto = getInstituto();
+        return new DTInstituto(instituto);
     }
 }

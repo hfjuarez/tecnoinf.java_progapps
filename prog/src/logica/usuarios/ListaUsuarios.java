@@ -7,6 +7,14 @@ import logica.datatypes.DTDocente;
 import logica.entidades.Estudiante;
 import logica.entidades.Docente;
 
+import javax.persistence.Query;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+
+import java.io.File;
+import java.sql.Date;
+
 public class ListaUsuarios {
    public List<Estudiante> getListEstudiante() {
         List<Estudiante> list = null;
@@ -23,7 +31,7 @@ public class ListaUsuarios {
     }
 
     public List<DTEstudiante> getDataTypeListEstudiante() {
-        List<Estudiante> list = getList();
+        List<Estudiante> list = getListEstudiante();
         List<DTEstudiante> listOfDT = new ArrayList();
         for (Estudiante estudiante : list) {
             DTEstudiante dtEstudiante = new DTEstudiante(estudiante);
@@ -45,8 +53,8 @@ public class ListaUsuarios {
 
     }
 
-    public List<DTDocente> getDataTypeListEstudiante() {
-        List<Docente> list = getList();
+    public List<DTDocente> getDataTypeListDocente() {
+        List<Docente> list = getListDocente();
         List<DTDocente> listOfDT = new ArrayList();
         for (Docente docente : list) {
             DTDocente dtDocente = new DTDocente(docente);

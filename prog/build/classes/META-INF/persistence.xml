@@ -18,6 +18,7 @@
             </properties>
 	</persistence-unit>
 	<persistence-unit name="UsuarioJPA">
+		<class>logica.entidades.Instituto</class>
 	      <class>logica.entidades.Usuario</class>
 	      <class>logica.entidades.Estudiante</class>
 	      <class>logica.entidades.Docente</class>

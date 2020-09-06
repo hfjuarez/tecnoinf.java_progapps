@@ -1,8 +1,10 @@
 package logica.datatypes;
 
+import logica.entidades.Curso;
 import java.lang.String;
 import java.sql.Date;
 import java.util.List;
+import java.util.ArrayList;
 
 public class DTCurso {
 
@@ -14,7 +16,7 @@ public class DTCurso {
 	public String URL;
 	public Date fechaAlta;
 	public DTInstituto instituto;
-	public List previas;
+	public List<DTCurso> previas;
 
 	public DTCurso() {
 		super();
@@ -31,6 +33,28 @@ public class DTCurso {
 		URL = uRL;
 		this.fechaAlta = fechaAlta;
 		this.instituto = instituto;
+	}
+
+	public DTCurso(Curso curso) {
+		super();
+		this.nombreCurso = curso.getNombreCurso();
+		this.descCurso = curso.getDescCurso();
+		this.duracionMeses = curso.getDuracionMeses();
+		this.cantidadHoras = curso.getCantidadHoras();
+		this.cantidadCreditos = curso.getCantidadCreditos();
+		URL = curso.getURL();
+		this.fechaAlta = curso.getFechaAlta();
+		this.instituto = new DTInstituto(curso.getInstituto());
+		List<Curso> previaList = new ArrayList();
+		previaList = curso.getPrevias();
+
+		List<DTCurso> previaDTList = new ArrayList();
+
+		for (Curso p : previaList) {
+			DTCurso dtp = new DTCurso(p);
+			previaDTList.add(dtp);
+		}
+		this.previas = previaDTList;
 	}
 
 }

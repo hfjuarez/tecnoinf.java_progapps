@@ -2,11 +2,16 @@ package API;
 
 import java.sql.Date;
 import java.util.List;
+
+import logica.datatypes.DTInstituto;
+
 import java.io.File;
 
 public interface ILogica {
 
    // Listas
+
+   public List<DTInstituto> listaInstitutos();
    // public List</*Clase DT Usuario*/> listaUsuarios();
 
    // public List</* Clase DT Formacion */> listFormaciones();
@@ -29,13 +34,12 @@ public interface ILogica {
 
    public String crearUsuarioDocente(String nickname, String nombre, String apellido, String mail, Date fechaNac,
          String Instituto, File imagen);
-   /*
-    * // Modificar Datos de Usuario
-    * 
-    * public String ModificarUsuario(String nombre, String apellido, Date fechaNac,
-    * File imagen);
-    * 
-    * // Alta Curso
+
+   // Modificar Datos de Usuario
+
+   public String ModificarUsuario(String nick, String nombre, String apellido,Date fechaNac, File imagen) 
+   
+   /* // Alta Curso
     * 
     * public boolean existeCurso(String nombreCurso, String nombreInstituto);
     * 

@@ -54,14 +54,11 @@ public class AltaUsuario {
     }
 
     public String createEstudiante() {
-        /*
-         * String fecha = "2015-04-23"; Date nacDate = Date.valueOf(fecha);// converting
-         * string into sql date
-         */
+        String retorno = "";
         if (hasErrorEmpty()) {
-            return "ERROR: No se permiten campos nulos, por favor complete todos los campos!";
+            retorno = "ERROR: No se permiten campos nulos, por favor complete todos los campos! \n";
         }
-        String retorno = hasErrorAlredyExists();
+        retorno = retorno + hasErrorAlredyExists();
         if (retorno.isEmpty()) {
             EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("UsuarioJPA");
             EntityManager entitymanager = emfactory.createEntityManager();
@@ -79,14 +76,11 @@ public class AltaUsuario {
     }
 
     public String createDocente(String nombreInstituto) {
-        /*
-         * String fecha = "2015-04-23"; Date nacDate = Date.valueOf(fecha);// converting
-         * string into sql date
-         */
+        String retorno = "";
         if (hasErrorEmpty() || nombreInstituto.isEmpty()) {
-            return "ERROR: No se permiten campos nulos, por favor complete todos los campos!";
+            retorno = "ERROR: No se permiten campos nulos, por favor complete todos los campos! \n";
         }
-        String retorno = hasErrorAlredyExists();
+        retorno = retorno + hasErrorAlredyExists();
 
         if (retorno.isEmpty()) {
             Instituto instituto = new ObtenerInstituto(nombreInstituto).getInstituto();
@@ -103,7 +97,7 @@ public class AltaUsuario {
                 entitymanager.close();
                 emfactory.close();
             } else {
-                return "ERROR: No se permiten campos nulos, por favor complete todos los campos!";
+                return retorno + "ERROR: No se encontro el instituto, por favor ingrese uno correcto!";
             }
 
         }

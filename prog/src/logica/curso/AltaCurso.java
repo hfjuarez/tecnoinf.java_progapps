@@ -6,6 +6,8 @@ import javax.persistence.Persistence;
 
 import java.io.File;
 import java.sql.Date;
+import java.util.List;
+import java.util.ArrayList;
 
 import logica.entidades.Curso;
 import logica.instituto.ObtenerInstituto;
@@ -23,9 +25,6 @@ public class AltaCurso {
 
     private String curURL;
     private Date fech_alta;
-
-    // @OneToMany(targetEntity=Curso.class)
-    // private List previas;
 
     AltaCurso(String nombreCurso, String descCurso, int duracionMeses, int cantidadHoras, int cantidadCreditos,
             String URL, Date fechaAlta) {
@@ -60,17 +59,28 @@ public class AltaCurso {
     }
 
     public String createCurso(String nombreInstituto, List<String> nombrePrevias) {
-        /*
-         * String fecha = "2015-04-23"; Date nacDate = Date.valueOf(fecha);// converting
-         * string into sql date
-         */
+        String retorno = "";
         if (hasErrorEmpty() || nombreInstituto.isEmpty()) {
-            return "ERROR: No se permiten campos nulos, por favor complete todos los campos!";
+            retorno = retorno + "ERROR: No se permiten campos nulos, por favor complete todos los campos!\n";
         }
-        String retorno = hasErrorAlredyExists();
+        retorno = retorno + hasErrorAlredyExists();
 
         if (retorno.isEmpty()) {
+
+            List<Curso> previas = new ArrayList();
+            ObtenerCurso oc = new ObtenerCurso();
+            for (String previaString : nombrePrevias) {
+                Curso previa = oc.getCurso(previaString);
+                if (previa == null) {
+                    return retorno + "ERROR: No existe el curso: " + previaString
+                            + ", por favor ingrese un curso existente!\n";
+                }
+
+                previas.add(previa);
+            }
+
             Instituto instituto = new ObtenerInstituto(nombreInstituto).getInstituto();
+
             if (instituto != null) {
                 EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("UsuarioJPA");
                 EntityManager entitymanager = emfactory.createEntityManager();
@@ -79,12 +89,6 @@ public class AltaCurso {
                 Curso curso = new Curso(nom_cur, des_cur, dur_mes, cant_horas, cant_credito, curURL, fech_alta,
                         instituto);
 
-                List<Cursos> previas = new ArrayList();
-                ObtenerCurso oc = new ObtenerCurso();
-                for (String previaString : nombrePrevias) {
-                    Curso previa = oc.getCurso(previaString);
-                    previas.add(previa);
-                }
                 curso.setPrevias(previas);
 
                 entitymanager.persist(curso);
@@ -93,7 +97,7 @@ public class AltaCurso {
                 entitymanager.close();
                 emfactory.close();
             } else {
-                return "ERROR: No se permiten campos nulos, por favor complete todos los campos!";
+                return retorno + "ERROR: No se permiten campos nulos, por favor complete todos los campos!\n";
             }
 
         }

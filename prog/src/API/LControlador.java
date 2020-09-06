@@ -5,7 +5,12 @@ import java.util.List;
 import java.io.File;
 
 import logica.usuarios.AltaUsuario;
+import logica.usuarios.ModificarUsuario;
+import logica.usuarios.ObtenerUsuario;
+import logica.usuarios.ExisteUsuario;
+import logica.datatypes.DTInstituto;
 import logica.instituto.AltaInstituto;
+import logica.instituto.ListaInstitutos;
 
 public class LControlador implements ILogica {
 
@@ -22,6 +27,10 @@ public class LControlador implements ILogica {
         }
 
         // Listas
+
+        public List<DTInstituto> listaInstitutos() {
+                return new ListaInstitutos().getDataTypeList();
+        }
         // public List</*Clase DT Usuario*/> listaUsuarios(){}
 
         // public List</* Clase DT Formacion */> listFormaciones(){}
@@ -53,11 +62,22 @@ public class LControlador implements ILogica {
 
         }
 
-        // // Modificar Datos de Usuario
+        // Modificar Datos de Usuario
 
-        // public String ModificarUsuario(String nombre, String apellido, Date fechaNac,
-        // File imagen) {
-        // }
+        public String ModificarUsuario(String nick, String nombre, String apellido, Date fechaNac, File imagen) {
+                if (new ExisteUsuario().existeNickname(nick)) {
+                        // MODIFICAR IMAGEN SI NO ES NULO
+                        if (new ObtenerUsuario().isEstudiante(nick)) {
+
+                                return new ModificarUsuario(nick, nombre, apellido, fechaNac).modificarEstudiante();
+                        } else {
+                                return new ModificarUsuario(nick, nombre, apellido, fechaNac).modificarDocente();
+                        }
+                } else {
+                        return "ERROR: No existe es nickname, por favor ingrese uno correcto!";
+                }
+
+        }
 
         // // Alta Curso
 
