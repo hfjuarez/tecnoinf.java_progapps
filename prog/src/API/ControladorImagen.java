@@ -1,4 +1,4 @@
-package logica.usuarios;
+package API;
 
 public class ControladorImagen {
 
