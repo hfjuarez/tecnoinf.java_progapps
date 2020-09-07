@@ -49,11 +49,19 @@ public class TesterCurso {
         System.out.println(es);
     }
 
+    private void listDTs() {
+        ListaCursos lu = new ListaCursos();
+        System.out.println(lu.getDataTypeList());
+        System.out.println("\n\n\n\n");
+
+    }
+
     public static void main(String[] args) {
         TesterCurso tc = new TesterCurso();
-        tc.testAC1();
-        tc.testACerror();
-        tc.testAC2();
-        tc.testAC3();
+        // tc.testAC1();
+        // tc.testACerror();
+        // tc.testAC2();
+        // tc.testAC3();
+        tc.listDTs();
     }
 }

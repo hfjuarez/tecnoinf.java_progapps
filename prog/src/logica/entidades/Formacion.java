@@ -20,10 +20,21 @@ public class Formacion {
 	private Date fechaInicio;
 	private Date fechaFin;
 	private Date fechaAlta;
+
+	@OneToMany(targetEntity = Curso.class)
 	private List cursos;
 
 	public Formacion() {
 		super();
+	}
+
+	public Formacion(String nombreFormacion, String descFormacion, Date fechaInicio, Date fechaFin, Date fechaAlta) {
+		super();
+		this.nombreFormacion = nombreFormacion;
+		this.descFormacion = descFormacion;
+		this.fechaInicio = fechaInicio;
+		this.fechaFin = fechaFin;
+		this.fechaAlta = fechaAlta;
 	}
 
 	public String getNombreFormacion() {

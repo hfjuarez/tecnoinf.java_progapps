@@ -38,6 +38,7 @@
 	<persistence-unit name="CursoJPA">
 		<class>logica.entidades.Instituto</class>
 		<class>logica.entidades.Curso</class>
+		<class>logica.entidades.EdicionCurso</class>
 
             <properties>
       
