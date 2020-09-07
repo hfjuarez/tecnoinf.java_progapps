@@ -217,6 +217,7 @@ public class AltaCurso extends JInternalFrame {
 		textField_6.setText("");
 		textField_7.setText("");
 		textField_8.setText("");
+		
 	}
 
 }
