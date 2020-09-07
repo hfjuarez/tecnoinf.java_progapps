@@ -12,6 +12,8 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import java.awt.Dimension;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class ModificarDatosUsuario extends JInternalFrame {
 	private JTextField textField;
@@ -46,7 +48,7 @@ public class ModificarDatosUsuario extends JInternalFrame {
 		setTitle("Modificar datos de usuario");
 		setMaximizable(true);
 		setClosable(true);
-		setBounds(100, 100, 442, 226);
+		setBounds(100, 100, 442, 260);
 		getContentPane().setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
 		JComboBox comboBox = new JComboBox();
@@ -58,7 +60,7 @@ public class ModificarDatosUsuario extends JInternalFrame {
 		comboBox.addItem("martinaghdjjadf");
 		getContentPane().add(comboBox);
 		
-		JButton btnNewButton = new JButton("New button");
+		JButton btnNewButton = new JButton("Ver datos");
 		getContentPane().add(btnNewButton);
 		
 		JPanel panel = new JPanel();
@@ -71,6 +73,7 @@ public class ModificarDatosUsuario extends JInternalFrame {
 		panel.add(lblNickname);
 		
 		textField = new JTextField();
+		textField.setEditable(false);
 		panel.add(textField);
 		textField.setColumns(10);
 		
@@ -79,6 +82,7 @@ public class ModificarDatosUsuario extends JInternalFrame {
 		panel.add(lblEmail);
 		
 		textField_1 = new JTextField();
+		textField_1.setEditable(false);
 		panel.add(textField_1);
 		textField_1.setColumns(10);
 		
@@ -87,6 +91,7 @@ public class ModificarDatosUsuario extends JInternalFrame {
 		panel.add(lblNombre);
 		
 		textField_2 = new JTextField();
+		textField_2.setEditable(false);
 		panel.add(textField_2);
 		textField_2.setColumns(10);
 		
@@ -95,6 +100,7 @@ public class ModificarDatosUsuario extends JInternalFrame {
 		panel.add(lblApellido);
 		
 		textField_3 = new JTextField();
+		textField_3.setEditable(false);
 		panel.add(textField_3);
 		textField_3.setColumns(10);
 		
@@ -107,16 +113,42 @@ public class ModificarDatosUsuario extends JInternalFrame {
 		panel_1.setLayout(new GridLayout(1, 0, 0, 0));
 		
 		textField_5 = new JTextField();
+		textField_5.setEditable(false);
 		panel_1.add(textField_5);
-		textField_5.setColumns();
+		textField_5.setColumns(5);
 		
 		textField_6 = new JTextField();
+		textField_6.setEditable(false);
 		panel_1.add(textField_6);
 		textField_6.setColumns(5);
 		
 		textField_4 = new JTextField();
+		textField_4.setEditable(false);
 		panel_1.add(textField_4);
 		textField_4.setColumns(5);
+		
+		JLabel lblInstituto = new JLabel("Instituto");
+		lblInstituto.setHorizontalAlignment(SwingConstants.CENTER);
+		panel.add(lblInstituto);
+		
+		JComboBox comboBox_1 = new JComboBox();
+		panel.add(comboBox_1);
+		
+		JButton btnAceptar = new JButton("Cancelar");
+		btnAceptar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				dispose();
+			}
+		});
+		getContentPane().add(btnAceptar);
+		
+		JButton btnCancelar = new JButton("Aceptar");
+		btnCancelar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+			}
+		});
+		getContentPane().add(btnCancelar);
 
 	}
 
