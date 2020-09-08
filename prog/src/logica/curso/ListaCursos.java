@@ -3,7 +3,10 @@ package logica.curso;
 import java.util.List;
 import java.util.ArrayList;
 import logica.entidades.Curso;
+import logica.entidades.Instituto;
 import logica.datatypes.DTCurso;
+import logica.entidades.EdicionCurso;
+
 
 import javax.persistence.*;
 
@@ -19,7 +22,21 @@ public class ListaCursos {
         entitymanager.close();
         emfactory.close();
         return list;
+    }
 
+    public List<Curso> getListCinst(String nameInstituto) {
+        List<Curso> list = getList();
+        for(Curso curso : list){
+            Instituto inst = curso.getInstituto();
+
+            List<Curso> cursosFiltrados = new ArrayList();
+            if(nameInstituto.equals(inst.getNombreInstituto())){
+                cursosFiltrados.add(curso);
+                
+            }
+        }
+        
+        return cursosFiltrados;
     }
 
     public List<DTCurso> getDataTypeList() {

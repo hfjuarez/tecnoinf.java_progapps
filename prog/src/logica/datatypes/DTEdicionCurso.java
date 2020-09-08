@@ -25,7 +25,7 @@ public class DTEdicionCurso {
 		cupo = eCurso.getCupo();
 		fechaAltaEdicion = eCurso.getFechaAltaEdicion();
 		List<Docente> docentesList = eCurso.getDocentes();
-		ArrayList<DTDocente> listDTDocentes = new ArrayList<DTDocente>();
+		ArrayList<DTDocente> listDTDocentes = new ArrayList();
 		for (Docente doc : docentesList) {
 			DTDocente dtDoc = new DTDocente(doc);
 			listDTDocentes.add(dtDoc);
