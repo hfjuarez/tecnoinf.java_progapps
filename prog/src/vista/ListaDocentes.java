@@ -16,20 +16,26 @@ import java.awt.event.ActionEvent;
 public class ListaDocentes extends JInternalFrame {
 	
 	private JCheckBox cb[];
-	private static ArrayList<String> docentes=null;
-
-	
-
+	private ArrayList<String> docentes=null;
+	private ArrayList<String> docentesAgregados=null;
 	/**
 	 * Create the frame.
 	 */
-	public ListaDocentes(ArrayList<String> docentes) {
+	public ListaDocentes() {
 		setTitle("Lista Docentes");
 		setClosable(true);
 		setMaximizable(true);
 		setBounds(100, 100, 326, 380);
 		getContentPane().setLayout(null);
-		this.docentes = docentes;
+		
+		docentes = new ArrayList<>();
+		docentes.add("Pepe");
+		docentes.add("Carlos");
+		docentes.add("Maria");
+		docentes.add("Teresa");
+		docentes.add("Juan");
+		docentes.add("Karina");
+		docentes.add("Rosario");
 		this.cb = new JCheckBox[docentes.size()];
 		
 		
@@ -44,20 +50,16 @@ public class ListaDocentes extends JInternalFrame {
 			panel.add(cb[i]);
 		}
 		
-		JCheckBox chckbxTest = new JCheckBox("test");
-		chckbxTest.setHorizontalAlignment(SwingConstants.LEFT);
-		panel.add(chckbxTest);
-		
 		JButton btnAceptar = new JButton("Aceptar");
 		btnAceptar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				ArrayList<String> agregados = new ArrayList<>();
+				docentesAgregados = new ArrayList<>();
 				for(int i=0; i<docentes.size();i++) {
 					if(cb[i].isSelected()) {
-						agregados.add(cb[i].getText());
+						docentesAgregados.add(cb[i].getText());
 					}
 				}
-				AltaEdicionCurso.docentesAgregados = agregados;
+				
 				setVisible(false);
 			}
 		});
@@ -74,7 +76,7 @@ public class ListaDocentes extends JInternalFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					ListaDocentes frame = new ListaDocentes(docentes);
+					ListaDocentes frame = new ListaDocentes();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -82,4 +84,8 @@ public class ListaDocentes extends JInternalFrame {
 			}
 		});
 	}
-}
+	
+	public ArrayList<String> getDocentesSeleccionados(){
+		return docentesAgregados;
+	}
+ }

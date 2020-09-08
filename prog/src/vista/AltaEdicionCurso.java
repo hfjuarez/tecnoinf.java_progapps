@@ -23,24 +23,8 @@ import java.awt.event.ActionEvent;
 
 public class AltaEdicionCurso extends JInternalFrame {
 	private JTextField textField;
-	public static ArrayList<String> docentesAgregados= new ArrayList<>();
+	private ArrayList<String> docentesAgregados=null;
 	private ListaDocentes listaDocentes = null;
-
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					AltaEdicionCurso frame = new AltaEdicionCurso();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
 	/**
 	 * Create the frame.
@@ -58,10 +42,22 @@ public class AltaEdicionCurso extends JInternalFrame {
 		panel.setLayout(new GridLayout(0, 2, 0, 0));
 		
 		JLabel lblInstituto = new JLabel("Instituto");
-		lblInstituto.setHorizontalAlignment(SwingConstants.LEFT);
+		lblInstituto.setHorizontalAlignment(SwingConstants.LEFT);		
 		panel.add(lblInstituto);
 		
 		JComboBox comboBox = new JComboBox();
+		ArrayList<String> institutos = getInstitutos();
+		comboBox.addItem("");
+		for(String instituto: institutos) {
+			comboBox.addItem(instituto);
+		}
+		
+		comboBox.addItemListener(new ItemListener() {
+			public void itemStateChanged(ItemEvent arg0) {
+				String eleccion = arg0.getItem().toString();
+				System.out.println(eleccion);
+			}
+		});
 		panel.add(comboBox);
 		
 		JPanel panel_1 = new JPanel();
@@ -74,6 +70,11 @@ public class AltaEdicionCurso extends JInternalFrame {
 		panel_1.add(lblNewLabel);
 		
 		JComboBox comboBox_1 = new JComboBox();
+		comboBox_1.addItemListener(new ItemListener() {
+			public void itemStateChanged(ItemEvent e) {
+			
+			}
+		});
 		panel_1.add(comboBox_1);
 		
 		JPanel panel_2 = new JPanel();
@@ -142,15 +143,8 @@ public class AltaEdicionCurso extends JInternalFrame {
 		JButton btnAgregar = new JButton("Agregar");
 		btnAgregar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				ArrayList<String> docentes = new ArrayList<>(); 
-				docentes.add("Carlos");
-				docentes.add("martin");
-				docentes.add("Ana");
-				docentes.add("Julio");
-				docentes.add("Carlos 3");
-				docentes.add("Carlos 3");
 				if(listaDocentes == null) {
-					ListaDocentes listaDocentes = new ListaDocentes(docentes);
+					listaDocentes = new ListaDocentes();
 					VentanaPrincipal.desktopPane.add(listaDocentes);
 					listaDocentes.setVisible(true);
 				}else {
@@ -163,9 +157,9 @@ public class AltaEdicionCurso extends JInternalFrame {
 		JButton btnAceptar = new JButton("Aceptar");
 		btnAceptar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				for(String doc: docentesAgregados) {
-					System.out.println(doc);
-				}
+				docentesAgregados = listaDocentes.getDocentesSeleccionados();
+				
+				
 				JOptionPane.showMessageDialog(null, "Se guarda datos");
 				resetDatos();
 			}
@@ -184,7 +178,34 @@ public class AltaEdicionCurso extends JInternalFrame {
 
 	}
 	
-	void resetDatos() {
+	private void resetDatos() {
 		docentesAgregados.clear();
+	}
+	
+	private ArrayList<String> getInstitutos(){
+		ArrayList<String> lista = new ArrayList<>();
+		lista.add("instituto 1");
+		lista.add("instituto 2");
+		lista.add("instituto 3");
+		lista.add("instituto 4");
+		lista.add("instituto 5");
+		lista.add("instituto 6");
+		return lista;
+	} 
+	
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					AltaEdicionCurso frame = new AltaEdicionCurso();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
 	}
 }
