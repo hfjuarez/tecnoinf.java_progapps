@@ -5,19 +5,26 @@ import java.awt.EventQueue;
 import javax.swing.JInternalFrame;
 import javax.swing.JComboBox;
 import java.awt.event.ItemListener;
+import java.util.ArrayList;
 import java.awt.event.ItemEvent;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JPanel;
 import java.awt.GridLayout;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.FlowLayout;
 import javax.swing.SwingConstants;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.JSpinner;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class AltaEdicionCurso extends JInternalFrame {
 	private JTextField textField;
+	public static ArrayList<String> docentesAgregados= new ArrayList<>();
+	private ListaDocentes listaDocentes = null;
 
 	/**
 	 * Launch the application.
@@ -133,15 +140,51 @@ public class AltaEdicionCurso extends JInternalFrame {
 		panel_5.add(lblProfesores);
 		
 		JButton btnAgregar = new JButton("Agregar");
+		btnAgregar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				ArrayList<String> docentes = new ArrayList<>(); 
+				docentes.add("Carlos");
+				docentes.add("martin");
+				docentes.add("Ana");
+				docentes.add("Julio");
+				docentes.add("Carlos 3");
+				docentes.add("Carlos 3");
+				if(listaDocentes == null) {
+					ListaDocentes listaDocentes = new ListaDocentes(docentes);
+					VentanaPrincipal.desktopPane.add(listaDocentes);
+					listaDocentes.setVisible(true);
+				}else {
+					listaDocentes.setVisible(true);
+				}				
+			}
+		});
 		panel_5.add(btnAgregar);
 		
 		JButton btnAceptar = new JButton("Aceptar");
+		btnAceptar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				for(String doc: docentesAgregados) {
+					System.out.println(doc);
+				}
+				JOptionPane.showMessageDialog(null, "Se guarda datos");
+				resetDatos();
+			}
+		});
 		btnAceptar.setBounds(208, 273, 117, 25);
 		getContentPane().add(btnAceptar);
 		
 		JButton btnCancelar = new JButton("Cancelar");
+		btnCancelar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+			}
+		});
 		btnCancelar.setBounds(67, 273, 117, 25);
 		getContentPane().add(btnCancelar);
 
+	}
+	
+	void resetDatos() {
+		docentesAgregados.clear();
 	}
 }
