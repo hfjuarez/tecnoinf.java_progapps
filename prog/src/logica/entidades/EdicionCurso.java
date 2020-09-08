@@ -57,11 +57,11 @@ public class EdicionCurso {
 	}
 
 	public Date getFechaIncio() {
-		return this.fechaIncio;
+		return this.fechaInicio;
 	}
 
 	public void setFechaIncio(Date fechaIncio) {
-		this.fechaIncio = fechaIncio;
+		this.fechaInicio = fechaIncio;
 	}
 
 	public Date getFechaFin() {
@@ -93,7 +93,7 @@ public class EdicionCurso {
 	}
 
 	public void setDocentes(List docentes) {
-		this.docentes = docentses;
+		this.docentes = docentes;
 	}
 
 	public void addDocente(Docente docente) {

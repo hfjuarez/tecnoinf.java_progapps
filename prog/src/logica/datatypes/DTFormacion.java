@@ -39,4 +39,10 @@ public class DTFormacion {
 
 	}
 
+	@Override
+	public String toString() {
+		return "DTFormacion [nombreFormacion=" + nombreFormacion + ", descFormacion=" + descFormacion + ", fechaInicio="
+				+ fechaInicio + ", fechaFin=" + fechaFin + ", fechaAlta=" + fechaAlta + ", cursos=" + cursos + "]";
+	}
+
 }

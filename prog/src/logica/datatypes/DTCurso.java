@@ -46,7 +46,7 @@ public class DTCurso {
 		this.fechaAlta = curso.getFechaAlta();
 		this.instituto = new DTInstituto(curso.getInstituto());
 		
-		List<Curso> previaList = = curso.getPrevias();
+		List<Curso> previaList = curso.getPrevias();
 		List<DTCurso> previaDTList = new ArrayList();
 
 		for (Curso p : previaList) {

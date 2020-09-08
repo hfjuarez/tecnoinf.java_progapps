@@ -8,6 +8,7 @@ import java.sql.Date;
 import java.util.*;
 import logica.curso.ObtenerCurso;
 import logica.usuarios.ObtenerUsuario;
+import javax.persistence.*;
 
 public class AltaEdicionCurso {
     private String nombreEdicion;
@@ -35,7 +36,7 @@ public class AltaEdicionCurso {
         if (cupo < 0)
             return true;
         if (fechaInicio.toString().isEmpty())
-       ?     return true;
+            return true;
         if (fechaFin.toString().isEmpty())
             return true;
         if (fechaAltaEdicion.toString().isEmpty())
@@ -65,7 +66,7 @@ public class AltaEdicionCurso {
         if (retorno.isEmpty()) {
             ObtenerCurso oCurso = new ObtenerCurso();
             Curso cursoCurso = oCurso.getCurso(curso);
-            if (cursoCurso == null) {
+            if (cursoCurso != null) {
                 if (!docentes.isEmpty()) {
                     ObtenerUsuario oc = new ObtenerUsuario();
                     for (String docenteString : docentes) {
@@ -78,8 +79,8 @@ public class AltaEdicionCurso {
                             return retorno + "ERROR: No existe el docente: " + docenteString
                                     + ", por favor ingrese un existente!\n";
                         }
-                        if (doc.getInstituto().getNombreInstituto().equals(cursoCurso.getInstituto().getNombreInstituto()){
-                            return retorno + "ERROR: El docente con nickname: "+ doc.getNickname() + ", no pertenece al Instituto del curso a crear la edicion (El docente debe pertenecer a este Instituto:"+cursoCurso.getInstituto().getNombreInstituto()+")";
+                        if (!doc.getInstituto().getNombreInstituto().equals(cursoCurso.getInstituto().getNombreInstituto())){
+                            return retorno + "ERROR: El docente con nickname: "+ doc.getNickname() + ", no pertenece al Instituto del curso a crear la edicion (El docente debe pertenecer a este Instituto: "+cursoCurso.getInstituto().getNombreInstituto()+")";
                         }
 
                         docentesEdicion.add(doc);
@@ -88,18 +89,23 @@ public class AltaEdicionCurso {
                     return retorno + "ERROR: No se ingresaron docentes para esta edicion, por foavor ingrese minimo uno!\n";
                 }
             
-                EdicionCurso edicion = new EdicionCurso(nombreEdicion, cursoCurso, fechaInicio, fechaFin, cupo,
-                        fechaAltaEdicion, docentes);
+                
 
                 EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("CursoJPA");
                 EntityManager entitymanager = emfactory.createEntityManager();
                 entitymanager.getTransaction().begin();
-
+                
+                EdicionCurso edicion = new EdicionCurso(nombreEdicion, cursoCurso, fechaInicio, fechaFin, cupo,
+                        fechaAltaEdicion, docentesEdicion);
                 entitymanager.persist(edicion);
 
                 entitymanager.getTransaction().commit();
                 entitymanager.close();
                 emfactory.close();
+                return "";
+            }
+            else {
+            	return retorno + "ERROR: No se encontro el curso ingresado, por favor verifique que este correcto!\n";
             }
         } else {
             return retorno + "ERROR: No se permiten campos nulos, por favor complete todos los campos!\n";

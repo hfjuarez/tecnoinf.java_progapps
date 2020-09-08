@@ -70,6 +70,7 @@ public class AltaFormacion {
                 entitymanager.getTransaction().commit();
                 entitymanager.close();
                 emfactory.close();
+                return "";
             }
         } else {
             return retorno;

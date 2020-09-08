@@ -33,4 +33,11 @@ public class DTEdicionCurso {
 		docentes = listDTDocentes;
 	}
 
+	@Override
+	public String toString() {
+		return "DTEdicionCurso [nombreEdicion=" + nombreEdicion + ", curso=" + curso + ", fechaIncio=" + fechaIncio
+				+ ", fechaFin=" + fechaFin + ", cupo=" + cupo + ", fechaAltaEdicion=" + fechaAltaEdicion + ", docentes="
+				+ docentes + "]";
+	}
+
 }

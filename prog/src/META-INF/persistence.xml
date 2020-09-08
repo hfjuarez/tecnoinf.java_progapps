@@ -41,7 +41,7 @@
 	      <class>logica.entidades.Estudiante</class>
 	      <class>logica.entidades.Docente</class>
 	      <class>logica.entidades.Curso</class>
-		<!--  <class>logica.entidades.EdicionCurso</class> -->
+		<class>logica.entidades.EdicionCurso</class>
 
             <properties>
       

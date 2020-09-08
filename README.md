@@ -6,7 +6,7 @@
 2.  Alta usuario -- LISTO
 3.  Modificar usuario -- LISTO
 4.  Alta curso -- LISTO
-5.  Alta edición de un Curso -- TESTEO
+5.  Alta edición de un Curso -- LISTO
 6.  Crear programa formación -- TESTEO
 7.  Agregar curso programa formación -- EN PROCESO
 8.  Inscripcion edicion de Curso -- EN PROCESO 

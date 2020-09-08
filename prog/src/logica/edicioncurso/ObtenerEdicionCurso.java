@@ -1,7 +1,8 @@
-package logica.curso;
+package logica.edicioncurso;
 
 import logica.datatypes.DTEdicionCurso;
 import logica.entidades.EdicionCurso;
+import logica.entidades.Curso;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -13,7 +14,7 @@ public class ObtenerEdicionCurso {
 
         ExisteEdicionCurso existeCurso = new ExisteEdicionCurso();
         if (existeCurso.existeNombreCur(name)) {
-            Curso ret = new Curso();
+            EdicionCurso ret = new EdicionCurso();
 
             EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("CursoJPA");
             EntityManager entitymanager = emfactory.createEntityManager();
