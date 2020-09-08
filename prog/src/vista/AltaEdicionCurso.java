@@ -229,7 +229,23 @@ public class AltaEdicionCurso extends JInternalFrame {
 		docentesAgregados.clear();
 	}
 	
-	
+	private boolean validarFormulario() {
+		int diaIni = (Integer)spinner_4.getNextValue();
+		int mesIni = (Integer)spinner_5.getNextValue();
+		int anioIni = (Integer)spinner_6.getNextValue();
+		int diaFin = (Integer)spinner_1.getNextValue();
+		int mesFin = (Integer)spinner_2.getNextValue();
+		int cupos = (Integer)spinner.getNextValue();
+		if(textField.getText().equals("")) {
+			return false;
+		}
+		
+		if()) {
+			
+		}
+		
+		return true;
+	}
 	
 	/**
 	 * Launch the application.
