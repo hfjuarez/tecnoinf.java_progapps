@@ -23,9 +23,53 @@ import java.awt.event.ActionEvent;
 
 public class AltaEdicionCurso extends JInternalFrame {
 	private JTextField textField;
+	private JPanel panel;
+	private JLabel lblInstituto;
+	private JComboBox comboBox;
+	private JPanel panel_1;
+	private JPanel panel_2;
+	private JPanel panel_3;
+	private JPanel panel_4;
+	private JPanel panel_5;
+	private JSpinner spinner;
+	private JSpinner spinner_1;
+	private JSpinner spinner_2;
+	private JSpinner spinner_3;
+	private JSpinner spinner_4;
+	private JSpinner spinner_5;
+	private JSpinner spinner_6;
+	private JComboBox comboBox_1;
+	private JButton btnAgregar;
+	private JButton btnAceptar;
 	private ArrayList<String> docentesAgregados=null;
 	private ListaDocentes listaDocentes = null;
+	private String institutoElegido;
 
+	private ArrayList<String> getInstitutos(){
+		ArrayList<String> lista = new ArrayList<>();
+		lista.add("instituto 1");
+		lista.add("instituto 2");
+		lista.add("instituto 3");
+		lista.add("instituto 4");
+		lista.add("instituto 5");
+		lista.add("instituto 6");
+		return lista;
+	}
+	
+	private ArrayList<String> getCursos(String instituto){
+		//busco los cursos con el parametro instituto
+		ArrayList<String> lista = new ArrayList<>();
+		
+		lista.add("Curso 1");
+		lista.add("Curso 2");
+		lista.add("Curso 3");
+		lista.add("Curso 4");
+		return lista;
+	}
+	
+	
+	
+	
 	/**
 	 * Create the frame.
 	 */
@@ -36,16 +80,16 @@ public class AltaEdicionCurso extends JInternalFrame {
 		setBounds(100, 100, 372, 357);
 		getContentPane().setLayout(null);
 		
-		JPanel panel = new JPanel();
+		panel = new JPanel();
 		panel.setBounds(30, 30, 300, 25);
 		getContentPane().add(panel);
 		panel.setLayout(new GridLayout(0, 2, 0, 0));
 		
-		JLabel lblInstituto = new JLabel("Instituto");
+		lblInstituto = new JLabel("Instituto");
 		lblInstituto.setHorizontalAlignment(SwingConstants.LEFT);		
 		panel.add(lblInstituto);
 		
-		JComboBox comboBox = new JComboBox();
+		comboBox = new JComboBox();
 		ArrayList<String> institutos = getInstitutos();
 		comboBox.addItem("");
 		for(String instituto: institutos) {
@@ -54,13 +98,13 @@ public class AltaEdicionCurso extends JInternalFrame {
 		
 		comboBox.addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent arg0) {
-				String eleccion = arg0.getItem().toString();
-				System.out.println(eleccion);
+				String eleccion = comboBox.getSelectedItem().toString();
+				institutoElegido = eleccion;
 			}
 		});
 		panel.add(comboBox);
 		
-		JPanel panel_1 = new JPanel();
+		panel_1 = new JPanel();
 		panel_1.setBounds(29, 67, 300, 25);
 		getContentPane().add(panel_1);
 		panel_1.setLayout(new GridLayout(0, 2, 0, 0));
@@ -69,15 +113,19 @@ public class AltaEdicionCurso extends JInternalFrame {
 		lblNewLabel.setHorizontalAlignment(SwingConstants.LEFT);
 		panel_1.add(lblNewLabel);
 		
-		JComboBox comboBox_1 = new JComboBox();
+		comboBox_1 = new JComboBox();
+		ArrayList<String> cursos = getCursos(institutoElegido);
+		for(String curso: cursos) {
+			comboBox_1.addItem(curso);
+		}
 		comboBox_1.addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent e) {
-			
+				
 			}
 		});
 		panel_1.add(comboBox_1);
 		
-		JPanel panel_2 = new JPanel();
+		panel_2 = new JPanel();
 		panel_2.setBounds(30, 107, 300, 100);
 		getContentPane().add(panel_2);
 		panel_2.setLayout(new GridLayout(0, 2, 0, 0));
@@ -94,44 +142,44 @@ public class AltaEdicionCurso extends JInternalFrame {
 		lblFechaInicio.setHorizontalAlignment(SwingConstants.LEFT);
 		panel_2.add(lblFechaInicio);
 		
-		JPanel panel_3 = new JPanel();
+		panel_3 = new JPanel();
 		panel_2.add(panel_3);
 		panel_3.setLayout(new GridLayout(0, 3, 0, 0));
 		
-		JSpinner spinner_4 = new JSpinner();
+		spinner_4 = new JSpinner();
 		panel_3.add(spinner_4);
 		
-		JSpinner spinner_5 = new JSpinner();
+		spinner_5 = new JSpinner();
 		panel_3.add(spinner_5);
 		
-		JSpinner spinner_6 = new JSpinner();
+		spinner_6 = new JSpinner();
 		panel_3.add(spinner_6);
 		
 		JLabel lblFechaFin = new JLabel("Fecha fin");
 		lblFechaFin.setHorizontalAlignment(SwingConstants.LEFT);
 		panel_2.add(lblFechaFin);
 		
-		JPanel panel_4 = new JPanel();
+		panel_4 = new JPanel();
 		panel_2.add(panel_4);
 		panel_4.setLayout(new GridLayout(0, 3, 0, 0));
 		
-		JSpinner spinner_1 = new JSpinner();
+		spinner_1 = new JSpinner();
 		panel_4.add(spinner_1);
 		
-		JSpinner spinner_2 = new JSpinner();
+		spinner_2 = new JSpinner();
 		panel_4.add(spinner_2);
 		
-		JSpinner spinner_3 = new JSpinner();
+		spinner_3 = new JSpinner();
 		panel_4.add(spinner_3);
 		
 		JLabel lblCuposopcional = new JLabel("Cupos (Opcional)");
 		lblCuposopcional.setHorizontalAlignment(SwingConstants.LEFT);
 		panel_2.add(lblCuposopcional);
 		
-		JSpinner spinner = new JSpinner();
+		spinner = new JSpinner();
 		panel_2.add(spinner);
 		
-		JPanel panel_5 = new JPanel();
+		panel_5 = new JPanel();
 		panel_5.setBounds(30, 219, 300, 25);
 		getContentPane().add(panel_5);
 		panel_5.setLayout(new GridLayout(0, 2, 0, 0));
@@ -140,7 +188,7 @@ public class AltaEdicionCurso extends JInternalFrame {
 		lblProfesores.setHorizontalAlignment(SwingConstants.LEFT);
 		panel_5.add(lblProfesores);
 		
-		JButton btnAgregar = new JButton("Agregar");
+		btnAgregar = new JButton("Agregar");
 		btnAgregar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if(listaDocentes == null) {
@@ -154,12 +202,11 @@ public class AltaEdicionCurso extends JInternalFrame {
 		});
 		panel_5.add(btnAgregar);
 		
-		JButton btnAceptar = new JButton("Aceptar");
+		btnAceptar = new JButton("Aceptar");
 		btnAceptar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				
 				docentesAgregados = listaDocentes.getDocentesSeleccionados();
-				
-				
 				JOptionPane.showMessageDialog(null, "Se guarda datos");
 				resetDatos();
 			}
@@ -182,16 +229,7 @@ public class AltaEdicionCurso extends JInternalFrame {
 		docentesAgregados.clear();
 	}
 	
-	private ArrayList<String> getInstitutos(){
-		ArrayList<String> lista = new ArrayList<>();
-		lista.add("instituto 1");
-		lista.add("instituto 2");
-		lista.add("instituto 3");
-		lista.add("instituto 4");
-		lista.add("instituto 5");
-		lista.add("instituto 6");
-		return lista;
-	} 
+	
 	
 	/**
 	 * Launch the application.
