@@ -3,14 +3,14 @@ package logica.formacion;
 import java.util.List;
 import java.util.ArrayList;
 import logica.entidades.Formacion;
-import logica.datatypes.DTFormacionCurso;
+import logica.datatypes.DTFormacion;
 
 import javax.persistence.*;
 
 public class ListaFormacion {
     public List<Formacion> getList() {
         List<Formacion> list = null;
-        EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("FormacionJPA");
+        EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("CursoJPA");
         EntityManager entitymanager = emfactory.createEntityManager();
 
         Query query = entitymanager.createQuery("Select i from Formacion as i");

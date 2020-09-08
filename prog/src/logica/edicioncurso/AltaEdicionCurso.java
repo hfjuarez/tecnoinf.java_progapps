@@ -32,7 +32,7 @@ public class AltaEdicionCurso {
             return true;
         if (curso.isEmpty())
             return true;
-        if (cupo < -1)
+        if (cupo < 0)
             return true;
         if (fechaInicio.toString().isEmpty())
        ?     return true;
@@ -63,28 +63,31 @@ public class AltaEdicionCurso {
         retorno = retorno + hasErrorAlredyExists();
 
         if (retorno.isEmpty()) {
-
-            if (!docentes.isEmpty()) {
-                ObtenerUsuario oc = new ObtenerUsuario();
-                for (String docenteString : docentes) {
-                    if (oc.isEstudiante(docenteString)) {
-                        return retorno + "ERROR: No existe el docente: " + docenteString
-                                + ", por favor ingrese un existente!\n";
-                    }
-                    Docente doc = oc.getDocenteByNickname(docenteString);
-                    if (doc == null) {
-                        return retorno + "ERROR: No existe el docente: " + docenteString
-                                + ", por favor ingrese un existente!\n";
-                    }
-
-                    docentesEdicion.add(doc);
-                }
-            } else {
-                return retorno + "ERROR: No se ingresaron docentes para esta edicion, por foavor ingrese minimo uno!\n";
-            }
             ObtenerCurso oCurso = new ObtenerCurso();
             Curso cursoCurso = oCurso.getCurso(curso);
             if (cursoCurso == null) {
+                if (!docentes.isEmpty()) {
+                    ObtenerUsuario oc = new ObtenerUsuario();
+                    for (String docenteString : docentes) {
+                        if (oc.isEstudiante(docenteString)) {
+                            return retorno + "ERROR: No existe el docente: " + docenteString
+                                    + ", por favor ingrese un existente!\n";
+                        }
+                        Docente doc = oc.getDocenteByNickname(docenteString);
+                        if (doc == null) {
+                            return retorno + "ERROR: No existe el docente: " + docenteString
+                                    + ", por favor ingrese un existente!\n";
+                        }
+                        if (doc.getInstituto().getNombreInstituto().equals(cursoCurso.getInstituto().getNombreInstituto()){
+                            return retorno + "ERROR: El docente con nickname: "+ doc.getNickname() + ", no pertenece al Instituto del curso a crear la edicion (El docente debe pertenecer a este Instituto:"+cursoCurso.getInstituto().getNombreInstituto()+")";
+                        }
+
+                        docentesEdicion.add(doc);
+                    }
+                } else {
+                    return retorno + "ERROR: No se ingresaron docentes para esta edicion, por foavor ingrese minimo uno!\n";
+                }
+            
                 EdicionCurso edicion = new EdicionCurso(nombreEdicion, cursoCurso, fechaInicio, fechaFin, cupo,
                         fechaAltaEdicion, docentes);
 

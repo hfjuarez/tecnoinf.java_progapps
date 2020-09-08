@@ -24,12 +24,13 @@ public class ListaCursos {
         return list;
     }
 
-    public List<Curso> getListCinst(String nameInstituto) {
+    public List<Curso> getListConInstituto(String nameInstituto) {
         List<Curso> list = getList();
+        List<Curso> cursosFiltrados = new ArrayList();
+        
         for(Curso curso : list){
             Instituto inst = curso.getInstituto();
 
-            List<Curso> cursosFiltrados = new ArrayList();
             if(nameInstituto.equals(inst.getNombreInstituto())){
                 cursosFiltrados.add(curso);
                 
@@ -41,6 +42,16 @@ public class ListaCursos {
 
     public List<DTCurso> getDataTypeList() {
         List<Curso> list = getList();
+        List<DTCurso> listOfDT = new ArrayList();
+        for (Curso curso : list) {
+            DTCurso dtCurso = new DTCurso(curso);
+            listOfDT.add(dtCurso);
+        }
+        return listOfDT;
+    }
+
+    public List<DTCurso> getDataTypeListConInstituto(String nameInstituto) {
+        List<Curso> list = getListConInstituto(nameInstituto);
         List<DTCurso> listOfDT = new ArrayList();
         for (Curso curso : list) {
             DTCurso dtCurso = new DTCurso(curso);

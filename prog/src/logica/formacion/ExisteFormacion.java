@@ -10,11 +10,11 @@ public class ExisteFormacion {
 
     public boolean existeFormCur(String nombreFormacion) {
         boolean ret = false;
-        EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("FormacionJPA");
+        EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("CursoJPA");
         EntityManager entitymanager = emfactory.createEntityManager();
 
         Formacion formacion = null;
-        formacion = entitymanager.find(formacion.class, nombreFormacion);
+        formacion = entitymanager.find(Formacion.class, nombreFormacion);
 
         entitymanager.close();
         emfactory.close();

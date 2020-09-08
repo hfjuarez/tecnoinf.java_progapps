@@ -45,9 +45,8 @@ public class DTCurso {
 		URL = curso.getURL();
 		this.fechaAlta = curso.getFechaAlta();
 		this.instituto = new DTInstituto(curso.getInstituto());
-		List<Curso> previaList = new ArrayList();
-		previaList = curso.getPrevias();
-
+		
+		List<Curso> previaList = = curso.getPrevias();
 		List<DTCurso> previaDTList = new ArrayList();
 
 		for (Curso p : previaList) {
@@ -55,6 +54,13 @@ public class DTCurso {
 			previaDTList.add(dtp);
 		}
 		this.previas = previaDTList;
+	}
+
+	@Override
+	public String toString() {
+		return "DTCurso [nombreCurso=" + nombreCurso + ", descCurso=" + descCurso + ", duracionMeses=" + duracionMeses
+				+ ", cantidadHoras=" + cantidadHoras + ", cantidadCreditos=" + cantidadCreditos + ", URL=" + URL
+				+ ", fechaAlta=" + fechaAlta + ", instituto=" + instituto + ", previas=" + previas + "]";
 	}
 
 }

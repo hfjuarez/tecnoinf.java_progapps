@@ -15,10 +15,12 @@ import logica.entidades.Curso;
 @Table
 public class Inscripcion_Edicion {
     @Id
-    EdicionCurso edicionCurso;
+    private String nicknameEstudiante;
     @Id
-    Estudiante estudiante;
-    Date fecha;
+    private String nombreEdicionCurso;
+    private EdicionCurso edicionCurso;
+    private Estudiante estudiante;
+    private Date fecha;
 
     public Inscripcion_Edicion() {
         super();
@@ -26,6 +28,8 @@ public class Inscripcion_Edicion {
 
     public Inscripcion_Edicion(EdicionCurso edicionCurso, Estudiante estudiante, Date fecha) {
         super();
+        this.nicknameEstudiante=estudiante.getNickname();
+        this.nombreEdicionCurso=edicionCurso.getNombreEdicion();
         this.edicionCurso = edicionCurso;
         this.estudiante = estudiante;
         this.fecha = fecha;

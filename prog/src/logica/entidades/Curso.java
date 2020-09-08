@@ -122,6 +122,4 @@ public class Curso {
 		this.previas.add(cursoPrevio);
 	}
 
-	public 
-
 }

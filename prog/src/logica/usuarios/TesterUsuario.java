@@ -20,9 +20,9 @@ public class TesterUsuario {
         Date nacDate = Date.valueOf(fecha);
         // AltaUsuario au1 = new AltaUsuario("nick1", "nombre", "apellido", "mail",
         // nacDate);
-        AltaUsuario aud = new AltaUsuario("herfj4", "hernan", "fabrica", "mail4@mail.com", nacDate);
+        AltaUsuario aud = new AltaUsuario("cralo", "carlos", "calito", "arlomail4@mail.com", nacDate);
 
-        String es = aud.createDocente("Fing");
+        String es = aud.createDocente("FMED");
         System.out.println(es);
     }
 
@@ -72,7 +72,7 @@ public class TesterUsuario {
         TesterUsuario tu = new TesterUsuario();
         // tu.testAUE();
         // tu.testAUDerror();
-        // tu.testAUD();
+         tu.testAUD();
         // tu.testMUE();
         // tu.testMUD();
         tu.listDTs();

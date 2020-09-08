@@ -54,18 +54,26 @@ public class AltaFormacion {
 
     public String createFormacion() {
 
-        EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("FormacionJPA");
-        EntityManager entitymanager = emfactory.createEntityManager();
-        entitymanager.getTransaction().begin();
+        String retorno = hasErrorAlredyExists();
+        if (retorno.isEmpty()) {
+            if (hasErrorEmpty()) {
+                return retorno + "ERROR: No se permiten campos nulos , por favor complete todos los campos!\n";
+            } else {
+                EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("CursoJPA");
+                EntityManager entitymanager = emfactory.createEntityManager();
+                entitymanager.getTransaction().begin();
 
-        Formacion formacion = new Formacion(nom_for, des_for, Finicio_for, Ffin_for, FechAlta_for);
+                Formacion formacion = new Formacion(nom_for, des_for, Finicio_for, Ffin_for, FechAlta_for);
 
-        entitymanager.persist(formacion);
+                entitymanager.persist(formacion);
 
-        entitymanager.getTransaction().commit();
-        entitymanager.close();
-        emfactory.close();
+                entitymanager.getTransaction().commit();
+                entitymanager.close();
+                emfactory.close();
+            }
+        } else {
+            return retorno;
+        }
 
-        return "";
     }
 }

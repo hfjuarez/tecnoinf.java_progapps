@@ -2,18 +2,20 @@ package logica.edicioncurso;
 
 import logica.entidades.EdicionCurso;
 import java.util.List;
+import java.util.ArrayList;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 
+import logica.datatypes.DTEdicionCurso;
 import logica.entidades.Curso;
 
 public class ListaEdicionCurso {
 
     public List<EdicionCurso> getList() {
-        List<Curso> list = null;
+        List<EdicionCurso> list = null;
         EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("CursoJPA");
         EntityManager entitymanager = emfactory.createEntityManager();
 
@@ -25,19 +27,39 @@ public class ListaEdicionCurso {
         return list;
     }
 
-    public getlistByCurso(String NombreCurso)
-    {
+    public List<EdicionCurso> getlistByCurso(String NombreCurso) {
         List<EdicionCurso> list = getList();
-        for(EdicionCurso edicioncurso : list){
-            
-            List<EdicionCurso> EdicionCursosFiltrados = new ArrayList();
-            if(NombreCurso.equals(edicioncurso.getCurso().getNombreCurso())){
+        List<EdicionCurso> EdicionCursosFiltrados = new ArrayList();
+
+        for (EdicionCurso edicioncurso : list) {
+
+            if (NombreCurso.equals(edicioncurso.getCurso().getNombreCurso())) {
                 EdicionCursosFiltrados.add(edicioncurso);
-                
+
             }
         }
-        
+
         return EdicionCursosFiltrados;
-    }                
-    
+    }
+
+    public List<DTEdicionCurso> getDataTypeList() {
+        List<EdicionCurso> list = getList();
+        List<DTEdicionCurso> listOfDT = new ArrayList();
+        for (EdicionCurso ec : list) {
+            DTEdicionCurso dtEC = new DTEdicionCurso(ec);
+            listOfDT.add(dtEC);
+        }
+        return listOfDT;
+    }
+
+    public List<DTEdicionCurso> getDataTypeListByCurso(String NombreCurso) {
+        List<EdicionCurso> list = getlistByCurso(NombreCurso);
+        List<DTEdicionCurso> listOfDT = new ArrayList();
+        for (EdicionCurso ec : list) {
+            DTEdicionCurso dtEC = new DTEdicionCurso(ec);
+            listOfDT.add(dtEC);
+        }
+        return listOfDT;
+    }
+
 }

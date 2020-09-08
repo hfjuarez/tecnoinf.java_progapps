@@ -103,7 +103,8 @@ public class AltaCurso {
                 entitymanager.close();
                 emfactory.close();
             } else {
-                return retorno + "ERROR: No se permiten campos nulos, por favor complete todos los campos!\n";
+                return retorno + "No existe el Instituto: " + nombreInstituto
+                        + ", por favor ingrese un Instituto existente!\n";
             }
 
         }
