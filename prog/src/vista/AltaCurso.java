@@ -17,6 +17,8 @@ import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
+import javax.swing.JSpinner;
+import javax.swing.SpinnerNumberModel;
 
 public class AltaCurso extends JInternalFrame {
 	private JTextField textField;
@@ -24,9 +26,6 @@ public class AltaCurso extends JInternalFrame {
 	private JTextField textField_2;
 	private JTextField textField_3;
 	private JTextField textField_4;
-	private JTextField textField_5;
-	private JTextField textField_6;
-	private JTextField textField_7;
 	private final JButton btnNewButton = new JButton("Cancelar");
 	private JTextField textField_8;
 	public static ArrayList<String> previas= new ArrayList<>();
@@ -56,7 +55,7 @@ public class AltaCurso extends JInternalFrame {
 		setTitle("Alta de curso");
 		setMaximizable(true);
 		setClosable(true);
-		setBounds(100, 100, 500, 300);
+		setBounds(100, 100, 513, 300);
 		getContentPane().setLayout(new GridLayout(0, 2, 0, 0));
 		
 		JLabel lblInstituto = new JLabel("Instituto");
@@ -128,17 +127,17 @@ public class AltaCurso extends JInternalFrame {
 		getContentPane().add(panel);
 		panel.setLayout(new GridLayout(0, 3, 0, 0));
 		
-		textField_5 = new JTextField();
-		panel.add(textField_5);
-		textField_5.setColumns(10);
+		JSpinner spinner = new JSpinner();
+		spinner.setModel(new SpinnerNumberModel(new Integer(1), new Integer(1), new Integer(31), new Integer(1)));
+		panel.add(spinner);
 		
-		textField_6 = new JTextField();
-		panel.add(textField_6);
-		textField_6.setColumns(10);
+		JSpinner spinner_1 = new JSpinner();
+		spinner_1.setModel(new SpinnerNumberModel(new Integer(1), new Integer(1), new Integer(12), new Integer(1)));
+		panel.add(spinner_1);
 		
-		textField_7 = new JTextField();
-		panel.add(textField_7);
-		textField_7.setColumns(10);
+		JSpinner spinner_2 = new JSpinner();
+		spinner_2.setModel(new SpinnerNumberModel(new Integer(2020), new Integer(2020), new Integer(2050), new Integer(1)));
+		panel.add(spinner_2);
 		
 		JLabel lblPrevias = new JLabel("Previaturas");
 		lblPrevias.setHorizontalAlignment(SwingConstants.CENTER);
@@ -197,8 +196,7 @@ public class AltaCurso extends JInternalFrame {
 	
 	Boolean validarFormulario() {
 		if(!textField.getText().equals("") && !textField_1.getText().equals("") && !textField_2.getText().equals("") &&
-				!textField_3.getText().equals("") && !textField_4.getText().equals("") && !textField_5.getText().equals("") &&
-				!textField_6.getText().equals("") && !textField_7.getText().equals("") && !textField_8.getText().equals("")) {
+				!textField_3.getText().equals("") && !textField_4.getText().equals("") && !textField_8.getText().equals("")) {
 			return true;
 		}else {
 			return false;
@@ -212,9 +210,6 @@ public class AltaCurso extends JInternalFrame {
 		textField_2.setText("");
 		textField_3.setText("");
 		textField_4.setText("");
-		textField_5.setText("");
-		textField_6.setText("");
-		textField_7.setText("");
 		textField_8.setText("");
 		
 	}
