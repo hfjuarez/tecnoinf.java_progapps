@@ -1,9 +1,12 @@
 package logica.datatypes;
 
+import java.util.*;
 import java.sql.Date;
 import logica.entidades.Estudiante;
 
 public class DTEstudiante extends DTUsuario {
+
+	public List inscripciones;
 
 	public DTEstudiante() {
 		super();

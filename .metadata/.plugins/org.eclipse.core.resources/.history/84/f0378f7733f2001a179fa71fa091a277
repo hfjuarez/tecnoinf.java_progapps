@@ -1,0 +1,13 @@
+package API;
+
+import logica.instituto.CargarInstituto;
+import logica.usuarios.CargarUsuarios;
+
+public class CargarDatosPrueba {
+
+	public static void main(String[] args) {
+		
+
+	}
+
+}

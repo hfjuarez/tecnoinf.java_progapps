@@ -34,8 +34,6 @@ public class AltaUsuario {
             return true;
         if (name.isEmpty())
             return true;
-        if (ape.isEmpty())
-            return true;
         if (mail.isEmpty())
             return true;
         if (nacDate.toString().isEmpty())

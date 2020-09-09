@@ -24,6 +24,8 @@ public class EdicionCurso {
 	private Date fechaAltaEdicion;
 	@OneToMany(targetEntity = Docente.class)
 	private List docentes;
+	@OneToMany(targetEntity = Inscripcion_Edicion.class)
+	private List inscriptos;
 
 	public EdicionCurso() {
 		super();
@@ -56,11 +58,11 @@ public class EdicionCurso {
 		this.curso = curso;
 	}
 
-	public Date getFechaIncio() {
+	public Date getFechaInicio() {
 		return this.fechaInicio;
 	}
 
-	public void setFechaIncio(Date fechaIncio) {
+	public void setFechaInicio(Date fechaIncio) {
 		this.fechaInicio = fechaIncio;
 	}
 
@@ -98,6 +100,14 @@ public class EdicionCurso {
 
 	public void addDocente(Docente docente) {
 		this.docentes.add(docente);
+	}
+
+	public List getInscriptos() {
+		return inscriptos;
+	}
+
+	public void setInscriptos(List inscriptos) {
+		this.inscriptos = inscriptos;
 	}
 
 }

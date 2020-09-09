@@ -16,11 +16,13 @@ public class DTEdicionCurso {
 	public int cupo;
 	public Date fechaAltaEdicion;
 	public List docentes;
+	public List inscriptos;
+
 
 	public DTEdicionCurso(EdicionCurso eCurso) {
 		nombreEdicion = eCurso.getNombreEdicion();
 		curso = new DTCurso(eCurso.getCurso());
-		fechaIncio = eCurso.getFechaIncio();
+		fechaIncio = eCurso.getFechaInicio();
 		fechaFin = eCurso.getFechaFin();
 		cupo = eCurso.getCupo();
 		fechaAltaEdicion = eCurso.getFechaAltaEdicion();

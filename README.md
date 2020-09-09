@@ -2,19 +2,19 @@
 
 ### Orden de los casos de uso:
 
-1.  Alta instituto -- LISTO
-2.  Alta usuario -- LISTO
-3.  Modificar usuario -- LISTO
-4.  Alta curso -- LISTO
-5.  Alta edición de un Curso -- LISTO
-6.  Crear programa formación -- TESTEO
+1.  Alta instituto -- LISTO SWING
+2.  Alta usuario -- LISTO SWING
+3.  Modificar usuario -- LISTO SWING
+4.  Alta curso -- LISTO SWING
+5.  Alta edición de un Curso -- LISTO SWING
+6.  Crear programa formación -- TESTEO 
 7.  Agregar curso programa formación -- EN PROCESO
 8.  Inscripcion edicion de Curso -- EN PROCESO 
     *   controlar que no supere el cupo
-9.  Consulta edicion de Curso -- EN PROCESO
-10.  Consulta de Programa de Formacion (Necesita del siguiente)
-11.  Consulta de Curso (Necesita del anterior)
-12.  Consulta Usuario
+9.  Consulta edicion de Curso -- LISTO
+10.  Consulta de Programa de Formacion (Necesita del siguiente) -- PROCESO
+11.  Consulta de Curso (Necesita del anterior) -- PORCESO
+12.  Consulta Usuario  -- PROCESO
 
 *A su vez se necesitan funciones complementarias para realizar los casos de uso. Ejemplo: Lista de cursos, entre otras.*
 

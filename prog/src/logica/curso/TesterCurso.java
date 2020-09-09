@@ -59,11 +59,11 @@ public class TesterCurso {
 
     public static void main(String[] args) {
         TesterCurso tc = new TesterCurso();
-        //tc.testAC1();
-         //tc.testACerror();
-        //tc.testAC2();
-        //tc.testAC3();
-        //tc.listDTs();
+        tc.testAC1();
+        // tc.testACerror();
+        tc.testAC2();
+        tc.testAC3();
+        // tc.listDTs();
 
     }
 }

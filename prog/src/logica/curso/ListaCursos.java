@@ -6,7 +6,8 @@ import logica.entidades.Curso;
 import logica.entidades.Instituto;
 import logica.datatypes.DTCurso;
 import logica.entidades.EdicionCurso;
-
+import logica.edicioncurso.ListaEdicionCurso;
+import logica.datatypes.*;
 
 import javax.persistence.*;
 
@@ -27,16 +28,16 @@ public class ListaCursos {
     public List<Curso> getListConInstituto(String nameInstituto) {
         List<Curso> list = getList();
         List<Curso> cursosFiltrados = new ArrayList();
-        
-        for(Curso curso : list){
+
+        for (Curso curso : list) {
             Instituto inst = curso.getInstituto();
 
-            if(nameInstituto.equals(inst.getNombreInstituto())){
+            if (nameInstituto.equals(inst.getNombreInstituto())) {
                 cursosFiltrados.add(curso);
-                
+
             }
         }
-        
+
         return cursosFiltrados;
     }
 

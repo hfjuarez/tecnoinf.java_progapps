@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.lang.String;
 import java.sql.Date;
 import java.util.List;
+import java.util.ArrayList;
 import javax.persistence.*;
 
 /**
@@ -35,6 +36,7 @@ public class Formacion {
 		this.fechaInicio = fechaInicio;
 		this.fechaFin = fechaFin;
 		this.fechaAlta = fechaAlta;
+		this.cursos = null;
 	}
 
 	public String getNombreFormacion() {
@@ -83,6 +85,13 @@ public class Formacion {
 
 	public void setCursos(List cursos) {
 		this.cursos = cursos;
+	}
+
+	public void addCurso(Curso cursoForm) {
+		if (cursos == null) {
+			cursos = new ArrayList<Curso>();
+		}
+		this.cursos.add(cursoForm);
 	}
 
 }

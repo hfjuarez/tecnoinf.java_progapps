@@ -19,7 +19,6 @@ public class ListaFormacion {
         entitymanager.close();
         emfactory.close();
         return list;
-
     }
 
     public List<DTFormacion> getDataTypeList() {

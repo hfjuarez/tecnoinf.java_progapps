@@ -20,8 +20,12 @@
 	<persistence-unit name="UsuarioJPA">
 		<class>logica.entidades.Instituto</class>
 	      <class>logica.entidades.Usuario</class>
-	      <class>logica.entidades.Estudiante</class>
 	      <class>logica.entidades.Docente</class>
+	       <class>logica.entidades.Curso</class>
+		<class>logica.entidades.EdicionCurso</class>
+            <class>logica.entidades.Inscripcion_Edicion</class>
+	      <class>logica.entidades.Estudiante</class>
+	      
 	     
 	      
             <properties>
@@ -42,6 +46,7 @@
 	      <class>logica.entidades.Docente</class>
 	      <class>logica.entidades.Curso</class>
 		<class>logica.entidades.EdicionCurso</class>
+            <class>logica.entidades.Inscripcion_Edicion</class>
 
             <properties>
       

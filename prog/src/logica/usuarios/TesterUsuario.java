@@ -70,11 +70,11 @@ public class TesterUsuario {
     public static void main(String[] args) {
         // TODO Auto-generated method stub
         TesterUsuario tu = new TesterUsuario();
-        // tu.testAUE();
+        tu.testAUE();
         // tu.testAUDerror();
-         tu.testAUD();
-        // tu.testMUE();
-        // tu.testMUD();
+        tu.testAUD();
+        tu.testMUE();
+        tu.testMUD();
         tu.listDTs();
 
     }

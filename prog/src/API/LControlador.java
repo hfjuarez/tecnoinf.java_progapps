@@ -2,19 +2,21 @@ package API;
 
 import java.sql.Date;
 import java.util.List;
+
 import java.io.File;
 
-import logica.datatypes.DTInstituto;
+import logica.datatypes.*;
+import logica.entidades.EdicionCurso;
 import logica.instituto.AltaInstituto;
 import logica.instituto.ListaInstitutos;
 
-import logica.usuarios.AltaUsuario;
-import logica.usuarios.ModificarUsuario;
-import logica.usuarios.ObtenerUsuario;
-import logica.usuarios.ExisteUsuario;
+import logica.usuarios.*;
 
 import logica.curso.ExisteCurso;
+import logica.curso.ListaCursos;
 import logica.curso.AltaCurso;
+
+import logica.edicioncurso.ListaEdicionCurso;
 
 public class LControlador implements ILogica {
 
@@ -35,7 +37,22 @@ public class LControlador implements ILogica {
         public List<DTInstituto> listaInstitutos() {
                 return new ListaInstitutos().getDataTypeList();
         }
-        // public List</*Clase DT Usuario*/> listaUsuarios(){}
+
+        public List<DTEstudiante> listaEstudiantes() {
+                return new ListaUsuarios().getDataTypeListEstudiante();
+        }
+
+        public List<DTDocente> listaDocentes() {
+                return new ListaUsuarios().getDataTypeListDocente();
+        }
+
+        public List<DTCurso> listaCursosPorInstituto(String nombreInstituto) {
+                return new ListaCursos().getDataTypeListConInstituto(nombreInstituto);
+        }
+
+        public List<DTEdicionCurso> ListaEdicionesCurso(String nombreCurso) {
+                return new ListaEdicionCurso().getDataTypeListByCurso(nombreCurso);
+        }
 
         // public List</* Clase DT Formacion */> listFormaciones(){}
 
