@@ -7,13 +7,11 @@ import javax.persistence.Persistence;
 import logica.entidades.Instituto;
 
 public class AltaInstituto {
-    public static void main(String[] args) {
-
-        String nombreInstituto = "ingrese nombre aqui";
+    public String create(String nombreInstituto) {
 
         // Logica
         if (new ExisteInstituto(nombreInstituto).existe()) {
-            System.out.println("ERROR: Ya existe un instituto con el nombre: " + nombreInstituto);
+            return "ERROR: Ya existe un instituto con el nombre: " + nombreInstituto;
         } else {
             EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("InstitutoJPA");
             // @PersistenceContext(unitName="Eclipselink_JPA_Instituto")
@@ -29,6 +27,6 @@ public class AltaInstituto {
             entitymanager.close();
             emfactory.close();
         }
-
+        return "";
     }
 }

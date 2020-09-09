@@ -4,13 +4,14 @@
 
 1.  Alta instituto -- LISTO
 2.  Alta usuario -- LISTO
-3.  Modificar usuario -- PROCESO
-4.  Alta curso -- POR COMENZAR
-5.  Alta edición de un Curso -- POR COMENZAR
-6.  Crear programa formación -- POR COMENZAR
-7.  Agregar curso programa formación
-8.  Inscripcion edicion de Curso
-9.  Consulta edicion de Curso
+3.  Modificar usuario -- LISTO
+4.  Alta curso -- LISTO
+5.  Alta edición de un Curso -- LISTO
+6.  Crear programa formación -- TESTEO
+7.  Agregar curso programa formación -- EN PROCESO
+8.  Inscripcion edicion de Curso -- EN PROCESO 
+    *   controlar que no supere el cupo
+9.  Consulta edicion de Curso -- EN PROCESO
 10.  Consulta de Programa de Formacion (Necesita del siguiente)
 11.  Consulta de Curso (Necesita del anterior)
 12.  Consulta Usuario

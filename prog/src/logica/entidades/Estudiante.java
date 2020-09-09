@@ -25,4 +25,11 @@ public class Estudiante extends Usuario {
 		
 	}
 
+	@Override
+	public String toString() {
+		return "Estudiante [getNickname()=" + getNickname() + ", getNombre()=" + getNombre() + ", getApellido()="
+				+ getApellido() + ", getMail()=" + getMail() + ", getFechaNac()=" + getFechaNac() + ", getClass()="
+				+ getClass() + ", hashCode()=" + hashCode() + ", toString()=" + super.toString() + "]";
+	}
+
 }

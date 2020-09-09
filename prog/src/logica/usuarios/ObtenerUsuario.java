@@ -8,7 +8,9 @@ import javax.persistence.Persistence;
 
 import logica.entidades.Usuario;
 import logica.entidades.Docente;
+import logica.datatypes.DTDocente;
 import logica.entidades.Estudiante;
+import logica.datatypes.DTEstudiante;
 
 public class ObtenerUsuario {
 
@@ -74,6 +76,16 @@ public class ObtenerUsuario {
             return null;
         }
 
+    }
+
+    public DTDocente getDTDocenteByNickname(String nick) {
+        Docente docente = getDocenteByNickname(nick);
+        return new DTDocente(docente);
+    }
+
+    public DTEstudiante getDTEstudianteByNickname(String nick) {
+        Estudiante estudiante = getEstudianteByNickname(nick);
+        return new DTEstudiante(estudiante);
     }
 
     /*

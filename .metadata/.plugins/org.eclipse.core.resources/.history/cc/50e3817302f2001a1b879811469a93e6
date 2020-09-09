@@ -1,0 +1,98 @@
+package logica.edicioncurso;
+
+import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
+
+public class TesterEdicionCurso {
+
+    public void testAEC() {
+        String fecha = "2015-04-23";
+        Date date1 = Date.valueOf(fecha);
+        fecha = "2016-04-23";
+        Date date2 = Date.valueOf(fecha);
+        fecha = "2020-08-09";
+        Date date3 = Date.valueOf(fecha);
+        AltaEdicionCurso a = new AltaEdicionCurso("edicion 1", "csdfurso2", date1, date2, 0, date3);
+        List<String> docentes = new ArrayList();
+        docentes.add("cralo");
+
+        String r = a.createEdicionCurso(docentes);
+        System.out.println(r);
+    }
+
+    public void testAEC2() {
+        String fecha = "2015-04-23";
+        Date date1 = Date.valueOf(fecha);
+        fecha = "2016-04-23";
+        Date date2 = Date.valueOf(fecha);
+        fecha = "2020-08-09";
+        Date date3 = Date.valueOf(fecha);
+        AltaEdicionCurso a = new AltaEdicionCurso("edicion 2", "csdfurso2", date1, date2, 0, date3);
+        List<String> docentes = new ArrayList();
+        docentes.add("cralo");
+
+        String r = a.createEdicionCurso(docentes);
+        System.out.println(r);
+    }
+
+    public void testAECerrorCurso() {
+        String fecha = "2015-04-23";
+        Date date1 = Date.valueOf(fecha);
+        fecha = "2016-04-23";
+        Date date2 = Date.valueOf(fecha);
+        fecha = "2020-08-09";
+        Date date3 = Date.valueOf(fecha);
+        AltaEdicionCurso a = new AltaEdicionCurso("edicion 2", "c2", date1, date2, 0, date3);
+        List<String> docentes = new ArrayList();
+        docentes.add("cralo");
+
+        String r = a.createEdicionCurso(docentes);
+        System.out.println(r);
+    }
+
+    public void testAECerrorRep() {
+        String fecha = "2015-04-23";
+        Date date1 = Date.valueOf(fecha);
+        fecha = "2016-04-23";
+        Date date2 = Date.valueOf(fecha);
+        fecha = "2020-08-09";
+        Date date3 = Date.valueOf(fecha);
+        AltaEdicionCurso a = new AltaEdicionCurso("edicion 1", "csdfurso2", date1, date2, 0, date3);
+        List<String> docentes = new ArrayList();
+        docentes.add("cralo");
+
+        String r = a.createEdicionCurso(docentes);
+        System.out.println(r);
+    }
+
+    public void testAECerrorDoc() {
+        String fecha = "2015-04-23";
+        Date date1 = Date.valueOf(fecha);
+        fecha = "2016-04-23";
+        Date date2 = Date.valueOf(fecha);
+        fecha = "2020-08-09";
+        Date date3 = Date.valueOf(fecha);
+        AltaEdicionCurso a = new AltaEdicionCurso("edicion 2", "csdfurso2", date1, date2, 0, date3);
+        List<String> docentes = new ArrayList();
+        docentes.add("nick1");
+
+        String r = a.createEdicionCurso(docentes);
+        System.out.println(r);
+    }
+
+    public void list() {
+        ListaEdicionCurso l = new ListaEdicionCurso();
+        System.out.println(l.getDataTypeListByCurso("csdfurso2"));
+    }
+
+    public static void main(String[] args) {
+        TesterEdicionCurso t = new TesterEdicionCurso();
+        //t.testAEC();
+        t.testAECerrorRep();
+        //t.testAECerrorCurso();
+        //t.testAECerrorDoc();
+        //t.testAEC2();
+        //t.list();
+    }
+}

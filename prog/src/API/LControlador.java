@@ -4,7 +4,17 @@ import java.sql.Date;
 import java.util.List;
 import java.io.File;
 
-import logica.*;
+import logica.datatypes.DTInstituto;
+import logica.instituto.AltaInstituto;
+import logica.instituto.ListaInstitutos;
+
+import logica.usuarios.AltaUsuario;
+import logica.usuarios.ModificarUsuario;
+import logica.usuarios.ObtenerUsuario;
+import logica.usuarios.ExisteUsuario;
+
+import logica.curso.ExisteCurso;
+import logica.curso.AltaCurso;
 
 public class LControlador implements ILogica {
 
@@ -21,6 +31,10 @@ public class LControlador implements ILogica {
         }
 
         // Listas
+
+        public List<DTInstituto> listaInstitutos() {
+                return new ListaInstitutos().getDataTypeList();
+        }
         // public List</*Clase DT Usuario*/> listaUsuarios(){}
 
         // public List</* Clase DT Formacion */> listFormaciones(){}
@@ -33,94 +47,119 @@ public class LControlador implements ILogica {
         // public List</* Clase DT Ediciones */> listEdiciones(String nombreCurso){}
 
         // Alta Instituto
-        public boolean existeInstituto(String nombre) {
-        }
 
-        public boolean crearInstituto(String nombre) {
+        public String crearInstituto(String nombre) {
+                return new AltaInstituto().create(nombre);
         }
 
         // Alta de Usuario
 
-        public boolean existeUsuario(String nickname, String email) {
-        }
-
         public String crearUsuarioEstudiante(String nickname, String nombre, String apellido, String mail,
                         Date fechaNac, File imagen) {
+                return new AltaUsuario(nickname, nombre, apellido, mail, fechaNac).createEstudiante();
+
         }
 
         public String crearUsuarioDocente(String nickname, String nombre, String apellido, String mail, Date fechaNac,
                         String instituto, File imagen) {
+                return new AltaUsuario(nickname, nombre, apellido, mail, fechaNac).createDocente(instituto);
+
         }
 
         // Modificar Datos de Usuario
 
-        public String ModificarUsuario(String nombre, String apellido, Date fechaNac, File imagen) {
+        public String ModificarUsuario(String nick, String nombre, String apellido, Date fechaNac, File imagen) {
+                if (new ExisteUsuario().existeNickname(nick)) {
+                        // MODIFICAR IMAGEN SI NO ES NULO
+                        if (new ObtenerUsuario().isEstudiante(nick)) {
+
+                                return new ModificarUsuario(nick, nombre, apellido, fechaNac).modificarEstudiante();
+                        } else {
+                                return new ModificarUsuario(nick, nombre, apellido, fechaNac).modificarDocente();
+                        }
+                } else {
+                        return "ERROR: No existe ese nickname, por favor ingrese uno correcto!";
+                }
+
         }
 
         // Alta Curso
 
-        public boolean existeCurso(String nombreCurso, String nombreInstituto) {
-        }
-
         public String crearCurso(String nombre, String desc, int Duracion, int CantHoras, int CantCred, String URL,
-                        Date Fecha) {
+                        Date Fecha, List<String> previas, String nombreInstituto) {
+                if (!new ExisteCurso().existeNombreCur(nombre)) {
+                        return new AltaCurso(nombre, desc, Duracion, CantHoras, CantCred, URL, Fecha)
+                                        .createCurso(nombreInstituto, previas);
+                } else {
+                        return "ERROR: YA existe ese nombre de curso, por favor ingrese uno nuevo!";
+                }
         }
 
-        // Alta edicion de Curso
+        // // Alta edicion de Curso
 
-        public boolean existeEdicion(String nombreEdicion, String nombreCurso) {
-        }
+        // public boolean existeEdicion(String nombreEdicion, String nombreCurso) {
+        // }
 
-        public String crearEdicion(String nombreEdicion, Date FechaInicio, Date FechaFin, int Cupo) {
-        }
+        // public String crearEdicion(String nombreEdicion, Date FechaInicio, Date
+        // FechaFin, int Cupo) {
+        // }
 
-        // Crear Programa de Formacion
+        // // Crear Programa de Formacion
 
-        public boolean existeFormacion(String nombreInstituto, String nombreFormacion) {
-        }
+        // public boolean existeFormacion(String nombreInstituto, String
+        // nombreFormacion) {
+        // }
 
-        public String crearFormacion(String nombreInstituto, String nombreFormacion, String descr, Date FechaIni,
-                        Date FechaFin) {
-        }
+        // public String crearFormacion(String nombreInstituto, String nombreFormacion,
+        // String descr, Date FechaIni,
+        // Date FechaFin) {
+        // }
 
-        // Agregar Curso a Programa de Formación
+        // // Agregar Curso a Programa de Formación
 
-        public boolean existeCurEnForm(String nombreInstituto, String nombreCurso, String nombreFormacion) {
-        }
+        // public boolean existeCurEnForm(String nombreInstituto, String nombreCurso,
+        // String nombreFormacion) {
+        // }
 
-        public String AgregoCurEnForm(String nombreFormacion, String nombreCurso) {
-        }
+        // public String AgregoCurEnForm(String nombreFormacion, String nombreCurso) {
+        // }
 
-        // Inscripcion a edicion de curso
+        // // Inscripcion a edicion de curso
 
-        public boolean existEstudEnCur(String nickname, String nombreCurso) {
-        }
+        // public boolean existEstudEnCur(String nickname, String nombreCurso) {
+        // }
 
-        public String regInscDeUsrEnCurso(String nickname, String nombrecurso, Date Finsc) {
-        }
+        // public String regInscDeUsrEnCurso(String nickname, String nombrecurso, Date
+        // Finsc) {
+        // }
 
-        // Consulta edicion Cursos
+        // // Consulta edicion Cursos
 
-        public /* Clase Edicion con inscriptos? */ void consultaEdicion(String nombreEdicion, String nombreCurso) {
-        }
+        // public /* Clase Edicion con inscriptos? */ void consultaEdicion(String
+        // nombreEdicion, String nombreCurso) {
+        // }
 
-        // Consulta de Programa de Formacion
+        // // Consulta de Programa de Formacion
 
-        public /* Clase formacion con sus cursos */ void consultaFormacion(String nombreFormacion) {
-        }
+        // public /* Clase formacion con sus cursos */ void consultaFormacion(String
+        // nombreFormacion) {
+        // }
 
-        // Consulta Curso
+        // // Consulta Curso
 
-        public /* Clase Cursos mas Ediciones con inscriptos? */ void consultaCurso(String nombreCurso) {
-        }
+        // public /* Clase Cursos mas Ediciones con inscriptos? */ void
+        // consultaCurso(String nombreCurso) {
+        // }
 
-        // Consulta Usuario
-        public boolean esEstudiante(String Docente) {
-        }
+        // // Consulta Usuario
+        // public boolean esEstudiante(String Docente) {
+        // }
 
-        public /* Clase Usuario con cursos, ediciones, programas */ void consultaUsuarioDocente(String nombre) {
-        }
+        // public /* Clase Usuario con cursos, ediciones, programas */ void
+        // consultaUsuarioDocente(String nombre) {
+        // }
 
-        public /* Clase Usuario con cursos, ediciones, programas */ void consultaUsuarioEstudiante(String nombre) {
-        }
+        // public /* Clase Usuario con cursos, ediciones, programas */ void
+        // consultaUsuarioEstudiante(String nombre) {
+        // }
 }

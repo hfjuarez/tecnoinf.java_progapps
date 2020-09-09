@@ -14,7 +14,7 @@ public class ListaInstitutos {
         EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("InstitutoJPA");
         EntityManager entitymanager = emfactory.createEntityManager();
 
-        Query query = entitymanager.createQuery("Select i from Instituto i");
+        Query query = entitymanager.createQuery("Select i from Instituto as i");
         list = (List<Instituto>) query.getResultList();
 
         entitymanager.close();
@@ -27,8 +27,7 @@ public class ListaInstitutos {
         List<Instituto> list = getList();
         List<DTInstituto> listOfDT = new ArrayList();
         for (Instituto instituto : list) {
-            DTInstituto dtInstituto = new DTInstituto();
-            dtInstituto.nombreInstituto = instituto.getNombreInstituto();
+            DTInstituto dtInstituto = new DTInstituto(instituto);
             listOfDT.add(dtInstituto);
         }
         return listOfDT;
