@@ -199,7 +199,6 @@ public class AltaCurso extends JInternalFrame {
 		if(!textField.getText().equals("") && !textField_1.getText().equals("") && !textField_2.getText().equals("") &&
 				!textField_3.getText().equals("") && !textField_4.getText().equals("") && !textField_5.getText().equals("") &&
 				!textField_6.getText().equals("") && !textField_7.getText().equals("") && !textField_8.getText().equals("")) {
-			
 			return true;
 		}else {
 			return false;

@@ -20,6 +20,7 @@ import javax.swing.JButton;
 import javax.swing.JSpinner;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.SpinnerNumberModel;
 
 public class AltaEdicionCurso extends JInternalFrame {
 	private JTextField textField;
@@ -77,11 +78,11 @@ public class AltaEdicionCurso extends JInternalFrame {
 		setTitle("Alta edicion de curso");
 		setMaximizable(true);
 		setClosable(true);
-		setBounds(100, 100, 372, 357);
+		setBounds(100, 100, 445, 357);
 		getContentPane().setLayout(null);
 		
 		panel = new JPanel();
-		panel.setBounds(30, 30, 300, 25);
+		panel.setBounds(30, 30, 350, 25);
 		getContentPane().add(panel);
 		panel.setLayout(new GridLayout(0, 2, 0, 0));
 		
@@ -105,7 +106,7 @@ public class AltaEdicionCurso extends JInternalFrame {
 		panel.add(comboBox);
 		
 		panel_1 = new JPanel();
-		panel_1.setBounds(29, 67, 300, 25);
+		panel_1.setBounds(29, 67, 350, 25);
 		getContentPane().add(panel_1);
 		panel_1.setLayout(new GridLayout(0, 2, 0, 0));
 		
@@ -126,7 +127,7 @@ public class AltaEdicionCurso extends JInternalFrame {
 		panel_1.add(comboBox_1);
 		
 		panel_2 = new JPanel();
-		panel_2.setBounds(30, 107, 300, 100);
+		panel_2.setBounds(30, 107, 350, 100);
 		getContentPane().add(panel_2);
 		panel_2.setLayout(new GridLayout(0, 2, 0, 0));
 		
@@ -147,12 +148,15 @@ public class AltaEdicionCurso extends JInternalFrame {
 		panel_3.setLayout(new GridLayout(0, 3, 0, 0));
 		
 		spinner_4 = new JSpinner();
+		spinner_4.setModel(new SpinnerNumberModel(new Integer(1),new Integer(1), new Integer(31), new Integer(1)));
 		panel_3.add(spinner_4);
 		
 		spinner_5 = new JSpinner();
+		spinner_5.setModel(new SpinnerNumberModel(new Integer(1), new Integer(1), new Integer(12), new Integer(1)));
 		panel_3.add(spinner_5);
 		
 		spinner_6 = new JSpinner();
+		spinner_6.setModel(new SpinnerNumberModel(new Integer(1900), new Integer(1900), new Integer(2020), new Integer(1)));
 		panel_3.add(spinner_6);
 		
 		JLabel lblFechaFin = new JLabel("Fecha fin");
@@ -164,12 +168,15 @@ public class AltaEdicionCurso extends JInternalFrame {
 		panel_4.setLayout(new GridLayout(0, 3, 0, 0));
 		
 		spinner_1 = new JSpinner();
+		spinner_1.setModel(new SpinnerNumberModel(new Integer(1),new Integer(1), new Integer(31), new Integer(1)));
 		panel_4.add(spinner_1);
 		
 		spinner_2 = new JSpinner();
+		spinner_2.setModel(new SpinnerNumberModel(new Integer(1), new Integer(1), new Integer(12), new Integer(1)));
 		panel_4.add(spinner_2);
 		
 		spinner_3 = new JSpinner();
+		spinner_3.setModel(new SpinnerNumberModel(new Integer(1900), new Integer(1900), new Integer(2020), new Integer(1)));
 		panel_4.add(spinner_3);
 		
 		JLabel lblCuposopcional = new JLabel("Cupos (Opcional)");
@@ -177,10 +184,11 @@ public class AltaEdicionCurso extends JInternalFrame {
 		panel_2.add(lblCuposopcional);
 		
 		spinner = new JSpinner();
+		spinner.setModel(new SpinnerNumberModel(new Integer(0), new Integer(0), new Integer(100), new Integer(1)));
 		panel_2.add(spinner);
 		
 		panel_5 = new JPanel();
-		panel_5.setBounds(30, 219, 300, 25);
+		panel_5.setBounds(30, 219, 350, 25);
 		getContentPane().add(panel_5);
 		panel_5.setLayout(new GridLayout(0, 2, 0, 0));
 		
@@ -206,7 +214,9 @@ public class AltaEdicionCurso extends JInternalFrame {
 		btnAceptar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
-				docentesAgregados = listaDocentes.getDocentesSeleccionados();
+				if(listaDocentes != null) {
+					docentesAgregados = listaDocentes.getDocentesSeleccionados();
+				}
 				JOptionPane.showMessageDialog(null, "Se guarda datos");
 				resetDatos();
 			}
@@ -226,23 +236,16 @@ public class AltaEdicionCurso extends JInternalFrame {
 	}
 	
 	private void resetDatos() {
-		docentesAgregados.clear();
+		if(listaDocentes != null) {
+			docentesAgregados.clear();
+		}
 	}
 	
 	private boolean validarFormulario() {
-		int diaIni = (Integer)spinner_4.getNextValue();
-		int mesIni = (Integer)spinner_5.getNextValue();
-		int anioIni = (Integer)spinner_6.getNextValue();
-		int diaFin = (Integer)spinner_1.getNextValue();
-		int mesFin = (Integer)spinner_2.getNextValue();
-		int cupos = (Integer)spinner.getNextValue();
 		if(textField.getText().equals("")) {
 			return false;
 		}
 		
-		if()) {
-			
-		}
 		
 		return true;
 	}
