@@ -155,6 +155,7 @@ public class CrearProgramaFormacion extends JInternalFrame {
 		JButton btnCancelar = new JButton("Cancelar");
 		btnCancelar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				System.out.println("Cancelar");
 				dispose();
 			}
 		});
