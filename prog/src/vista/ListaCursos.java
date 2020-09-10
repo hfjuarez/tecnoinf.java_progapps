@@ -13,6 +13,7 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.FlowLayout;
+import javax.swing.BoxLayout;
 
 public class ListaCursos extends JInternalFrame {
 
@@ -30,7 +31,7 @@ public class ListaCursos extends JInternalFrame {
 		JPanel panel = new JPanel();
 		panel.setBounds(12, 12, 450, 200);
 		getContentPane().add(panel);
-		panel.setLayout(new FlowLayout(FlowLayout.LEFT, 3, 5));
+		panel.setLayout(new FlowLayout(FlowLayout.LEFT, 5, 5));
 
 		this.cursos = cursos;
 		getContentPane().setLayout(null);

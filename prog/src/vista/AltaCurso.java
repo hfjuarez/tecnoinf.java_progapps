@@ -19,8 +19,11 @@ import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
+import java.awt.event.ItemListener;
+import java.awt.event.ItemEvent;
 
 public class AltaCurso extends JInternalFrame {
+	private String instituto;
 	private JTextField textField;
 	private JTextField textField_1;
 	private JTextField textField_2;
@@ -63,6 +66,11 @@ public class AltaCurso extends JInternalFrame {
 		getContentPane().add(lblInstituto);
 		
 		JComboBox comboBox = new JComboBox();
+		comboBox.addItemListener(new ItemListener() {
+			public void itemStateChanged(ItemEvent e) {
+				instituto = e.getItem().toString();
+			}
+		});
 		comboBox.addItem("");
 		comboBox.addItem("Matematica");
 		comboBox.addItem("Matematica 1");
@@ -183,6 +191,17 @@ public class AltaCurso extends JInternalFrame {
 				
 				if(validarFormulario()) {
 					JOptionPane.showMessageDialog(null,"Se agrego los datos del curso");
+					System.out.println(instituto);
+					System.out.println(textField_1.getText());
+					System.out.println(textField_2.getText());
+					System.out.println(textField_3.getText());
+					System.out.println(textField_4.getText());
+					System.out.println(textField_8.getText());
+					for(String curso: previas) {
+						System.out.println(curso);
+					}
+					
+					
 					resetFormulario();
 					//dispose();
 				}else {

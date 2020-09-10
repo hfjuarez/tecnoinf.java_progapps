@@ -99,6 +99,7 @@ public class AgregarCursoAProgramaFormacion extends JInternalFrame {
 		JButton btnAceptar = new JButton("Aceptar");
 		btnAceptar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				System.out.println("Se agrega: "+programa+" "+curso);
 				JOptionPane.showInternalMessageDialog(null, "Datos Agregados");
 				comboBox.setSelectedItem("");
 				comboBox_1.setSelectedItem("");
