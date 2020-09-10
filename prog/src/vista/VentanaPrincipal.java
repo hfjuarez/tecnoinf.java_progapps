@@ -42,7 +42,7 @@ public class VentanaPrincipal extends JFrame {
 	public VentanaPrincipal() {
 		setTitle("edEXT");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 645, 538);
+		setBounds(100, 100, 700, 638);
 		
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
