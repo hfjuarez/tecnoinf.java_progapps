@@ -12,6 +12,7 @@ import javax.swing.JCheckBox;
 import javax.swing.SwingConstants;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.FlowLayout;
 
 public class ListaDocentes extends JInternalFrame {
 	
@@ -25,7 +26,7 @@ public class ListaDocentes extends JInternalFrame {
 		setTitle("Lista Docentes");
 		setClosable(true);
 		setMaximizable(true);
-		setBounds(100, 100, 326, 380);
+		setBounds(100, 100, 373, 319);
 		getContentPane().setLayout(null);
 		
 		docentes = new ArrayList<>();
@@ -40,9 +41,9 @@ public class ListaDocentes extends JInternalFrame {
 		
 		
 		JPanel panel = new JPanel();
-		panel.setBounds(60, 30, 200, 250);
+		panel.setBounds(30, 30, 300, 200);
 		getContentPane().add(panel);
-		panel.setLayout(new GridLayout(0, 1, 0, 0));
+		panel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
 		for(int i=0;i<docentes.size();i++) {
 			cb[i] = new JCheckBox(docentes.get(i));
@@ -63,7 +64,7 @@ public class ListaDocentes extends JInternalFrame {
 				setVisible(false);
 			}
 		});
-		btnAceptar.setBounds(174, 292, 117, 25);
+		btnAceptar.setBounds(213, 242, 117, 25);
 		getContentPane().add(btnAceptar);
 		
 		

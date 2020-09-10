@@ -31,7 +31,7 @@ public class ListaCursos extends JInternalFrame {
 		JPanel panel = new JPanel();
 		panel.setBounds(12, 12, 450, 200);
 		getContentPane().add(panel);
-		panel.setLayout(new FlowLayout(FlowLayout.LEFT, 5, 5));
+		panel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 
 		this.cursos = cursos;
 		getContentPane().setLayout(null);
