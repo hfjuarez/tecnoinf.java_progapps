@@ -18,6 +18,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
+
 import javax.swing.BoxLayout;
 import java.awt.FlowLayout;
 import java.awt.CardLayout;
@@ -76,6 +78,10 @@ public class ConsultaProgramaFormacion extends JInternalFrame {
 		panel_2.setLayout(new GridLayout(0, 1, 0, 0));
 		
 		JComboBox comboBox = new JComboBox();
+		comboBox.addItem("");
+		for(String programa: listaProgramas()) {
+			comboBox.addItem(programa);
+		}
 		panel_2.add(comboBox);
 		
 		JPanel panel_3 = new JPanel();
@@ -141,14 +147,39 @@ public class ConsultaProgramaFormacion extends JInternalFrame {
 		panel_4.add(panel_5);
 		panel_5.setLayout(new GridLayout(10, 1, 0, 0));
 		
-		JButton btnNewButton_1 = new JButton("New button");
-		panel_5.add(btnNewButton_1);
+		ArrayList<JButton> botones = new ArrayList<>();
+		for(String curso: listaCursos()) {
+			botones.add(new JButton(curso));
+		}
 		
-		JButton btnNewButton = new JButton("New button");
-		panel_5.add(btnNewButton);
+		for(JButton boton: botones) {
+			boton.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					System.out.println(boton.getLabel());
+				}
+			});
+			panel_5.add(boton);
+		}
 		
-		JButton btnNewButton_2 = new JButton("New button");
-		panel_5.add(btnNewButton_2);
-
+	}
+	
+	private ArrayList<String> listaProgramas() {
+		ArrayList<String> lista = new ArrayList<>();
+		lista.add("Programa 1");
+		lista.add("Programa 2");
+		lista.add("Programa 3");
+		lista.add("Programa 4");
+		lista.add("Programa 5");
+		lista.add("Programa 6");
+		return lista;
+	}
+	
+	private ArrayList<String> listaCursos() {
+		ArrayList<String> lista = new ArrayList<>();
+		lista.add("Curso 1");
+		lista.add("Curso 2");
+		lista.add("Curso 3");
+		lista.add("Curso 4");
+		return lista;
 	}
 }
