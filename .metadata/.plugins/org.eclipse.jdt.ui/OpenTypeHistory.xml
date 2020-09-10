@@ -4,7 +4,7 @@
     <typeInfo handle="=prog/C:\/Program Files\/Java\/jdk-13.0.2\/lib\/jrt-fs.jar`java.base=/module=/true=/=/owner.project.facets=/java=/=/javadoc_location=/https:\/\/docs.oracle.com\/en\/java\/javase\/13\/docs\/api\/=/&lt;java.net(URL.class[URL" modifiers="49" timestamp="1586728308080"/>
     <typeInfo handle="=prog/C:\/Program Files\/Java\/jdk-13.0.2\/lib\/jrt-fs.jar`java.sql=/module=/true=/=/owner.project.facets=/java=/=/javadoc_location=/https:\/\/docs.oracle.com\/en\/java\/javase\/13\/docs\/api\/=/&lt;java.sql(Date.class[Date" modifiers="33" timestamp="1586728308080"/>
     <typeInfo handle="=prog/src&lt;logica.entidades{Instituto.java[Instituto" modifiers="1" timestamp="1599101718000"/>
-    <typeInfo handle="=prog/src&lt;logica.entidades{Curso.java[Curso" modifiers="1" timestamp="1599571766309"/>
+    <typeInfo handle="=prog/src&lt;logica.entidades{Curso.java[Curso" modifiers="1" timestamp="1599692626847"/>
     <typeInfo handle="=prog/C:\/Program Files\/Java\/jdk-13.0.2\/lib\/jrt-fs.jar`java.base=/module=/true=/=/owner.project.facets=/java=/=/javadoc_location=/https:\/\/docs.oracle.com\/en\/java\/javase\/13\/docs\/api\/=/&lt;java.util(List.class[List" modifiers="1537" timestamp="1586728308080"/>
     <typeInfo handle="=prog/src&lt;logica.entidades{EdicionCurso.java[EdicionCurso" modifiers="1" timestamp="1599606716374"/>
     <typeInfo handle="=prog/src&lt;logica.entidades{Estudiante.java[Estudiante" modifiers="1" timestamp="1599606289811"/>

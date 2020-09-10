@@ -59,7 +59,7 @@ public class CargarEdicion {
         Date fInicio7 =  Date.valueOf("2017-03-10");
         Date fFin7 =  Date.valueOf("2017-05-17");
         Date fAlta7 =  Date.valueOf("2017-02-17");
-        List <String> l7 = new ArrayList();
+        List <String> l7 = new ArrayString();
         l7.add("heisenberg");
         AltaEdicionCurso aec7 = new AltaEdicionCurso("Taller de robótica educativa - 2017", "Taller de robótica educativa",fInicio7,fFin7,10,fAlta7 );
         ret += aec7.createEdicionCurso(l7);
@@ -67,7 +67,7 @@ public class CargarEdicion {
         Date fInicio8 =  Date.valueOf("2019-03-10");
         Date fFin8 =  Date.valueOf("2019-05-10");
         Date fAlta8 =  Date.valueOf("2019-02-15");
-        List <String> l8 = new ArrayList();
+        List <String> l8 = new ArrayString();
         l8.add("heisenberg");
         l8.add("benkenobi");
         AltaEdicionCurso aec8 = new AltaEdicionCurso("Taller de robótica educativa - 2019", "Taller de robótica educativa",fInicio8,fFin8,10,fAlta8);
@@ -76,7 +76,7 @@ public class CargarEdicion {
         Date fInicio9 =  Date.valueOf("2019-09-10");
         Date fFin9 =  Date.valueOf("2019-11-08");
         Date fAlta9 =  Date.valueOf("2019-08-15");
-        List <String> l9 = new ArrayList();
+        List <String> l9 = new ArrayString();
         l9.add("benkenobi");
         l9.add("waston");
         AltaEdicionCurso aec9 = new AltaEdicionCurso("Taller de robótica educativa - 2019-2", "Taller de robótica educativa",fInicio9,fFin9,20,fAlta9);
@@ -85,7 +85,7 @@ public class CargarEdicion {
         Date fInicio10 =  Date.valueOf("2019-07-29");
         Date fFin10 =  Date.valueOf("2019-10-07");
         Date fAlta10 =  Date.valueOf("2019-07-10");
-        List <String> l10 = new ArrayList();
+        List <String> l10 = new ArrayString();
         l10.add("waston");
         AltaEdicionCurso aec10 = new AltaEdicionCurso("Participación en investigación sobre el empleo del juego Komikan como recurso didáctico en la Escuela - 2019", "Participación en investigación sobre el empleo del juego Komikan como recurso didáctico en la Escuela",fInicio10,fFin10,5,fAlta10);
         ret += aec10.createEdicionCurso(l10);
@@ -120,7 +120,8 @@ public class CargarEdicion {
         Date fInicio14 =  Date.valueOf("2019-09-10");
         Date fFin14 =  Date.valueOf("2019-10-20");
         Date fAlta14 =  Date.valueOf("2019-07-12");
-        AltaEdicionCurso aec14 = new AltaEdicionCurso("Seminarios de Resolución deProblemas - 2019", "Seminarios de Resolución de Problemas",fInicio14,fFin14,0,fAlta14);
+        AltaEdicionCurso aec14 = new AltaEdicionCurso("Seminarios de Resolución de
+        Problemas - 2019", "Seminarios de Resolución de Problemas",fInicio14,fFin14,0,fAlta14);
         List<String> l14 = new ArrayList();
         l14.add("timmy");
         ret += aec14.createEdicionCurso(l14);

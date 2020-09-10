@@ -47,6 +47,7 @@
 	      <class>logica.entidades.Curso</class>
 		<class>logica.entidades.EdicionCurso</class>
             <class>logica.entidades.Inscripcion_Edicion</class>
+            <class>logica.entidades.Formacion</class>
 
             <properties>
       

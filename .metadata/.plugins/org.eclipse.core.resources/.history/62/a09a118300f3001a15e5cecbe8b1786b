@@ -39,7 +39,7 @@ public class DTCurso {
 		super();
 		this.nombreCurso = curso.getNombreCurso();
 		this.descCurso = curso.getDescCurso();
-		this.duracionMeses = curso.getDuracionSemanas();
+		this.duracionMeses = curso.getDuracionMeses();
 		this.cantidadHoras = curso.getCantidadHoras();
 		this.cantidadCreditos = curso.getCantidadCreditos();
 		URL = curso.getURL();

@@ -17,7 +17,6 @@ public class Curso {
 
 	@Id
 	private String nombreCurso;
-	@Column(length = 1337)
 	private String descCurso;
 	private int duracionSemanas;
 	private int cantidadHoras;

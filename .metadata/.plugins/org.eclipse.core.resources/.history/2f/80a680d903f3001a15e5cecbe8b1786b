@@ -45,7 +45,7 @@ public class CargarFormacion {
 
         AgregarCursoAFormacion af3 = new AgregarCursoAFormacion("EFI Robotica");
         List<String> lf3 = new ArrayList();
-        lf3.add("Taller de robotica educativa");
+        lf3.add("Taller de robótica educativa");
         lf3.add("MicroBit");
         ret += af3.agregarCursosAFor(lf3);
 

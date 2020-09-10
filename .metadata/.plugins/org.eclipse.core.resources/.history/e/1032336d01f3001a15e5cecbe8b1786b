@@ -32,7 +32,7 @@ public class CargarCursos {
                 ret += ac2.createCurso("IMERL", l2);
 
                 AltaCurso ac3 = new AltaCurso("Dalavuelta",
-                                "Dalavuelta es un proyecto de extension que nace en el Instituto de Ingenieria Mecanica y Produccion Industrial (IIMPI) de Fing, que, si bien inicia su trabajo en el desarrollo de bicicletas accesibles para personas en situacion de discapacidad motriz a partir de bicicletas abandonadas, se propuso disenar otras herramientas para fomentar la accesibilidad.",
+                                "Dalavuelta es un proyecto de extension que nace en el Instituto de Ingenieria Mecanica y Produccion Industrial (IIMPI) de Fing, que, si bien inicia su trabajo en el desarrollo de bicicletas accesibles para personas en situacion de discapacidad motriz a partir de bicicletas abandonadas, se propuso diseñar otras herramientas para fomentar la accesibilidad.",
                                 10, 60, 4, "https://eva.fing.edu.uy/course/view.php?id=783#section-2", date3);
                 List<String> l3 = new ArrayList();
                 l3.add("Talleres plenarios");
