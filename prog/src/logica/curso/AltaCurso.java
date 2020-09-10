@@ -26,11 +26,11 @@ public class AltaCurso {
     private String curURL;
     private Date fech_alta;
 
-    public AltaCurso(String nombreCurso, String descCurso, int duracionMeses, int cantidadHoras, int cantidadCreditos,
+    public AltaCurso(String nombreCurso, String descCurso, int duracionSem, int cantidadHoras, int cantidadCreditos,
             String URL, Date fechaAlta) {
         nom_cur = nombreCurso;
         des_cur = descCurso;
-        dur_mes = duracionMeses;
+        dur_mes = duracionSem;
         cant_horas = cantidadHoras;
         cant_credito = cantidadCreditos;
         curURL = URL;

@@ -18,7 +18,7 @@ public class Curso {
 	@Id
 	private String nombreCurso;
 	private String descCurso;
-	private int duracionMeses;
+	private int duracionSemanas;
 	private int cantidadHoras;
 	private int cantidadCreditos;
 	private String URL;
@@ -33,12 +33,12 @@ public class Curso {
 		super();
 	}
 
-	public Curso(String nombreCurso, String descCurso, int duracionMeses, int cantidadHoras, int cantidadCreditos,
+	public Curso(String nombreCurso, String descCurso, int duracionSemanas, int cantidadHoras, int cantidadCreditos,
 			String uRL, Date fechaAlta, Instituto instituto) {
 		super();
 		this.nombreCurso = nombreCurso;
 		this.descCurso = descCurso;
-		this.duracionMeses = duracionMeses;
+		this.duracionSemanas = duracionSemanas;
 		this.cantidadHoras = cantidadHoras;
 		this.cantidadCreditos = cantidadCreditos;
 		URL = uRL;
@@ -62,12 +62,12 @@ public class Curso {
 		this.descCurso = descCurso;
 	}
 
-	public int getDuracionMeses() {
-		return this.duracionMeses;
+	public int getDuracionSemanas() {
+		return this.duracionSemanas;
 	}
 
-	public void setDuracionMeses(int duracionMeses) {
-		this.duracionMeses = duracionMeses;
+	public void setDuracionSemanas(int duracionSemanas) {
+		this.duracionSemanas = duracionSemanas;
 	}
 
 	public int getCantidadHoras() {
