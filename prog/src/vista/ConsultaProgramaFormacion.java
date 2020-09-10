@@ -13,6 +13,19 @@ import javax.swing.JTextArea;
 import javax.swing.JTree;
 import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import javax.swing.BoxLayout;
+import java.awt.FlowLayout;
+import java.awt.CardLayout;
+import java.awt.GridBagLayout;
+import java.awt.GridBagConstraints;
+import com.jgoodies.forms.layout.FormLayout;
+import com.jgoodies.forms.layout.ColumnSpec;
+import com.jgoodies.forms.layout.RowSpec;
 
 public class ConsultaProgramaFormacion extends JInternalFrame {
 	private JTextField textField;
@@ -42,11 +55,11 @@ public class ConsultaProgramaFormacion extends JInternalFrame {
 		setTitle("Consulta de programa de formacion");
 		setMaximizable(true);
 		setClosable(true);
-		setBounds(100, 100, 483, 408);
+		setBounds(100, 100, 468, 392);
 		getContentPane().setLayout(null);
 		
 		JPanel panel = new JPanel();
-		panel.setBounds(35, 12, 400, 35);
+		panel.setBounds(35, 12, 400, 20);
 		getContentPane().add(panel);
 		panel.setLayout(new GridLayout(0, 2, 0, 0));
 		
@@ -66,50 +79,76 @@ public class ConsultaProgramaFormacion extends JInternalFrame {
 		panel_2.add(comboBox);
 		
 		JPanel panel_3 = new JPanel();
-		panel_3.setBounds(45, 59, 380, 120);
+		panel_3.setBounds(35, 59, 400, 100);
 		getContentPane().add(panel_3);
 		panel_3.setLayout(new GridLayout(0, 2, 0, 0));
 		
 		JLabel lblNombre = new JLabel("Nombre");
+		lblNombre.setHorizontalAlignment(SwingConstants.CENTER);
 		panel_3.add(lblNombre);
 		
 		textField = new JTextField();
+		textField.setEditable(false);
 		panel_3.add(textField);
 		textField.setColumns(10);
 		
 		JLabel lblNewLabel = new JLabel("Descripcion");
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		panel_3.add(lblNewLabel);
 		
 		JTextArea textArea = new JTextArea();
+		textArea.setEditable(false);
 		panel_3.add(textArea);
 		
 		JLabel lblFechaInicio = new JLabel("Fecha inicio");
+		lblFechaInicio.setHorizontalAlignment(SwingConstants.CENTER);
 		panel_3.add(lblFechaInicio);
 		
 		textField_1 = new JTextField();
+		textField_1.setEditable(false);
 		panel_3.add(textField_1);
 		textField_1.setColumns(10);
 		
 		JLabel lblFechaFin = new JLabel("Fecha fin");
+		lblFechaFin.setHorizontalAlignment(SwingConstants.CENTER);
 		panel_3.add(lblFechaFin);
 		
 		textField_2 = new JTextField();
+		textField_2.setEditable(false);
 		panel_3.add(textField_2);
 		textField_2.setColumns(10);
 		
-		JTree tree = new JTree();
-		tree.setBounds(64, 203, 356, 139);
-		getContentPane().add(tree);
-		tree.setModel(new DefaultTreeModel(
-			new DefaultMutableTreeNode("Cursos") {
-				{
-					add(new DefaultMutableTreeNode("curso1"));
-					add(new DefaultMutableTreeNode("curso2"));
-					add(new DefaultMutableTreeNode("curso3"));
-					add(new DefaultMutableTreeNode("curso4"));
-				}
+		JButton btnCerrar = new JButton("Cerrar");
+		btnCerrar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
 			}
-		));
+		});
+		btnCerrar.setBounds(318, 323, 117, 25);
+		getContentPane().add(btnCerrar);
+		
+		JPanel panel_4 = new JPanel();
+		panel_4.setBounds(35, 171, 400, 140);
+		getContentPane().add(panel_4);
+		panel_4.setLayout(new GridLayout(0, 2, 0, 0));
+		
+		JLabel lblNewLabel_1 = new JLabel("Cursos");
+		lblNewLabel_1.setVerticalAlignment(SwingConstants.TOP);
+		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
+		panel_4.add(lblNewLabel_1);
+		
+		JPanel panel_5 = new JPanel();
+		panel_4.add(panel_5);
+		panel_5.setLayout(new GridLayout(10, 1, 0, 0));
+		
+		JButton btnNewButton_1 = new JButton("New button");
+		panel_5.add(btnNewButton_1);
+		
+		JButton btnNewButton = new JButton("New button");
+		panel_5.add(btnNewButton);
+		
+		JButton btnNewButton_2 = new JButton("New button");
+		panel_5.add(btnNewButton_2);
 
 	}
 }
