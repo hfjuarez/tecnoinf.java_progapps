@@ -156,6 +156,10 @@ public class ConsultaProgramaFormacion extends JInternalFrame {
 			boton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					System.out.println(boton.getLabel());
+					ConsultaCurso cc = new ConsultaCurso();
+					cc.setLabel(boton.getLabel());
+					VentanaPrincipal.desktopPane.add(cc);
+					cc.setVisible(true);
 				}
 			});
 			panel_5.add(boton);
