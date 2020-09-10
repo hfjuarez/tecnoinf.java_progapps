@@ -18,10 +18,10 @@ import java.util.Calendar;
 import java.util.Date;
 import java.awt.event.ActionEvent;
 import javax.swing.SwingConstants;
+import javax.swing.JTextArea;
 
 public class CrearProgramaFormacion extends JInternalFrame {
 	private JTextField textField;
-	private JTextField textField_1;
 	private Date fechaInicio = null;
 	private Date fechaFin = null;
 
@@ -80,9 +80,8 @@ public class CrearProgramaFormacion extends JInternalFrame {
 		lblDescripcion.setHorizontalAlignment(SwingConstants.CENTER);
 		panel_2.add(lblDescripcion);
 		
-		textField_1 = new JTextField();
-		panel_2.add(textField_1);
-		textField_1.setColumns(10);
+		JTextArea textArea = new JTextArea();
+		panel_2.add(textArea);
 		
 		JPanel panel_3 = new JPanel();
 		panel.add(panel_3);
