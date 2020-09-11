@@ -1,4 +1,6 @@
-package API;
+package logica.controladores;
+
+import API.ILogica;
 
 import java.sql.Date;
 import java.util.List;
@@ -6,7 +8,6 @@ import java.util.List;
 import java.io.File;
 
 import logica.datatypes.*;
-import logica.entidades.EdicionCurso;
 import logica.instituto.AltaInstituto;
 import logica.instituto.ListaInstitutos;
 
@@ -17,6 +18,11 @@ import logica.curso.ListaCursos;
 import logica.curso.AltaCurso;
 
 import logica.edicioncurso.ListaEdicionCurso;
+import logica.edicioncurso.AltaEdicionCurso;
+import logica.edicioncurso.InscripcionAEdicion;
+import logica.formacion.AltaFormacion;
+import logica.formacion.AgregarCursoAFormacion;
+import logica.formacion.ListaFormacion;
 
 public class LControlador implements ILogica {
 
@@ -54,12 +60,16 @@ public class LControlador implements ILogica {
                 return new ListaEdicionCurso().getDataTypeListByCurso(nombreCurso);
         }
 
-        // public List</* Clase DT Formacion */> listFormaciones(){}
+        public List<DTFormacion> listFormaciones() {
+                return new ListaFormacion().getDataTypeList();
+        }
 
         // public List</* Clase DT Cursos */> listCurEnFormacion(String
         // nombreFormacion){}
 
-        // public List</* Clase DT Cursos */> listCursos(String nombreInstituto){}
+        // public List<DTCurso> listCursos(String nombreInstituto){
+        // return new ListaCursos().getDataTypeListConInstituto(String nameInstituto)
+        // }
 
         // public List</* Clase DT Ediciones */> listEdiciones(String nombreCurso){}
 
@@ -112,71 +122,62 @@ public class LControlador implements ILogica {
                 }
         }
 
-        // // Alta edicion de Curso
+        // Alta edicion de Curso
 
-        // public boolean existeEdicion(String nombreEdicion, String nombreCurso) {
-        // }
+        public String crearEdicion(String nombreEdicion, String curso, Date FechaInicio, Date FechaFin, int Cupo,
+                        Date fechaAlta, List<String> docentes) {
+                return new AltaEdicionCurso(nombreEdicion, curso, FechaInicio, FechaFin, Cupo, fechaAlta)
+                                .createEdicionCurso(docentes);
+        }
 
-        // public String crearEdicion(String nombreEdicion, Date FechaInicio, Date
-        // FechaFin, int Cupo) {
-        // }
+        // Crear Programa de Formacion
 
-        // // Crear Programa de Formacion
+        public String crearFormacion(String nombreFormacion, String descr, Date FechaIni, Date FechaFin,
+                        Date FechaAlta) {
+                return new AltaFormacion(nombreFormacion, descr, FechaIni, FechaFin, FechaAlta).createFormacion();
+        }
 
-        // public boolean existeFormacion(String nombreInstituto, String
-        // nombreFormacion) {
-        // }
+        // Agregar Curso a Programa de Formación
 
-        // public String crearFormacion(String nombreInstituto, String nombreFormacion,
-        // String descr, Date FechaIni,
-        // Date FechaFin) {
-        // }
+        public String AgregoCurEnForm(String nombreFormacion, List<String> nombreCursos) {
+                return new AgregarCursoAFormacion(nombreFormacion).agregarCursosAFor(nombreCursos);
+        }
 
-        // // Agregar Curso a Programa de Formación
+        // Inscripcion a edicion de curso
 
-        // public boolean existeCurEnForm(String nombreInstituto, String nombreCurso,
-        // String nombreFormacion) {
-        // }
+        public String regInscDeUsrEnCurso(String nickname, String nombreEdicion, Date Finsc) {
+                return new InscripcionAEdicion(nickname, Finsc, nombreEdicion).inscripcion();
+        }
 
-        // public String AgregoCurEnForm(String nombreFormacion, String nombreCurso) {
-        // }
+        // Consulta edicion Cursos
 
-        // // Inscripcion a edicion de curso
+        public List<DTEdicionCurso> consultaEdicion(String nombreCurso) {
+                return new ListaEdicionCurso().getDataTypeListByCurso(nombreCurso);
+        }
 
-        // public boolean existEstudEnCur(String nickname, String nombreCurso) {
-        // }
+        // Consulta de Programa de Formacion
 
-        // public String regInscDeUsrEnCurso(String nickname, String nombrecurso, Date
-        // Finsc) {
-        // }
+        public List<DTFormacion> consultaFormacion() {
+                return new ListaFormacion().getDataTypeList();
+        }
 
-        // // Consulta edicion Cursos
+        // Consulta Curso
 
-        // public /* Clase Edicion con inscriptos? */ void consultaEdicion(String
-        // nombreEdicion, String nombreCurso) {
-        // }
+        public List<DTCurso> consultaCurso(String nombreInstituto) {
+                return new ListaCursos().getDataTypeListConInstituto(nombreInstituto);
+        }
 
-        // // Consulta de Programa de Formacion
+        // Consulta Usuario
 
-        // public /* Clase formacion con sus cursos */ void consultaFormacion(String
-        // nombreFormacion) {
-        // }
+        public boolean isEstudiante(String nickname) {
+                return new ObtenerUsuario().isEstudiante(nickname);
+        }
 
-        // // Consulta Curso
+        public List<DTDocente> consultaUsuarioDocente() {
+                return new ListaUsuarios().getDataTypeListDocente();
+        }
 
-        // public /* Clase Cursos mas Ediciones con inscriptos? */ void
-        // consultaCurso(String nombreCurso) {
-        // }
-
-        // // Consulta Usuario
-        // public boolean esEstudiante(String Docente) {
-        // }
-
-        // public /* Clase Usuario con cursos, ediciones, programas */ void
-        // consultaUsuarioDocente(String nombre) {
-        // }
-
-        // public /* Clase Usuario con cursos, ediciones, programas */ void
-        // consultaUsuarioEstudiante(String nombre) {
-        // }
+        public List<DTEstudiante> consultaUsuarioEstudiante() {
+                return new ListaUsuarios().getDataTypeListEstudiante();
+        }
 }
