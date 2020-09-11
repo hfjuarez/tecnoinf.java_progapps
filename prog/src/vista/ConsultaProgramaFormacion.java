@@ -33,6 +33,7 @@ public class ConsultaProgramaFormacion extends JInternalFrame {
 	private JTextField textField;
 	private JTextField textField_1;
 	private JTextField textField_2;
+	private String programa;
 
 	/**
 	 * Launch the application.
@@ -157,7 +158,7 @@ public class ConsultaProgramaFormacion extends JInternalFrame {
 				public void actionPerformed(ActionEvent e) {
 					System.out.println(boton.getLabel());
 					ConsultaCurso cc = new ConsultaCurso();
-					cc.setLabel(boton.getLabel());
+					cc.setCurso(boton.getLabel());
 					VentanaPrincipal.desktopPane.add(cc);
 					cc.setVisible(true);
 				}
@@ -185,5 +186,9 @@ public class ConsultaProgramaFormacion extends JInternalFrame {
 		lista.add("Curso 3");
 		lista.add("Curso 4");
 		return lista;
+	}
+	
+	public void setPrograma(String programa) {
+		this.programa = programa;
 	}
 }

@@ -10,6 +10,9 @@ import javax.swing.SwingConstants;
 import javax.swing.JComboBox;
 import javax.swing.JTextField;
 import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.awt.event.ActionEvent;
 
 public class ConsultaUsuario extends JInternalFrame {
 	private JTextField textField;
@@ -128,11 +131,18 @@ public class ConsultaUsuario extends JInternalFrame {
 		JPanel panel_9 = new JPanel();
 		panel_5.add(panel_9);
 		
-		JButton btnCurso = new JButton("Curso 1");
-		panel_5.add(btnCurso);
-		
-		JButton btnCurso_1 = new JButton("Curso 2");
-		panel_5.add(btnCurso_1);
+		for(String curso:listaCursos()) {
+			JButton btnCurso = new JButton(curso);
+			btnCurso.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					ConsultaCurso cc = new ConsultaCurso();
+					cc.setCurso(curso);
+					VentanaPrincipal.desktopPane.add(cc);
+					cc.setVisible(true);
+				}
+			});
+			panel_5.add(btnCurso);
+		}
 		
 		JPanel panel_6 = new JPanel();
 		panel_4.add(panel_6);
@@ -145,11 +155,18 @@ public class ConsultaUsuario extends JInternalFrame {
 		JPanel panel_10 = new JPanel();
 		panel_6.add(panel_10);
 		
-		JButton btnPrograma = new JButton("Programa 1");
-		panel_6.add(btnPrograma);
-		
-		JButton btnRograma = new JButton("rograma 2");
-		panel_6.add(btnRograma);
+		for(String curso:listaProgramas()) {
+			JButton btnCurso = new JButton(curso);
+			btnCurso.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					ConsultaProgramaFormacion cc = new ConsultaProgramaFormacion();
+					cc.setPrograma(curso);
+					VentanaPrincipal.desktopPane.add(cc);
+					cc.setVisible(true);
+				}
+			});
+			panel_6.add(btnCurso);
+		}
 		
 		JPanel panel_7 = new JPanel();
 		panel_4.add(panel_7);
@@ -162,22 +179,58 @@ public class ConsultaUsuario extends JInternalFrame {
 		JPanel panel_11 = new JPanel();
 		panel_7.add(panel_11);
 		
-		JButton btnEdicion = new JButton("Edicion 1");
-		panel_7.add(btnEdicion);
+		for(String curso:listaEdiciones()) {
+			JButton btnCurso = new JButton(curso);
+			btnCurso.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					ConsultaEdicionCurso cc = new ConsultaEdicionCurso();
+					cc.setEdicion(curso);
+					VentanaPrincipal.desktopPane.add(cc);
+					cc.setVisible(true);
+				}
+			});
+			panel_7.add(btnCurso);
+		}
 		
-		JButton btnEdicion_1 = new JButton("Edicion 2");
-		panel_7.add(btnEdicion_1);
 		
 		JPanel panel_8 = new JPanel();
 		panel_4.add(panel_8);
 		
-		JButton btnAceptar = new JButton("Aceptar");
+		JButton btnAceptar = new JButton("Cerrar");
+		btnAceptar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+			}
+		});
 		btnAceptar.setBounds(259, 383, 117, 25);
 		getContentPane().add(btnAceptar);
-		
-		JButton btnCancelar = new JButton("Cancelar");
-		btnCancelar.setBounds(104, 383, 117, 25);
-		getContentPane().add(btnCancelar);
 
+	}
+	
+	private ArrayList<String> listaCursos(){
+		ArrayList<String> cursos = new ArrayList<>();
+		cursos.add("Calculo 1");
+		cursos.add("Calculo 2");
+		cursos.add("Calculo 3");
+		return cursos;
+	}
+	
+	private ArrayList<String> listaEdiciones(){
+		ArrayList<String> cursos = new ArrayList<>();
+		cursos.add("ediion 1");
+		cursos.add("edicion 2");
+		cursos.add("edicion 3");
+		cursos.add("edicion 4");
+		cursos.add("edicion 5");
+		return cursos;
+	}
+	
+	private ArrayList<String> listaProgramas(){
+		ArrayList<String> cursos = new ArrayList<>();
+		cursos.add("programa 1");
+		cursos.add("programa 2");
+		cursos.add("programa 3");
+		cursos.add("programa 3");
+		return cursos;
 	}
 }

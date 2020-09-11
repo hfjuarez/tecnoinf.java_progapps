@@ -17,6 +17,7 @@ import java.awt.event.ActionEvent;
 
 public class ConsultaEdicionCurso extends JInternalFrame {
 	private JTable table;
+	private String edicion;
 
 	/**
 	 * Launch the application.
@@ -136,5 +137,9 @@ public class ConsultaEdicionCurso extends JInternalFrame {
 		btnCerrar.setBounds(254, 274, 117, 25);
 		getContentPane().add(btnCerrar);
 
+	}
+	
+	public void setEdicion(String edicion) {
+		this.edicion = edicion;
 	}
 }

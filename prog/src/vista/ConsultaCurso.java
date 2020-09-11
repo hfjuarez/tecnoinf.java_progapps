@@ -14,6 +14,7 @@ import javax.swing.JTextField;
 import javax.swing.JTextArea;
 
 public class ConsultaCurso extends JInternalFrame {
+	private String curso;
 	private JLabel lblNewLabel;
 	private JTextField textField;
 	private JTextField textField_1;
@@ -68,6 +69,7 @@ public class ConsultaCurso extends JInternalFrame {
 		panel.add(lblNewLabel_1);
 		
 		JComboBox comboBox_1 = new JComboBox();
+		comboBox_1.addItem(this.curso);
 		panel.add(comboBox_1);
 		
 		JPanel panel_3 = new JPanel();
@@ -165,7 +167,7 @@ public class ConsultaCurso extends JInternalFrame {
 
 	}
 	
-	public void setLabel(String curso) {
-		lblNewLabel.setText(curso);
+	public void setCurso(String curso) {
+		this.curso = curso;
 	}
 }
