@@ -4,12 +4,17 @@ import java.awt.EventQueue;
 
 import javax.swing.JInternalFrame;
 import javax.swing.JPanel;
+
+import API.BizcochoEnARG;
+import API.ILogica;
+
 import java.awt.GridLayout;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JComboBox;
 import javax.swing.JButton;
 import java.awt.event.ItemListener;
+import java.sql.Date;
 import java.util.ArrayList;
 import java.awt.event.ItemEvent;
 import java.awt.event.ActionListener;
@@ -99,6 +104,11 @@ public class AgregarCursoAProgramaFormacion extends JInternalFrame {
 		JButton btnAceptar = new JButton("Aceptar");
 		btnAceptar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
+				ILogica Interfaz = new BizcochoEnARG().getInterface();
+				System.out.println("Se elige programa:  " + programa);
+				System.out.println("Se elige curso: "+curso);
+	            //String pp = Interfaz.agregarCursoAProgramaFormacion(programa,curso);
 				System.out.println("Se agrega: "+programa+" "+curso);
 				JOptionPane.showInternalMessageDialog(null, "Datos Agregados");
 				comboBox.setSelectedItem("");
