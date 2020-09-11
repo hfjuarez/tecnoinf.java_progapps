@@ -1,4 +1,6 @@
 package vista;
+import API.ILogica;
+import API.BizcochoEnARG;
 
 import java.awt.EventQueue;
 
@@ -53,7 +55,12 @@ public class AltaInstituto extends JInternalFrame {
 		btnAgregar = new JButton("Agregar");
 		btnAgregar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				BizcochoEnARG fabrica  = new BizcochoEnARG();
+				ILogica inter = fabrica.getInterface();
+				
 				if(!textField.getText().equals("")) {
+					//Falta validar que no exista el instituto
+					inter.crearInstituto(textField.getText());
 					JOptionPane.showMessageDialog(null,"Agregado");
 					textField.setText("");
 				}else {
