@@ -60,18 +60,23 @@ public class LControlador implements ILogica {
                 return new ListaEdicionCurso().getDataTypeListByCurso(nombreCurso);
         }
 
+        public List<DTCurso> ListaCursos() {
+                return new ListaCursos().getDataTypeList();
+        }
+
         public List<DTFormacion> listFormaciones() {
                 return new ListaFormacion().getDataTypeList();
         }
 
-        // public List</* Clase DT Cursos */> listCurEnFormacion(String
-        // nombreFormacion){}
+        // Obtener DT
 
-        // public List<DTCurso> listCursos(String nombreInstituto){
-        // return new ListaCursos().getDataTypeListConInstituto(String nameInstituto)
-        // }
+        public DTEstudiante obtenerEstudiante(String nickname) {
+                return new ObtenerUsuario().getDTEstudianteByNickname(nickname);
+        }
 
-        // public List</* Clase DT Ediciones */> listEdiciones(String nombreCurso){}
+        public DTDocente obtenerDocente(String nickname) {
+                return new ObtenerUsuario().getDTDocenteByNickname(nickname);
+        }
 
         // Alta Instituto
 

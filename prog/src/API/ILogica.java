@@ -21,6 +21,14 @@ public interface ILogica {
 
       public List<DTEdicionCurso> ListaEdicionesCurso(String nombreCurso);
 
+      public List<DTCurso> ListaCursos();
+
+      // Obtener DT
+
+      public DTEstudiante obtenerEstudiante(String nickname);
+
+      public DTDocente obtenerDocente(String nickname);
+
       // Alta Instituto
 
       public String crearInstituto(String nombre);

@@ -63,7 +63,7 @@ public class AltaInstituto extends JInternalFrame {
 					String xd = inter.crearInstituto(textField.getText());
 					if(xd.isEmpty())
 					{
-						JOptionPane.showMessageDialog(null,"Agregado");
+						JOptionPane.showMessageDialog(null,"Se ha agregado el Instituto con nombre: "+ textField.getText());
 					}
 					else
 					{

@@ -21,6 +21,11 @@ import javax.swing.JSpinner;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.SpinnerNumberModel;
+import API.*;
+
+import java.util.List;
+import logica.datatypes.*;
+import java.sql.Date;
 
 public class AltaEdicionCurso extends JInternalFrame {
 	private JTextField textField;
@@ -32,6 +37,7 @@ public class AltaEdicionCurso extends JInternalFrame {
 	private JPanel panel_3;
 	private JPanel panel_4;
 	private JPanel panel_5;
+	private JPanel panel_50;
 	private JSpinner spinner;
 	private JSpinner spinner_1;
 	private JSpinner spinner_2;
@@ -42,35 +48,20 @@ public class AltaEdicionCurso extends JInternalFrame {
 	private JComboBox comboBox_1;
 	private JButton btnAgregar;
 	private JButton btnAceptar;
-	private ArrayList<String> docentesAgregados=null;
+	private JButton btnRefresh;
+	private ArrayList<String> docentesAgregados = null;
 	private ListaDocentes listaDocentes = null;
 	private String institutoElegido;
+	private ILogica Interfaz = new BizcochoEnARG().getInterface();
 
-	private ArrayList<String> getInstitutos(){
-		ArrayList<String> lista = new ArrayList<>();
-		lista.add("instituto 1");
-		lista.add("instituto 2");
-		lista.add("instituto 3");
-		lista.add("instituto 4");
-		lista.add("instituto 5");
-		lista.add("instituto 6");
-		return lista;
+	private List<DTInstituto> getInstitutos() {
+		return Interfaz.listaInstitutos();
 	}
-	
-	private ArrayList<String> getCursos(String instituto){
-		//busco los cursos con el parametro instituto
-		ArrayList<String> lista = new ArrayList<>();
-		
-		lista.add("Curso 1");
-		lista.add("Curso 2");
-		lista.add("Curso 3");
-		lista.add("Curso 4");
-		return lista;
+
+	private List<DTCurso> getCursos(String instituto) {
+		return Interfaz.listaCursosPorInstituto(instituto);
 	}
-	
-	
-	
-	
+
 	/**
 	 * Create the frame.
 	 */
@@ -80,23 +71,22 @@ public class AltaEdicionCurso extends JInternalFrame {
 		setClosable(true);
 		setBounds(100, 100, 445, 357);
 		getContentPane().setLayout(null);
-		
+
 		panel = new JPanel();
 		panel.setBounds(30, 30, 350, 25);
 		getContentPane().add(panel);
 		panel.setLayout(new GridLayout(0, 2, 0, 0));
-		
+
 		lblInstituto = new JLabel("Instituto");
-		lblInstituto.setHorizontalAlignment(SwingConstants.LEFT);		
+		lblInstituto.setHorizontalAlignment(SwingConstants.LEFT);
 		panel.add(lblInstituto);
-		
+
 		comboBox = new JComboBox();
-		ArrayList<String> institutos = getInstitutos();
-		comboBox.addItem("");
-		for(String instituto: institutos) {
-			comboBox.addItem(instituto);
+		List<DTInstituto> institutos = getInstitutos();
+		for (DTInstituto instituto : institutos) {
+			comboBox.addItem(instituto.nombreInstituto);
 		}
-		
+
 		comboBox.addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent arg0) {
 				String eleccion = comboBox.getSelectedItem().toString();
@@ -104,126 +94,166 @@ public class AltaEdicionCurso extends JInternalFrame {
 			}
 		});
 		panel.add(comboBox);
-		
+
 		panel_1 = new JPanel();
 		panel_1.setBounds(29, 67, 350, 25);
 		getContentPane().add(panel_1);
 		panel_1.setLayout(new GridLayout(0, 2, 0, 0));
-		
+
 		JLabel lblNewLabel = new JLabel("Curso");
 		lblNewLabel.setHorizontalAlignment(SwingConstants.LEFT);
 		panel_1.add(lblNewLabel);
-		
+
 		comboBox_1 = new JComboBox();
-		ArrayList<String> cursos = getCursos(institutoElegido);
-		for(String curso: cursos) {
-			comboBox_1.addItem(curso);
+		List<DTCurso> cursos = getCursos(institutoElegido);
+		for (DTCurso curso : cursos) {
+			comboBox_1.addItem(curso.nombreCurso);
 		}
 		comboBox_1.addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent e) {
-				
+
 			}
 		});
 		panel_1.add(comboBox_1);
-		
+
 		panel_2 = new JPanel();
 		panel_2.setBounds(30, 107, 350, 100);
 		getContentPane().add(panel_2);
 		panel_2.setLayout(new GridLayout(0, 2, 0, 0));
-		
+
 		JLabel lblNombreEdicion = new JLabel("Nombre edicion");
 		lblNombreEdicion.setHorizontalAlignment(SwingConstants.LEFT);
 		panel_2.add(lblNombreEdicion);
-		
+
 		textField = new JTextField();
 		panel_2.add(textField);
 		textField.setColumns(10);
-		
+
 		JLabel lblFechaInicio = new JLabel("Fecha inicio");
 		lblFechaInicio.setHorizontalAlignment(SwingConstants.LEFT);
 		panel_2.add(lblFechaInicio);
-		
+
 		panel_3 = new JPanel();
 		panel_2.add(panel_3);
 		panel_3.setLayout(new GridLayout(0, 3, 0, 0));
-		
+
 		spinner_4 = new JSpinner();
-		spinner_4.setModel(new SpinnerNumberModel(new Integer(1),new Integer(1), new Integer(31), new Integer(1)));
+		spinner_4.setModel(new SpinnerNumberModel(new Integer(1), new Integer(1), new Integer(31), new Integer(1)));
 		panel_3.add(spinner_4);
-		
+
 		spinner_5 = new JSpinner();
 		spinner_5.setModel(new SpinnerNumberModel(new Integer(1), new Integer(1), new Integer(12), new Integer(1)));
 		panel_3.add(spinner_5);
-		
+
 		spinner_6 = new JSpinner();
-		spinner_6.setModel(new SpinnerNumberModel(new Integer(1900), new Integer(1900), new Integer(2020), new Integer(1)));
+		spinner_6.setModel(
+				new SpinnerNumberModel(new Integer(1900), new Integer(1900), new Integer(2020), new Integer(1)));
 		panel_3.add(spinner_6);
-		
+
 		JLabel lblFechaFin = new JLabel("Fecha fin");
 		lblFechaFin.setHorizontalAlignment(SwingConstants.LEFT);
 		panel_2.add(lblFechaFin);
-		
+
 		panel_4 = new JPanel();
 		panel_2.add(panel_4);
 		panel_4.setLayout(new GridLayout(0, 3, 0, 0));
-		
+
 		spinner_1 = new JSpinner();
-		spinner_1.setModel(new SpinnerNumberModel(new Integer(1),new Integer(1), new Integer(31), new Integer(1)));
+		spinner_1.setModel(new SpinnerNumberModel(new Integer(1), new Integer(1), new Integer(31), new Integer(1)));
 		panel_4.add(spinner_1);
-		
+
 		spinner_2 = new JSpinner();
 		spinner_2.setModel(new SpinnerNumberModel(new Integer(1), new Integer(1), new Integer(12), new Integer(1)));
 		panel_4.add(spinner_2);
-		
+
 		spinner_3 = new JSpinner();
-		spinner_3.setModel(new SpinnerNumberModel(new Integer(1900), new Integer(1900), new Integer(2020), new Integer(1)));
+		spinner_3.setModel(
+				new SpinnerNumberModel(new Integer(1900), new Integer(1900), new Integer(2020), new Integer(1)));
 		panel_4.add(spinner_3);
-		
+
 		JLabel lblCuposopcional = new JLabel("Cupos (Opcional)");
 		lblCuposopcional.setHorizontalAlignment(SwingConstants.LEFT);
 		panel_2.add(lblCuposopcional);
-		
+
 		spinner = new JSpinner();
 		spinner.setModel(new SpinnerNumberModel(new Integer(0), new Integer(0), new Integer(100), new Integer(1)));
 		panel_2.add(spinner);
-		
+
 		panel_5 = new JPanel();
 		panel_5.setBounds(30, 219, 350, 25);
 		getContentPane().add(panel_5);
 		panel_5.setLayout(new GridLayout(0, 2, 0, 0));
 		
+		panel_50 = new JPanel();
+		panel_50.setBounds(40, 67, 40, 25);
+		getContentPane().add(panel_50);
+		panel_50.setLayout(new GridLayout(0, 2, 0, 0));
+
 		JLabel lblProfesores = new JLabel("Docentes");
 		lblProfesores.setHorizontalAlignment(SwingConstants.LEFT);
 		panel_5.add(lblProfesores);
 		
+		btnRefresh = new JButton("Refresh");
+		btnRefresh.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				List<DTCurso> cursos = getCursos(comboBox.getSelectedItem().toString());
+				for (DTCurso curso : cursos) {
+					comboBox_1.addItem(curso.nombreCurso);
+				}
+			}
+		});
+		panel_50.add(btnRefresh);
+
 		btnAgregar = new JButton("Agregar");
 		btnAgregar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				if(listaDocentes == null) {
+				if (listaDocentes == null) {
 					listaDocentes = new ListaDocentes();
 					VentanaPrincipal.desktopPane.add(listaDocentes);
 					listaDocentes.setVisible(true);
-				}else {
+				} else {
 					listaDocentes.setVisible(true);
-				}				
+				}
 			}
 		});
 		panel_5.add(btnAgregar);
-		
+
 		btnAceptar = new JButton("Aceptar");
 		btnAceptar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				
-				if(listaDocentes != null) {
+
+				if (listaDocentes != null) {
 					docentesAgregados = listaDocentes.getDocentesSeleccionados();
 				}
-				JOptionPane.showMessageDialog(null, "Se guarda datos");
-				resetDatos();
+				Date fechaIni = Date.valueOf(spinner_6.getValue().toString() + "-" + spinner_5.getValue().toString()
+						+ "-" + spinner_4.getValue().toString());
+				Date fechaFin = Date.valueOf(spinner_3.getValue().toString() + "-" + spinner_2.getValue().toString()
+						+ "-" + spinner_1.getValue().toString());
+				Date fechaAlta = Date.valueOf(spinner_2.getValue().toString() + "-" + spinner_1.getValue().toString()
+						+ "-" + spinner.getValue().toString());
+				int cupo = Integer.parseInt(spinner.getValue().toString());
+				if (cupo < 1) {
+					cupo = 0;
+				}
+				if(!(comboBox_1.getSelectedItem().toString().equals(""))) {
+					String ret = Interfaz.crearEdicion(textField.getText(), comboBox_1.getSelectedItem().toString(), fechaIni,
+							fechaFin, cupo, fechaAlta, docentesAgregados);
+					if (ret.isEmpty()) {
+						JOptionPane.showMessageDialog(null, "Se ha agregado la edicion con nombre: " + textField.getText());
+						resetDatos();
+					} else {
+						JOptionPane.showMessageDialog(null, ret);
+					}
+				}
+				else {
+					JOptionPane.showMessageDialog(null, "ERROR: No se ha selecionado un curso");
+				}
+				
 			}
 		});
 		btnAceptar.setBounds(208, 273, 117, 25);
 		getContentPane().add(btnAceptar);
-		
+
 		JButton btnCancelar = new JButton("Cancelar");
 		btnCancelar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -234,35 +264,61 @@ public class AltaEdicionCurso extends JInternalFrame {
 		getContentPane().add(btnCancelar);
 
 	}
-	
+
 	private void resetDatos() {
-		if(listaDocentes != null) {
+		if (listaDocentes != null) {
 			docentesAgregados.clear();
 		}
 	}
-	
+
 	private boolean validarFormulario() {
-		if(textField.getText().equals("")) {
+		if (textField.getText().equals("")) {
 			return false;
 		}
-		
-		
+
 		return true;
 	}
-	
-	/**
-	 * Launch the application.
+
+	/*
+	 * 
+	 * try
+	 * 
+	 * { AltaEdicionCurso frame = new AltaEdicionCurso(); frame.setVisible(true);
+	 * }catch( Exception e) { e.printStackTrace(); }}});}}
+	 * 
+	 * try
+	 * 
+	 * { AltaEdicionCurso frame = new
+	 * AltaEdicionCurso();frame.setVisible(true);}catch( Exception
+	 * e){e.printStackTrace();}}});}}
+	 * 
+	 * { AltaEdicionCurso frame = new
+	 * AltaEdicionCurso();frame.setVisible(true);}catch( Exception
+	 * e){e.printStackTrace();
+	 * 
+	 * { AltaEdicionCurso frame = new
+	 * AltaEdicionCurso();frame.setVisible(true);}catch( Exception
+	 * e){e.printStackTrace();
+	 * 
+	 * { AltaEdicionCurso frame = new AltaEdicionCurso(); frame.setVisible(true);
+	 * }catch( Exception e){e.printStackTrace();
+	 * 
+	 * 
+	 * { AltaEdicionCurso frame = new
+	 * AltaEdicionCurso();frame.setVisible(true);}catch( Exception
+	 * e){e.printStackTrace(); }}});}}{ AltaEdicionCurso frame = new
+	 * AltaEdicionCurso();frame.setVisible(true);}catch( Exception
+	 * e){e.printStackTrace();
+	 * 
+	 * { AltaEdicionCurso frame = new AltaEdicionCurso(); frame.setVisible(true);
+	 * }catch( Exception e){e.printStackTrace();
+	 * 
+	 * { AltaEdicionCurso frame = new AltaEdicionCurso(); frame.setVisible(true);
+	 * }catch( Exception e){e.printStackTrace();
+	 * 
+	 * 
+	 * { AltaEdicionCurso frame = new
+	 * AltaEdicionCurso();frame.setVisible(true);}catch( Exception
+	 * e){e.printStackTrace(); }} }); }
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					AltaEdicionCurso frame = new AltaEdicionCurso();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 }
