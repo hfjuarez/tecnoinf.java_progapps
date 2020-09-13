@@ -14,6 +14,10 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.FlowLayout;
 
+import API.*;
+import logica.datatypes.*;
+import java.util.List;
+
 public class ListaDocentes extends JInternalFrame {
 	
 	private JCheckBox cb[];
@@ -30,13 +34,12 @@ public class ListaDocentes extends JInternalFrame {
 		getContentPane().setLayout(null);
 		
 		docentes = new ArrayList<>();
-		docentes.add("Pepe");
-		docentes.add("Carlos");
-		docentes.add("Maria");
-		docentes.add("Teresa");
-		docentes.add("Juan");
-		docentes.add("Karina");
-		docentes.add("Rosario");
+		ILogica Interfaz = new BizcochoEnARG().getInterface();
+		List <DTDocente> Docentes = Interfaz.listaDocentes();
+		for (DTDocente docentito : Docentes)
+		{
+			docentes.add(docentito.nickname);
+		}
 		this.cb = new JCheckBox[docentes.size()];
 		
 		

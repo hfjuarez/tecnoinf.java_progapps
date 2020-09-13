@@ -31,7 +31,7 @@ public class ListaCursos {
 
         for (Curso curso : list) {
             Instituto inst = curso.getInstituto();
-            if(inst==null) {
+            if(inst!=null) {
 
             if (nameInstituto.equals(inst.getNombreInstituto())) {
                 cursosFiltrados.add(curso);

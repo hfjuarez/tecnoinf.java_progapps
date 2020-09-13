@@ -6,6 +6,7 @@ import javax.swing.JInternalFrame;
 import javax.swing.JComboBox;
 import java.awt.event.ItemListener;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.awt.event.ItemEvent;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JPanel;
@@ -69,7 +70,7 @@ public class AltaEdicionCurso extends JInternalFrame {
 		setTitle("Alta edicion de curso");
 		setMaximizable(true);
 		setClosable(true);
-		setBounds(100, 100, 445, 357);
+		setBounds(100, 100, 528, 357);
 		getContentPane().setLayout(null);
 
 		panel = new JPanel();
@@ -105,7 +106,7 @@ public class AltaEdicionCurso extends JInternalFrame {
 		panel_1.add(lblNewLabel);
 
 		comboBox_1 = new JComboBox();
-		List<DTCurso> cursos = getCursos(institutoElegido);
+		List<DTCurso> cursos = Interfaz.listaCursosPorInstituto(comboBox.getSelectedItem().toString());
 		for (DTCurso curso : cursos) {
 			comboBox_1.addItem(curso.nombreCurso);
 		}
@@ -192,17 +193,6 @@ public class AltaEdicionCurso extends JInternalFrame {
 		JLabel lblProfesores = new JLabel("Docentes");
 		lblProfesores.setHorizontalAlignment(SwingConstants.LEFT);
 		panel_5.add(lblProfesores);
-		
-		btnRefresh = new JButton("Refresh");
-		btnRefresh.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				List<DTCurso> cursos = getCursos(comboBox.getSelectedItem().toString());
-				for (DTCurso curso : cursos) {
-					comboBox_1.addItem(curso.nombreCurso);
-				}
-			}
-		});
-		panel_50.add(btnRefresh);
 
 		btnAgregar = new JButton("Agregar");
 		btnAgregar.addActionListener(new ActionListener() {
@@ -229,8 +219,11 @@ public class AltaEdicionCurso extends JInternalFrame {
 						+ "-" + spinner_4.getValue().toString());
 				Date fechaFin = Date.valueOf(spinner_3.getValue().toString() + "-" + spinner_2.getValue().toString()
 						+ "-" + spinner_1.getValue().toString());
-				Date fechaAlta = Date.valueOf(spinner_2.getValue().toString() + "-" + spinner_1.getValue().toString()
-						+ "-" + spinner.getValue().toString());
+				Calendar c = Calendar.getInstance();
+				String dia = Integer.toString(c.get(Calendar.DATE));
+				String mes = Integer.toString(c.get(Calendar.MONTH));
+				String annio = Integer.toString(c.get(Calendar.YEAR));
+				Date fechaAlta = Date.valueOf(annio + "-" + mes + "-" + dia);
 				int cupo = Integer.parseInt(spinner.getValue().toString());
 				if (cupo < 1) {
 					cupo = 0;
@@ -262,6 +255,19 @@ public class AltaEdicionCurso extends JInternalFrame {
 		});
 		btnCancelar.setBounds(67, 273, 117, 25);
 		getContentPane().add(btnCancelar);
+		
+		btnRefresh = new JButton("Refresh");
+		btnRefresh.setBounds(389, 67, 94, 25);
+		getContentPane().add(btnRefresh);
+		btnRefresh.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				comboBox_1.removeAllItems();
+				List<DTCurso> cursos = getCursos(comboBox.getSelectedItem().toString());
+				for (DTCurso curso : cursos) {
+					comboBox_1.addItem(curso.nombreCurso);
+				}
+			}
+		});
 
 	}
 
