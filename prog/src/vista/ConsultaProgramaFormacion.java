@@ -1,11 +1,15 @@
 package vista;
-
+import API.*;
+import logica.*;
+import logica.datatypes.*;
 import java.awt.EventQueue;
 
 import javax.swing.JInternalFrame;
 import javax.swing.JPanel;
 import java.awt.GridLayout;
+
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JComboBox;
 import javax.swing.SwingConstants;
 import javax.swing.JTextField;
@@ -19,22 +23,25 @@ import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.List;
 
 import javax.swing.BoxLayout;
 import java.awt.FlowLayout;
 import java.awt.CardLayout;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
-import com.jgoodies.forms.layout.FormLayout;
-import com.jgoodies.forms.layout.ColumnSpec;
-import com.jgoodies.forms.layout.RowSpec;
+import java.awt.event.ItemListener;
+import java.awt.event.ItemEvent;
 
 public class ConsultaProgramaFormacion extends JInternalFrame {
+	private DTFormacion programaElegido;
 	private JTextField textField;
 	private JTextField textField_1;
 	private JTextField textField_2;
 	private String programa;
-
+	private ILogica Interfaz = new BizcochoEnARG().getInterface();
+	private JTextArea textArea;
 	/**
 	 * Launch the application.
 	 */
@@ -58,7 +65,7 @@ public class ConsultaProgramaFormacion extends JInternalFrame {
 		setTitle("Consulta de programa de formacion");
 		setMaximizable(true);
 		setClosable(true);
-		setBounds(100, 100, 468, 392);
+		setBounds(100, 100, 576, 407);
 		getContentPane().setLayout(null);
 		
 		JPanel panel = new JPanel();
@@ -79,10 +86,28 @@ public class ConsultaProgramaFormacion extends JInternalFrame {
 		panel_2.setLayout(new GridLayout(0, 1, 0, 0));
 		
 		JComboBox comboBox = new JComboBox();
-		comboBox.addItem("");
-		for(String programa: listaProgramas()) {
-			comboBox.addItem(programa);
-		}
+//		comboBox.addItemListener(new ItemListener() {
+//			public void itemStateChanged(ItemEvent e) {
+//				programa = e.getItem().toString();
+//				List<DTFormacion> formaciones = Interfaz.consultaFormacion();
+//				for(DTFormacion programa: formaciones) {
+//					comboBox.addItem(programa.nombreFormacion);
+//				}
+//				for(DTFormacion form : formaciones) {
+//					if(form.nombreFormacion.equals(programa)) {
+//						programaElegido = form;
+//					}
+//				}
+//				//Nombre
+//					textField.setText(programaElegido.nombreFormacion);
+//					//Fecha inicio
+//					textField_1.setText(programaElegido.fechaInicio.toString());
+//					//Fecha fin
+//					textField_2.setText(programaElegido.fechaFin.toString());
+//					//Descripcion
+//					textArea.setText(programaElegido.descFormacion);
+//			}
+//		});
 		panel_2.add(comboBox);
 		
 		JPanel panel_3 = new JPanel();
@@ -103,7 +128,7 @@ public class ConsultaProgramaFormacion extends JInternalFrame {
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		panel_3.add(lblNewLabel);
 		
-		JTextArea textArea = new JTextArea();
+		textArea = new JTextArea();
 		textArea.setEditable(false);
 		panel_3.add(textArea);
 		
@@ -146,12 +171,96 @@ public class ConsultaProgramaFormacion extends JInternalFrame {
 		
 		JPanel panel_5 = new JPanel();
 		panel_4.add(panel_5);
-		panel_5.setLayout(new GridLayout(10, 1, 0, 0));
+		GridBagLayout gbl_panel_5 = new GridBagLayout();
+		gbl_panel_5.columnWidths = new int[]{0, 0};
+		gbl_panel_5.rowHeights = new int[]{0, 0};
+		gbl_panel_5.columnWeights = new double[]{1.0, Double.MIN_VALUE};
+		gbl_panel_5.rowWeights = new double[]{0.0, Double.MIN_VALUE};
+		panel_5.setLayout(gbl_panel_5);
+		
+		JComboBox comboBox_1 = new JComboBox();
+		GridBagConstraints gbc_comboBox_1 = new GridBagConstraints();
+		gbc_comboBox_1.fill = GridBagConstraints.HORIZONTAL;
+		gbc_comboBox_1.gridx = 0;
+		gbc_comboBox_1.gridy = 0;
+		panel_5.add(comboBox_1, gbc_comboBox_1);
+		
+		JButton btnNewButton = new JButton("Refresh");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				comboBox.removeAllItems();
+				List<DTFormacion> formaciones = Interfaz.consultaFormacion();
+				for(DTFormacion formacion : formaciones)
+				{
+					comboBox.addItem(formacion.nombreFormacion);
+				}
+			}
+		});
+		btnNewButton.setBounds(461, 12, 89, 23);
+		getContentPane().add(btnNewButton);
+		
+		JButton btnNewButton_1 = new JButton("Ver datos");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				comboBox_1.removeAllItems();
+				List<DTFormacion> formaciones = Interfaz.consultaFormacion();
+				for(DTFormacion formacion : formaciones)
+				{
+					if(formacion.nombreFormacion.equals(comboBox.getSelectedItem().toString()))
+					{
+						Calendar c1 = Calendar.getInstance();
+						c1.setTime(formacion.fechaInicio);
+						String dia = Integer.toString(c1.get(Calendar.DAY_OF_MONTH));
+						String mes = Integer.toString(c1.get(Calendar.MONTH) + 1);
+						String anio = Integer.toString(c1.get(Calendar.YEAR));
+						String dou=(dia + "-" + mes + "-" + anio);
+						Calendar c = Calendar.getInstance();
+						c1.setTime(formacion.fechaFin);
+						String diaa = Integer.toString(c.get(Calendar.DAY_OF_MONTH));
+						String mess = Integer.toString(c.get(Calendar.MONTH) + 1);
+						String anioo = Integer.toString(c.get(Calendar.YEAR));
+						String douu=(diaa + "-" + mess + "-" + anioo);
+						textField.setText(formacion.nombreFormacion);
+						//Fecha inicio
+						textField_1.setText(dou);
+						//Fecha fin
+						textField_2.setText(douu);
+						//Descripcion
+						textArea.setText(formacion.descFormacion);
+						
+						List<DTCurso> cursos = formacion.cursos;
+						for(DTCurso curso : cursos)
+						{
+							comboBox_1.addItem(curso.nombreCurso);
+						}
+					}
+				}
+			}
+		});
+		btnNewButton_1.setBounds(461, 59, 89, 23);
+		getContentPane().add(btnNewButton_1);
+		
+		JButton btnNewButton_2 = new JButton("Ver curso");
+		btnNewButton_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				DTCurso curso = Interfaz.obtenerCurso(comboBox_1.getSelectedItem().toString());
+				Calendar c1 = Calendar.getInstance();
+				c1.setTime(curso.fechaAlta);
+				String dia = Integer.toString(c1.get(Calendar.DAY_OF_MONTH));
+				String mes = Integer.toString(c1.get(Calendar.MONTH) + 1);
+				String anio = Integer.toString(c1.get(Calendar.YEAR));
+				String dou=(dia + "-" + mes + "-" + anio);
+				JOptionPane.showMessageDialog(null,"Curso: "+curso.nombreCurso+"\n"+"Descripcion: "+curso.descCurso+"\n"+"Fecha alta: "+dou+"\n"+"Cantidad horas: "+curso.cantidadHoras+"Cantidad creditos: "+curso.cantidadCreditos+"\n"+"Duracion en semanas: "+curso.duracionMeses);
+			}
+		});
+		btnNewButton_2.setBounds(445, 171, 105, 23);
+		getContentPane().add(btnNewButton_2);
 		
 		ArrayList<JButton> botones = new ArrayList<>();
-		for(String curso: listaCursos()) {
-			botones.add(new JButton(curso));
-		}
+//		List<DTCurso> cursos = listaCursos();
+//		for(DTCurso curso: cursos) {
+//			botones.add(new JButton(curso.nombreCurso));
+//		}
 		
 		for(JButton boton: botones) {
 			boton.addActionListener(new ActionListener() {
@@ -168,24 +277,20 @@ public class ConsultaProgramaFormacion extends JInternalFrame {
 		
 	}
 	
-	private ArrayList<String> listaProgramas() {
-		ArrayList<String> lista = new ArrayList<>();
-		lista.add("Programa 1");
-		lista.add("Programa 2");
-		lista.add("Programa 3");
-		lista.add("Programa 4");
-		lista.add("Programa 5");
-		lista.add("Programa 6");
+	private List<DTFormacion> listaProgramas() {
+		List<DTFormacion> lista = Interfaz.consultaFormacion();
 		return lista;
 	}
 	
-	private ArrayList<String> listaCursos() {
-		ArrayList<String> lista = new ArrayList<>();
-		lista.add("Curso 1");
-		lista.add("Curso 2");
-		lista.add("Curso 3");
-		lista.add("Curso 4");
-		return lista;
+	private List<DTCurso> listaCursos() {
+		List<DTFormacion> lista = Interfaz.consultaFormacion();
+		List<DTCurso> listaCursos = null;
+		for(DTFormacion form:lista) {
+			if(form.nombreFormacion.equals(programa)) {
+				listaCursos = form.cursos;
+			}
+		}
+		return listaCursos;
 	}
 	
 	public void setPrograma(String programa) {

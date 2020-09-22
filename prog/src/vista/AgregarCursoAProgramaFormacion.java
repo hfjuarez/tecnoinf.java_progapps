@@ -22,6 +22,7 @@ import java.util.ArrayList;
 import java.awt.event.ItemEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.util.List;
 
 public class AgregarCursoAProgramaFormacion extends JInternalFrame {
 
@@ -70,8 +71,7 @@ public class AgregarCursoAProgramaFormacion extends JInternalFrame {
 		panel_1.add(lblProgramaDeFormacion);
 
 		JComboBox comboBox = new JComboBox();
-		comboBox.addItem("");
-		ListaFormacion = listFormaciones();
+		ListaFormacion = Interfaz.consultaFormacion();
 		for (DTFormacion formacion : ListaFormacion) {
 			comboBox.addItem(formacion.nombreFormacion);
 		}
@@ -92,8 +92,7 @@ public class AgregarCursoAProgramaFormacion extends JInternalFrame {
 		panel_1.add(lblNewLabel);
 
 		JComboBox comboBox_1 = new JComboBox();
-		comboBox_1.addItem("");
-		ListaCurso = ListaCursos();
+		ListaCurso = Interfaz.ListaCursos();
 		for (DTCurso curso : ListaCurso) {
 			comboBox_1.addItem(curso.nombreCurso);
 
@@ -115,14 +114,17 @@ public class AgregarCursoAProgramaFormacion extends JInternalFrame {
 		btnAceptar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
-				System.out.println("Se elige programa:  " + formacion);
-				System.out.println("Se elige curso: " + curso);
-				String pp = Interfaz.AgregoCurEnForm(programa, curso);
-				System.out.println("Se agrega: " + programa + " " + curso);
+				// System.out.println("Se elige programa: " + formacion);
+				// System.out.println("Se elige curso: " + curso);
+				List<String> curso1 = new ArrayList();
+				curso1.add(curso);
+				String pp = Interfaz.AgregoCurEnForm(comboBox.getSelectedItem().toString(), curso1);
+				// System.out.println("Se agrega: " + formacion + " " + curso);
 				JOptionPane.showInternalMessageDialog(null, "Se agregaro/n el/los curso/s");
 				comboBox.setSelectedItem("");
 				comboBox_1.setSelectedItem("");
 			}
+
 		});
 		btnAceptar.setBounds(271, 131, 117, 25);
 		getContentPane().add(btnAceptar);

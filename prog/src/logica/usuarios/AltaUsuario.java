@@ -8,7 +8,7 @@ import java.io.File;
 import java.sql.Date;
 
 import logica.entidades.Usuario;
-import logica.instituto.ObtenerInstituto;
+import logica.institutos.ObtenerInstituto;
 import logica.entidades.Docente;
 import logica.entidades.Instituto;
 import logica.entidades.Estudiante;

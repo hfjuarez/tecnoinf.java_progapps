@@ -1,10 +1,10 @@
 package API;
 
-import logica.instituto.CargarInstituto;
 import logica.usuarios.CargarUsuarios;
-import logica.curso.CargarCursos;
-import logica.edicioncurso.CargarEdicion;
-import logica.formacion.CargarFormacion;
+import logica.cursos.CargarCursos;
+import logica.edicioncursos.CargarEdicion;
+import logica.formaciones.CargarFormacion;
+import logica.institutos.CargarInstituto;
 
 public class CargarDatosPrueba {
 

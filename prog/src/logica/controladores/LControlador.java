@@ -7,22 +7,18 @@ import java.util.List;
 
 import java.io.File;
 
+import logica.cursos.AltaCurso;
+import logica.cursos.ExisteCurso;
+import logica.cursos.ListaCursos;
+import logica.cursos.ObtenerCurso;
 import logica.datatypes.*;
-import logica.instituto.AltaInstituto;
-import logica.instituto.ListaInstitutos;
-
+import logica.edicioncursos.*;
+import logica.formaciones.AgregarCursoAFormacion;
+import logica.formaciones.AltaFormacion;
+import logica.formaciones.ListaFormacion;
+import logica.institutos.AltaInstituto;
+import logica.institutos.ListaInstitutos;
 import logica.usuarios.*;
-
-import logica.curso.ExisteCurso;
-import logica.curso.ListaCursos;
-import logica.curso.AltaCurso;
-
-import logica.edicioncurso.ListaEdicionCurso;
-import logica.edicioncurso.AltaEdicionCurso;
-import logica.edicioncurso.InscripcionAEdicion;
-import logica.formacion.AltaFormacion;
-import logica.formacion.AgregarCursoAFormacion;
-import logica.formacion.ListaFormacion;
 
 public class LControlador implements ILogica {
 
@@ -42,6 +38,10 @@ public class LControlador implements ILogica {
 
         public List<DTInstituto> listaInstitutos() {
                 return new ListaInstitutos().getDataTypeList();
+        }
+
+        public DTCurso obtenerCurso(String nombrecurso) {
+                return new ObtenerCurso().getDTCurso(nombrecurso);
         }
 
         public List<DTEstudiante> listaEstudiantes() {
@@ -66,6 +66,10 @@ public class LControlador implements ILogica {
 
         public List<DTFormacion> listFormaciones() {
                 return new ListaFormacion().getDataTypeList();
+        }
+
+        public List<DTInscripcion_Edicion> listaIns() {
+                return new ListaInscripciones().getDTlist();
         }
 
         // Obtener DT
@@ -142,7 +146,7 @@ public class LControlador implements ILogica {
                 return new AltaFormacion(nombreFormacion, descr, FechaIni, FechaFin, FechaAlta).createFormacion();
         }
 
-        // Agregar Curso a Programa de FormaciÃ³n
+        // Agregar Curso a Programa de Formación
 
         public String AgregoCurEnForm(String nombreFormacion, List<String> nombreCursos) {
                 return new AgregarCursoAFormacion(nombreFormacion).agregarCursosAFor(nombreCursos);
@@ -184,5 +188,9 @@ public class LControlador implements ILogica {
 
         public List<DTEstudiante> consultaUsuarioEstudiante() {
                 return new ListaUsuarios().getDataTypeListEstudiante();
+        }
+
+        public DTEdicionCurso obtenerEdicionCurso(String nombreEdicion) {
+                return new ObtenerEdicionCurso().getDTEdicionCurso(nombreEdicion);
         }
 }

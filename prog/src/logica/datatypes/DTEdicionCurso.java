@@ -6,6 +6,7 @@ import java.util.*;
 
 import logica.entidades.EdicionCurso;
 import logica.entidades.Docente;
+import logica.entidades.*;
 
 public class DTEdicionCurso {
 
@@ -33,6 +34,13 @@ public class DTEdicionCurso {
 			listDTDocentes.add(dtDoc);
 		}
 		docentes = listDTDocentes;
+		List<Inscripcion_Edicion> estudiantesList = eCurso.getInscriptos();
+		ArrayList<DTInscripcion_Edicion> inscripto = new ArrayList();
+		for (Inscripcion_Edicion insc : estudiantesList) {
+			DTInscripcion_Edicion ins = new DTInscripcion_Edicion(insc);
+			inscripto.add(ins);
+		}
+		this.inscriptos = inscripto;
 	}
 
 	@Override

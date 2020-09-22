@@ -10,15 +10,27 @@ import javax.swing.JComboBox;
 import javax.swing.SwingConstants;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+
+import logica.datatypes.DTCurso;
+import logica.datatypes.DTEdicionCurso;
+import logica.datatypes.DTInstituto;
+
 import java.awt.Font;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
 import java.awt.event.ActionEvent;
+
+import API.*;
+import logica.datatypes.*;
+import java.awt.Dimension;
 
 public class ConsultaEdicionCurso extends JInternalFrame {
 	private JTable table;
 	private String edicion;
-
+	private ILogica interfaz = new BizcochoEnARG().getInterface();
+	
 	/**
 	 * Launch the application.
 	 */
@@ -42,7 +54,7 @@ public class ConsultaEdicionCurso extends JInternalFrame {
 		setTitle("Consulta edicion de curso");
 		setMaximizable(true);
 		setClosable(true);
-		setBounds(100, 100, 410, 353);
+		setBounds(100, 100, 527, 339);
 		getContentPane().setLayout(null);
 		
 		JPanel panel = new JPanel();
@@ -94,11 +106,12 @@ public class ConsultaEdicionCurso extends JInternalFrame {
 		panel_1.add(panel_7);
 		
 		JPanel panel_8 = new JPanel();
-		panel_8.setBounds(20, 171, 350, 80);
+		panel_8.setBounds(20, 171, 364, 80);
 		getContentPane().add(panel_8);
 		panel_8.setLayout(new GridLayout(0, 1, 0, 0));
 		
 		table = new JTable();
+		panel_8.add(table);
 		table.setFont(new Font("Dialog", Font.BOLD, 13));
 		table.setModel(new DefaultTableModel(
 			new Object[][] {
@@ -107,6 +120,7 @@ public class ConsultaEdicionCurso extends JInternalFrame {
 				{"Fecha fin", null},
 				{"Cupos", null},
 				{"Docentes", null},
+				//{"Estudiantes", null},
 			},
 			new String[] {
 				"New column", ""
@@ -118,15 +132,8 @@ public class ConsultaEdicionCurso extends JInternalFrame {
 			public Class getColumnClass(int columnIndex) {
 				return columnTypes[columnIndex];
 			}
-			boolean[] columnEditables = new boolean[] {
-				false, true
-			};
-			public boolean isCellEditable(int row, int column) {
-				return columnEditables[column];
-			}
 		});
 		table.getColumnModel().getColumn(0).setResizable(false);
-		panel_8.add(table);
 		
 		JButton btnCerrar = new JButton("Cerrar");
 		btnCerrar.addActionListener(new ActionListener() {
@@ -134,8 +141,94 @@ public class ConsultaEdicionCurso extends JInternalFrame {
 				dispose();
 			}
 		});
-		btnCerrar.setBounds(254, 274, 117, 25);
+		btnCerrar.setBounds(192, 262, 117, 25);
 		getContentPane().add(btnCerrar);
+		
+		JButton btnNewButton = new JButton("Refresh Instituto");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				List<DTInstituto> insts = interfaz.listaInstitutos();
+				for (DTInstituto inst : insts) {
+					comboBox.addItem(inst.nombreInstituto);
+				}
+			}
+		});
+		btnNewButton.setBounds(380, 20, 120, 23);
+		getContentPane().add(btnNewButton);
+		
+		JButton btnNewButton_1 = new JButton("Refresh Cursos");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				comboBox_1.removeAllItems();
+				List<DTCurso> cursos = interfaz.listaCursosPorInstituto(comboBox.getSelectedItem().toString());
+				for (DTCurso curso : cursos) {
+					comboBox_1.addItem(curso.nombreCurso);
+				}
+			}
+		});
+		btnNewButton_1.setBounds(380, 62, 120, 23);
+		getContentPane().add(btnNewButton_1);
+		
+		JButton btnNewButton_2 = new JButton("Refresh Edicion");
+		btnNewButton_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				comboBox_2.removeAllItems();
+				List<DTEdicionCurso> ediciones = interfaz.ListaEdicionesCurso(comboBox_1.getSelectedItem().toString());
+				for (DTEdicionCurso edicion : ediciones) {
+					comboBox_2.addItem(edicion.nombreEdicion);
+				}
+			}
+		});
+		btnNewButton_2.setBounds(380, 96, 120, 23);
+		getContentPane().add(btnNewButton_2);
+		
+		JButton btnNewButton_3 = new JButton("Ver datos");
+		btnNewButton_3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				DTEdicionCurso edicion = interfaz.obtenerEdicionCurso(comboBox_2.getSelectedItem().toString());
+				List<DTDocente> ListaDocentes = edicion.docentes;
+				List<String> docente = new ArrayList();
+				for(DTDocente doc : ListaDocentes)
+				{
+					docente.add(doc.nickname);
+				}
+//				List<DTInscripcion_Edicion> ListaEstudiantes = edicion.inscriptos;
+//				List<String> estudiante = new ArrayList();
+//				for(DTInscripcion_Edicion est : ListaEstudiantes)
+//				{
+//					System.out.println(est.estudiante);
+//					estudiante.add(est.estudiante.nickname);
+//				}
+				table.setModel(new DefaultTableModel(
+						new Object[][] {
+							{"Nombre edicion", edicion.nombreEdicion},
+							{"Fecha inicio", edicion.fechaIncio.toString()},
+							{"Fecha fin", edicion.fechaFin.toString()},
+							{"Cupos", edicion.cupo},
+							{"Docentes", docente},
+							//{"Estudiantes", estudiante},
+						},
+						new String[] {
+							"New column", ""
+						}
+					) {
+						Class[] columnTypes = new Class[] {
+							String.class, String.class
+						};
+						public Class getColumnClass(int columnIndex) {
+							return columnTypes[columnIndex];
+						}
+						boolean[] columnEditables = new boolean[] {
+							false, true
+						};
+						public boolean isCellEditable(int row, int column) {
+							return columnEditables[column];
+						}
+					});
+			}
+		});
+		btnNewButton_3.setBounds(393, 145, 89, 23);
+		getContentPane().add(btnNewButton_3);
 
 	}
 	

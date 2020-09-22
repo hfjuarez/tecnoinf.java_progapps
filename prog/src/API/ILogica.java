@@ -21,6 +21,8 @@ public interface ILogica {
 
       public List<DTEdicionCurso> ListaEdicionesCurso(String nombreCurso);
 
+      public List<DTInscripcion_Edicion> listaIns(); 
+
       public List<DTCurso> ListaCursos();
 
       // Obtener DT
@@ -28,6 +30,10 @@ public interface ILogica {
       public DTEstudiante obtenerEstudiante(String nickname);
 
       public DTDocente obtenerDocente(String nickname);
+      
+      public DTEdicionCurso obtenerEdicionCurso(String nombreEdicion);
+      
+      public DTCurso obtenerCurso(String nombrecurso);
 
       // Alta Instituto
 
@@ -59,7 +65,7 @@ public interface ILogica {
 
       public String crearFormacion(String nombreFormacion, String descr, Date FechaIni, Date FechaFin, Date FechaAlta);
 
-      // Agregar Curso a Programa de FormaciÃ³n
+      // Agregar Curso a Programa de Formación
 
       public String AgregoCurEnForm(String nombreFormacion, List<String> nombreCursos);
 
