@@ -190,6 +190,20 @@ public class VentanaPrincipal extends JFrame {
 			}
 		});
 		mnInstituto.add(mntmAltaInstituto);
+		
+		JMenu mnCategoria = new JMenu("Categoria");
+		menuBar.add(mnCategoria);
+		
+		JMenuItem mntmAltaCategoria = new JMenuItem("Alta categoria");
+		mntmAltaCategoria.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				AltaCategoria alta = new AltaCategoria();
+				desktopPane.add(alta);
+				alta.setVisible(true);
+				
+			}
+		});
+		mnCategoria.add(mntmAltaCategoria);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -199,5 +213,4 @@ public class VentanaPrincipal extends JFrame {
 		contentPane.add(desktopPane, "name_10896363501344");
 		desktopPane.setLayout(null);
 	}
-
 }
