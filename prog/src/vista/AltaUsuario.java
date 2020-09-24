@@ -33,6 +33,9 @@ import API.BizcochoEnARG;
 import API.ILogica;
 import java.awt.Font;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import java.awt.GridLayout;
+import javax.swing.JPasswordField;
 
 public class AltaUsuario extends JInternalFrame {
 	private JTextField textField;
@@ -43,6 +46,7 @@ public class AltaUsuario extends JInternalFrame {
 	private JTextField txtDiaint;
 	private JTextField textField_6;
 	private JTextField textField_7;
+	private JRadioButton rdbtnDocente;
 	private final Action action = new SwingAction();
 	File imagen = null;
 
@@ -71,91 +75,99 @@ public class AltaUsuario extends JInternalFrame {
 		setTitle("Alta de usuario");
 		setMaximizable(true);
 		setClosable(true);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 450, 354);
 		getContentPane().setLayout(null);
 
-		JLabel lblNewLabel = new JLabel("Empty");
-		lblNewLabel.setBounds(160, 154, 46, 14);
-		getContentPane().add(lblNewLabel);
+		
+		//Contenedor principal
+		JPanel panel = new JPanel();
+		panel.setBounds(20, 20, 400, 250);
+		getContentPane().add(panel);
+		panel.setLayout(new GridLayout(0, 2, 0, 0));
+		
+		
+		
 
+		
+		
 		JLabel lblNickname = new JLabel("Nickname");
-		lblNickname.setBounds(new Rectangle(0, 1, 0, 0));
-		lblNickname.setBounds(10, 10, 150, 15);
-		getContentPane().add(lblNickname);
+		panel.add(lblNickname);
+		
+		textField = new JTextField();
+		panel.add(textField);
+		textField.setColumns(10);
+				
+		JLabel lblPassword = new JLabel("Password");
+		panel.add(lblPassword);
+		
+		passwordField = new JPasswordField();
+		panel.add(passwordField);
+		
+		JLabel lblRepetirPassword = new JLabel("Repetir password");
+		panel.add(lblRepetirPassword);
+		
+		passwordField_1 = new JPasswordField();
+		panel.add(passwordField_1);
 
 		JLabel lblNombre = new JLabel("Nombre");
-		lblNombre.setBounds(new Rectangle(0, 20, 0, 0));
-		lblNombre.setBounds(10, 38, 150, 15);
-		getContentPane().add(lblNombre);
-
-		JLabel lblApellido = new JLabel("Apellido");
-		lblApellido.setBounds(new Rectangle(0, 20, 0, 0));
-		lblApellido.setBounds(10, 63, 150, 15);
-		getContentPane().add(lblApellido);
-
-		JLabel lblEmail = new JLabel("Email");
-		lblEmail.setBounds(new Rectangle(0, 20, 0, 0));
-		lblEmail.setBounds(10, 88, 150, 15);
-		getContentPane().add(lblEmail);
-
-		JLabel lblFechaNacimiento = new JLabel("Fecha nacimiento");
-		lblFechaNacimiento.setBounds(new Rectangle(0, 20, 0, 0));
-		lblFechaNacimiento.setBounds(10, 113, 150, 15);
-		getContentPane().add(lblFechaNacimiento);
-
-		JLabel lblInstituto = new JLabel("Instituto");
-		lblInstituto.setBounds(10, 198, 150, 15);
-		getContentPane().add(lblInstituto);
-
-		textField = new JTextField();
-		textField.setBounds(new Rectangle(0, 20, 0, 0));
-		textField.setBounds(160, 10, 250, 19);
-		getContentPane().add(textField);
-		textField.setColumns(10);
-
+		panel.add(lblNombre);
+		
 		textField_1 = new JTextField();
-		textField_1.setBounds(new Rectangle(0, 20, 0, 0));
-		textField_1.setBounds(160, 38, 250, 19);
-		getContentPane().add(textField_1);
+		panel.add(textField_1);
 		textField_1.setColumns(10);
 
+		JLabel lblApellido = new JLabel("Apellido");
+		panel.add(lblApellido);
+		
 		textField_2 = new JTextField();
-		textField_2.setBounds(new Rectangle(0, 20, 0, 0));
-		textField_2.setBounds(160, 63, 250, 19);
-		getContentPane().add(textField_2);
+		panel.add(textField_2);
 		textField_2.setColumns(10);
-
+		
+		JLabel lblEmail = new JLabel("Email");
+		panel.add(lblEmail);
+		
 		textField_3 = new JTextField();
-		textField_3.setBounds(new Rectangle(0, 20, 0, 0));
-		textField_3.setBounds(160, 88, 250, 19);
-		getContentPane().add(textField_3);
+		panel.add(textField_3);
 		textField_3.setColumns(10);
-
-		textField_5 = new JTextField();
-		textField_5.setEditable(false);
-		textField_5.setBounds(160, 198, 250, 19);
-		getContentPane().add(textField_5);
-		textField_5.setColumns(10);
-
+		
+		JLabel lblFechaNacimiento = new JLabel("Fecha nacimiento");
+		panel.add(lblFechaNacimiento);
+				
+		JPanel panel_1 = new JPanel();
+		panel.add(panel_1);
+		panel_1.setLayout(new GridLayout(0, 4, 0, 0));
+		
 		txtDiaint = new JTextField();
-		txtDiaint.setBounds(new Rectangle(0, 20, 0, 0));
-		txtDiaint.setBounds(280, 113, 30, 19);
-		getContentPane().add(txtDiaint);
+		panel_1.add(txtDiaint);
 		txtDiaint.setColumns(10);
-
+		
 		textField_6 = new JTextField();
-		textField_6.setBounds(new Rectangle(0, 20, 0, 0));
-		textField_6.setBounds(320, 113, 30, 19);
-		getContentPane().add(textField_6);
+		panel_1.add(textField_6);
 		textField_6.setColumns(10);
-
+		
 		textField_7 = new JTextField();
-		textField_7.setBounds(new Rectangle(0, 20, 0, 0));
-		textField_7.setBounds(360, 113, 50, 19);
-		getContentPane().add(textField_7);
+		panel_1.add(textField_7);
 		textField_7.setColumns(10);
 
-		JRadioButton rdbtnDocente = new JRadioButton("Docente");
+		JLabel lblNewLabel = new JLabel("Empty");
+		panel.add(lblNewLabel);
+		
+		Button button = new Button("Elegir imagen");
+		panel.add(button);
+		button.setFont(new Font("Dialog", Font.BOLD, 10));
+
+		JLabel lblInstituto = new JLabel("Instituto");
+		panel.add(lblInstituto);
+		
+		textField_5 = new JTextField();
+		panel.add(textField_5);
+		textField_5.setEditable(false);
+		
+		
+		textField_5.setColumns(10);
+		
+		rdbtnDocente = new JRadioButton("Docente");
+		panel.add(rdbtnDocente);
 		rdbtnDocente.addChangeListener(new ChangeListener() {
 			public void stateChanged(ChangeEvent arg0) {
 				if (rdbtnDocente.isSelected()) {
@@ -166,83 +178,90 @@ public class AltaUsuario extends JInternalFrame {
 			}
 		});
 		rdbtnDocente.setSelected(true);
-		rdbtnDocente.setBounds(170, 168, 149, 23);
-		getContentPane().add(rdbtnDocente);
-
+		
+		JPanel panel_2 = new JPanel();
+		panel.add(panel_2);
+		button.addActionListener(new ActionListener() {
+		public void actionPerformed(ActionEvent e) {
+			int r;
+			JFileChooser jf = new JFileChooser();
+			FileNameExtensionFilter filter = new FileNameExtensionFilter("JPG & PNG", "jpg", "png");
+			jf.setFileFilter(filter);
+			r = jf.showOpenDialog(AltaUsuario.this);
+			if (r == JFileChooser.APPROVE_OPTION) {
+				imagen = jf.getSelectedFile();
+				lblNewLabel.setText(imagen.getName());
+			} else {
+				System.err.println("Te falta calle.");
+			}				
+		}});
+		
 		JButton btnAgregar = new JButton("Agregar");
 		btnAgregar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				ILogica Interfaz = new BizcochoEnARG().getInterface();
-
-				String nickname = textField.getText();
-				String nombre = textField_1.getText();
-				String apellido = textField_2.getText();
-				String email = textField_3.getText();
-				String fecha = (textField_7.getText() + "-" + textField_6.getText() + "-" + txtDiaint.getText());
+		public void actionPerformed(ActionEvent arg0) {
+			ILogica Interfaz = new BizcochoEnARG().getInterface();
+			String nickname = textField.getText();
+			String nombre = textField_1.getText();
+			String apellido = textField_2.getText();
+			String email = textField_3.getText();
+			String fecha = (textField_7.getText() + "-" + textField_6.getText() + "-" + txtDiaint.getText());
+			String pass = String.valueOf(passwordField.getPassword());
+			String verPass = String.valueOf(passwordField_1.getPassword());
+			String pp = "";
+			System.out.println(pass+" "+verPass);
+			if(!nickname.equals("") && !nombre.equals("") && !apellido.equals("") && !email.equals("") && !textField_7.getText().equals("") &&
+					!textField_6.getText().equals("") && !textField_5.getText().equals("") && !pass.equals("") && !verPass.equals("")) {
 				Date nacDate = Date.valueOf(fecha);
-				String pp = "";
-
-				if (rdbtnDocente.isSelected()) {
-					pp = Interfaz.crearUsuarioDocente(nickname, nombre, apellido, email, nacDate, textField_5.getText(),
-							imagen);
-					if (pp.isEmpty()) {
-						JOptionPane.showMessageDialog(null,
-								"Se ha agregado el estudiante con los siguentes datos:\n      " + "Nickname: "
-										+ nickname + "\nNombre: " + nombre + "\nApellido: " + apellido + "\nEmail: "
-										+ email + "\nFecha nac: " + nacDate.toString());
-						textField.setText("");
-						textField_1.setText("");
-						textField_2.setText("");
-						textField_3.setText("");
-						textField_7.setText("");
-						textField_6.setText("");
-						txtDiaint.setText("");
-					} else {
-						JOptionPane.showMessageDialog(null, pp);
+				if(pass.equals(verPass)) {
+					if (rdbtnDocente.isSelected()) {
+						pp = Interfaz.crearUsuarioDocente(nickname, nombre, apellido, email, nacDate, textField_5.getText(),imagen);
+						if (pp.isEmpty()) {
+							JOptionPane.showMessageDialog(null,
+									"Se ha agregado el estudiante con los siguentes datos:\n      " + "Nickname: "
+											+ nickname + "\nNombre: " + nombre + "\nApellido: " + apellido + "\nEmail: "
+											+ email + "\nFecha nac: " + nacDate.toString());
+							textField.setText("");
+							textField_1.setText("");
+							textField_2.setText("");
+							textField_3.setText("");
+							textField_7.setText("");
+							textField_6.setText("");
+							txtDiaint.setText("");
+						}else {
+							JOptionPane.showMessageDialog(null, pp);
+						}
+					}else {
+						pp = Interfaz.crearUsuarioEstudiante(nickname, nombre, apellido, email, nacDate, imagen);
+						if (pp.isEmpty()) {
+							JOptionPane.showMessageDialog(null,
+									"Se ha agregado el docente con los siguentes datos:\n      " + "Nickname: " + nickname
+											+ "\nNombre: " + nombre + "\nApellido: " + apellido + "\nEmail: " + email
+											+ "\nFecha nac: " + nacDate.toString());
+							textField.setText("");
+							textField_1.setText("");
+							textField_2.setText("");
+							textField_3.setText("");
+							textField_7.setText("");
+							textField_6.setText("");
+							txtDiaint.setText("");
+						}else {
+							JOptionPane.showMessageDialog(null, pp);
+						}
 					}
-				} else {
-					pp = Interfaz.crearUsuarioEstudiante(nickname, nombre, apellido, email, nacDate, imagen);
-					if (pp.isEmpty()) {
-						JOptionPane.showMessageDialog(null,
-								"Se ha agregado el docente con los siguentes datos:\n      " + "Nickname: " + nickname
-										+ "\nNombre: " + nombre + "\nApellido: " + apellido + "\nEmail: " + email
-										+ "\nFecha nac: " + nacDate.toString());
-						textField.setText("");
-						textField_1.setText("");
-						textField_2.setText("");
-						textField_3.setText("");
-						textField_7.setText("");
-						textField_6.setText("");
-						txtDiaint.setText("");
-					} else {
-						JOptionPane.showMessageDialog(null, pp);
-					}
+				}else {
+					JOptionPane.showMessageDialog(null, "ERROR, no coiciden las password");
 				}
-
+				
+				
+			}else {
+				JOptionPane.showMessageDialog(null, "No pueden haber campos vacios");
 			}
-		});
-		btnAgregar.setBounds(290, 224, 117, 25);
+			
+			
+		}});
+		
+		btnAgregar.setBounds(258, 282, 117, 25);
 		getContentPane().add(btnAgregar);
-
-		Button button = new Button("Elegir imagen");
-		button.setFont(new Font("Dialog", Font.BOLD, 10));
-		button.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				int r;
-				JFileChooser jf = new JFileChooser();
-				FileNameExtensionFilter filter = new FileNameExtensionFilter("JPG & PNG", "jpg", "png");
-				jf.setFileFilter(filter);
-				r = jf.showOpenDialog(AltaUsuario.this);
-				if (r == JFileChooser.APPROVE_OPTION) {
-					imagen = jf.getSelectedFile();
-					lblNewLabel.setText(imagen.getName());
-				} else {
-					System.err.println("Te falta calle.");
-				}
-			}
-		});
-		button.setBounds(300, 146, 110, 22);
-		getContentPane().add(button);
 
 		JButton btnCancelar = new JButton("Cancelar");
 		btnCancelar.addActionListener(new ActionListener() {
@@ -250,13 +269,8 @@ public class AltaUsuario extends JInternalFrame {
 				dispose();
 			}
 		});
-		btnCancelar.setBounds(160, 224, 117, 25);
+		btnCancelar.setBounds(100, 282, 117, 25);
 		getContentPane().add(btnCancelar);
-
-		JLabel lblNewLabel_1 = new JLabel("D / M / A  (INT)");
-		lblNewLabel_1.setFont(new Font("Dialog", Font.BOLD, 11));
-		lblNewLabel_1.setBounds(160, 113, 100, 19);
-		getContentPane().add(lblNewLabel_1);
 	}
 
 	private class SwingAction extends AbstractAction {
@@ -271,4 +285,6 @@ public class AltaUsuario extends JInternalFrame {
 
 	JFileChooser jf = new JFileChooser();
 	FileNameExtensionFilter filter = new FileNameExtensionFilter("JPG & GIF", "jpg", "gif");
+	private JPasswordField passwordField;
+	private JPasswordField passwordField_1;
 }
