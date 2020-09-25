@@ -19,7 +19,7 @@ public class ExisteCurso {
         Curso est = null;
         est = entitymanager.find(Curso.class, nombreCurso);
 
-        if (est != null ) {
+        if (est != null) {
             ret = true;
         }
         entitymanager.close();

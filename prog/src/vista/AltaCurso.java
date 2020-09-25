@@ -24,7 +24,7 @@ import java.awt.event.ItemEvent;
 import java.sql.Date;
 
 import java.util.List;
-import logica.datatypes.*;
+import API.datatypes.*;
 import API.*;
 
 public class AltaCurso extends JInternalFrame {

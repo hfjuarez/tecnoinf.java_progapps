@@ -1,11 +1,12 @@
 package logica.formaciones;
 
-import logica.datatypes.DTFormacion;
 import logica.entidades.Formacion;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+
+import API.datatypes.DTFormacion;
 
 public class ObtenerFormacion {
 

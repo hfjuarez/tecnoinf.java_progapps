@@ -80,22 +80,24 @@ public class AltaEdicionCurso {
                             return retorno + "ERROR: No existe el docente: " + docenteString
                                     + ", por favor ingrese un existente!\n";
                         }
-                        if (!doc.getInstituto().getNombreInstituto().equals(cursoCurso.getInstituto().getNombreInstituto())){
-                            return retorno + "ERROR: El docente con nickname: "+ doc.getNickname() + ", no pertenece al Instituto del curso a crear la edicion (El docente debe pertenecer a este Instituto: "+cursoCurso.getInstituto().getNombreInstituto()+")";
+                        if (!doc.getInstituto().getNombreInstituto()
+                                .equals(cursoCurso.getInstituto().getNombreInstituto())) {
+                            return retorno + "ERROR: El docente con nickname: " + doc.getNickname()
+                                    + ", no pertenece al Instituto del curso a crear la edicion (El docente debe pertenecer a este Instituto: "
+                                    + cursoCurso.getInstituto().getNombreInstituto() + ")";
                         }
 
                         docentesEdicion.add(doc);
                     }
                 } else {
-                    return retorno + "ERROR: No se ingresaron docentes para esta edicion, por foavor ingrese minimo uno!\n";
+                    return retorno
+                            + "ERROR: No se ingresaron docentes para esta edicion, por foavor ingrese minimo uno!\n";
                 }
-            
-                
 
                 EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("CursoJPA");
                 EntityManager entitymanager = emfactory.createEntityManager();
                 entitymanager.getTransaction().begin();
-                
+
                 EdicionCurso edicion = new EdicionCurso(nombreEdicion, cursoCurso, fechaInicio, fechaFin, cupo,
                         fechaAltaEdicion, docentesEdicion);
                 entitymanager.persist(edicion);
@@ -104,9 +106,8 @@ public class AltaEdicionCurso {
                 entitymanager.close();
                 emfactory.close();
                 return "";
-            }
-            else {
-            	return retorno + "ERROR: No se encontro el curso ingresado, por favor verifique que este correcto!\n";
+            } else {
+                return retorno + "ERROR: No se encontro el curso ingresado, por favor verifique que este correcto!\n";
             }
         } else {
             return retorno + "ERROR: No se permiten campos nulos, por favor complete todos los campos!\n";

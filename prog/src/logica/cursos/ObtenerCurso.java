@@ -1,11 +1,12 @@
 package logica.cursos;
 
-import logica.datatypes.DTCurso;
 import logica.entidades.Curso;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+
+import API.datatypes.DTCurso;
 
 public class ObtenerCurso {
 

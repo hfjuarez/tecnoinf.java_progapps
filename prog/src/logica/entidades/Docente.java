@@ -23,17 +23,17 @@ public class Docente extends Usuario {
 		super();
 	}
 
-	public Docente(String nick, String name, String ape, String mail, Date nac, Instituto ins) {
-		super(nick, name, ape, mail, nac);
-		 instituto = ins;
+	public Docente(String nick, String name, String ape, String mail, Date nac, Instituto ins, String passwd) {
+		super(nick, name, ape, mail, nac, passwd);
+		instituto = ins;
 	}
 
 	public Instituto getInstituto() {
-		 return this.instituto;
+		return this.instituto;
 	}
 
 	public void setInstituto(Instituto instituto) {
-		 this.instituto = instituto;
+		this.instituto = instituto;
 	}
 
 }

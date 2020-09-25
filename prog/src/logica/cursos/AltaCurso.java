@@ -9,6 +9,8 @@ import java.sql.Date;
 import java.util.List;
 import java.util.ArrayList;
 
+import logica.categorias.ObtenerCategoria;
+import logica.entidades.Categoria;
 import logica.entidades.Curso;
 import logica.entidades.Instituto;
 import logica.institutos.ObtenerInstituto;
@@ -58,10 +60,11 @@ public class AltaCurso {
         return ret;
     }
 
-    public String createCurso(String nombreInstituto, List<String> nombrePrevias) {
+    public String createCurso(String nombreInstituto, List<String> nombrePrevias, List<String> nombresCategorias) {
         boolean tienePrevias = false;
         String retorno = "";
         List<Curso> previas = new ArrayList();
+        List<Categoria> listCategorias = new ArrayList();
 
         if (hasErrorEmpty() || nombreInstituto.isEmpty()) {
             retorno = retorno + "ERROR: No se permiten campos nulos, por favor complete todos los campos!\n";
@@ -83,6 +86,20 @@ public class AltaCurso {
                     previas.add(previa);
                 }
             }
+            if (!nombresCategorias.isEmpty()) {
+                tienePrevias = true;
+                ObtenerCategoria oc = new ObtenerCategoria();
+                for (String nomCat : nombresCategorias) {
+                    Categoria categoria = oc.getCategoria(nomCat);
+                    if (categoria == null) {
+                        return retorno + "ERROR: No existe la categoria: " + nomCat
+                                + ", por favor ingrese una categoria valida.\n";
+                    }
+                    listCategorias.add(categoria);
+                }
+            } else {
+                return retorno + "ERROR: No se ingresaron Categorias para le curso." + "\n";
+            }
 
             Instituto instituto = new ObtenerInstituto(nombreInstituto).getInstituto();
 
@@ -93,9 +110,11 @@ public class AltaCurso {
 
                 Curso curso = new Curso(nom_cur, des_cur, dur_mes, cant_horas, cant_credito, curURL, fech_alta,
                         instituto);
+
                 if (tienePrevias) {
                     curso.setPrevias(previas);
                 }
+                curso.setCategoria(listCategorias);
 
                 entitymanager.persist(curso);
 

@@ -3,7 +3,7 @@ package vista;
 import java.awt.EventQueue;
 
 import API.*;
-import logica.datatypes.*;
+import API.datatypes.*;
 
 import javax.swing.JInternalFrame;
 import javax.swing.JPanel;
@@ -13,7 +13,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JComboBox;
 import javax.swing.SwingConstants;
 
-import logica.datatypes.DTCurso;
 
 import javax.swing.JSpinner;
 import javax.swing.JButton;

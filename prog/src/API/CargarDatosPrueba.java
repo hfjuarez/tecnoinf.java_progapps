@@ -5,12 +5,16 @@ import logica.cursos.CargarCursos;
 import logica.edicioncursos.CargarEdicion;
 import logica.formaciones.CargarFormacion;
 import logica.institutos.CargarInstituto;
+import logica.categorias.*;
 
 public class CargarDatosPrueba {
 
 	public static void main(String[] args) {
 		CargarInstituto ci = new CargarInstituto();
 		System.out.println(ci.cargarInstitutos());
+		
+		CargarCategorias c = new CargarCategorias();
+		System.out.println(c.cargarCat());
 
 		CargarUsuarios cu = new CargarUsuarios();
 		System.out.println(cu.cargarUsuarios());

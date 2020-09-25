@@ -25,7 +25,7 @@ import javax.swing.SpinnerNumberModel;
 import API.*;
 
 import java.util.List;
-import logica.datatypes.*;
+import API.datatypes.*;
 import java.sql.Date;
 
 public class AltaEdicionCurso extends JInternalFrame {

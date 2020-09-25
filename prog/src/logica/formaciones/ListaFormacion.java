@@ -3,9 +3,10 @@ package logica.formaciones;
 import java.util.List;
 import java.util.ArrayList;
 import logica.entidades.Formacion;
-import logica.datatypes.DTFormacion;
 
 import javax.persistence.*;
+
+import API.datatypes.DTFormacion;
 
 public class ListaFormacion {
     public List<Formacion> getList() {

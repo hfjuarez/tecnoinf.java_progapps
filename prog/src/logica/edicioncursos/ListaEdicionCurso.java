@@ -9,7 +9,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 
-import logica.datatypes.DTEdicionCurso;
+import API.datatypes.DTEdicionCurso;
 import logica.entidades.Curso;
 
 public class ListaEdicionCurso {

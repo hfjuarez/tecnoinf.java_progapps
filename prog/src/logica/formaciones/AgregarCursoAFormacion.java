@@ -18,6 +18,17 @@ public class AgregarCursoAFormacion {
         nom_for = nombreFormacion;
     }
 
+    private boolean existeCursoEnFormacion(List<String> nombreCursos) {
+        Formacion f = new ObtenerFormacion().getFormacion(nom_for);
+        List<Curso> cursos = f.getCursos();
+        for (Curso cursito : cursos) {
+            if (nombreCursos.contains(cursito.getNombreCurso())) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     private String hasErrorNotExists() {
         ExisteFormacion existeFormacion = new ExisteFormacion();
         if (!existeFormacion.existeFormCur(nom_for))
@@ -41,30 +52,34 @@ public class AgregarCursoAFormacion {
                         return retorno + "ERROR: No existe el curso: " + cursoString
                                 + ", por favor ingrese un curso existente!\n";
                     }
-
                     cursos.add(cursoFor);
                 }
             }
         }
 
-        if (hasErrorNotExists().isEmpty()) {
-            EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("CursoJPA");
-            EntityManager entitymanager = emfactory.createEntityManager();
-            entitymanager.getTransaction().begin();
+        if (!existeCursoEnFormacion(nombreCursos)) {
 
-            Formacion form = entitymanager.find(Formacion.class, nom_for);
+            if (hasErrorNotExists().isEmpty()) {
+                EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("CursoJPA");
+                EntityManager entitymanager = emfactory.createEntityManager();
+                entitymanager.getTransaction().begin();
 
-            for (Curso cursito : cursos) {
-                form.addCurso(cursito);
+                Formacion form = entitymanager.find(Formacion.class, nom_for);
+
+                for (Curso cursito : cursos) {
+                    form.addCurso(cursito);
+                }
+
+                entitymanager.getTransaction().commit();
+
+                entitymanager.close();
+                emfactory.close();
+                return "";
+            } else {
+                return hasErrorNotExists();
             }
-
-            entitymanager.getTransaction().commit();
-
-            entitymanager.close();
-            emfactory.close();
-            return "";
         } else {
-            return hasErrorNotExists();
+            return retorno + "ERROR: Ya existe el curso a agregar en la formacion:" + nom_for;
         }
     }
 }

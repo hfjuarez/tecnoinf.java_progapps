@@ -8,8 +8,7 @@ import javax.swing.JPanel;
 import API.BizcochoEnARG;
 import API.ILogica;
 
-import logica.datatypes.DTFormacion;
-import logica.datatypes.DTCurso;
+import API.datatypes.*;
 
 import java.awt.GridLayout;
 import javax.swing.JLabel;

@@ -3,6 +3,8 @@ package logica.edicioncursos;
 import java.sql.Date;
 import java.util.*;
 
+import logica.inscripciones.InscripcionAEdicion;
+
 public class CargarEdicion {
     public String cargarEdicion() {
         String ret = "";

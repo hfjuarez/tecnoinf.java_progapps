@@ -16,9 +16,7 @@ import javax.swing.SwingConstants;
 import API.BizcochoEnARG;
 import API.ILogica;
 
-import logica.datatypes.DTDocente;
-import logica.datatypes.DTEstudiante;
-import logica.datatypes.DTInstituto;
+import API.datatypes.*;
 
 import java.awt.Dimension;
 import java.awt.event.ActionListener;

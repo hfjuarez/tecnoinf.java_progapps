@@ -20,13 +20,15 @@ public class AltaUsuario {
     private String ape;
     private String mail;
     private Date nacDate;
+    private String passw;
 
-    public AltaUsuario(String nickname, String nombre, String apellido, String email, Date nac) {
+    public AltaUsuario(String nickname, String nombre, String apellido, String email, Date nac, String passp) {
         nick = nickname;
         name = nombre;
         ape = apellido;
         mail = email;
         nacDate = nac;
+        this.passw=passp;
     }
 
     private boolean hasErrorEmpty() {
@@ -62,7 +64,7 @@ public class AltaUsuario {
             EntityManager entitymanager = emfactory.createEntityManager();
             entitymanager.getTransaction().begin();
 
-            Estudiante estudiante = new Estudiante(nick, name, ape, mail, nacDate);
+            Estudiante estudiante = new Estudiante(nick, name, ape, mail, nacDate,passw);
 
             entitymanager.persist(estudiante);
             entitymanager.getTransaction().commit();
@@ -87,7 +89,7 @@ public class AltaUsuario {
                 EntityManager entitymanager = emfactory.createEntityManager();
                 entitymanager.getTransaction().begin();
 
-                Docente docente = new Docente(nick, name, ape, mail, nacDate, instituto);
+                Docente docente = new Docente(nick, name, ape, mail, nacDate, instituto, passw);
 
                 entitymanager.persist(docente);
 

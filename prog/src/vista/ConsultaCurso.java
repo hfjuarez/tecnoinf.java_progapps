@@ -15,7 +15,7 @@ import java.awt.GridLayout;
 import javax.swing.JComboBox;
 import javax.swing.JTextField;
 
-import logica.datatypes.*;
+import API.datatypes.*;
 import API.*;
 
 import javax.swing.JTextArea;

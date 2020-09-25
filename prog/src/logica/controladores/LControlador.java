@@ -1,23 +1,21 @@
 package logica.controladores;
 
 import API.ILogica;
+import API.datatypes.*;
 
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 
 import java.io.File;
 
-import logica.cursos.AltaCurso;
-import logica.cursos.ExisteCurso;
-import logica.cursos.ListaCursos;
-import logica.cursos.ObtenerCurso;
-import logica.datatypes.*;
+import logica.cursos.*;
+import logica.categorias.*;
 import logica.edicioncursos.*;
-import logica.formaciones.AgregarCursoAFormacion;
-import logica.formaciones.AltaFormacion;
-import logica.formaciones.ListaFormacion;
-import logica.institutos.AltaInstituto;
-import logica.institutos.ListaInstitutos;
+import logica.formaciones.*;
+import logica.inscripciones.InscripcionAEdicion;
+import logica.inscripciones.ListaInscripciones;
+import logica.institutos.*;
 import logica.usuarios.*;
 
 public class LControlador implements ILogica {
@@ -40,16 +38,23 @@ public class LControlador implements ILogica {
                 return new ListaInstitutos().getDataTypeList();
         }
 
-        public DTCurso obtenerCurso(String nombrecurso) {
-                return new ObtenerCurso().getDTCurso(nombrecurso);
-        }
-
         public List<DTEstudiante> listaEstudiantes() {
                 return new ListaUsuarios().getDataTypeListEstudiante();
         }
 
         public List<DTDocente> listaDocentes() {
                 return new ListaUsuarios().getDataTypeListDocente();
+        }
+
+        public List<DTDocente> listaDocentesPorInstituto(String instituto) {
+                List<DTDocente> listParcial = new ListaUsuarios().getDataTypeListDocente();
+                List<DTDocente> list = new ArrayList();
+                for (DTDocente dtDocente : list) {
+                        if (dtDocente.instituto.nombreInstituto.equals(instituto)) {
+                                list.add(dtDocente);
+                        }
+                }
+                return list;
         }
 
         public List<DTCurso> listaCursosPorInstituto(String nombreInstituto) {
@@ -72,6 +77,20 @@ public class LControlador implements ILogica {
                 return new ListaInscripciones().getDTlist();
         }
 
+        public List<DTCategoria> listaCat() {
+                return new ListaCategoria().getDataTypeList();
+        }
+
+        public List<DTCategoria> listaCatDeFormacion(String nombreFormacion) {
+                List<String> list = new ListaCategoria().getListPorFormacion(nombreFormacion);
+                List<DTCategoria> dtCategorias = new ArrayList();
+                for (String s : list) {
+                        DTCategoria curr = new DTCategoria(s);
+                        dtCategorias.add(curr);
+                }
+                return dtCategorias;
+        }
+
         // Obtener DT
 
         public DTEstudiante obtenerEstudiante(String nickname) {
@@ -82,6 +101,31 @@ public class LControlador implements ILogica {
                 return new ObtenerUsuario().getDTDocenteByNickname(nickname);
         }
 
+        public DTEdicionCurso obtenerEdicionCurso(String nombreEdicion) {
+                return new ObtenerEdicionCurso().getDTEdicionCurso(nombreEdicion);
+        }
+
+        public DTCurso obtenerCurso(String nombrecurso) {
+                return new ObtenerCurso().getDTCurso(nombrecurso);
+        }
+
+        public DTFormacion obtenerFormacion(String nombre) {
+                return new ObtenerFormacion().getDTFormacion(nombre);
+        }
+
+        public DTInstituto obtenerInstituto(String name) {
+                return new ObtenerInstituto(name).geDTInstituto();
+        }
+
+        public DTCategoria obtenerCategoria(String nombreCategoria) {
+                return new ObtenerCategoria().geDTCategoria(nombreCategoria);
+        }
+
+        // public DTInscripcion_Edicion obtenerDTInscripcion_Edicion(String
+        // nombreEdicion, String nickname) {
+        // return
+        // }
+
         // Alta Instituto
 
         public String crearInstituto(String nombre) {
@@ -91,14 +135,14 @@ public class LControlador implements ILogica {
         // Alta de Usuario
 
         public String crearUsuarioEstudiante(String nickname, String nombre, String apellido, String mail,
-                        Date fechaNac, File imagen) {
-                return new AltaUsuario(nickname, nombre, apellido, mail, fechaNac).createEstudiante();
+                        Date fechaNac, File imagen, String passw) {
+                return new AltaUsuario(nickname, nombre, apellido, mail, fechaNac, passw).createEstudiante();
 
         }
 
         public String crearUsuarioDocente(String nickname, String nombre, String apellido, String mail, Date fechaNac,
-                        String instituto, File imagen) {
-                return new AltaUsuario(nickname, nombre, apellido, mail, fechaNac).createDocente(instituto);
+                        String instituto, File imagen, String passw) {
+                return new AltaUsuario(nickname, nombre, apellido, mail, fechaNac, passw).createDocente(instituto);
 
         }
 
@@ -122,10 +166,10 @@ public class LControlador implements ILogica {
         // Alta Curso
 
         public String crearCurso(String nombre, String desc, int Duracion, int CantHoras, int CantCred, String URL,
-                        Date Fecha, List<String> previas, String nombreInstituto) {
+                        Date Fecha, List<String> previas, String nombreInstituto, List<String> categorias) {
                 if (!new ExisteCurso().existeNombreCur(nombre)) {
                         return new AltaCurso(nombre, desc, Duracion, CantHoras, CantCred, URL, Fecha)
-                                        .createCurso(nombreInstituto, previas);
+                                        .createCurso(nombreInstituto, previas, categorias);
                 } else {
                         return "ERROR: YA existe ese nombre de curso, por favor ingrese uno nuevo!";
                 }
@@ -146,7 +190,7 @@ public class LControlador implements ILogica {
                 return new AltaFormacion(nombreFormacion, descr, FechaIni, FechaFin, FechaAlta).createFormacion();
         }
 
-        // Agregar Curso a Programa de Formación
+        // Agregar Curso a Programa de Formaciï¿½n
 
         public String AgregoCurEnForm(String nombreFormacion, List<String> nombreCursos) {
                 return new AgregarCursoAFormacion(nombreFormacion).agregarCursosAFor(nombreCursos);
@@ -190,7 +234,10 @@ public class LControlador implements ILogica {
                 return new ListaUsuarios().getDataTypeListEstudiante();
         }
 
-        public DTEdicionCurso obtenerEdicionCurso(String nombreEdicion) {
-                return new ObtenerEdicionCurso().getDTEdicionCurso(nombreEdicion);
+        // Alta categoria
+
+        public String crearCategoria(String nombreCategoria) {
+                return new AltaCategoria().create(nombreCategoria);
         }
+
 }

@@ -15,7 +15,7 @@ import java.awt.event.ActionEvent;
 import java.awt.FlowLayout;
 
 import API.*;
-import logica.datatypes.*;
+import API.datatypes.*;
 import java.util.List;
 
 public class ListaDocentes extends JInternalFrame {

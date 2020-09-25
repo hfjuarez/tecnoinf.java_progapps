@@ -1,21 +1,25 @@
 package logica.controladores;
 
-import java.io.*;
-import javax.imageio.*;
-import java.awt.Image.*;
-
-import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.*;
 
 public class ControladorImagen {
 
-    public void GuardarImagen(String nickname, String ext, File imagen) {
-        File dir = new File("./imagenes_progapps_g01");
-        if (dir.mkdir()) {
-            System.out.println("Directorio creado");
-        } else {
-            System.out.println("Error al crear directorio");
+    public void GuardarImagen(String nickname, File imagen) throws IOException {
+    	File dir = new File("./imagenes_progapps_g01");
+    	if(dir.mkdir()) {
+    		System.out.println("Se creo el directorio: "+ "'./imagenes_progapps_g01'");
+    	}
+        Path ppp = Paths.get(imagen.getAbsolutePath());
+        String extension = "";
+        String fileName = imagen.toString();
+        int index = fileName.lastIndexOf('.');
+        if (index > 0) {
+            extension = fileName.substring(index + 1);
         }
-        File f1 = new File(dir.getName() + "/" + nickname);
-        // boolean b1 = imagen.renameTo(f1);
+        Path copiedFile = Files.copy(ppp, Paths.get("./imagenes_progapps_g01/" + nickname + "." + extension),
+                StandardCopyOption.REPLACE_EXISTING);
     }
+
 }

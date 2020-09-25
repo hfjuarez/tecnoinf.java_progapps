@@ -6,11 +6,11 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
+import API.datatypes.DTDocente;
+import API.datatypes.DTEstudiante;
 import logica.entidades.Usuario;
 import logica.entidades.Docente;
-import logica.datatypes.DTDocente;
 import logica.entidades.Estudiante;
-import logica.datatypes.DTEstudiante;
 
 public class ObtenerUsuario {
 

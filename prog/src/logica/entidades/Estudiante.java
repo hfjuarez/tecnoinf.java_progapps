@@ -24,8 +24,8 @@ public class Estudiante extends Usuario {
 		super();
 	}
 
-	public Estudiante(String nick, String name, String ape, String mail, Date nac) {
-		super(nick, name, ape, mail, nac);
+	public Estudiante(String nick, String name, String ape, String mail, Date nac, String passp) {
+		super(nick, name, ape, mail, nac, passp);
 
 	}
 

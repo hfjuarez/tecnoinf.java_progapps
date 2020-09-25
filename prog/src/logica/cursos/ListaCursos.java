@@ -4,12 +4,12 @@ import java.util.List;
 import java.util.ArrayList;
 import logica.entidades.Curso;
 import logica.entidades.Instituto;
-import logica.datatypes.DTCurso;
 import logica.edicioncursos.ListaEdicionCurso;
 import logica.entidades.EdicionCurso;
-import logica.datatypes.*;
 
 import javax.persistence.*;
+
+import API.datatypes.*;
 
 public class ListaCursos {
     public List<Curso> getList() {

@@ -11,9 +11,7 @@ import javax.swing.SwingConstants;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
-import logica.datatypes.DTCurso;
-import logica.datatypes.DTEdicionCurso;
-import logica.datatypes.DTInstituto;
+import API.datatypes.*;
 
 import java.awt.Font;
 import javax.swing.JButton;
@@ -23,7 +21,7 @@ import java.util.List;
 import java.awt.event.ActionEvent;
 
 import API.*;
-import logica.datatypes.*;
+
 import java.awt.Dimension;
 
 public class ConsultaEdicionCurso extends JInternalFrame {

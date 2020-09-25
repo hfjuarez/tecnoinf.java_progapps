@@ -3,9 +3,10 @@ package logica.institutos;
 import java.util.List;
 import java.util.ArrayList;
 import logica.entidades.Instituto;
-import logica.datatypes.DTInstituto;
 
 import javax.persistence.*;
+
+import API.datatypes.DTInstituto;
 
 public class ListaInstitutos {
 

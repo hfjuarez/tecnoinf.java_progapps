@@ -94,4 +94,16 @@ public class Formacion {
 		this.cursos.add(cursoForm);
 	}
 
+	public List<String> getCategorias() {
+		List<String> cats = new ArrayList<String>();
+		List<Curso> cursitos = cursos;
+		for (Curso curso : cursitos) {
+			List<Categoria> catsCurso = curso.getCategoria();
+			for (Categoria cat : catsCurso) {
+				cats.add(cat.getNombreCategoria());
+			}
+		}
+		return cats;
+	}
+
 }

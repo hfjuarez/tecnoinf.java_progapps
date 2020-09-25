@@ -1,11 +1,12 @@
 package logica.institutos;
 
 import logica.entidades.Instituto;
-import logica.datatypes.DTInstituto;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+
+import API.datatypes.DTInstituto;
 
 public class ObtenerInstituto {
     private String nombre;

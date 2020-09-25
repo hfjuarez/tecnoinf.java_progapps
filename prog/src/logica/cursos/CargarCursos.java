@@ -22,7 +22,8 @@ public class CargarCursos {
                                 "*Talleres plenarios*: presentados por cuatro reconocidos matematicos uruguayos, plantearan diversos topicos de matematica en el marco cuales se realizaran actividades fomentando la integracion entre estudiantes, docentes e investigadores.",
                                 3, 15, 1, "http://www.tmu.edu.uy", date1);
                 List<String> l1 = new ArrayList();
-                ret += ac1.createCurso("IMERL", l1);
+                List<String> lc1 = new ArrayList();
+                ret += ac1.createCurso("IMERL", l1,lc1);
 
                 AltaCurso ac2 = new AltaCurso("Seminarios de Resolucion de Problemas",
                                 "Seminario, *todos los jueves* en Facultad de Ingenieria a partir del jueves 25 de Julio, en las areas en que se desarrollan los problemas de las Olimpiadas de Matematica.",

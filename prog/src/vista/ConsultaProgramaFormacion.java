@@ -1,7 +1,7 @@
 package vista;
 import API.*;
 import logica.*;
-import logica.datatypes.*;
+import API.datatypes.*;
 import java.awt.EventQueue;
 
 import javax.swing.JInternalFrame;

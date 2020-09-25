@@ -1,12 +1,13 @@
 package logica.edicioncursos;
 
-import logica.datatypes.DTEdicionCurso;
 import logica.entidades.EdicionCurso;
 import logica.entidades.Curso;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+
+import API.datatypes.DTEdicionCurso;
 
 public class ObtenerEdicionCurso {
 

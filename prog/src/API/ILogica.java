@@ -3,7 +3,7 @@ package API;
 import java.sql.Date;
 import java.util.List;
 
-import logica.datatypes.*;
+import API.datatypes.*;
 
 import java.io.File;
 
@@ -17,23 +17,39 @@ public interface ILogica {
 
       public List<DTDocente> listaDocentes();
 
+      public List<DTDocente> listaDocentesPorInstituto(String instituto);
+
       public List<DTCurso> listaCursosPorInstituto(String nombreInstituto);
 
       public List<DTEdicionCurso> ListaEdicionesCurso(String nombreCurso);
 
-      public List<DTInscripcion_Edicion> listaIns(); 
+      public List<DTInscripcion_Edicion> listaIns();
 
       public List<DTCurso> ListaCursos();
+
+      public List<DTCategoria> listaCat();
+
+      public List<DTCategoria> listaCatDeFormacion(String nombreFormacion);
 
       // Obtener DT
 
       public DTEstudiante obtenerEstudiante(String nickname);
 
       public DTDocente obtenerDocente(String nickname);
-      
+
       public DTEdicionCurso obtenerEdicionCurso(String nombreEdicion);
-      
+
       public DTCurso obtenerCurso(String nombrecurso);
+
+      public DTCategoria obtenerCategoria(String nombreCategoria);
+
+      public DTFormacion obtenerFormacion(String nombre);
+
+      public DTInstituto obtenerInstituto(String name);
+      
+   // Alta categoria
+
+      public String crearCategoria(String nombreCategoria);
 
       // Alta Instituto
 
@@ -42,10 +58,10 @@ public interface ILogica {
       // Alta de Usuario
 
       public String crearUsuarioEstudiante(String nickname, String nombre, String apellido, String mail, Date fechaNac,
-                  File imagen);
+                  File imagen, String passw);
 
       public String crearUsuarioDocente(String nickname, String nombre, String apellido, String mail, Date fechaNac,
-                  String Instituto, File imagen);
+                  String Instituto, File imagen, String passw);
 
       // Modificar Datos de Usuario
 
@@ -54,7 +70,7 @@ public interface ILogica {
       // Alta Curso
 
       public String crearCurso(String nombre, String desc, int duracion, int cantHoras, int CantCred, String URL,
-                  Date Fecha, List<String> previas, String nombreInstituto);
+                  Date Fecha, List<String> previas, String nombreInstituto, List<String> categorias);
 
       // Alta Edicion
 
@@ -65,7 +81,7 @@ public interface ILogica {
 
       public String crearFormacion(String nombreFormacion, String descr, Date FechaIni, Date FechaFin, Date FechaAlta);
 
-      // Agregar Curso a Programa de Formación
+      // Agregar Curso a Programa de Formaciï¿½n
 
       public String AgregoCurEnForm(String nombreFormacion, List<String> nombreCursos);
 
@@ -92,4 +108,6 @@ public interface ILogica {
       public List<DTDocente> consultaUsuarioDocente();
 
       public List<DTEstudiante> consultaUsuarioEstudiante();
+
+      
 }

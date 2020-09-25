@@ -20,19 +20,21 @@ public class Usuario implements Serializable {
 	private String apellido;
 	private String mail;
 	private Date fechaNac;
+	private String passw;
 	// private static final long serialVersionUID = 2L;
 
 	public Usuario() {
 		super();
 	}
 
-	public Usuario(String nick, String name, String ape, String email, Date nac) {
+	public Usuario(String nick, String name, String ape, String email, Date nac, String passp) {
 		super();
 		nickname = nick;
 		nombre = name;
 		apellido = ape;
 		mail = email;
 		fechaNac = nac;
+		passw = passp;
 	}
 
 	public String getNickname() {
@@ -63,8 +65,8 @@ public class Usuario implements Serializable {
 		return this.mail;
 	}
 
-	public void setMail(String email) {
-		this.mail = email;
+	public void setMail(String mail) {
+		this.mail = mail;
 	}
 
 	public Date getFechaNac() {
@@ -73,6 +75,14 @@ public class Usuario implements Serializable {
 
 	public void setFechaNac(Date fechaNac) {
 		this.fechaNac = fechaNac;
+	}
+
+	public String getPass() {
+		return this.passw;
+	}
+
+	public void setPass(String passw) {
+		this.passw = passw;
 	}
 
 }

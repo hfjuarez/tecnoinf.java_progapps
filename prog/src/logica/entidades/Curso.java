@@ -28,6 +28,8 @@ public class Curso {
 	private Instituto instituto;
 	@OneToMany(targetEntity = Curso.class)
 	private List previas;
+	@OneToMany(targetEntity = Categoria.class)
+	private List categorias;
 	// private static final long serialVersionUID = 1L;
 
 	public Curso() {
@@ -121,6 +123,18 @@ public class Curso {
 
 	public void addPrevia(Curso cursoPrevio) {
 		this.previas.add(cursoPrevio);
+	}
+
+	public List<Categoria> getCategoria() {
+		return categorias;
+	}
+
+	public void setCategoria(List<Categoria> categorias) {
+		this.categorias = categorias;
+	}
+
+	public void addCategoria(Categoria categoria) {
+		this.categorias.add(categoria);
 	}
 
 }

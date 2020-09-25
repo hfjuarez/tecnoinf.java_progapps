@@ -2,12 +2,15 @@ package logica.usuarios;
 
 import java.util.List;
 import java.util.ArrayList;
-import logica.datatypes.DTEstudiante;
-import logica.datatypes.DTDocente;
+
 import logica.entidades.Estudiante;
 import logica.entidades.Docente;
 
 import javax.persistence.Query;
+
+import API.datatypes.DTDocente;
+import API.datatypes.DTEstudiante;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
