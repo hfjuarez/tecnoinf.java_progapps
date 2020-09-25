@@ -7,46 +7,51 @@ h1, h2, h3 {
 }
 
 
-.verdesito_back{
-    background-color: #6AD3D9;
+
+
+.blanquito{
     color: #F2F2F2;
 }
-
 .blanquito_back{
     background-color: #F2F2F2;
-}
-
-.lima_back{
-    background-color: #DFE899;
-    color: #F2F2F2;
-}
-
-.rosadito_clarito_back{
-    background-color: #F0D1EB;
-}
-
-.rosadito_back{
-    background-color: #F2A0B7;
-    color: #F2F2F2;
 }
 
 .rosadito{
     color: #F2A0B7;
 }
-
-.verdesito{
-    color: #6AD3D9;
-}
-
-.blanquito{
+.rosadito_back{
+    background-color: #F2A0B7;
     color: #F2F2F2;
 }
 
-.lima{
-    color: #DFE899;
+.verdesito{
+    color: #0F8B8D;
+}
+.verdesito_back{
+    background-color: #0F8B8D;
+}
+
+.marillito{
+    color: #0F8B8D;
+}
+.marillito_back{
+    background-color: #0F8B8D;
 }
 
 .rosadito_clarito{
     color: #F0D1EB;
 }
+.rosadito_clarito_back{
+    background-color: #F0D1EB;
+}
 
+
+.btn-signin{
+    background-color: #F0D1EB;
+    color: #dc3545;
+}
+
+.btn-signin:hover, .btn-signin:focus, .btn-signin:active, .btn-signin.active, .open>.dropdown-toggle.btn-signin {
+    color: #F2F2F2;
+    background-color: #dc3545;
+}
