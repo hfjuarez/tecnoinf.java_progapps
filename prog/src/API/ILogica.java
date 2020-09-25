@@ -58,10 +58,10 @@ public interface ILogica {
       // Alta de Usuario
 
       public String crearUsuarioEstudiante(String nickname, String nombre, String apellido, String mail, Date fechaNac,
-                  File imagen, String passw);
+                  File imagen, String passw, String passw2);
 
       public String crearUsuarioDocente(String nickname, String nombre, String apellido, String mail, Date fechaNac,
-                  String Instituto, File imagen, String passw);
+                  String Instituto, File imagen, String passw, String passw2);
 
       // Modificar Datos de Usuario
 

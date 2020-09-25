@@ -48,6 +48,11 @@ public class AltaUsuario extends JInternalFrame {
 	private JTextField textField_6;
 	private JTextField textField_7;
 	private JRadioButton rdbtnDocente;
+	JFileChooser jf = new JFileChooser();
+	FileNameExtensionFilter filter = new FileNameExtensionFilter("JPG & GIF", "jpg", "gif");
+	private JPasswordField passwordField;
+	private JPasswordField passwordField_1;
+	
 	private final Action action = new SwingAction();
 	File imagen = null;
 
@@ -209,13 +214,13 @@ public class AltaUsuario extends JInternalFrame {
 			String pass = String.valueOf(passwordField.getPassword());
 			String verPass = String.valueOf(passwordField_1.getPassword());
 			String pp = "";
-			System.out.println(pass+" "+verPass);
-			if(!nickname.equals("") && !nombre.equals("") && !apellido.equals("") && !email.equals("") && !textField_7.getText().equals("") &&
-					!textField_6.getText().equals("") && !textField_5.getText().equals("") && !pass.equals("") && !verPass.equals("")) {
+			//System.out.println(pass+" "+verPass);
+			if(!nickname.equals("") && !nombre.equals("") && !email.equals("") && !textField_7.getText().equals("") &&
+					!textField_6.getText().equals("")  && !pass.equals("") && !verPass.equals("") && !txtDiaint.getText().isEmpty()) {
 				Date nacDate = Date.valueOf(fecha);
 				if(pass.equals(verPass)) {
 					if (rdbtnDocente.isSelected()) {
-						pp = Interfaz.crearUsuarioDocente(nickname, nombre, apellido, email, nacDate, textField_5.getText(),imagen);
+						pp = Interfaz.crearUsuarioDocente(nickname, nombre, apellido, email, nacDate, textField_5.getText(),imagen,pass, verPass);
 						if (pp.isEmpty()) {
 							JOptionPane.showMessageDialog(null,
 									"Se ha agregado el estudiante con los siguentes datos:\n      " + "Nickname: "
@@ -228,11 +233,13 @@ public class AltaUsuario extends JInternalFrame {
 							textField_7.setText("");
 							textField_6.setText("");
 							txtDiaint.setText("");
+							passwordField.setText("");
+							passwordField_1.setText("");
 						}else {
 							JOptionPane.showMessageDialog(null, pp);
 						}
 					}else {
-						pp = Interfaz.crearUsuarioEstudiante(nickname, nombre, apellido, email, nacDate, imagen);
+						pp = Interfaz.crearUsuarioEstudiante(nickname, nombre, apellido, email, nacDate, imagen, pass,verPass);
 						if (pp.isEmpty()) {
 							JOptionPane.showMessageDialog(null,
 									"Se ha agregado el docente con los siguentes datos:\n      " + "Nickname: " + nickname
@@ -245,12 +252,14 @@ public class AltaUsuario extends JInternalFrame {
 							textField_7.setText("");
 							textField_6.setText("");
 							txtDiaint.setText("");
+							passwordField.setText("");
+							passwordField_1.setText("");
 						}else {
 							JOptionPane.showMessageDialog(null, pp);
 						}
 					}
 				}else {
-					JOptionPane.showMessageDialog(null, "ERROR, no coiciden las password");
+					JOptionPane.showMessageDialog(null, "ERROR, no coiciden las contrasenias.");
 				}
 				
 				
@@ -284,8 +293,5 @@ public class AltaUsuario extends JInternalFrame {
 		}
 	}
 
-	JFileChooser jf = new JFileChooser();
-	FileNameExtensionFilter filter = new FileNameExtensionFilter("JPG & GIF", "jpg", "gif");
-	private JPasswordField passwordField;
-	private JPasswordField passwordField_1;
+	
 }

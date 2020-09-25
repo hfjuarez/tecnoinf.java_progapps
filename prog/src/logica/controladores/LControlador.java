@@ -135,14 +135,24 @@ public class LControlador implements ILogica {
         // Alta de Usuario
 
         public String crearUsuarioEstudiante(String nickname, String nombre, String apellido, String mail,
-                        Date fechaNac, File imagen, String passw) {
-                return new AltaUsuario(nickname, nombre, apellido, mail, fechaNac, passw).createEstudiante();
+                        Date fechaNac, File imagen, String passw, String passw2) {
+        	if(passw.equals(passw2)) {
+        		return new AltaUsuario(nickname, nombre, apellido, mail, fechaNac, passw).createEstudiante();
+        	} else {
+        		return "ERROR: La contraseñas ingresadas no son iguales, por favor revise los campos!\n";
+        	}
+                
 
         }
 
         public String crearUsuarioDocente(String nickname, String nombre, String apellido, String mail, Date fechaNac,
-                        String instituto, File imagen, String passw) {
-                return new AltaUsuario(nickname, nombre, apellido, mail, fechaNac, passw).createDocente(instituto);
+                        String instituto, File imagen, String passw, String passw2) {
+        	if(passw.equals(passw2)) {
+        		return new AltaUsuario(nickname, nombre, apellido, mail, fechaNac, passw).createDocente(instituto);
+        	} else {
+        		return "ERROR: La contraseñas ingresadas no son iguales, por favor revise los campos!\n";
+        	}
+                
 
         }
 

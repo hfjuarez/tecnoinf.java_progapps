@@ -50,6 +50,9 @@ public class AltaUsuario {
             ret = ret + "ERROR: Ya existe el usuario con nickname: " + nick + "\n";
         if (existeUsuario.existeMail(mail))
             ret = ret + "ERROR: Ya existe el usuario con mail: " + mail + "\n";
+        if(passw.isEmpty()) {
+        	ret+="ERROR: La Contrasenia no puede ser vacia!";
+        }
         return ret;
     }
 
