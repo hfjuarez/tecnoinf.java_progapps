@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">
-<refactoring accessors="true" comment="Delete 2 elements from project &apos;jpamaven-master&apos;&#x0D;&#x0A;- Original project: &apos;jpamaven-master&apos;&#x0D;&#x0A;- Original elements:&#x0D;&#x0A;     Menu.java&#x0D;&#x0A;     Persona.java" description="Delete elements" element1="src/main/java/mavanjpa/Persona.java" element2="src/main/java/mavanjpa/Menu.java" elements="0" flags="589830" id="org.eclipse.jdt.ui.delete" resources="2" stamp="1598643349376" subPackages="false" version="1.0"/>
-</session>
