@@ -118,10 +118,17 @@ public class AgregarCursoAProgramaFormacion extends JInternalFrame {
 				List<String> curso1 = new ArrayList();
 				curso1.add(curso);
 				String pp = Interfaz.AgregoCurEnForm(comboBox.getSelectedItem().toString(), curso1);
-				// System.out.println("Se agrega: " + formacion + " " + curso);
-				JOptionPane.showInternalMessageDialog(null, "Se agregaro/n el/los curso/s");
-				comboBox.setSelectedItem("");
-				comboBox_1.setSelectedItem("");
+				if (pp.isEmpty()) {
+
+					System.out.println("Se agrego: " + formacion + " " + curso);
+					JOptionPane.showInternalMessageDialog(null, "Se agregaro/n el/los curso/s");
+
+				} else {
+					JOptionPane.showInternalMessageDialog(null, pp);
+
+				}
+				comboBox.removeAllItems();
+				comboBox_1.removeAllItems();
 			}
 
 		});

@@ -24,6 +24,7 @@ public class Inscripcion_Edicion {
     @Id
     private Estudiante estudiante;
     private Date fecha;
+    private String estado;
 
     public Inscripcion_Edicion() {
         super();
@@ -36,6 +37,7 @@ public class Inscripcion_Edicion {
         this.edicionCurso = edicionCurso;
         this.estudiante = estudiante;
         this.fecha = fecha;
+        this.estado = "Inscripto";
     }
 
     public void setEdicionCurso(EdicionCurso edicionCurso) {
@@ -60,6 +62,14 @@ public class Inscripcion_Edicion {
 
     public Date getFecha() {
         return fecha;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+
+    public String getEstado() {
+        return estado;
     }
 
 }

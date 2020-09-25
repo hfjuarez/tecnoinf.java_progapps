@@ -1,0 +1,52 @@
+body {
+    font-family: 'Poppins';
+}
+
+h1, h2, h3 {
+    color: #F2A0B7;
+}
+
+
+.verdesito_back{
+    background-color: #6AD3D9;
+    color: #F2F2F2;
+}
+
+.blanquito_back{
+    background-color: #F2F2F2;
+}
+
+.lima_back{
+    background-color: #DFE899;
+    color: #F2F2F2;
+}
+
+.rosadito_clarito_back{
+    background-color: #F0D1EB;
+}
+
+.rosadito_back{
+    background-color: #F2A0B7;
+    color: #F2F2F2;
+}
+
+.rosadito{
+    color: #F2A0B7;
+}
+
+.verdesito{
+    color: #6AD3D9;
+}
+
+.blanquito{
+    color: #F2F2F2;
+}
+
+.lima{
+    color: #DFE899;
+}
+
+.rosadito_clarito{
+    color: #F0D1EB;
+}
+

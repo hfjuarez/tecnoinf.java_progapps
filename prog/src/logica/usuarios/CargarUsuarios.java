@@ -13,17 +13,17 @@ public class CargarUsuarios {
         Date datee4 = Date.valueOf("1987-09-12");
         Date datee5 = Date.valueOf("1964-11-27");
         Date datee6 = Date.valueOf("1978-12-23");
-        AltaUsuario aue1 = new AltaUsuario("eleven11", "Eleven", "", "eleven11@gmail.com", datee1);
+        AltaUsuario aue1 = new AltaUsuario("eleven11", "Eleven", "", "eleven11@gmail.com", datee1, "LzrZzge5");
         ret += aue1.createEstudiante();
-        AltaUsuario aue2 = new AltaUsuario("costas", "Gerardo", "Costas", "gcostas@gmail.com", datee2);
+        AltaUsuario aue2 = new AltaUsuario("costas", "Gerardo", "Costas", "gcostas@gmail.com", datee2, "nQ57u5az");
         ret += aue2.createEstudiante();
-        AltaUsuario aue3 = new AltaUsuario("roro", "Rodrigo", "Cotelo", "rcotelo@yahoo.com", datee3);
+        AltaUsuario aue3 = new AltaUsuario("roro", "Rodrigo", "Cotelo", "rcotelo@yahoo.com", datee3, "Xci95w9i");
         ret += aue3.createEstudiante();
-        AltaUsuario aue4 = new AltaUsuario("chechi", "Cecilia", "Garrido", "cgarrido@hotmail.com", datee4);
+        AltaUsuario aue4 = new AltaUsuario("chechi", "Cecilia", "Garrido", "cgarrido@hotmail.com", datee4, "RqF7U579");
         ret += aue4.createEstudiante();
-        AltaUsuario aue5 = new AltaUsuario("jeffw", "Jeff", "Williams", "jwilliams@gmail.com", datee5);
+        AltaUsuario aue5 = new AltaUsuario("jeffw", "Jeff", "Williams", "jwilliams@gmail.com", datee5, "CQQ8MqpJ");
         ret += aue5.createEstudiante();
-        AltaUsuario aue6 = new AltaUsuario("weiss", "Adrian", "Weiss", "aweiss@hotmail.com", datee6);
+        AltaUsuario aue6 = new AltaUsuario("weiss", "Adrian", "Weiss", "aweiss@hotmail.com", datee6, "CN3zuf8Y");
         ret += aue6.createEstudiante();
 
         // Docentes
@@ -36,23 +36,23 @@ public class CargarUsuarios {
         Date date7 = Date.valueOf("1961-10-07");
         Date date8 = Date.valueOf("1959-12-03");
         Date date9 = Date.valueOf("1978-07-28");
-        AltaUsuario aud1 = new AltaUsuario("heisenberg", "Walter", "White", "heisenberg@gmail.com", date1);
+        AltaUsuario aud1 = new AltaUsuario("heisenberg", "Walter", "White", "heisenberg@gmail.com", date1, "zDUTwJD7");
         ret += aud1.createDocente("INCO");
-        AltaUsuario aud2 = new AltaUsuario("benkenobi", "Obi-Wan", "Kenobi", "benKenobi@gmail.com", date2);
+        AltaUsuario aud2 = new AltaUsuario("benkenobi", "Obi-Wan", "Kenobi", "benKenobi@gmail.com", date2, "5aM8CGch");
         ret += aud2.createDocente("INCO");
-        AltaUsuario aud3 = new AltaUsuario("waston", "Emma", "Watson", "e.waton@gmail.com", date3);
+        AltaUsuario aud3 = new AltaUsuario("waston", "Emma", "Watson", "e.waton@gmail.com", date3, "ahtL8FzL");
         ret += aud3.createDocente("INCO");
-        AltaUsuario aud4 = new AltaUsuario("house", "Gregory", "House", "greghouse@gmail.com", date4);
+        AltaUsuario aud4 = new AltaUsuario("house", "Gregory", "House", "greghouse@gmail.com", date4, "XTMWJ8iT");
         ret += aud4.createDocente("Electrica");
-        AltaUsuario aud5 = new AltaUsuario("timmy ", "Tim", "Cook", "tim.cook@apple.com", date5);
+        AltaUsuario aud5 = new AltaUsuario("timmy ", "Tim", "Cook", "tim.cook@apple.com", date5, "6McCUA9g");
         ret += aud5.createDocente("IMERL");
-        AltaUsuario aud6 = new AltaUsuario("danny", "Daniel", "Riccio", "dan.riccio@gmail.com", date6);
+        AltaUsuario aud6 = new AltaUsuario("danny", "Daniel", "Riccio", "dan.riccio@gmail.com", date6, "4WgRR6nL");
         ret += aud6.createDocente("IMERL");
-        AltaUsuario aud7 = new AltaUsuario("phils", "Philip", "Schiller", "schiller@gmail.com", date7);
+        AltaUsuario aud7 = new AltaUsuario("phils", "Philip", "Schiller", "schiller@gmail.com", date7, "4KJeAikG");
         ret += aud7.createDocente("IMPII");
-        AltaUsuario aud8 = new AltaUsuario("bruces", "Bruce", "Sewell", "sewell@gmail.com", date8);
+        AltaUsuario aud8 = new AltaUsuario("bruces", "Bruce", "Sewell", "sewell@gmail.com", date8, "7KTCP7YL");
         ret += aud8.createDocente("DISI");
-        AltaUsuario aud9 = new AltaUsuario("adri", "Adriana", "Garcia", "agarcia@gmail.com", date9);
+        AltaUsuario aud9 = new AltaUsuario("adri", "Adriana", "Garcia", "agarcia@gmail.com", date9, "EB6Vq6Dj");
         ret += aud9.createDocente("DISI");
         return ret;
     }

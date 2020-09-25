@@ -37,7 +37,7 @@ public class Curso {
 	}
 
 	public Curso(String nombreCurso, String descCurso, int duracionSemanas, int cantidadHoras, int cantidadCreditos,
-			String uRL, Date fechaAlta, Instituto instituto) {
+			String uRL, Date fechaAlta, Instituto instituto, List<Categoria> categorias) {
 		super();
 		this.nombreCurso = nombreCurso;
 		this.descCurso = descCurso;
@@ -47,6 +47,7 @@ public class Curso {
 		URL = uRL;
 		this.fechaAlta = fechaAlta;
 		this.instituto = instituto;
+		this.categorias = categorias;
 	}
 
 	public String getNombreCurso() {
