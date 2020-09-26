@@ -53,3 +53,13 @@ h1, h2, h3 {
     color: #F2F2F2;
     background-color: #dc3545;
 }
+
+.btn-signup{
+    background-color: #F0D1EB;
+    color: #dc3545;
+}
+
+.btn-signup:hover, .btn-signup:focus, .btn-signup:active, .btn-signup.active, .open>.dropdown-toggle.btn-signup {
+    color: #F2F2F2;
+    background-color: #dc3545;
+}
