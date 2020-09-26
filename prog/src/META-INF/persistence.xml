@@ -2,7 +2,15 @@
 <persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
       <persistence-unit name="InstitutoJPA" transaction-type="RESOURCE_LOCAL">
 	      
+	      <class>logica.entidades.Categoria</class>
+	      <class>logica.entidades.Curso</class>
+	      <class>logica.entidades.Docente</class>
+	      <class>logica.entidades.EdicionCurso</class>
+	      <class>logica.entidades.Estudiante</class>
+	      <class>logica.entidades.Formacion</class>
+	      <class>logica.entidades.Inscripcion_Edicion</class>
 	      <class>logica.entidades.Instituto</class>
+	      <class>logica.entidades.Usuario</class>
 	      
 	      
 	   

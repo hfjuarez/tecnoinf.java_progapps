@@ -30,9 +30,6 @@ import API.*;
 public class AltaCurso extends JInternalFrame {
 	private String instituto;
 	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
 	private JTextField textField_4;
 	private final JButton btnNewButton = new JButton("Cancelar");
 	private JTextField textField_8;
@@ -106,26 +103,26 @@ public class AltaCurso extends JInternalFrame {
 		JLabel lblDuracion = new JLabel("Duracion");
 		lblDuracion.setHorizontalAlignment(SwingConstants.CENTER);
 		getContentPane().add(lblDuracion);
-
-		textField_1 = new JTextField();
-		getContentPane().add(textField_1);
-		textField_1.setColumns(10);
+		
+		JSpinner spinner_3 = new JSpinner();
+		spinner_3.setModel(new SpinnerNumberModel(new Integer(1), new Integer(0), new Integer(100), new Integer(1)));
+		getContentPane().add(spinner_3);
 
 		JLabel lblCantidadDeHoras = new JLabel("Cantidad de horas");
 		lblCantidadDeHoras.setHorizontalAlignment(SwingConstants.CENTER);
 		getContentPane().add(lblCantidadDeHoras);
-
-		textField_2 = new JTextField();
-		getContentPane().add(textField_2);
-		textField_2.setColumns(10);
+		
+		JSpinner spinner_4 = new JSpinner();
+		spinner_4.setModel(new SpinnerNumberModel(new Integer(1), new Integer(0), new Integer(300), new Integer(1)));
+		getContentPane().add(spinner_4);
 
 		JLabel lblCantidadDeCreditos = new JLabel("Cantidad de creditos");
 		lblCantidadDeCreditos.setHorizontalAlignment(SwingConstants.CENTER);
 		getContentPane().add(lblCantidadDeCreditos);
-
-		textField_3 = new JTextField();
-		getContentPane().add(textField_3);
-		textField_3.setColumns(10);
+		
+		JSpinner spinner_5 = new JSpinner();
+		spinner_5.setModel(new SpinnerNumberModel(new Integer(1), new Integer(0), new Integer(100), new Integer(1)));
+		getContentPane().add(spinner_5);
 
 		JLabel lblUrl = new JLabel("Url");
 		lblUrl.setHorizontalAlignment(SwingConstants.CENTER);
@@ -208,9 +205,9 @@ public class AltaCurso extends JInternalFrame {
 					public void actionPerformed(ActionEvent e) {
 						String  nombre = textField.getText();
 						String  descripcion = textField_8.getText();
-						int 	duracion = Integer.parseInt(textField_1.getText());
-						int  cantHs = Integer.parseInt(textField_2.getText());
-						int cantCred = Integer.parseInt(textField_3.getText());
+						int 	duracion = Integer.parseInt( spinner_3.getValue().toString());
+						int  cantHs = Integer.parseInt( spinner_4.getValue().toString());
+						int cantCred = Integer.parseInt( spinner_5.getValue().toString());
 						String url = textField_4.getText();
 						Date Fecha = Date.valueOf(spinner_2.getValue().toString() + "-" + spinner_1.getValue().toString() + "-"
 								+ spinner.getValue().toString());
@@ -222,9 +219,9 @@ public class AltaCurso extends JInternalFrame {
 							if (xd.isEmpty()) {
 								JOptionPane.showMessageDialog(null, "Se ha agregado el curso con nombre: " + textField.getText());
 								textField.setText("");
-								textField_1.setText("");
-								textField_2.setText("");
-								textField_3.setText("");
+								spinner_3.setValue(new Integer(1));
+								spinner_4.setValue(new Integer(1));
+								spinner_5.setValue(new Integer(1));
 								textField_4.setText("");
 								textField_8.setText("");
 
@@ -245,27 +242,6 @@ public class AltaCurso extends JInternalFrame {
 				
 				getContentPane().add(btnAceptar);
 		getContentPane().add(btnNewButton);
-
-	}
-
-	Boolean validarFormulario() {
-		if (!textField.getText().equals("") && !textField_1.getText().equals("") && !textField_2.getText().equals("")
-				&& !textField_3.getText().equals("") && !textField_4.getText().equals("")
-				&& !textField_8.getText().equals("")) {
-			return true;
-		} else {
-			return false;
-		}
-
-	}
-
-	void resetFormulario() {
-		textField.setText("");
-		textField_1.setText("");
-		textField_2.setText("");
-		textField_3.setText("");
-		textField_4.setText("");
-		textField_8.setText("");
 
 	}
 

@@ -37,7 +37,7 @@ public class Curso {
 	}
 
 	public Curso(String nombreCurso, String descCurso, int duracionSemanas, int cantidadHoras, int cantidadCreditos,
-			String uRL, Date fechaAlta, Instituto instituto, List<Categoria> categorias) {
+			String uRL, Date fechaAlta, Instituto instituto, List<String> categorias) {
 		super();
 		this.nombreCurso = nombreCurso;
 		this.descCurso = descCurso;

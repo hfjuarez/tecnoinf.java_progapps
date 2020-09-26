@@ -107,9 +107,8 @@ public class AltaCurso {
                 EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("CursoJPA");
                 EntityManager entitymanager = emfactory.createEntityManager();
                 entitymanager.getTransaction().begin();
-
-                Curso curso = new Curso(nom_cur, des_cur, dur_mes, cant_horas, cant_credito, curURL, fech_alta,
-                        instituto);
+                Curso curso = new Curso(nom_cur, des_cur, dur_mes, cant_horas, cant_credito,
+            			curURL, fech_alta, instituto, nombresCategorias);
 
                 if (tienePrevias) {
                     curso.setPrevias(previas);
