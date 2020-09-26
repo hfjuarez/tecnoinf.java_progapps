@@ -8,6 +8,7 @@ public class DTInscripcion_Edicion {
     public DTEdicionCurso edicionCurso;
     public DTEstudiante estudiante;
     public Date fecha;
+    public String estado;
 
     public DTInscripcion_Edicion() {
 
@@ -17,5 +18,6 @@ public class DTInscripcion_Edicion {
         this.edicionCurso = new DTEdicionCurso(ins.getEdicionCurso());
         this.estudiante = new DTEstudiante(ins.getEstudiante());
         this.fecha = ins.getFecha();
+        this.estado = ins.getEstado();
     }
 }
