@@ -16,7 +16,7 @@ public class ListaCategoria {
         EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("CursoJPA");
         EntityManager entitymanager = emfactory.createEntityManager();
 
-        Query query = entitymanager.createQuery("Select i from Curso as i");
+        Query query = entitymanager.createQuery("Select i from Categoria as i");
         list = (List<Categoria>) query.getResultList();
 
         entitymanager.close();
@@ -27,7 +27,7 @@ public class ListaCategoria {
 
     public List<DTCategoria> getDataTypeList() {
         List<Categoria> list = getList();
-        List<DTCategoria> listOfDT = new ArrayList();
+        List<DTCategoria> listOfDT = new ArrayList<>();
         for (Categoria categoria : list) {
             DTCategoria dtCategoria = new DTCategoria(categoria);
             listOfDT.add(dtCategoria);

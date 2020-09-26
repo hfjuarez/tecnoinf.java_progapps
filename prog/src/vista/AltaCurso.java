@@ -37,7 +37,9 @@ public class AltaCurso extends JInternalFrame {
 	private final JButton btnNewButton = new JButton("Cancelar");
 	private JTextField textField_8;
 	public static ArrayList<String> previas = new ArrayList<>();
+	public static ArrayList<String> categorias = new ArrayList<>();
 	private ListaCursos listaCursos = null;
+	private ListaCategoria listaCat = null;
 	private ILogica Interfaz = new BizcochoEnARG().getInterface();
 	private List<DTCurso> listaDTCursos;
 	private List<DTInstituto> ListaInstitutos;
@@ -187,37 +189,60 @@ public class AltaCurso extends JInternalFrame {
 
 		});
 		
+		JButton btnNewButton_1_1 = new JButton("Agregar categorias");
+		btnNewButton_1_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				List<DTCategoria> todasCategorias = Interfaz.listaCat();
+				
+				if(listaCat == null) {
+					listaCat = new ListaCategoria(todasCategorias);
+					VentanaPrincipal.desktopPane.add(listaCat);
+				}
+				listaCat.setVisible(true);
+			}
+		});
+		getContentPane().add(btnNewButton_1_1);
+		
 				JButton btnAceptar = new JButton("Aceptar");
 				btnAceptar.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
+						String  nombre = textField.getText();
+						String  descripcion = textField_8.getText();
+						int 	duracion = Integer.parseInt(textField_1.getText());
+						int  cantHs = Integer.parseInt(textField_2.getText());
+						int cantCred = Integer.parseInt(textField_3.getText());
+						String url = textField_4.getText();
 						Date Fecha = Date.valueOf(spinner_2.getValue().toString() + "-" + spinner_1.getValue().toString() + "-"
 								+ spinner.getValue().toString());
-
 						List<String> prevs = previas;
 
-						String xd = Interfaz.crearCurso(textField.getText(), textField_8.getText(),
-								Integer.parseInt(textField_1.getText()), Integer.parseInt(textField_2.getText()),
-								Integer.parseInt(textField_3.getText()), textField_4.getText(), Fecha, prevs,
-								comboBox.getSelectedItem().toString());
-						if (xd.isEmpty()) {
-							JOptionPane.showMessageDialog(null, "Se ha agregado el curso con nombre: " + textField.getText());
-							textField.setText("");
-							textField_1.setText("");
-							textField_2.setText("");
-							textField_3.setText("");
-							textField_4.setText("");
-							textField_8.setText("");
+						if(!nombre.equals("") && !descripcion.equals("") && !url.equals("") ) {
+							String xd = Interfaz.crearCurso(nombre, descripcion, duracion,cantHs, cantCred, url, Fecha, prevs,
+									comboBox.getSelectedItem().toString(),categorias);
+							if (xd.isEmpty()) {
+								JOptionPane.showMessageDialog(null, "Se ha agregado el curso con nombre: " + textField.getText());
+								textField.setText("");
+								textField_1.setText("");
+								textField_2.setText("");
+								textField_3.setText("");
+								textField_4.setText("");
+								textField_8.setText("");
 
-						} else {
-							JOptionPane.showMessageDialog(null, xd);
+							} else {
+								JOptionPane.showMessageDialog(null, xd);
+							}
+							textField.setText("");
+						}else {
+							JOptionPane.showMessageDialog(null, "No pueden haber campos vacios");
 						}
-						textField.setText("");
+						
+						
+						
 
 					}
 				});
 				
-				JButton btnNewButton_1_1 = new JButton("Agregar categorias");
-				getContentPane().add(btnNewButton_1_1);
+				
 				getContentPane().add(btnAceptar);
 		getContentPane().add(btnNewButton);
 
