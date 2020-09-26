@@ -22,6 +22,9 @@ import javax.swing.JTextArea;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
+import javax.swing.SwingConstants;
+import java.awt.FlowLayout;
+import javax.swing.BoxLayout;
 
 public class ConsultaCurso extends JInternalFrame {
 	private String curso;
@@ -56,7 +59,7 @@ public class ConsultaCurso extends JInternalFrame {
 		setTitle("Consulta de curso");
 		setMaximizable(true);
 		setClosable(true);
-		setBounds(100, 100, 557, 470);
+		setBounds(100, 100, 617, 470);
 		getContentPane().setLayout(null);
 		
 		JPanel panel = new JPanel();
@@ -137,84 +140,79 @@ public class ConsultaCurso extends JInternalFrame {
 		textField_5.setColumns(10);
 		
 		JPanel panel_4 = new JPanel();
-		panel_4.setBounds(30, 282, 350, 100);
+		panel_4.setBounds(30, 282, 525, 100);
 		getContentPane().add(panel_4);
-		panel_4.setLayout(new GridLayout(0, 2, 0, 0));
+		panel_4.setLayout(new GridLayout(0, 3, 0, 0));
 		
 		JPanel panel_5 = new JPanel();
 		panel_4.add(panel_5);
-		GridBagLayout gbl_panel_5 = new GridBagLayout();
-		gbl_panel_5.columnWidths = new int[]{175, 0};
-		gbl_panel_5.rowHeights = new int[]{12, 12, 12, 0, 0};
-		gbl_panel_5.columnWeights = new double[]{1.0, Double.MIN_VALUE};
-		gbl_panel_5.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
-		panel_5.setLayout(gbl_panel_5);
+		panel_5.setLayout(new GridLayout(0, 1, 0, 0));
 		
 		JLabel lblEdicionDeCurso = new JLabel("Edicion de curso");
-		GridBagConstraints gbc_lblEdicionDeCurso = new GridBagConstraints();
-		gbc_lblEdicionDeCurso.fill = GridBagConstraints.BOTH;
-		gbc_lblEdicionDeCurso.insets = new Insets(0, 0, 5, 0);
-		gbc_lblEdicionDeCurso.gridx = 0;
-		gbc_lblEdicionDeCurso.gridy = 0;
-		panel_5.add(lblEdicionDeCurso, gbc_lblEdicionDeCurso);
-		
-		JPanel panel_7 = new JPanel();
-		GridBagConstraints gbc_panel_7 = new GridBagConstraints();
-		gbc_panel_7.fill = GridBagConstraints.BOTH;
-		gbc_panel_7.insets = new Insets(0, 0, 5, 0);
-		gbc_panel_7.gridx = 0;
-		gbc_panel_7.gridy = 1;
-		panel_5.add(panel_7, gbc_panel_7);
-		GridBagConstraints gbc_btnNewButton = new GridBagConstraints();
-		gbc_btnNewButton.insets = new Insets(0, 0, 5, 0);
-		gbc_btnNewButton.fill = GridBagConstraints.BOTH;
-		gbc_btnNewButton.gridx = 0;
-		gbc_btnNewButton.gridy = 2;
+		lblEdicionDeCurso.setHorizontalAlignment(SwingConstants.CENTER);
+		panel_5.add(lblEdicionDeCurso);
 		
 		JComboBox comboBox_2 = new JComboBox();
-		GridBagConstraints gbc_comboBox_2 = new GridBagConstraints();
-		gbc_comboBox_2.fill = GridBagConstraints.HORIZONTAL;
-		gbc_comboBox_2.gridx = 0;
-		gbc_comboBox_2.gridy = 3;
-		panel_5.add(comboBox_2, gbc_comboBox_2);
+		panel_5.add(comboBox_2);
 		
 		JPanel panel_6 = new JPanel();
 		panel_4.add(panel_6);
-		GridBagLayout gbl_panel_6 = new GridBagLayout();
-		gbl_panel_6.columnWidths = new int[]{175, 0};
-		gbl_panel_6.rowHeights = new int[]{12, 12, 12, 0, 0};
-		gbl_panel_6.columnWeights = new double[]{1.0, Double.MIN_VALUE};
-		gbl_panel_6.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
-		panel_6.setLayout(gbl_panel_6);
+		panel_6.setLayout(new GridLayout(0, 1, 0, 0));
+		
+		
+		
 		
 		JLabel lblProgramaDeFormacion = new JLabel("Programa de formacion");
-		GridBagConstraints gbc_lblProgramaDeFormacion = new GridBagConstraints();
-		gbc_lblProgramaDeFormacion.fill = GridBagConstraints.BOTH;
-		gbc_lblProgramaDeFormacion.insets = new Insets(0, 0, 5, 0);
-		gbc_lblProgramaDeFormacion.gridx = 0;
-		gbc_lblProgramaDeFormacion.gridy = 0;
-		panel_6.add(lblProgramaDeFormacion, gbc_lblProgramaDeFormacion);
-		
-		JPanel panel_8 = new JPanel();
-		GridBagConstraints gbc_panel_8 = new GridBagConstraints();
-		gbc_panel_8.fill = GridBagConstraints.BOTH;
-		gbc_panel_8.insets = new Insets(0, 0, 5, 0);
-		gbc_panel_8.gridx = 0;
-		gbc_panel_8.gridy = 1;
-		panel_6.add(panel_8, gbc_panel_8);
-		
-		GridBagConstraints gbc_btnNewButton_1 = new GridBagConstraints();
-		gbc_btnNewButton_1.insets = new Insets(0, 0, 5, 0);
-		gbc_btnNewButton_1.fill = GridBagConstraints.BOTH;
-		gbc_btnNewButton_1.gridx = 0;
-		gbc_btnNewButton_1.gridy = 2;
+		lblProgramaDeFormacion.setHorizontalAlignment(SwingConstants.CENTER);
+		panel_6.add(lblProgramaDeFormacion);
 		
 		JComboBox comboBox_3 = new JComboBox();
-		GridBagConstraints gbc_comboBox_3 = new GridBagConstraints();
-		gbc_comboBox_3.fill = GridBagConstraints.HORIZONTAL;
-		gbc_comboBox_3.gridx = 0;
-		gbc_comboBox_3.gridy = 3;
-		panel_6.add(comboBox_3, gbc_comboBox_3);
+		panel_6.add(comboBox_3);
+		
+		JButton btnNewButton = new JButton("Ver edicion");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				DTEdicionCurso edicion = interfaz.obtenerEdicionCurso(comboBox_2.getSelectedItem().toString());
+				Calendar c1 = Calendar.getInstance();
+				c1.setTime(edicion.fechaAltaEdicion);
+				String dia = Integer.toString(c1.get(Calendar.DAY_OF_MONTH));
+				String mes = Integer.toString(c1.get(Calendar.MONTH) + 1);
+				String anio = Integer.toString(c1.get(Calendar.YEAR));
+				String dou=(dia + "-" + mes + "-" + anio);
+				JOptionPane.showMessageDialog(null,"Nombre edicion: "+edicion.nombreEdicion+"\n"+"Curso: "+edicion.curso.nombreCurso+"\n"+"Cupos: "+edicion.cupo+"\n"+"Fecha alta: "+dou);
+			}
+		});
+		panel_5.add(btnNewButton);
+		
+		JLabel label = new JLabel("");
+		panel_5.add(label);
+				
+						JButton btnNewButton_1 = new JButton("Ver formacion");
+						btnNewButton_1.addActionListener(new ActionListener() {
+							public void actionPerformed(ActionEvent e) {
+								List<DTFormacion> formaciones = interfaz.consultaFormacion();
+								for(DTFormacion formacion : formaciones)
+								{
+									if(formacion.nombreFormacion.equals(comboBox_3.getSelectedItem().toString()))
+									{
+										Calendar c1 = Calendar.getInstance();
+										c1.setTime(formacion.fechaAlta);
+										String dia = Integer.toString(c1.get(Calendar.DAY_OF_MONTH));
+										String mes = Integer.toString(c1.get(Calendar.MONTH) + 1);
+										String anio = Integer.toString(c1.get(Calendar.YEAR));
+										String dou=(dia + "-" + mes + "-" + anio);
+										JOptionPane.showMessageDialog(null,"Nombre: "+formacion.nombreFormacion+"\n"+"Descripcion: "+formacion.descFormacion+"\n"+"Fecha alta: "+dou);
+									}
+									
+								}
+							}
+						});
+						panel_6.add(btnNewButton_1);
+				
+				JLabel label_1 = new JLabel("");
+				panel_6.add(label_1);
+				
+				
 		
 		JButton btnCerrar = new JButton("Cerrar");
 		btnCerrar.addActionListener(new ActionListener() {
@@ -286,45 +284,25 @@ public class ConsultaCurso extends JInternalFrame {
 				}
 			}
 		});
-		btnNewButton_4.setBounds(426, 159, 89, 23);
+		btnNewButton_4.setBounds(408, 159, 123, 23);
 		getContentPane().add(btnNewButton_4);
 		
-		JButton btnNewButton = new JButton("Ver edicion");
-		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				DTEdicionCurso edicion = interfaz.obtenerEdicionCurso(comboBox_2.getSelectedItem().toString());
-				Calendar c1 = Calendar.getInstance();
-				c1.setTime(edicion.fechaAltaEdicion);
-				String dia = Integer.toString(c1.get(Calendar.DAY_OF_MONTH));
-				String mes = Integer.toString(c1.get(Calendar.MONTH) + 1);
-				String anio = Integer.toString(c1.get(Calendar.YEAR));
-				String dou=(dia + "-" + mes + "-" + anio);
-				JOptionPane.showMessageDialog(null,"Nombre edicion: "+edicion.nombreEdicion+"\n"+"Curso: "+edicion.curso.nombreCurso+"\n"+"Cupos: "+edicion.cupo+"\n"+"Fecha alta: "+dou);
-			}
-		});
-		panel_5.add(btnNewButton, gbc_btnNewButton);
-
-		JButton btnNewButton_1 = new JButton("Ver formacion");
-		btnNewButton_1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				List<DTFormacion> formaciones = interfaz.consultaFormacion();
-				for(DTFormacion formacion : formaciones)
-				{
-					if(formacion.nombreFormacion.equals(comboBox_3.getSelectedItem().toString()))
-					{
-						Calendar c1 = Calendar.getInstance();
-						c1.setTime(formacion.fechaAlta);
-						String dia = Integer.toString(c1.get(Calendar.DAY_OF_MONTH));
-						String mes = Integer.toString(c1.get(Calendar.MONTH) + 1);
-						String anio = Integer.toString(c1.get(Calendar.YEAR));
-						String dou=(dia + "-" + mes + "-" + anio);
-						JOptionPane.showMessageDialog(null,"Nombre: "+formacion.nombreFormacion+"\n"+"Descripcion: "+formacion.descFormacion+"\n"+"Fecha alta: "+dou);
-					}
-					
-				}
-			}
-		});
-		panel_6.add(btnNewButton_1, gbc_btnNewButton_1);
+		JPanel panel_9 = new JPanel();
+		panel_4.add(panel_9);
+		panel_9.setLayout(new GridLayout(0, 1, 0, 0));
+		
+		JLabel lblCategorias = new JLabel("Categorias");
+		lblCategorias.setHorizontalAlignment(SwingConstants.CENTER);
+		panel_9.add(lblCategorias);
+		
+		JComboBox comboBox_4 = new JComboBox();
+		panel_9.add(comboBox_4);
+		
+		JButton btnVerCategorias = new JButton("Ver categorias");
+		panel_9.add(btnVerCategorias);
+		
+		JLabel label_2 = new JLabel("");
+		panel_9.add(label_2);
 	}
 	
 	public void setCurso(String curso) {
