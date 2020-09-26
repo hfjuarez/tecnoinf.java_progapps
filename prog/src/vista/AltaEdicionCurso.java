@@ -50,7 +50,7 @@ public class AltaEdicionCurso extends JInternalFrame {
 	private JButton btnAgregar;
 	private JButton btnAceptar;
 	private JButton btnRefresh;
-	private ArrayList<String> docentesAgregados = null;
+	private ArrayList<String> docentesAgregados ;
 	private ListaDocentes listaDocentes = null;
 	private String institutoElegido;
 	private ILogica Interfaz = new BizcochoEnARG().getInterface();
