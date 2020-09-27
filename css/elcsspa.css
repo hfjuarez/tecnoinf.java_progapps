@@ -44,12 +44,13 @@ h1, h2, h3 {
     background-color: #F0D1EB;
 }
 
-.btn-signin{
+
+.btn-rosa-clarito{
     background-color: #F0D1EB;
     color: #dc3545;
 }
 
-.btn-signin:hover, .btn-signin:focus, .btn-signin:active, .btn-signin.active, .open>.dropdown-toggle.btn-signin {
+.btn-rosa-clarito:hover, .btn-rosa-clarito:focus, .btn-rosa-clarito:active, .btn-rosa-clarito.active, .open>.dropdown-toggle.btn-rosa-clarito {
     color: #F2F2F2;
     background-color: #dc3545;
 }
