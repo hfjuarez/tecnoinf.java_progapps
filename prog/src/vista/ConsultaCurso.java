@@ -7,6 +7,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 import java.awt.event.ActionEvent;
@@ -36,6 +37,7 @@ public class ConsultaCurso extends JInternalFrame {
 	private JTextField textField_4;
 	private JTextField textField_5;
 	private ILogica interfaz = new BizcochoEnARG().getInterface();
+	DTCurso cursito;
 	/**
 	 * Launch the application.
 	 */
@@ -187,27 +189,27 @@ public class ConsultaCurso extends JInternalFrame {
 		JLabel label = new JLabel("");
 		panel_5.add(label);
 				
-						JButton btnNewButton_1 = new JButton("Ver formacion");
-						btnNewButton_1.addActionListener(new ActionListener() {
-							public void actionPerformed(ActionEvent e) {
-								List<DTFormacion> formaciones = interfaz.consultaFormacion();
-								for(DTFormacion formacion : formaciones)
-								{
-									if(formacion.nombreFormacion.equals(comboBox_3.getSelectedItem().toString()))
-									{
-										Calendar c1 = Calendar.getInstance();
-										c1.setTime(formacion.fechaAlta);
-										String dia = Integer.toString(c1.get(Calendar.DAY_OF_MONTH));
-										String mes = Integer.toString(c1.get(Calendar.MONTH) + 1);
-										String anio = Integer.toString(c1.get(Calendar.YEAR));
-										String dou=(dia + "-" + mes + "-" + anio);
-										JOptionPane.showMessageDialog(null,"Nombre: "+formacion.nombreFormacion+"\n"+"Descripcion: "+formacion.descFormacion+"\n"+"Fecha alta: "+dou);
-									}
-									
-								}
-							}
-						});
-						panel_6.add(btnNewButton_1);
+		JButton btnNewButton_1 = new JButton("Ver formacion");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				List<DTFormacion> formaciones = interfaz.consultaFormacion();
+				for(DTFormacion formacion : formaciones)
+				{
+					if(formacion.nombreFormacion.equals(comboBox_3.getSelectedItem().toString()))
+					{
+						Calendar c1 = Calendar.getInstance();
+						c1.setTime(formacion.fechaAlta);
+						String dia = Integer.toString(c1.get(Calendar.DAY_OF_MONTH));
+						String mes = Integer.toString(c1.get(Calendar.MONTH) + 1);
+						String anio = Integer.toString(c1.get(Calendar.YEAR));
+						String dou=(dia + "-" + mes + "-" + anio);
+						JOptionPane.showMessageDialog(null,"Nombre: "+formacion.nombreFormacion+"\n"+"Descripcion: "+formacion.descFormacion+"\n"+"Fecha alta: "+dou);
+					}
+					
+				}
+			}
+		});
+		panel_6.add(btnNewButton_1);
 				
 				JLabel label_1 = new JLabel("");
 				panel_6.add(label_1);
@@ -248,12 +250,24 @@ public class ConsultaCurso extends JInternalFrame {
 		btnNewButton_3.setBounds(408, 88, 123, 23);
 		getContentPane().add(btnNewButton_3);
 		
+		JPanel panel_9 = new JPanel();
+		panel_4.add(panel_9);
+		panel_9.setLayout(new GridLayout(0, 1, 0, 0));
+		
+		JLabel lblCategorias = new JLabel("Categorias");
+		lblCategorias.setHorizontalAlignment(SwingConstants.CENTER);
+		panel_9.add(lblCategorias);
+		
+		JComboBox comboBox_4 = new JComboBox();
+		panel_9.add(comboBox_4);
+		
 		JButton btnNewButton_4 = new JButton("Ver datos");
 		btnNewButton_4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				comboBox_2.removeAllItems();
 				comboBox_3.removeAllItems();
-				DTCurso cursito = interfaz.obtenerCurso(comboBox_1.getSelectedItem().toString());
+				comboBox_4.removeAllItems();
+				cursito = interfaz.obtenerCurso(comboBox_1.getSelectedItem().toString());
 				textField.setText(cursito.nombreCurso);
 				textArea.setText(cursito.descCurso);
 				textField_1.setText(cursito.duracionMeses + "");
@@ -282,24 +296,19 @@ public class ConsultaCurso extends JInternalFrame {
 						}
 					}
 				}
+				Boolean esta = false;
+				String testo = "";
+				List<DTCategoria> categorias = cursito.categorias;
+				for(DTCategoria cate: categorias) {
+					comboBox_4.addItem(cate.nombreCategoria);
+				}
 			}
 		});
 		btnNewButton_4.setBounds(408, 159, 123, 23);
 		getContentPane().add(btnNewButton_4);
 		
-		JPanel panel_9 = new JPanel();
-		panel_4.add(panel_9);
-		panel_9.setLayout(new GridLayout(0, 1, 0, 0));
-		
-		JLabel lblCategorias = new JLabel("Categorias");
-		lblCategorias.setHorizontalAlignment(SwingConstants.CENTER);
-		panel_9.add(lblCategorias);
-		
-		JComboBox comboBox_4 = new JComboBox();
-		panel_9.add(comboBox_4);
-		
-		JButton btnVerCategorias = new JButton("Ver categorias");
-		panel_9.add(btnVerCategorias);
+		JPanel panel_7 = new JPanel();
+		panel_9.add(panel_7);
 		
 		JLabel label_2 = new JLabel("");
 		panel_9.add(label_2);

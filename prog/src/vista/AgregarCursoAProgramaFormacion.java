@@ -121,7 +121,7 @@ public class AgregarCursoAProgramaFormacion extends JInternalFrame {
 				if (pp.isEmpty()) {
 
 					System.out.println("Se agrego: " + formacion + " " + curso);
-					JOptionPane.showInternalMessageDialog(null, "Se agregaro/n el/los curso/s");
+					JOptionPane.showInternalMessageDialog(VentanaPrincipal.desktopPane, "Se agregaro/n el/los curso/s");
 
 				} else {
 					JOptionPane.showInternalMessageDialog(null, pp);

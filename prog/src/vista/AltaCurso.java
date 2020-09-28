@@ -224,6 +224,12 @@ public class AltaCurso extends JInternalFrame {
 								spinner_5.setValue(new Integer(1));
 								textField_4.setText("");
 								textField_8.setText("");
+								previas.clear();
+								categorias.clear();
+								listaCursos=null;
+								listaCat = null;
+								
+								
 
 							} else {
 								JOptionPane.showMessageDialog(null, xd);
