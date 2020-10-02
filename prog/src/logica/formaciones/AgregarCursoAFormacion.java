@@ -39,8 +39,24 @@ public class AgregarCursoAFormacion {
     public String agregarCursosAFor(List<String> nombreCursos) {
 
         String retorno = "";
+        String cur;
         List<Curso> cursos = new ArrayList();
-
+        if(nombreCursos.size()==1) {
+        	cur=nombreCursos.get(0);
+        	ObtenerCurso oc = new ObtenerCurso();
+            Curso cursoFor = oc.getCurso(cur);
+            if( cursoFor != null) {
+            	cursos.add(cursoFor);
+            	
+            	
+            }else {
+            	return retorno + "ERROR: No existe el curso: " + cur
+                        + ", por favor ingrese un curso existente!\n";
+            }
+        }
+        
+        /*
+        
         if (retorno.isEmpty()) {
 
             if (!nombreCursos.isEmpty()) {
@@ -55,7 +71,7 @@ public class AgregarCursoAFormacion {
                     cursos.add(cursoFor);
                 }
             }
-        }
+        }*/
 
         if (!existeCursoEnFormacion(nombreCursos)) {
 

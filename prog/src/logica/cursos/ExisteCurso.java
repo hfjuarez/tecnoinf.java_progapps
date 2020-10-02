@@ -6,6 +6,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
+import javax.swing.JOptionPane;
 
 import logica.entidades.Curso;
 
@@ -17,7 +18,12 @@ public class ExisteCurso {
         EntityManager entitymanager = emfactory.createEntityManager();
 
         Curso est = null;
-        est = entitymanager.find(Curso.class, nombreCurso);
+        if(nombreCurso!=null ) {
+        	est = entitymanager.find(Curso.class, nombreCurso);
+        }else {
+        	JOptionPane.showMessageDialog(null, "Curso vacio ");
+        }
+        
 
         if (est != null) {
             ret = true;

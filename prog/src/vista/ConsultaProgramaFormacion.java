@@ -250,7 +250,12 @@ public class ConsultaProgramaFormacion extends JInternalFrame {
 				String mes = Integer.toString(c1.get(Calendar.MONTH) + 1);
 				String anio = Integer.toString(c1.get(Calendar.YEAR));
 				String dou=(dia + "-" + mes + "-" + anio);
-				JOptionPane.showMessageDialog(null,"Curso: "+curso.nombreCurso+"\n"+"Descripcion: "+curso.descCurso+"\n"+"Fecha alta: "+dou+"\n"+"Cantidad horas: "+curso.cantidadHoras+"Cantidad creditos: "+curso.cantidadCreditos+"\n"+"Duracion en semanas: "+curso.duracionMeses);
+				String categorias = "\nCategorias:";
+				List<DTCategoria> cat = curso.categorias;
+				for(DTCategoria c:cat) {
+					categorias+=" " + c.nombreCategoria+" ";
+				}
+				JOptionPane.showMessageDialog(null,"Curso: "+curso.nombreCurso+"\n"+"Descripcion: "+curso.descCurso+"\n"+"Fecha alta: "+dou+"\n"+"Cantidad horas: "+curso.cantidadHoras+"Cantidad creditos: "+curso.cantidadCreditos+"\n"+"Duracion en semanas: "+curso.duracionMeses+ categorias);
 			}
 		});
 		btnNewButton_2.setBounds(445, 171, 105, 23);

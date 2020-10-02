@@ -70,6 +70,7 @@ public class AgregarCursoAProgramaFormacion extends JInternalFrame {
 		panel_1.add(lblProgramaDeFormacion);
 
 		JComboBox comboBox = new JComboBox();
+		comboBox.addItem("");
 		ListaFormacion = Interfaz.consultaFormacion();
 		for (DTFormacion formacion : ListaFormacion) {
 			comboBox.addItem(formacion.nombreFormacion);
@@ -91,6 +92,7 @@ public class AgregarCursoAProgramaFormacion extends JInternalFrame {
 		panel_1.add(lblNewLabel);
 
 		JComboBox comboBox_1 = new JComboBox();
+		comboBox_1.addItem("");
 		ListaCurso = Interfaz.ListaCursos();
 		for (DTCurso curso : ListaCurso) {
 			comboBox_1.addItem(curso.nombreCurso);
@@ -113,22 +115,20 @@ public class AgregarCursoAProgramaFormacion extends JInternalFrame {
 		btnAceptar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
-				// System.out.println("Se elige programa: " + formacion);
-				// System.out.println("Se elige curso: " + curso);
-				List<String> curso1 = new ArrayList();
-				curso1.add(curso);
-				String pp = Interfaz.AgregoCurEnForm(comboBox.getSelectedItem().toString(), curso1);
-				if (pp.isEmpty()) {
+				if(curso!=null && formacion!=null) {
+					List<String> curso1 = new ArrayList();
+					curso1.add(curso);
+					String pp = Interfaz.AgregoCurEnForm(comboBox.getSelectedItem().toString(), curso1);
+					if (pp.isEmpty()) {
 
-					System.out.println("Se agrego: " + formacion + " " + curso);
-					JOptionPane.showInternalMessageDialog(VentanaPrincipal.desktopPane, "Se agregaro/n el/los curso/s");
+						System.out.println("Se agrego: " + formacion + " " + curso);
+						JOptionPane.showInternalMessageDialog(VentanaPrincipal.desktopPane, "Se agrego el curso correctamente.");
 
-				} else {
-					JOptionPane.showInternalMessageDialog(null, pp);
+					} else {
+						JOptionPane.showInternalMessageDialog(VentanaPrincipal.desktopPane, pp);
 
+					}
 				}
-				comboBox.removeAllItems();
-				comboBox_1.removeAllItems();
 			}
 
 		});
@@ -145,26 +145,4 @@ public class AgregarCursoAProgramaFormacion extends JInternalFrame {
 		getContentPane().add(btnCancelar);
 
 	}
-
-	// private ArrayList<String> listaFormacion(){
-	// ArrayList<String> lista = new ArrayList<>();
-	// lista.add("Eje1");
-	// lista.add("Eje2");
-	// lista.add("Eje3");
-	// lista.add("Eje4");
-	// lista.add("Eje5");
-	// lista.add("Eje6");
-	// return lista;
-	// }
-
-	// private ArrayList<String> listaCursos(){
-	// ArrayList<String> lista = new ArrayList<>();
-	// lista.add("Curso1");
-	// lista.add("Curso2");
-	// lista.add("Curso3");
-	// lista.add("Curso4");
-	// lista.add("Curso5");
-
-	// return lista;
-	// }
 }
