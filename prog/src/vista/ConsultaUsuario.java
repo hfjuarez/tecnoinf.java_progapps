@@ -147,42 +147,39 @@ public class ConsultaUsuario extends JInternalFrame {
 		gbl_panel_5.rowWeights = new double[]{0.0, 0.0, 0.0, Double.MIN_VALUE};
 		panel_5.setLayout(gbl_panel_5);
 		
-				JLabel lblCursos = new JLabel("Cursos");
-				lblCursos.setHorizontalAlignment(SwingConstants.CENTER);
-				GridBagConstraints gbc_lblCursos = new GridBagConstraints();
-				gbc_lblCursos.fill = GridBagConstraints.BOTH;
-				gbc_lblCursos.insets = new Insets(0, 0, 5, 0);
-				gbc_lblCursos.gridx = 0;
-				gbc_lblCursos.gridy = 0;
-				panel_5.add(lblCursos, gbc_lblCursos);
-		
-				JPanel panel_9 = new JPanel();
-				GridBagConstraints gbc_panel_9 = new GridBagConstraints();
-				gbc_panel_9.insets = new Insets(0, 0, 5, 0);
-				gbc_panel_9.fill = GridBagConstraints.BOTH;
-				gbc_panel_9.gridx = 0;
-				gbc_panel_9.gridy = 1;
-				panel_5.add(panel_9, gbc_panel_9);
-				
-				JComboBox comboBox_curso = new JComboBox();
-				GridBagConstraints gbc_comboBox_curso = new GridBagConstraints();
-				gbc_comboBox_curso.fill = GridBagConstraints.HORIZONTAL;
-				gbc_comboBox_curso.gridx = 0;
-				gbc_comboBox_curso.gridy = 2;
-				panel_5.add(comboBox_curso, gbc_comboBox_curso);
+		JLabel lblCursos = new JLabel("Cursos");
+		lblCursos.setHorizontalAlignment(SwingConstants.CENTER);
+		GridBagConstraints gbc_lblCursos = new GridBagConstraints();
+		gbc_lblCursos.fill = GridBagConstraints.BOTH;
+		gbc_lblCursos.insets = new Insets(0, 0, 5, 0);
+		gbc_lblCursos.gridx = 0;
+		gbc_lblCursos.gridy = 0;
+		panel_5.add(lblCursos, gbc_lblCursos);
 
-//		for (DTCurso curso : listaCursos()) {
-//			JButton btnCurso = new JButton(curso);
-//			btnCurso.addActionListener(new ActionListener() {
-//				public void actionPerformed(ActionEvent e) {
-//					ConsultaCurso cc = new ConsultaCurso();
-//					cc.setCurso(curso);
-//					VentanaPrincipal.desktopPane.add(cc);
-//					cc.setVisible(true);
-//				}
-//			});
-//			panel_5.add(btnCurso);
-//		}
+		JPanel panel_9 = new JPanel();
+		GridBagConstraints gbc_panel_9 = new GridBagConstraints();
+		gbc_panel_9.insets = new Insets(0, 0, 5, 0);
+		gbc_panel_9.fill = GridBagConstraints.BOTH;
+		gbc_panel_9.gridx = 0;
+		gbc_panel_9.gridy = 1;
+		panel_5.add(panel_9, gbc_panel_9);
+		
+		JComboBox comboBox_curso = new JComboBox();
+		GridBagConstraints gbc_comboBox_curso = new GridBagConstraints();
+		gbc_comboBox_curso.fill = GridBagConstraints.HORIZONTAL;
+		gbc_comboBox_curso.gridx = 0;
+		gbc_comboBox_curso.gridy = 2;
+		panel_5.add(comboBox_curso, gbc_comboBox_curso);
+		
+		List<DTEstudiante> estudiantes = Interfaz.listaEstudiantes();
+		for (DTEstudiante es : estudiantes) {
+			comboBox.addItem(es.nickname);
+		}
+
+		List<DTDocente> docs = Interfaz.listaDocentes();
+		for (DTDocente d : docs) {
+			comboBox.addItem(d.nickname);
+		}
 
 		JPanel panel_6 = new JPanel();
 		panel_4.add(panel_6);
@@ -193,29 +190,29 @@ public class ConsultaUsuario extends JInternalFrame {
 		gbl_panel_6.rowWeights = new double[]{0.0, 0.0, 0.0, Double.MIN_VALUE};
 		panel_6.setLayout(gbl_panel_6);
 		
-				JLabel lblProgramasDeFormacion = new JLabel("Programas de formacion");
-				lblProgramasDeFormacion.setHorizontalAlignment(SwingConstants.CENTER);
-				GridBagConstraints gbc_lblProgramasDeFormacion = new GridBagConstraints();
-				gbc_lblProgramasDeFormacion.fill = GridBagConstraints.BOTH;
-				gbc_lblProgramasDeFormacion.insets = new Insets(0, 0, 5, 0);
-				gbc_lblProgramasDeFormacion.gridx = 0;
-				gbc_lblProgramasDeFormacion.gridy = 0;
-				panel_6.add(lblProgramasDeFormacion, gbc_lblProgramasDeFormacion);
+		JLabel lblProgramasDeFormacion = new JLabel("Programas de formacion");
+		lblProgramasDeFormacion.setHorizontalAlignment(SwingConstants.CENTER);
+		GridBagConstraints gbc_lblProgramasDeFormacion = new GridBagConstraints();
+		gbc_lblProgramasDeFormacion.fill = GridBagConstraints.BOTH;
+		gbc_lblProgramasDeFormacion.insets = new Insets(0, 0, 5, 0);
+		gbc_lblProgramasDeFormacion.gridx = 0;
+		gbc_lblProgramasDeFormacion.gridy = 0;
+		panel_6.add(lblProgramasDeFormacion, gbc_lblProgramasDeFormacion);
+
+		JPanel panel_10 = new JPanel();
+		GridBagConstraints gbc_panel_10 = new GridBagConstraints();
+		gbc_panel_10.insets = new Insets(0, 0, 5, 0);
+		gbc_panel_10.fill = GridBagConstraints.BOTH;
+		gbc_panel_10.gridx = 0;
+		gbc_panel_10.gridy = 1;
+		panel_6.add(panel_10, gbc_panel_10);
 		
-				JPanel panel_10 = new JPanel();
-				GridBagConstraints gbc_panel_10 = new GridBagConstraints();
-				gbc_panel_10.insets = new Insets(0, 0, 5, 0);
-				gbc_panel_10.fill = GridBagConstraints.BOTH;
-				gbc_panel_10.gridx = 0;
-				gbc_panel_10.gridy = 1;
-				panel_6.add(panel_10, gbc_panel_10);
-				
-				JComboBox comboBox_formacion = new JComboBox();
-				GridBagConstraints gbc_comboBox_formacion = new GridBagConstraints();
-				gbc_comboBox_formacion.fill = GridBagConstraints.HORIZONTAL;
-				gbc_comboBox_formacion.gridx = 0;
-				gbc_comboBox_formacion.gridy = 2;
-				panel_6.add(comboBox_formacion, gbc_comboBox_formacion);
+		JComboBox comboBox_formacion = new JComboBox();
+		GridBagConstraints gbc_comboBox_formacion = new GridBagConstraints();
+		gbc_comboBox_formacion.fill = GridBagConstraints.HORIZONTAL;
+		gbc_comboBox_formacion.gridx = 0;
+		gbc_comboBox_formacion.gridy = 2;
+		panel_6.add(comboBox_formacion, gbc_comboBox_formacion);
 
 //		for (String curso : listaProgramas()) {
 //			JButton btnCurso = new JButton(curso);
@@ -239,29 +236,29 @@ public class ConsultaUsuario extends JInternalFrame {
 		gbl_panel_7.rowWeights = new double[]{0.0, 0.0, 0.0, Double.MIN_VALUE};
 		panel_7.setLayout(gbl_panel_7);
 		
-				JLabel lblEdicionesDeCursos = new JLabel("Ediciones de cursos");
-				lblEdicionesDeCursos.setHorizontalAlignment(SwingConstants.CENTER);
-				GridBagConstraints gbc_lblEdicionesDeCursos = new GridBagConstraints();
-				gbc_lblEdicionesDeCursos.fill = GridBagConstraints.BOTH;
-				gbc_lblEdicionesDeCursos.insets = new Insets(0, 0, 5, 0);
-				gbc_lblEdicionesDeCursos.gridx = 0;
-				gbc_lblEdicionesDeCursos.gridy = 0;
-				panel_7.add(lblEdicionesDeCursos, gbc_lblEdicionesDeCursos);
+		JLabel lblEdicionesDeCursos = new JLabel("Ediciones de cursos");
+		lblEdicionesDeCursos.setHorizontalAlignment(SwingConstants.CENTER);
+		GridBagConstraints gbc_lblEdicionesDeCursos = new GridBagConstraints();
+		gbc_lblEdicionesDeCursos.fill = GridBagConstraints.BOTH;
+		gbc_lblEdicionesDeCursos.insets = new Insets(0, 0, 5, 0);
+		gbc_lblEdicionesDeCursos.gridx = 0;
+		gbc_lblEdicionesDeCursos.gridy = 0;
+		panel_7.add(lblEdicionesDeCursos, gbc_lblEdicionesDeCursos);
+
+		JPanel panel_11 = new JPanel();
+		GridBagConstraints gbc_panel_11 = new GridBagConstraints();
+		gbc_panel_11.insets = new Insets(0, 0, 5, 0);
+		gbc_panel_11.fill = GridBagConstraints.BOTH;
+		gbc_panel_11.gridx = 0;
+		gbc_panel_11.gridy = 1;
+		panel_7.add(panel_11, gbc_panel_11);
 		
-				JPanel panel_11 = new JPanel();
-				GridBagConstraints gbc_panel_11 = new GridBagConstraints();
-				gbc_panel_11.insets = new Insets(0, 0, 5, 0);
-				gbc_panel_11.fill = GridBagConstraints.BOTH;
-				gbc_panel_11.gridx = 0;
-				gbc_panel_11.gridy = 1;
-				panel_7.add(panel_11, gbc_panel_11);
-				
-				JComboBox comboBox_edicion = new JComboBox();
-				GridBagConstraints gbc_comboBox_edicion = new GridBagConstraints();
-				gbc_comboBox_edicion.fill = GridBagConstraints.HORIZONTAL;
-				gbc_comboBox_edicion.gridx = 0;
-				gbc_comboBox_edicion.gridy = 2;
-				panel_7.add(comboBox_edicion, gbc_comboBox_edicion);
+		JComboBox comboBox_edicion = new JComboBox();
+		GridBagConstraints gbc_comboBox_edicion = new GridBagConstraints();
+		gbc_comboBox_edicion.fill = GridBagConstraints.HORIZONTAL;
+		gbc_comboBox_edicion.gridx = 0;
+		gbc_comboBox_edicion.gridy = 2;
+		panel_7.add(comboBox_edicion, gbc_comboBox_edicion);
 
 //		for (String curso : listaEdiciones()) {
 //			JButton btnCurso = new JButton(curso);
@@ -436,15 +433,7 @@ public class ConsultaUsuario extends JInternalFrame {
 		JButton btnRefresh_1 = new JButton("Refresh");
 		btnRefresh_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				List<DTEstudiante> estudiantes = Interfaz.listaEstudiantes();
-				for (DTEstudiante es : estudiantes) {
-					comboBox.addItem(es.nickname);
-				}
-
-				List<DTDocente> docs = Interfaz.listaDocentes();
-				for (DTDocente d : docs) {
-					comboBox.addItem(d.nickname);
-				}
+		
 
 			}
 		});

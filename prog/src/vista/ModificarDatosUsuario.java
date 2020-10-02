@@ -165,6 +165,10 @@ public class ModificarDatosUsuario extends JInternalFrame {
 		JPanel panel_1 = new JPanel();
 		panel.add(panel_1);
 		panel_1.setLayout(new GridLayout(1, 0, 0, 0));
+		
+				textField_4 = new JTextField();
+				panel_1.add(textField_4);
+				textField_4.setColumns(5);
 
 		textField_5 = new JTextField();
 		panel_1.add(textField_5);
@@ -173,10 +177,6 @@ public class ModificarDatosUsuario extends JInternalFrame {
 		textField_6 = new JTextField();
 		panel_1.add(textField_6);
 		textField_6.setColumns(5);
-
-		textField_4 = new JTextField();
-		panel_1.add(textField_4);
-		textField_4.setColumns(5);
 
 		JLabel lblInstituto = new JLabel("Instituto");
 		lblInstituto.setHorizontalAlignment(SwingConstants.CENTER);
@@ -206,7 +206,10 @@ public class ModificarDatosUsuario extends JInternalFrame {
 					String nombre = textField_2.getText();
 					String apellido = textField_3.getText();
 					String email = textField_1.getText();
-					String fecha = (textField_4.getText() + "-" + textField_6.getText() + "-" + textField_5.getText());
+					String dia = textField_4.getText();
+					String mes = textField_5.getText();
+					String anio = textField_6.getText();
+					String fecha = anio + "-" + mes + "-" + dia;
 					Date nacDate = Date.valueOf(fecha);
 					File imagen = null;
 					String xd = Interfaz.ModificarUsuario(nickname, nombre, apellido, nacDate, imagen);
@@ -273,11 +276,11 @@ public class ModificarDatosUsuario extends JInternalFrame {
 		String mes = Integer.toString(c.get(Calendar.MONTH) + 1);
 		String anio = Integer.toString(c.get(Calendar.YEAR));
 
-		textField_5.setText(dia);
+		textField_4.setText(dia);
 		// mes
-		textField_4.setText(anio);
+		textField_5.setText(mes);
 		// anio
-		textField_6.setText(mes);
+		textField_6.setText(anio);
 		setComboBox_1Visible(false);
 
 	}
@@ -303,9 +306,9 @@ public class ModificarDatosUsuario extends JInternalFrame {
 
 		textField_4.setText(dia);
 		// mes
-		textField_5.setText(anio);
+		textField_5.setText(mes);
 		// anio
-		textField_6.setText(mes);
+		textField_6.setText(anio);
 		setComboBox_1Visible(true);
 	}
 

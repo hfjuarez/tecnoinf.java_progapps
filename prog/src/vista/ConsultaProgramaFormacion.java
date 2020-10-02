@@ -65,7 +65,7 @@ public class ConsultaProgramaFormacion extends JInternalFrame {
 		setTitle("Consulta de programa de formacion");
 		setMaximizable(true);
 		setClosable(true);
-		setBounds(100, 100, 576, 407);
+		setBounds(100, 100, 619, 407);
 		getContentPane().setLayout(null);
 		
 		JPanel panel = new JPanel();
@@ -196,7 +196,7 @@ public class ConsultaProgramaFormacion extends JInternalFrame {
 				}
 			}
 		});
-		btnNewButton.setBounds(461, 12, 89, 23);
+		btnNewButton.setBounds(460, 12, 120, 23);
 		getContentPane().add(btnNewButton);
 		
 		JButton btnNewButton_1 = new JButton("Ver datos");
@@ -233,32 +233,36 @@ public class ConsultaProgramaFormacion extends JInternalFrame {
 						{
 							comboBox_1.addItem(curso.nombreCurso);
 						}
+						if(cursos.isEmpty()) {
+							
+						}
 					}
 				}
 			}
 		});
-		btnNewButton_1.setBounds(461, 59, 89, 23);
+		btnNewButton_1.setBounds(460, 59, 120, 23);
 		getContentPane().add(btnNewButton_1);
 		
 		JButton btnNewButton_2 = new JButton("Ver curso");
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				DTCurso curso = Interfaz.obtenerCurso(comboBox_1.getSelectedItem().toString());
-				Calendar c1 = Calendar.getInstance();
-				c1.setTime(curso.fechaAlta);
-				String dia = Integer.toString(c1.get(Calendar.DAY_OF_MONTH));
-				String mes = Integer.toString(c1.get(Calendar.MONTH) + 1);
-				String anio = Integer.toString(c1.get(Calendar.YEAR));
-				String dou=(dia + "-" + mes + "-" + anio);
-				String categorias = "\nCategorias:";
-				List<DTCategoria> cat = curso.categorias;
-				for(DTCategoria c:cat) {
-					categorias+=" " + c.nombreCategoria+" ";
-				}
-				JOptionPane.showMessageDialog(null,"Curso: "+curso.nombreCurso+"\n"+"Descripcion: "+curso.descCurso+"\n"+"Fecha alta: "+dou+"\n"+"Cantidad horas: "+curso.cantidadHoras+"Cantidad creditos: "+curso.cantidadCreditos+"\n"+"Duracion en semanas: "+curso.duracionMeses+ categorias);
+					String cur = comboBox_1.getSelectedItem().toString();
+					DTCurso curso = Interfaz.obtenerCurso(cur);
+					Calendar c1 = Calendar.getInstance();
+					c1.setTime(curso.fechaAlta);
+					String dia = Integer.toString(c1.get(Calendar.DAY_OF_MONTH));
+					String mes = Integer.toString(c1.get(Calendar.MONTH) + 1);
+					String anio = Integer.toString(c1.get(Calendar.YEAR));
+					String dou=(dia + "-" + mes + "-" + anio);
+					String categorias = "\nCategorias:";
+					List<DTCategoria> cat = curso.categorias;
+					for(DTCategoria c:cat) {
+						categorias+=" " + c.nombreCategoria+" ";
+					}
+					JOptionPane.showMessageDialog(null,"Curso: "+curso.nombreCurso+"\n"+"Descripcion: "+curso.descCurso+"\n"+"Fecha alta: "+dou+"\n"+"Cantidad horas: "+curso.cantidadHoras+"Cantidad creditos: "+curso.cantidadCreditos+"\n"+"Duracion en semanas: "+curso.duracionMeses+ categorias);
 			}
 		});
-		btnNewButton_2.setBounds(445, 171, 105, 23);
+		btnNewButton_2.setBounds(460, 171, 120, 23);
 		getContentPane().add(btnNewButton_2);
 		
 		ArrayList<JButton> botones = new ArrayList<>();
