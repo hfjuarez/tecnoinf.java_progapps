@@ -31,4 +31,19 @@ public class ListaFormacion {
         }
         return listOfDT;
     }
+
+    public List<DTFormacion> BusquedaFiltro(String busqueda) {
+        List<Formacion> ListaFormacion = getList();
+        List<DTFormacion> DTListFormacion = new ArrayList();
+        for (Formacion formacion : ListaFormacion) {
+            if (formacion.getNombreFormacion().toLowerCase().contains(busqueda.toLowerCase())) {
+                DTListFormacion.add(new DTFormacion(formacion));
+            } else {
+                if (formacion.getDescFormacion().toLowerCase().contains(busqueda.toLowerCase())) {
+                    DTListFormacion.add(new DTFormacion(formacion));
+                }
+            }
+        }
+        return DTListFormacion;
+    }
 }

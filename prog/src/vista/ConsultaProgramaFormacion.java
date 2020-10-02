@@ -33,6 +33,9 @@ import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.event.ItemListener;
 import java.awt.event.ItemEvent;
+import java.awt.Insets;
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
 
 public class ConsultaProgramaFormacion extends JInternalFrame {
 	private DTFormacion programaElegido;
@@ -65,7 +68,7 @@ public class ConsultaProgramaFormacion extends JInternalFrame {
 		setTitle("Consulta de programa de formacion");
 		setMaximizable(true);
 		setClosable(true);
-		setBounds(100, 100, 619, 407);
+		setBounds(100, 100, 619, 469);
 		getContentPane().setLayout(null);
 		
 		JPanel panel = new JPanel();
@@ -156,34 +159,48 @@ public class ConsultaProgramaFormacion extends JInternalFrame {
 				dispose();
 			}
 		});
-		btnCerrar.setBounds(318, 323, 117, 25);
+		btnCerrar.setBounds(460, 388, 117, 25);
 		getContentPane().add(btnCerrar);
 		
 		JPanel panel_4 = new JPanel();
 		panel_4.setBounds(35, 171, 400, 140);
 		getContentPane().add(panel_4);
-		panel_4.setLayout(new GridLayout(0, 2, 0, 0));
+		GridBagLayout gbl_panel_4 = new GridBagLayout();
+		gbl_panel_4.columnWidths = new int[]{195, 200, 0};
+		gbl_panel_4.rowHeights = new int[]{140, 0};
+		gbl_panel_4.columnWeights = new double[]{0.0, 0.0, Double.MIN_VALUE};
+		gbl_panel_4.rowWeights = new double[]{0.0, Double.MIN_VALUE};
+		panel_4.setLayout(gbl_panel_4);
 		
 		JLabel lblNewLabel_1 = new JLabel("Cursos");
 		lblNewLabel_1.setVerticalAlignment(SwingConstants.TOP);
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
-		panel_4.add(lblNewLabel_1);
+		GridBagConstraints gbc_lblNewLabel_1 = new GridBagConstraints();
+		gbc_lblNewLabel_1.anchor = GridBagConstraints.NORTH;
+		gbc_lblNewLabel_1.fill = GridBagConstraints.HORIZONTAL;
+		gbc_lblNewLabel_1.insets = new Insets(0, 0, 0, 5);
+		gbc_lblNewLabel_1.gridx = 0;
+		gbc_lblNewLabel_1.gridy = 0;
+		panel_4.add(lblNewLabel_1, gbc_lblNewLabel_1);
 		
 		JPanel panel_5 = new JPanel();
-		panel_4.add(panel_5);
-		GridBagLayout gbl_panel_5 = new GridBagLayout();
-		gbl_panel_5.columnWidths = new int[]{0, 0};
-		gbl_panel_5.rowHeights = new int[]{0, 0};
-		gbl_panel_5.columnWeights = new double[]{1.0, Double.MIN_VALUE};
-		gbl_panel_5.rowWeights = new double[]{0.0, Double.MIN_VALUE};
-		panel_5.setLayout(gbl_panel_5);
+		GridBagConstraints gbc_panel_5 = new GridBagConstraints();
+		gbc_panel_5.fill = GridBagConstraints.BOTH;
+		gbc_panel_5.gridx = 1;
+		gbc_panel_5.gridy = 0;
+		panel_4.add(panel_5, gbc_panel_5);
 		
 		JComboBox comboBox_1 = new JComboBox();
-		GridBagConstraints gbc_comboBox_1 = new GridBagConstraints();
-		gbc_comboBox_1.fill = GridBagConstraints.HORIZONTAL;
-		gbc_comboBox_1.gridx = 0;
-		gbc_comboBox_1.gridy = 0;
-		panel_5.add(comboBox_1, gbc_comboBox_1);
+		GroupLayout gl_panel_5 = new GroupLayout(panel_5);
+		gl_panel_5.setHorizontalGroup(
+			gl_panel_5.createParallelGroup(Alignment.LEADING)
+				.addComponent(comboBox_1, GroupLayout.PREFERRED_SIZE, 200, GroupLayout.PREFERRED_SIZE)
+		);
+		gl_panel_5.setVerticalGroup(
+			gl_panel_5.createParallelGroup(Alignment.LEADING)
+				.addComponent(comboBox_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+		);
+		panel_5.setLayout(gl_panel_5);
 		
 		JButton btnNewButton = new JButton("Refresh");
 		btnNewButton.addActionListener(new ActionListener() {
@@ -198,6 +215,23 @@ public class ConsultaProgramaFormacion extends JInternalFrame {
 		});
 		btnNewButton.setBounds(460, 12, 120, 23);
 		getContentPane().add(btnNewButton);
+		JPanel panel_6 = new JPanel();
+		panel_6.setBounds(35, 323, 400, 57);
+		getContentPane().add(panel_6);
+		GridBagLayout gbl_panel_6 = new GridBagLayout();
+		gbl_panel_6.columnWidths = new int[]{0, 0, 0, 0, 0, 0, 0, 0};
+		gbl_panel_6.rowHeights = new int[]{0, 0, 0};
+		gbl_panel_6.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
+		gbl_panel_6.rowWeights = new double[]{0.0, 0.0, Double.MIN_VALUE};
+		panel_6.setLayout(gbl_panel_6);
+		
+		JComboBox comboBox_2 = new JComboBox();
+		GridBagConstraints gbc_comboBox_2 = new GridBagConstraints();
+		gbc_comboBox_2.insets = new Insets(0, 0, 5, 0);
+		gbc_comboBox_2.fill = GridBagConstraints.HORIZONTAL;
+		gbc_comboBox_2.gridx = 6;
+		gbc_comboBox_2.gridy = 0;
+		panel_6.add(comboBox_2, gbc_comboBox_2);
 		
 		JButton btnNewButton_1 = new JButton("Ver datos");
 		btnNewButton_1.addActionListener(new ActionListener() {
@@ -236,6 +270,11 @@ public class ConsultaProgramaFormacion extends JInternalFrame {
 						if(cursos.isEmpty()) {
 							
 						}
+						List<DTCategoria> lcats = null;
+						lcats = Interfaz.listaCatDeFormacion(formacion.nombreFormacion);
+						for(DTCategoria cats: lcats) {
+							comboBox_2.addItem(cats.nombreCategoria);
+						}
 					}
 				}
 			}
@@ -264,6 +303,17 @@ public class ConsultaProgramaFormacion extends JInternalFrame {
 		});
 		btnNewButton_2.setBounds(460, 171, 120, 23);
 		getContentPane().add(btnNewButton_2);
+		
+		
+		
+		JLabel lblNewLabel_2 = new JLabel("Categorias");
+		GridBagConstraints gbc_lblNewLabel_2 = new GridBagConstraints();
+		gbc_lblNewLabel_2.insets = new Insets(0, 0, 5, 5);
+		gbc_lblNewLabel_2.gridx = 0;
+		gbc_lblNewLabel_2.gridy = 0;
+		panel_6.add(lblNewLabel_2, gbc_lblNewLabel_2);
+		
+		
 		
 		ArrayList<JButton> botones = new ArrayList<>();
 //		List<DTCurso> cursos = listaCursos();

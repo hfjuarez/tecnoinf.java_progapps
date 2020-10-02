@@ -13,6 +13,18 @@ import logica.entidades.Inscripcion_Edicion;
 
 public class ListaInscripciones {
 
+    public DTInscripcion_Edicion ObtenerInscripcion(String nombreEdicion, String nicknameEstudiante) {
+        List<Inscripcion_Edicion> list = getList();
+        for (Inscripcion_Edicion inscripcion : list) {
+            if (inscripcion.getEdicionCurso().getNombreEdicion().equals(nombreEdicion)) {
+                if (inscripcion.getEstudiante().getNickname().equals(nicknameEstudiante)) {
+                    return new DTInscripcion_Edicion(inscripcion);
+                }
+            }
+        }
+        return null;
+    }
+
     public List<Inscripcion_Edicion> getList() {
         List<Inscripcion_Edicion> list = null;
         EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("CursoJPA");
@@ -36,5 +48,26 @@ public class ListaInscripciones {
         return dtlist;
 
     }
-}
 
+    public List<DTInscripcion_Edicion> getDTlistPorEstudiante(String nickEstudiante) {
+        List<DTInscripcion_Edicion> list = getDTlist();
+        List<DTInscripcion_Edicion> dtlistEstudiante = new ArrayList<DTInscripcion_Edicion>();
+        for (DTInscripcion_Edicion i : list) {
+            if (i.estudiante.nickname.equals(nickEstudiante)) {
+                dtlistEstudiante.add(i);
+            }
+        }
+        return dtlistEstudiante;
+    }
+
+    public List<DTInscripcion_Edicion> getDTlistPorEdicion(String nombreEdicion) {
+        List<DTInscripcion_Edicion> list = getDTlist();
+        List<DTInscripcion_Edicion> ret = new ArrayList<DTInscripcion_Edicion>();
+        for (DTInscripcion_Edicion ins : list) {
+            if (ins.edicionCurso.nombreEdicion.equals(nombreEdicion)) {
+                ret.add(ins);
+            }
+        }
+        return ret;
+    }
+}

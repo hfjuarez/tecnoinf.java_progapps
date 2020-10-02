@@ -15,7 +15,7 @@ public class ListaCursos {
     public List<Curso> getList() {
         List<Curso> list = null;
         EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("CursoJPA");
-        EntityManager entitymanager = emfactory.createEntityManager();
+        EntityManage entitymanager = emfactory.createEntityManager();
 
         Query query = entitymanager.createQuery("Select i from Curso as i");
         list = (List<Curso>) query.getResultList();
@@ -31,12 +31,12 @@ public class ListaCursos {
 
         for (Curso curso : list) {
             Instituto inst = curso.getInstituto();
-            if(inst!=null) {
+            if (inst != null) {
 
-            if (nameInstituto.equals(inst.getNombreInstituto())) {
-                cursosFiltrados.add(curso);
+                if (nameInstituto.equals(inst.getNombreInstituto())) {
+                    cursosFiltrados.add(curso);
 
-            }
+                }
             }
         }
 
@@ -61,5 +61,20 @@ public class ListaCursos {
             listOfDT.add(dtCurso);
         }
         return listOfDT;
+    }
+
+    public List<DTCurso> BusquedaFiltro(String busqueda) {
+        List<Curso> ListaCursos = getList();
+        List<DTCurso> DTList = new ArrayList();
+        for (Curso curso : ListaCursos) {
+            if (curso.getNombreCurso().toLowerCase().contains(busqueda.toLowerCase())) {
+                DTList.add(new DTCurso(curso));
+            } else {
+                if (curso.getDescCurso().toLowerCase().contains(busqueda.toLowerCase())) {
+                    DTList.add(new DTCurso(curso));
+                }
+            }
+        }
+        return DTList;
     }
 }
