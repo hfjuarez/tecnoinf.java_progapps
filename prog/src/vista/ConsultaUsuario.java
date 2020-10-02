@@ -61,7 +61,7 @@ public class ConsultaUsuario extends JInternalFrame {
 		setTitle("Consulta de usuario");
 		setMaximizable(true);
 		setClosable(true);
-		setBounds(100, 100, 616, 471);
+		setBounds(100, 100, 582, 471);
 		getContentPane().setLayout(null);
 
 		JPanel panel = new JPanel();
@@ -427,18 +427,8 @@ public class ConsultaUsuario extends JInternalFrame {
 
 			}
 		});
-		btnRefresh.setBounds(443, 60, 117, 25);
+		btnRefresh.setBounds(432, 20, 117, 25);
 		getContentPane().add(btnRefresh);
-
-		JButton btnRefresh_1 = new JButton("Refresh");
-		btnRefresh_1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-		
-
-			}
-		});
-		btnRefresh_1.setBounds(443, 20, 117, 25);
-		getContentPane().add(btnRefresh_1);
 
 	}
 
