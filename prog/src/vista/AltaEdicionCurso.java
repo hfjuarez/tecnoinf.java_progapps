@@ -83,6 +83,7 @@ public class AltaEdicionCurso extends JInternalFrame {
 		panel.add(lblInstituto);
 
 		comboBox = new JComboBox();
+		comboBox.addItem("");
 		List<DTInstituto> institutos = getInstitutos();
 		for (DTInstituto instituto : institutos) {
 			comboBox.addItem(instituto.nombreInstituto);
