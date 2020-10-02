@@ -74,6 +74,11 @@ public class ConsultaCurso extends JInternalFrame {
 		
 		JComboBox comboBox = new JComboBox();
 		panel.add(comboBox);
+		comboBox.addItem("");
+		List<DTInstituto> insts = interfaz.listaInstitutos();
+		for (DTInstituto inst : insts) {
+			comboBox.addItem(inst.nombreInstituto);
+		}
 		
 		JPanel panel_1 = new JPanel();
 		panel.add(panel_1);
@@ -225,19 +230,7 @@ public class ConsultaCurso extends JInternalFrame {
 		btnCerrar.setBounds(263, 401, 117, 25);
 		getContentPane().add(btnCerrar);
 		
-		JButton btnNewButton_2 = new JButton("Refresh Instituto");
-		btnNewButton_2.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				List<DTInstituto> insts = interfaz.listaInstitutos();
-				for (DTInstituto inst : insts) {
-					comboBox.addItem(inst.nombreInstituto);
-				}
-			}
-		});
-		btnNewButton_2.setBounds(408, 30, 123, 23);
-		getContentPane().add(btnNewButton_2);
-		
-		JButton btnNewButton_3 = new JButton("Refresh Curso");
+		JButton btnNewButton_3 = new JButton("Ver Cursos");
 		btnNewButton_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				comboBox_1.removeAllItems();

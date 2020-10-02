@@ -15,6 +15,7 @@ import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.List;
 import java.awt.event.ActionEvent;
 import javax.swing.JButton;
 import java.awt.Choice;
@@ -37,13 +38,14 @@ import javax.swing.JPanel;
 import java.awt.GridLayout;
 import javax.swing.JPasswordField;
 import API.datatypes.*;
+import javax.swing.JComboBox;
+
 
 public class AltaUsuario extends JInternalFrame {
 	private JTextField textField;
 	private JTextField textField_1;
 	private JTextField textField_2;
 	private JTextField textField_3;
-	private JTextField textField_5;
 	private JTextField txtDiaint;
 	private JTextField textField_6;
 	private JTextField textField_7;
@@ -52,6 +54,12 @@ public class AltaUsuario extends JInternalFrame {
 	FileNameExtensionFilter filter = new FileNameExtensionFilter("JPG & GIF", "jpg", "gif");
 	private JPasswordField passwordField;
 	private JPasswordField passwordField_1;
+	
+	private ILogica Interfaz = new BizcochoEnARG().getInterface();
+
+	private List<DTInstituto> getInstitutos() {
+		return Interfaz.listaInstitutos();
+	}
 	
 	private final Action action = new SwingAction();
 	File imagen = null;
@@ -90,11 +98,6 @@ public class AltaUsuario extends JInternalFrame {
 		panel.setBounds(20, 20, 400, 250);
 		getContentPane().add(panel);
 		panel.setLayout(new GridLayout(0, 2, 0, 0));
-		
-		
-		
-
-		
 		
 		JLabel lblNickname = new JLabel("Nickname");
 		panel.add(lblNickname);
@@ -165,21 +168,25 @@ public class AltaUsuario extends JInternalFrame {
 		JLabel lblInstituto = new JLabel("Instituto");
 		panel.add(lblInstituto);
 		
-		textField_5 = new JTextField();
-		panel.add(textField_5);
-		textField_5.setEditable(false);
+		JComboBox comboBox = new JComboBox();
+		panel.add(comboBox);
+		comboBox.addItem("");
+		List<DTInstituto> institutos = getInstitutos();
+		for (DTInstituto instituto : institutos) {
+			comboBox.addItem(instituto.nombreInstituto);
+		}
 		
-		
-		textField_5.setColumns(10);
 		
 		rdbtnDocente = new JRadioButton("Docente");
 		panel.add(rdbtnDocente);
 		rdbtnDocente.addChangeListener(new ChangeListener() {
 			public void stateChanged(ChangeEvent arg0) {
 				if (rdbtnDocente.isSelected()) {
-					textField_5.setEditable(true);
+					comboBox.setVisible(true);
+					lblInstituto.setVisible(true);
 				} else {
-					textField_5.setEditable(false);
+					comboBox.setVisible(false);
+					lblInstituto.setVisible(false);
 				}
 			}
 		});
@@ -220,7 +227,8 @@ public class AltaUsuario extends JInternalFrame {
 				Date nacDate = Date.valueOf(fecha);
 				if(pass.equals(verPass)) {
 					if (rdbtnDocente.isSelected()) {
-						pp = Interfaz.crearUsuarioDocente(nickname, nombre, apellido, email, nacDate, textField_5.getText(),imagen,pass, verPass);
+						String eleccion = comboBox.getSelectedItem().toString();
+						pp = Interfaz.crearUsuarioDocente(nickname, nombre, apellido, email, nacDate, eleccion,imagen,pass, verPass);
 						if (pp.isEmpty()) {
 							JOptionPane.showMessageDialog(null,
 									"Se ha agregado el estudiante con los siguentes datos:\n      " + "Nickname: "

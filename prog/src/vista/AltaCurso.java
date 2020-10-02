@@ -89,6 +89,19 @@ public class AltaCurso extends JInternalFrame {
 			comboBox.addItem(instituto.nombreInstituto);
 		}
 		getContentPane().add(comboBox);
+		
+		JLabel lblDocente = new JLabel("Docente");
+		lblDocente.setHorizontalAlignment(SwingConstants.CENTER);
+		getContentPane().add(lblDocente);
+		
+		JComboBox comboBox_1 = new JComboBox();
+		
+		List<DTDocente> docentes = Interfaz.consultaUsuarioDocente();
+		comboBox_1.addItem("");
+		for (DTDocente docente : docentes) {
+			comboBox_1.addItem(docente.nickname);
+		}
+		getContentPane().add(comboBox_1);
 
 		JLabel lblDocente = new JLabel("Docente");
 		lblDocente.setHorizontalAlignment(SwingConstants.CENTER);
