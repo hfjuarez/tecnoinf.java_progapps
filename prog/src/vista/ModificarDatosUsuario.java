@@ -309,6 +309,7 @@ public class ModificarDatosUsuario extends JInternalFrame {
 		textField_5.setText(mes);
 		// anio
 		textField_6.setText(anio);
+		
 		setComboBox_1Visible(true);
 	}
 

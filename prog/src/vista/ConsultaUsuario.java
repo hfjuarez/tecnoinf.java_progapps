@@ -38,6 +38,7 @@ public class ConsultaUsuario extends JInternalFrame {
 	private List<String> ListaFormacion = new ArrayList();
 	private List<String> CursosUsados = new ArrayList();
 	private boolean nefasdou;
+	private JTextField textField_5;
 	/**
 	 * Launch the application.
 	 */
@@ -84,7 +85,7 @@ public class ConsultaUsuario extends JInternalFrame {
 		panel.add(panel_2);
 
 		JPanel panel_3 = new JPanel();
-		panel_3.setBounds(20, 60, 400, 100);
+		panel_3.setBounds(20, 60, 400, 120);
 		getContentPane().add(panel_3);
 		panel_3.setLayout(new GridLayout(0, 2, 0, 0));
 
@@ -132,9 +133,18 @@ public class ConsultaUsuario extends JInternalFrame {
 		textField.setEditable(false);
 		panel_3.add(textField);
 		textField.setColumns(10);
+		
+		JLabel lblInstituto = new JLabel("Instituto");
+		lblInstituto.setHorizontalAlignment(SwingConstants.CENTER);
+		panel_3.add(lblInstituto);
+		
+		textField_5 = new JTextField();
+		textField_5.setEditable(false);
+		panel_3.add(textField_5);
+		textField_5.setColumns(10);
 
 		JPanel panel_4 = new JPanel();
-		panel_4.setBounds(20, 171, 400, 200);
+		panel_4.setBounds(20, 200, 400, 200);
 		getContentPane().add(panel_4);
 		panel_4.setLayout(new GridLayout(0, 2, 0, 0));
 
@@ -282,7 +292,7 @@ public class ConsultaUsuario extends JInternalFrame {
 				dispose();
 			}
 		});
-		btnAceptar.setBounds(259, 383, 117, 25);
+		btnAceptar.setBounds(432, 375, 117, 25);
 		getContentPane().add(btnAceptar);
 
 		JButton btnRefresh = new JButton("Ver datos");
@@ -301,6 +311,7 @@ public class ConsultaUsuario extends JInternalFrame {
 					textField_2.setText(estudianteSelec.nombre);
 					textField_3.setText(estudianteSelec.apellido);
 					textField_4.setText(estudianteSelec.mail);
+					textField_5.setText("");
 					textField.setText(estudianteSelec.fechaNac.toString());
 					List<DTInscripcion_Edicion> lins = Interfaz.listaIns();
 					List<String> liste = new ArrayList();
@@ -355,6 +366,7 @@ public class ConsultaUsuario extends JInternalFrame {
 					textField_2.setText(docenteSelec.nombre);
 					textField_3.setText(docenteSelec.apellido);
 					textField_4.setText(docenteSelec.mail);
+					textField_5.setText(docenteSelec.instituto.nombreInstituto);
 					textField.setText(docenteSelec.fechaNac.toString());
 					List<DTInscripcion_Edicion> lins = Interfaz.listaIns();
 					List<String> liste = new ArrayList();
@@ -431,38 +443,4 @@ public class ConsultaUsuario extends JInternalFrame {
 		getContentPane().add(btnRefresh);
 
 	}
-
-//	private List<DTDocente> listaDocente() {
-//		List<DTDocente> docentes = Interfaz.listaDocentes();
-//		return docentes;
-//	}
-//
-//	private List<DTEstudiante> listaEstudiante() {
-//		List<DTEstudiante> estudiantes = Interfaz.listaEstudiantes();
-//		return estudiantes;
-//	}
-
-//	private List<DTCurso> listaCursos() {
-//		List<DTCurso> cursos = Interfaz.ListaCursos();
-//		return cursos;
-//	}
-
-//	private ArrayList<String> listaEdiciones() {
-//		ArrayList<String> cursos = new ArrayList<>();
-//		cursos.add("ediion 1");
-//		cursos.add("edicion 2");
-//		cursos.add("edicion 3");
-//		cursos.add("edicion 4");
-//		cursos.add("edicion 5");
-//		return cursos;
-//	}
-
-//	private ArrayList<String> listaProgramas() {
-//		ArrayList<String> cursos = new ArrayList<>();
-//		cursos.add("programa 1");
-//		cursos.add("programa 2");
-//		cursos.add("programa 3");
-//		cursos.add("programa 3");
-//		return cursos;
-//	}
 }
