@@ -6,7 +6,6 @@ import API.datatypes.*;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
-import java.io.IOException;
 
 import java.io.File;
 
@@ -137,23 +136,8 @@ public class LControlador implements ILogica {
 
         public String crearUsuarioEstudiante(String nickname, String nombre, String apellido, String mail,
                         Date fechaNac, File imagen, String passw, String passw2) {
-        	
         	if(passw.equals(passw2)) {
-        		String ret = new AltaUsuario(nickname, nombre, apellido, mail, fechaNac, passw).createEstudiante();
-        		if (ret.isEmpty()) {
-        			ControladorImagen i = ControladorImagen.getController();
-        			if (imagen!=null) {
-        				try {
-        					System.out.println("imagino");
-        					i.setImagen(nickname, imagen, "usuarios");
-        				}
-        				catch(Exception e) {
-        					System.out.println("Errovich");
-        				}
-        			}
-        			
-        		}
-        		return ret;
+        		return new AltaUsuario(nickname, nombre, apellido, mail, fechaNac, passw).createEstudiante();
         	} else {
         		return "ERROR: La contraseñas ingresadas no son iguales, por favor revise los campos!\n";
         	}
@@ -164,20 +148,7 @@ public class LControlador implements ILogica {
         public String crearUsuarioDocente(String nickname, String nombre, String apellido, String mail, Date fechaNac,
                         String instituto, File imagen, String passw, String passw2) {
         	if(passw.equals(passw2)) {
-        		String ret=new  AltaUsuario(nickname, nombre, apellido, mail, fechaNac, passw).createDocente(instituto);
-        		if (ret.isEmpty()) {
-        			ControladorImagen i = ControladorImagen.getController();
-        			if (imagen!=null) {
-        				try {
-        					i.setImagen(nickname, imagen, "usuarios");
-        				}
-        				catch(Exception e) {
-        					
-        				}
-        			}
-        			
-        		}
-        		return ret;
+        		return new AltaUsuario(nickname, nombre, apellido, mail, fechaNac, passw).createDocente(instituto);
         	} else {
         		return "ERROR: La contraseñas ingresadas no son iguales, por favor revise los campos!\n";
         	}
@@ -205,25 +176,10 @@ public class LControlador implements ILogica {
         // Alta Curso
 
         public String crearCurso(String nombre, String desc, int Duracion, int CantHoras, int CantCred, String URL,
-                        Date Fecha, List<String> previas, String nombreInstituto, List<String> categorias, File imagen) {
+                        Date Fecha, List<String> previas, String nombreInstituto, List<String> categorias) {
                 if (!new ExisteCurso().existeNombreCur(nombre)) {
-                        
-                        String ret = new AltaCurso(nombre, desc, Duracion, CantHoras, CantCred, URL, Fecha)
-                                .createCurso(nombreInstituto, previas, categorias);
-                		if (ret.isEmpty()) {
-                			ControladorImagen i = ControladorImagen.getController();
-                			if (imagen!=null) {
-                				try {
-                					
-                					i.setImagen(nombre, imagen, "cursos");
-                				}
-                				catch(Exception e) {
-                					System.out.println("Errovich");
-                				}
-                			}
-                			
-                		}
-                		return ret;
+                        return new AltaCurso(nombre, desc, Duracion, CantHoras, CantCred, URL, Fecha)
+                                        .createCurso(nombreInstituto, previas, categorias);
                 } else {
                         return "ERROR: YA existe ese nombre de curso, por favor ingrese uno nuevo!";
                 }
@@ -232,46 +188,16 @@ public class LControlador implements ILogica {
         // Alta edicion de Curso
 
         public String crearEdicion(String nombreEdicion, String curso, Date FechaInicio, Date FechaFin, int Cupo,
-                        Date fechaAlta, List<String> docentes, File imagen) {
-                String ret = new AltaEdicionCurso(nombreEdicion, curso, FechaInicio, FechaFin, Cupo, fechaAlta)
-                        .createEdicionCurso(docentes);
-        		if (ret.isEmpty()) {
-        			ControladorImagen i = ControladorImagen.getController();
-        			if (imagen!=null) {
-        				try {
-        					
-        					i.setImagen(nombreEdicion, imagen, "ediciones");
-        				}
-        				catch(Exception e) {
-        					System.out.println("Errovich");
-        				}
-        			}
-        			
-        		}
-        		return ret;
-                
+                        Date fechaAlta, List<String> docentes) {
+                return new AltaEdicionCurso(nombreEdicion, curso, FechaInicio, FechaFin, Cupo, fechaAlta)
+                                .createEdicionCurso(docentes);
         }
 
         // Crear Programa de Formacion
 
         public String crearFormacion(String nombreFormacion, String descr, Date FechaIni, Date FechaFin,
-                        Date FechaAlta, File imagen) {
-                
-                String ret = new AltaFormacion(nombreFormacion, descr, FechaIni, FechaFin, FechaAlta).createFormacion();
-        		if (ret.isEmpty()) {
-        			ControladorImagen i = ControladorImagen.getController();
-        			if (imagen!=null) {
-        				try {
-        					
-        					i.setImagen(nombreFormacion, imagen, "formaciones");
-        				}
-        				catch(Exception e) {
-        					System.out.println("Errovich");
-        				}
-        			}
-        			
-        		}
-        		return ret;
+                        Date FechaAlta) {
+                return new AltaFormacion(nombreFormacion, descr, FechaIni, FechaFin, FechaAlta).createFormacion();
         }
 
         // Agregar Curso a Programa de Formaciï¿½n

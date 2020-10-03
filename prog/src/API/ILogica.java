@@ -69,17 +69,17 @@ public interface ILogica {
 
       // Alta Curso
 
-      public String crearCurso(String nombre, String desc, int Duracion, int CantHoras, int CantCred, String URL,
-              Date Fecha, List<String> previas, String nombreInstituto, List<String> categorias, File imagen);
+      public String crearCurso(String nombre, String desc, int duracion, int cantHoras, int CantCred, String URL,
+                  Date Fecha, List<String> previas, String nombreInstituto, List<String> categorias);
 
       // Alta Edicion
 
       public String crearEdicion(String nombreEdicion, String curso, Date FechaInicio, Date FechaFin, int Cupo,
-                  Date fechaAlta, List<String> docentes, File imagen);
+                  Date fechaAlta, List<String> docentes);
 
       // Crear Programa de Formacion
 
-      public String crearFormacion(String nombreFormacion, String descr, Date FechaIni, Date FechaFin, Date FechaAlta, File imagen);
+      public String crearFormacion(String nombreFormacion, String descr, Date FechaIni, Date FechaFin, Date FechaAlta);
 
       // Agregar Curso a Programa de Formaci�n
 

@@ -3,6 +3,7 @@ package logica.controladores;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.*;
+import java.util.*;
 
 public class ControladorImagen {
 
@@ -19,7 +20,10 @@ public class ControladorImagen {
     }
 
     public void setImagen(String name, File imagen, String folder) throws IOException {
-        
+        File dir = new File("./imagenes/" + folder);
+        if (dir.mkdir()) {
+            System.out.println("Se creo el directorio: " + "'./imagenes_progapps_g01'");
+        }
         Path ppp = Paths.get(imagen.getAbsolutePath());
         String extension = "";
         String fileName = imagen.toString();
@@ -27,12 +31,12 @@ public class ControladorImagen {
         if (index > 0) {
             extension = fileName.substring(index + 1);
         }
-        Path copiedFile = Files.copy(ppp, Paths.get("imgs/" + folder + "/" + name + "." + extension),
+        Path copiedFile = Files.copy(ppp, Paths.get("./img/" + folder + "/" + name + "." + extension),
                 StandardCopyOption.REPLACE_EXISTING);
     }
 
     public File getImagen(String name, String folder) {
-        File dir = new File("./imgs/" + folder);
+        File dir = new File("./imagenes/" + folder);
         for (final File fileEntry : dir.listFiles()) {
             String currName = fileEntry.getName();
             String onlyName = "";
