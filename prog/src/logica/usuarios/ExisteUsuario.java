@@ -14,7 +14,7 @@ public class ExisteUsuario {
 
     public boolean existeNickname(String nickname) {
         boolean ret = false;
-        EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("UsuarioJPA");
+        EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("InstitutoJPA");
         EntityManager entitymanager = emfactory.createEntityManager();
 
         Estudiante est = null;

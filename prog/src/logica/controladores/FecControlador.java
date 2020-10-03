@@ -38,6 +38,7 @@ public class FecControlador {
             Date retorninho = Date.valueOf(datinho);
             return retorninho;
         }
+        return null;
     }
 
 }
