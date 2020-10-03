@@ -7,10 +7,12 @@ import java.awt.GridLayout;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JComboBox;
+import javax.swing.JFileChooser;
 import javax.swing.JTextField;
 import javax.swing.JTextArea;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.JButton;
 import java.awt.Point;
 import java.awt.Font;
@@ -20,6 +22,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
 import java.awt.event.ItemListener;
+import java.io.File;
 import java.awt.event.ItemEvent;
 import java.sql.Date;
 
@@ -40,6 +43,9 @@ public class AltaCurso extends JInternalFrame {
 	private ILogica Interfaz = new BizcochoEnARG().getInterface();
 	private List<DTCurso> listaDTCursos;
 	private List<DTInstituto> ListaInstitutos;
+	JFileChooser jf = new JFileChooser();
+	FileNameExtensionFilter filter = new FileNameExtensionFilter("JPG & GIF", "jpg", "gif");
+	File imagen = null;
 
 	/**
 	 * Launch the application.
@@ -97,6 +103,19 @@ public class AltaCurso extends JInternalFrame {
 		}
 		getContentPane().add(comboBox_1);
 
+		JLabel lblDocente = new JLabel("Docente");
+		lblDocente.setHorizontalAlignment(SwingConstants.CENTER);
+		getContentPane().add(lblDocente);
+
+		JComboBox comboBox_1 = new JComboBox();
+
+		List<DTDocente> docentes = Interfaz.consultaUsuarioDocente();
+		comboBox_1.addItem("");
+		for (DTDocente docente : docentes) {
+			comboBox_1.addItem(docente.nickname);
+		}
+		getContentPane().add(comboBox_1);
+
 		JLabel lblCursos = new JLabel("Nombre curso");
 		lblCursos.setHorizontalAlignment(SwingConstants.CENTER);
 		getContentPane().add(lblCursos);
@@ -116,7 +135,7 @@ public class AltaCurso extends JInternalFrame {
 		JLabel lblDuracion = new JLabel("Duracion");
 		lblDuracion.setHorizontalAlignment(SwingConstants.CENTER);
 		getContentPane().add(lblDuracion);
-		
+
 		JSpinner spinner_3 = new JSpinner();
 		spinner_3.setModel(new SpinnerNumberModel(new Integer(1), new Integer(0), new Integer(100), new Integer(1)));
 		getContentPane().add(spinner_3);
@@ -124,7 +143,7 @@ public class AltaCurso extends JInternalFrame {
 		JLabel lblCantidadDeHoras = new JLabel("Cantidad de horas");
 		lblCantidadDeHoras.setHorizontalAlignment(SwingConstants.CENTER);
 		getContentPane().add(lblCantidadDeHoras);
-		
+
 		JSpinner spinner_4 = new JSpinner();
 		spinner_4.setModel(new SpinnerNumberModel(new Integer(1), new Integer(0), new Integer(300), new Integer(1)));
 		getContentPane().add(spinner_4);
@@ -132,7 +151,7 @@ public class AltaCurso extends JInternalFrame {
 		JLabel lblCantidadDeCreditos = new JLabel("Cantidad de creditos");
 		lblCantidadDeCreditos.setHorizontalAlignment(SwingConstants.CENTER);
 		getContentPane().add(lblCantidadDeCreditos);
-		
+
 		JSpinner spinner_5 = new JSpinner();
 		spinner_5.setModel(new SpinnerNumberModel(new Integer(1), new Integer(0), new Integer(100), new Integer(1)));
 		getContentPane().add(spinner_5);
@@ -188,7 +207,7 @@ public class AltaCurso extends JInternalFrame {
 			}
 		});
 		getContentPane().add(btnNewButton_1);
-		
+
 		JLabel lblCategorias = new JLabel("Categorias");
 		lblCategorias.setHorizontalAlignment(SwingConstants.CENTER);
 		getContentPane().add(lblCategorias);
@@ -198,13 +217,13 @@ public class AltaCurso extends JInternalFrame {
 			}
 
 		});
-		
+
 		JButton btnNewButton_1_1 = new JButton("Agregar categorias");
 		btnNewButton_1_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				List<DTCategoria> todasCategorias = Interfaz.listaCat();
-				
-				if(listaCat == null) {
+
+				if (listaCat == null) {
 					listaCat = new ListaCategoria(todasCategorias);
 					VentanaPrincipal.desktopPane.add(listaCat);
 				}
@@ -212,56 +231,70 @@ public class AltaCurso extends JInternalFrame {
 			}
 		});
 		getContentPane().add(btnNewButton_1_1);
-		
-				JButton btnAceptar = new JButton("Aceptar");
-				btnAceptar.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
-						String  nombre = textField.getText();
-						String  descripcion = textField_8.getText();
-						int 	duracion = Integer.parseInt( spinner_3.getValue().toString());
-						int  cantHs = Integer.parseInt( spinner_4.getValue().toString());
-						int cantCred = Integer.parseInt( spinner_5.getValue().toString());
-						String url = textField_4.getText();
-						Date Fecha = Date.valueOf(spinner_2.getValue().toString() + "-" + spinner_1.getValue().toString() + "-"
-								+ spinner.getValue().toString());
-						List<String> prevs = previas;
 
-						if(!nombre.equals("") && !descripcion.equals("") && !url.equals("") ) {
-							String xd = Interfaz.crearCurso(nombre, descripcion, duracion,cantHs, cantCred, url, Fecha, prevs,
-									comboBox.getSelectedItem().toString(),categorias);
-							if (xd.isEmpty()) {
-								JOptionPane.showMessageDialog(null, "Se ha agregado el curso con nombre: " + textField.getText());
-								textField.setText("");
-								spinner_3.setValue(new Integer(1));
-								spinner_4.setValue(new Integer(1));
-								spinner_5.setValue(new Integer(1));
-								textField_4.setText("");
-								textField_8.setText("");
-								previas.clear();
-								categorias.clear();
-								listaCursos=null;
-								listaCat = null;
-								
-								
+		JButton btnAceptar = new JButton("Aceptar");
+		btnAceptar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String nombre = textField.getText();
+				String descripcion = textField_8.getText();
+				int duracion = Integer.parseInt(spinner_3.getValue().toString());
+				int cantHs = Integer.parseInt(spinner_4.getValue().toString());
+				int cantCred = Integer.parseInt(spinner_5.getValue().toString());
+				String url = textField_4.getText();
+				Date Fecha = Date.valueOf(spinner_2.getValue().toString() + "-" + spinner_1.getValue().toString() + "-"
+						+ spinner.getValue().toString());
+				List<String> prevs = previas;
 
-							} else {
-								JOptionPane.showMessageDialog(null, xd);
-							}
-							textField.setText("");
-						}else {
-							JOptionPane.showMessageDialog(null, "No pueden haber campos vacios");
-						}
-						
-						
-						
+				if (!nombre.equals("") && !descripcion.equals("") && !url.equals("")) {
+					String xd = Interfaz.crearCurso(nombre, descripcion, duracion, cantHs, cantCred, url, Fecha, prevs,
+							comboBox.getSelectedItem().toString(), categorias, imagen);
+					if (xd.isEmpty()) {
+						JOptionPane.showMessageDialog(null,
+								"Se ha agregado el curso con nombre: " + textField.getText());
+						textField.setText("");
+						spinner_3.setValue(new Integer(1));
+						spinner_4.setValue(new Integer(1));
+						spinner_5.setValue(new Integer(1));
+						textField_4.setText("");
+						textField_8.setText("");
+						previas.clear();
+						categorias.clear();
+						listaCursos = null;
+						listaCat = null;
 
+					} else {
+						JOptionPane.showMessageDialog(null, xd);
 					}
-				});
-				
-				
-				getContentPane().add(btnAceptar);
-		getContentPane().add(btnNewButton);
+					textField.setText("");
+				} else {
+					JOptionPane.showMessageDialog(null, "No pueden haber campos vacios");
+				}
 
+			}
+		});
+
+		JLabel lblEmpty = new JLabel("Empty");
+		lblEmpty.setHorizontalAlignment(SwingConstants.CENTER);
+		getContentPane().add(lblEmpty);
+
+		JButton btnImagen = new JButton("Agregar Imagen");
+		btnImagen.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				int r;
+				JFileChooser jf = new JFileChooser();
+				FileNameExtensionFilter filter = new FileNameExtensionFilter("JPG & PNG", "jpg", "png");
+				jf.setFileFilter(filter);
+				r = jf.showOpenDialog(AltaCurso.this);
+				if (r == JFileChooser.APPROVE_OPTION) {
+					imagen = jf.getSelectedFile();
+					lblEmpty.setText(imagen.getName());
+				} else {
+					System.err.println("Te falta calle.");
+				}
+			}
+		});
+		getContentPane().add(btnImagen);
+
+		getContentPane().add(btnAceptar);
 	}
-
 }

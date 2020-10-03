@@ -91,6 +91,10 @@ public class InscripcionAEdicion {
         if (existeCupo()) {
             return "ERROR: No existen cupos disponibles, para la edicion";
         }
+        
+        if(existeInscripcion()) {
+        	return "ERROR: Ya se inscribio a esta edición";
+        }
 
         // ------------------------------------
         EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("CursoJPA");
