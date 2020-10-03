@@ -13,10 +13,14 @@ import javax.swing.JSpinner;
 import java.awt.GridBagConstraints;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.JButton;
+import javax.swing.JFileChooser;
+
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.util.Calendar;
 import java.awt.event.ActionEvent;
 import javax.swing.SwingConstants;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 import API.*;
 
@@ -26,6 +30,9 @@ import java.sql.Date;
 public class CrearProgramaFormacion extends JInternalFrame {
 	private JTextField textField;
 	private ILogica Interfaz = new BizcochoEnARG().getInterface();
+	JFileChooser jf = new JFileChooser();
+	FileNameExtensionFilter filter = new FileNameExtensionFilter("JPG & GIF", "jpg", "gif");
+	File imagen = null;
 	// private Date fechaInicio = null;
 	// private Date fechaFin = null;
 
@@ -148,6 +155,28 @@ public class CrearProgramaFormacion extends JInternalFrame {
 		JPanel panel_13 = new JPanel();
 		panel_6.add(panel_13);
 		panel_13.setLayout(new GridLayout(0, 1, 0, 0));
+		
+		JLabel lblEmpty = new JLabel("Empty");
+		lblEmpty.setHorizontalAlignment(SwingConstants.CENTER);
+		panel_13.add(lblEmpty);
+		
+		JButton btnAgregarImagen = new JButton("Agregar imagen");
+		btnAgregarImagen.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				int r;
+				JFileChooser jf = new JFileChooser();
+				FileNameExtensionFilter filter = new FileNameExtensionFilter("JPG & PNG", "jpg", "png");
+				jf.setFileFilter(filter);
+				r = jf.showOpenDialog(CrearProgramaFormacion.this);
+				if (r == JFileChooser.APPROVE_OPTION) {
+					imagen = jf.getSelectedFile();
+					lblEmpty.setText(imagen.getName());
+				} else {
+					System.err.println("Te falta calle.");
+				}
+			}
+		});
+		panel_6.add(btnAgregarImagen);
 
 		JPanel panel_7 = new JPanel();
 		panel.add(panel_7);
@@ -187,7 +216,7 @@ public class CrearProgramaFormacion extends JInternalFrame {
 
 				String pp = "";
 
-				pp = Interfaz.crearFormacion(nombreFormacion, descr, FechaIni, FechaFin, FechaAlta);
+				pp = Interfaz.crearFormacion(nombreFormacion, descr, FechaIni, FechaFin, FechaAlta,imagen);
 				if (pp.isEmpty()) {
 					JOptionPane.showMessageDialog(null,
 							"Se ha agregado el programa formacion con nombre: " + nombreFormacion);

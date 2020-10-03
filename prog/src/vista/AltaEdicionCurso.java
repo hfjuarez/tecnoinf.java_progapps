@@ -259,7 +259,7 @@ public class AltaEdicionCurso extends JInternalFrame {
 				}
 				if (!(comboBox_1.getSelectedItem().toString().equals(""))) {
 					String ret = Interfaz.crearEdicion(textField.getText(), comboBox_1.getSelectedItem().toString(),
-							fechaIni, fechaFin, cupo, fechaAlta, docentesAgregados);
+							fechaIni, fechaFin, cupo, fechaAlta, docentesAgregados,imagen);
 					if (ret.isEmpty()) {
 						JOptionPane.showMessageDialog(null,
 								"Se ha agregado la edicion con nombre: " + textField.getText());
