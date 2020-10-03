@@ -4,7 +4,10 @@ import java.awt.EventQueue;
 
 import javax.swing.JInternalFrame;
 import javax.swing.JComboBox;
+import javax.swing.JFileChooser;
+
 import java.awt.event.ItemListener;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.awt.event.ItemEvent;
@@ -16,6 +19,7 @@ import javax.swing.JOptionPane;
 
 import java.awt.FlowLayout;
 import javax.swing.SwingConstants;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.JSpinner;
@@ -50,10 +54,13 @@ public class AltaEdicionCurso extends JInternalFrame {
 	private JButton btnAgregar;
 	private JButton btnAceptar;
 	private JButton btnRefresh;
-	private ArrayList<String> docentesAgregados ;
+	private ArrayList<String> docentesAgregados;
 	private ListaDocentes listaDocentes = null;
 	private String institutoElegido;
 	private ILogica Interfaz = new BizcochoEnARG().getInterface();
+	JFileChooser jf = new JFileChooser();
+	FileNameExtensionFilter filter = new FileNameExtensionFilter("JPG & GIF", "jpg", "gif");
+	File imagen = null;
 
 	private List<DTInstituto> getInstitutos() {
 		return Interfaz.listaInstitutos();
@@ -182,10 +189,10 @@ public class AltaEdicionCurso extends JInternalFrame {
 		panel_2.add(spinner);
 
 		panel_5 = new JPanel();
-		panel_5.setBounds(30, 219, 350, 25);
+		panel_5.setBounds(30, 219, 350, 50);
 		getContentPane().add(panel_5);
 		panel_5.setLayout(new GridLayout(0, 2, 0, 0));
-		
+
 		panel_50 = new JPanel();
 		panel_50.setBounds(40, 67, 40, 25);
 		getContentPane().add(panel_50);
@@ -209,6 +216,27 @@ public class AltaEdicionCurso extends JInternalFrame {
 		});
 		panel_5.add(btnAgregar);
 
+		JLabel lblEmpty = new JLabel("Empty");
+		panel_5.add(lblEmpty);
+
+		JButton btnImagen = new JButton("Imagen");
+		btnImagen.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				int r;
+				JFileChooser jf = new JFileChooser();
+				FileNameExtensionFilter filter = new FileNameExtensionFilter("JPG & PNG", "jpg", "png");
+				jf.setFileFilter(filter);
+				r = jf.showOpenDialog(AltaEdicionCurso.this);
+				if (r == JFileChooser.APPROVE_OPTION) {
+					imagen = jf.getSelectedFile();
+					lblEmpty.setText(imagen.getName());
+				} else {
+					System.err.println("Te falta calle.");
+				}
+			}
+		});
+		panel_5.add(btnImagen);
+
 		btnAceptar = new JButton("Aceptar");
 		btnAceptar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -229,20 +257,20 @@ public class AltaEdicionCurso extends JInternalFrame {
 				if (cupo < 1) {
 					cupo = 0;
 				}
-				if(!(comboBox_1.getSelectedItem().toString().equals(""))) {
-					String ret = Interfaz.crearEdicion(textField.getText(), comboBox_1.getSelectedItem().toString(), fechaIni,
-							fechaFin, cupo, fechaAlta, docentesAgregados);
+				if (!(comboBox_1.getSelectedItem().toString().equals(""))) {
+					String ret = Interfaz.crearEdicion(textField.getText(), comboBox_1.getSelectedItem().toString(),
+							fechaIni, fechaFin, cupo, fechaAlta, docentesAgregados,imagen);
 					if (ret.isEmpty()) {
-						JOptionPane.showMessageDialog(null, "Se ha agregado la edicion con nombre: " + textField.getText());
+						JOptionPane.showMessageDialog(null,
+								"Se ha agregado la edicion con nombre: " + textField.getText());
 						resetDatos();
 					} else {
 						JOptionPane.showMessageDialog(null, ret);
 					}
-				}
-				else {
+				} else {
 					JOptionPane.showMessageDialog(null, "ERROR: No se ha selecionado un curso");
 				}
-				
+
 			}
 		});
 		btnAceptar.setBounds(208, 273, 117, 25);
@@ -256,7 +284,7 @@ public class AltaEdicionCurso extends JInternalFrame {
 		});
 		btnCancelar.setBounds(67, 273, 117, 25);
 		getContentPane().add(btnCancelar);
-		
+
 		btnRefresh = new JButton("Refresh");
 		btnRefresh.setBounds(389, 67, 94, 25);
 		getContentPane().add(btnRefresh);
@@ -285,47 +313,4 @@ public class AltaEdicionCurso extends JInternalFrame {
 
 		return true;
 	}
-
-	/*
-	 * 
-	 * try
-	 * 
-	 * { AltaEdicionCurso frame = new AltaEdicionCurso(); frame.setVisible(true);
-	 * }catch( Exception e) { e.printStackTrace(); }}});}}
-	 * 
-	 * try
-	 * 
-	 * { AltaEdicionCurso frame = new
-	 * AltaEdicionCurso();frame.setVisible(true);}catch( Exception
-	 * e){e.printStackTrace();}}});}}
-	 * 
-	 * { AltaEdicionCurso frame = new
-	 * AltaEdicionCurso();frame.setVisible(true);}catch( Exception
-	 * e){e.printStackTrace();
-	 * 
-	 * { AltaEdicionCurso frame = new
-	 * AltaEdicionCurso();frame.setVisible(true);}catch( Exception
-	 * e){e.printStackTrace();
-	 * 
-	 * { AltaEdicionCurso frame = new AltaEdicionCurso(); frame.setVisible(true);
-	 * }catch( Exception e){e.printStackTrace();
-	 * 
-	 * 
-	 * { AltaEdicionCurso frame = new
-	 * AltaEdicionCurso();frame.setVisible(true);}catch( Exception
-	 * e){e.printStackTrace(); }}});}}{ AltaEdicionCurso frame = new
-	 * AltaEdicionCurso();frame.setVisible(true);}catch( Exception
-	 * e){e.printStackTrace();
-	 * 
-	 * { AltaEdicionCurso frame = new AltaEdicionCurso(); frame.setVisible(true);
-	 * }catch( Exception e){e.printStackTrace();
-	 * 
-	 * { AltaEdicionCurso frame = new AltaEdicionCurso(); frame.setVisible(true);
-	 * }catch( Exception e){e.printStackTrace();
-	 * 
-	 * 
-	 * { AltaEdicionCurso frame = new
-	 * AltaEdicionCurso();frame.setVisible(true);}catch( Exception
-	 * e){e.printStackTrace(); }} }); }
-	 */
 }
