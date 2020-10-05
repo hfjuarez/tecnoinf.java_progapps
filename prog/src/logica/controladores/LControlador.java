@@ -1,6 +1,7 @@
 package logica.controladores;
 
 import API.ILogica;
+import API.RutaDir;
 import API.datatypes.*;
 
 import java.sql.Date;
@@ -137,51 +138,49 @@ public class LControlador implements ILogica {
 
         public String crearUsuarioEstudiante(String nickname, String nombre, String apellido, String mail,
                         Date fechaNac, File imagen, String passw, String passw2) {
-        	
-        	if(passw.equals(passw2)) {
-        		String ret = new AltaUsuario(nickname, nombre, apellido, mail, fechaNac, passw).createEstudiante();
-        		if (ret.isEmpty()) {
-        			ControladorImagen i = ControladorImagen.getController();
-        			if (imagen!=null) {
-        				try {
-        					System.out.println("imagino");
-        					i.setImagen(nickname, imagen, "usuarios");
-        				}
-        				catch(Exception e) {
-        					System.out.println("Errovich");
-        				}
-        			}
-        			
-        		}
-        		return ret;
-        	} else {
-        		return "ERROR: La contraseñas ingresadas no son iguales, por favor revise los campos!\n";
-        	}
-                
+
+                if (passw.equals(passw2)) {
+                        String ret = new AltaUsuario(nickname, nombre, apellido, mail, fechaNac, passw)
+                                        .createEstudiante();
+                        if (ret.isEmpty()) {
+                                ControladorImagen i = ControladorImagen.getController();
+                                if (imagen != null) {
+                                        try {
+                                                System.out.println("imagino");
+                                                i.setImagen(nickname, imagen, "usuarios", RutaDir.getController().getDir());
+                                        } catch (Exception e) {
+                                                System.out.println("Errovich");
+                                        }
+                                }
+
+                        }
+                        return ret;
+                } else {
+                        return "ERROR: La contraseï¿½as ingresadas no son iguales, por favor revise los campos!\n";
+                }
 
         }
 
         public String crearUsuarioDocente(String nickname, String nombre, String apellido, String mail, Date fechaNac,
                         String instituto, File imagen, String passw, String passw2) {
-        	if(passw.equals(passw2)) {
-        		String ret=new  AltaUsuario(nickname, nombre, apellido, mail, fechaNac, passw).createDocente(instituto);
-        		if (ret.isEmpty()) {
-        			ControladorImagen i = ControladorImagen.getController();
-        			if (imagen!=null) {
-        				try {
-        					i.setImagen(nickname, imagen, "usuarios");
-        				}
-        				catch(Exception e) {
-        					
-        				}
-        			}
-        			
-        		}
-        		return ret;
-        	} else {
-        		return "ERROR: La contraseñas ingresadas no son iguales, por favor revise los campos!\n";
-        	}
-                
+                if (passw.equals(passw2)) {
+                        String ret = new AltaUsuario(nickname, nombre, apellido, mail, fechaNac, passw)
+                                        .createDocente(instituto);
+                        if (ret.isEmpty()) {
+                                ControladorImagen i = ControladorImagen.getController();
+                                if (imagen != null) {
+                                        try {
+                                                i.setImagen(nickname, imagen, "usuarios", RutaDir.getController().getDir());
+                                        } catch (Exception e) {
+
+                                        }
+                                }
+
+                        }
+                        return ret;
+                } else {
+                        return "ERROR: La contraseï¿½as ingresadas no son iguales, por favor revise los campos!\n";
+                }
 
         }
 
@@ -205,25 +204,25 @@ public class LControlador implements ILogica {
         // Alta Curso
 
         public String crearCurso(String nombre, String desc, int Duracion, int CantHoras, int CantCred, String URL,
-                        Date Fecha, List<String> previas, String nombreInstituto, List<String> categorias, File imagen) {
+                        Date Fecha, List<String> previas, String nombreInstituto, List<String> categorias,
+                        File imagen) {
                 if (!new ExisteCurso().existeNombreCur(nombre)) {
-                        
+
                         String ret = new AltaCurso(nombre, desc, Duracion, CantHoras, CantCred, URL, Fecha)
-                                .createCurso(nombreInstituto, previas, categorias);
-                		if (ret.isEmpty()) {
-                			ControladorImagen i = ControladorImagen.getController();
-                			if (imagen!=null) {
-                				try {
-                					
-                					i.setImagen(nombre, imagen, "cursos");
-                				}
-                				catch(Exception e) {
-                					System.out.println("Errovich");
-                				}
-                			}
-                			
-                		}
-                		return ret;
+                                        .createCurso(nombreInstituto, previas, categorias);
+                        if (ret.isEmpty()) {
+                                ControladorImagen i = ControladorImagen.getController();
+                                if (imagen != null) {
+                                        try {
+
+                                                i.setImagen(nombre, imagen, "cursos", RutaDir.getController().getDir());
+                                        } catch (Exception e) {
+                                                System.out.println("Errovich");
+                                        }
+                                }
+
+                        }
+                        return ret;
                 } else {
                         return "ERROR: YA existe ese nombre de curso, por favor ingrese uno nuevo!";
                 }
@@ -234,44 +233,42 @@ public class LControlador implements ILogica {
         public String crearEdicion(String nombreEdicion, String curso, Date FechaInicio, Date FechaFin, int Cupo,
                         Date fechaAlta, List<String> docentes, File imagen) {
                 String ret = new AltaEdicionCurso(nombreEdicion, curso, FechaInicio, FechaFin, Cupo, fechaAlta)
-                        .createEdicionCurso(docentes);
-        		if (ret.isEmpty()) {
-        			ControladorImagen i = ControladorImagen.getController();
-        			if (imagen!=null) {
-        				try {
-        					
-        					i.setImagen(nombreEdicion, imagen, "ediciones");
-        				}
-        				catch(Exception e) {
-        					System.out.println("Errovich");
-        				}
-        			}
-        			
-        		}
-        		return ret;
-                
+                                .createEdicionCurso(docentes);
+                if (ret.isEmpty()) {
+                        ControladorImagen i = ControladorImagen.getController();
+                        if (imagen != null) {
+                                try {
+
+                                        i.setImagen(nombreEdicion, imagen, "ediciones", RutaDir.getController().getDir());
+                                } catch (Exception e) {
+                                        System.out.println("Errovich");
+                                }
+                        }
+
+                }
+                return ret;
+
         }
 
         // Crear Programa de Formacion
 
-        public String crearFormacion(String nombreFormacion, String descr, Date FechaIni, Date FechaFin,
-                        Date FechaAlta, File imagen) {
-                
+        public String crearFormacion(String nombreFormacion, String descr, Date FechaIni, Date FechaFin, Date FechaAlta,
+                        File imagen) {
+
                 String ret = new AltaFormacion(nombreFormacion, descr, FechaIni, FechaFin, FechaAlta).createFormacion();
-        		if (ret.isEmpty()) {
-        			ControladorImagen i = ControladorImagen.getController();
-        			if (imagen!=null) {
-        				try {
-        					
-        					i.setImagen(nombreFormacion, imagen, "formaciones");
-        				}
-        				catch(Exception e) {
-        					System.out.println("Errovich");
-        				}
-        			}
-        			
-        		}
-        		return ret;
+                if (ret.isEmpty()) {
+                        ControladorImagen i = ControladorImagen.getController();
+                        if (imagen != null) {
+                                try {
+
+                                        i.setImagen(nombreFormacion, imagen, "formaciones", RutaDir.getController().getDir());
+                                } catch (Exception e) {
+                                        System.out.println("Errovich");
+                                }
+                        }
+
+                }
+                return ret;
         }
 
         // Agregar Curso a Programa de Formaciï¿½n

@@ -97,7 +97,7 @@ public class AltaCurso extends JInternalFrame {
 		JComboBox comboBox_1 = new JComboBox();
 		
 		List<DTDocente> docentes = Interfaz.consultaUsuarioDocente();
-		comboBox_1.addItem("");
+		
 		for (DTDocente docente : docentes) {
 			comboBox_1.addItem(docente.nickname);
 		}
@@ -105,7 +105,7 @@ public class AltaCurso extends JInternalFrame {
 
 
 		List<DTDocente> listdocentes = Interfaz.consultaUsuarioDocente();
-		comboBox_1.addItem("");
+		
 		for (DTDocente docente : listdocentes) {
 			comboBox_1.addItem(docente.nickname);
 		}
