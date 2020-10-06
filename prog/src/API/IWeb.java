@@ -32,11 +32,20 @@ public interface IWeb {
 
 	public List<DTCurso> ListaCursos();
 
+	public List<DTCurso> listaCursoPorCategoria(String cat);
+
 	public List<DTCategoria> listaCat();
 
 	public List<DTCategoria> listaCatDeFormacion(String nombreFormacion);
+	
+	public List<DTInscripcion_Edicion> listaInscripcionesPorEstudiante(String nick);
+	
+	public List<DTInscripcion_Edicion> listaInscripcionesPorEdicion(String edicion);
 
 	// Obtener DT
+	public boolean existeUsuario(String nick);
+
+	public List<DTEdicionCurso> getDTEdicionCursoByDocente(String Nicknamedeltipo);
 
 	public DTEstudiante obtenerEstudiante(String nickname);
 

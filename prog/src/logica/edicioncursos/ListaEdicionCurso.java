@@ -11,6 +11,7 @@ import javax.persistence.Query;
 
 import API.datatypes.DTEdicionCurso;
 import logica.entidades.Curso;
+import logica.entidades.Docente;
 
 public class ListaEdicionCurso {
 
@@ -25,6 +26,25 @@ public class ListaEdicionCurso {
         entitymanager.close();
         emfactory.close();
         return list;
+    }
+
+    public List<EdicionCurso> getlistByDosente(String Nombredoc) {
+        List<EdicionCurso> list = getList();
+        List<EdicionCurso> EdicionCursosFiltrados = new ArrayList();
+
+        for (EdicionCurso edicioncurso : list) {
+            List<Docente> lalista = edicioncurso.getDocentes();
+            for (Docente doc : lalista) {
+
+                if (Nombredoc.equals(doc.getNickname())) {
+                    EdicionCursosFiltrados.add(edicioncurso);
+
+                }
+            }
+
+        }
+
+        return EdicionCursosFiltrados;
     }
 
     public List<EdicionCurso> getlistByCurso(String NombreCurso) {
@@ -54,6 +74,16 @@ public class ListaEdicionCurso {
 
     public List<DTEdicionCurso> getDataTypeListByCurso(String NombreCurso) {
         List<EdicionCurso> list = getlistByCurso(NombreCurso);
+        List<DTEdicionCurso> listOfDT = new ArrayList();
+        for (EdicionCurso ec : list) {
+            DTEdicionCurso dtEC = new DTEdicionCurso(ec);
+            listOfDT.add(dtEC);
+        }
+        return listOfDT;
+    }
+
+    public List<DTEdicionCurso> getDataTypeListByDosente(String Nombredoc) {
+        List<EdicionCurso> list = getlistByDosente(Nombredoc);
         List<DTEdicionCurso> listOfDT = new ArrayList();
         for (EdicionCurso ec : list) {
             DTEdicionCurso dtEC = new DTEdicionCurso(ec);

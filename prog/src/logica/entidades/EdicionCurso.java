@@ -40,6 +40,7 @@ public class EdicionCurso {
 		cupo = cup;
 		fechaAltaEdicion = FAE;
 		docentes = Doc;
+		inscriptos=null;
 	}
 
 	public String getNombreEdicion() {

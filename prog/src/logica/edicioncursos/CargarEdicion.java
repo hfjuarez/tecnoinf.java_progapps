@@ -53,7 +53,7 @@ public class CargarEdicion {
         Date fInicio6 =  Date.valueOf("2019-03-15");
         Date fFin6 =  Date.valueOf("2019-04-30");
         Date fAlta6 =  Date.valueOf("2019-02-20");
-        AltaEdicionCurso aec6 = new AltaEdicionCurso("Inclusión Energética - 2019", "Inclusión Energética", fInicio6, fFin6, 30, fAlta6);
+        AltaEdicionCurso aec6 = new AltaEdicionCurso("Inclusion Energetica - 2019", "Inclusion Energetica", fInicio6, fFin6, 30, fAlta6);
         List<String> l6 = new ArrayList();
         l6.add("phils");
         ret += aec6.createEdicionCurso(l6);
@@ -63,7 +63,7 @@ public class CargarEdicion {
         Date fAlta7 =  Date.valueOf("2017-02-17");
         List <String> l7 = new ArrayList();
         l7.add("heisenberg");
-        AltaEdicionCurso aec7 = new AltaEdicionCurso("Taller de robótica educativa - 2017", "Taller de robótica educativa",fInicio7,fFin7,10,fAlta7 );
+        AltaEdicionCurso aec7 = new AltaEdicionCurso("Taller de robotica educativa - 2017", "Taller de robotica educativa",fInicio7,fFin7,10,fAlta7 );
         ret += aec7.createEdicionCurso(l7);
         
         Date fInicio8 =  Date.valueOf("2019-03-10");
@@ -72,7 +72,7 @@ public class CargarEdicion {
         List <String> l8 = new ArrayList();
         l8.add("heisenberg");
         l8.add("benkenobi");
-        AltaEdicionCurso aec8 = new AltaEdicionCurso("Taller de robótica educativa - 2019", "Taller de robótica educativa",fInicio8,fFin8,10,fAlta8);
+        AltaEdicionCurso aec8 = new AltaEdicionCurso("Taller de robotica educativa - 2019", "Taller de robotica educativa",fInicio8,fFin8,10,fAlta8);
         ret += aec8.createEdicionCurso(l8);
 
         Date fInicio9 =  Date.valueOf("2019-09-10");
@@ -81,7 +81,7 @@ public class CargarEdicion {
         List <String> l9 = new ArrayList();
         l9.add("benkenobi");
         l9.add("waston");
-        AltaEdicionCurso aec9 = new AltaEdicionCurso("Taller de robótica educativa - 2019-2", "Taller de robótica educativa",fInicio9,fFin9,20,fAlta9);
+        AltaEdicionCurso aec9 = new AltaEdicionCurso("Taller de robotica educativa - 2019-2", "Taller de robotica educativa",fInicio9,fFin9,20,fAlta9);
         ret += aec9.createEdicionCurso(l9);
 
         Date fInicio10 =  Date.valueOf("2019-07-29");
@@ -89,13 +89,13 @@ public class CargarEdicion {
         Date fAlta10 =  Date.valueOf("2019-07-10");
         List <String> l10 = new ArrayList();
         l10.add("waston");
-        AltaEdicionCurso aec10 = new AltaEdicionCurso("Participación en investigación sobre el empleo del juego Komikan como recurso didáctico en la Escuela - 2019", "Participación en investigación sobre el empleo del juego Komikan como recurso didáctico en la Escuela",fInicio10,fFin10,5,fAlta10);
+        AltaEdicionCurso aec10 = new AltaEdicionCurso("Participacion en investigacion sobre el empleo del juego Komikan como recurso didactico en la Escuela - 2019", "Participacion en investigacion sobre el empleo del juego Komikan como recurso didáctico en la Escuela",fInicio10,fFin10,5,fAlta10);
         ret += aec10.createEdicionCurso(l10);
         
         Date fInicio11 =  Date.valueOf("2019-09-15");
         Date fFin11 =  Date.valueOf("2019-12-15");
         Date fAlta11 =  Date.valueOf("2019-06-02");
-        AltaEdicionCurso aec11 = new AltaEdicionCurso("Herramientas de apoyo a la enseñanza de inglés. Instalación y evaluación - 2019","Herramientas de apoyo a la enseñanza de inglés. Instalación y evaluación",fInicio11,fFin11,5,fAlta11);
+        AltaEdicionCurso aec11 = new AltaEdicionCurso("Herramientas de apoyo a la ensenianza de ingles. Instalacion y evaluacion - 2019","Herramientas de apoyo a la ensenianza de ingles. Instalacion y evaluacion",fInicio11,fFin11,5,fAlta11);
         List<String> l11 = new ArrayList();
         l11.add("heisenberg");
         ret += aec11.createEdicionCurso(l11);
@@ -122,7 +122,7 @@ public class CargarEdicion {
         Date fInicio14 =  Date.valueOf("2019-09-10");
         Date fFin14 =  Date.valueOf("2019-10-20");
         Date fAlta14 =  Date.valueOf("2019-07-12");
-        AltaEdicionCurso aec14 = new AltaEdicionCurso("Seminarios de Resolución deProblemas - 2019", "Seminarios de Resolución de Problemas",fInicio14,fFin14,0,fAlta14);
+        AltaEdicionCurso aec14 = new AltaEdicionCurso("Seminarios de Resolucion deProblemas - 2019", "Seminarios de Resolucion de Problemas",fInicio14,fFin14,0,fAlta14);
         List<String> l14 = new ArrayList();
         l14.add("timmy");
         ret += aec14.createEdicionCurso(l14);
@@ -140,15 +140,15 @@ public class CargarEdicion {
         String e3 = "Flor del Ceibo - 2018";
         String e4 = "Dalavuelta - 2018";
         String e5 = "Extensionismo Industrial - 2018";
-        String e6 = "Inclusión Energética - 2019";
-        String e7 = "Taller de robótica educativa - 2017";
-        String e8 = "Taller de robótica educativa - 2019";
-        String e9 = "Taller de robótica educativa - 2019-2";
-        String e10 = "Participación en investigación sobre el empleo del juego Komikan como recurso didáctico en la Escuela - 2019";
-        String e11 = "Herramientas de apoyo a la enseñanza de inglés. Instalación y evaluación - 2019";
+        String e6 = "Inclusion Energetica - 2019";
+        String e7 = "Taller de robotica educativa - 2017";
+        String e8 = "Taller de robotica educativa - 2019";
+        String e9 = "Taller de robotica educativa - 2019-2";
+        String e10 = "Participacion en investigacion sobre el empleo del juego Komikan como recurso didactico en la Escuela - 2019";
+        String e11 = "Herramientas de apoyo a la ensenianza de ingles. Instalacion y evaluacion - 2019";
         String e12 = "MicroBit - 2019";
         String e13 = "Talleres plenarios - 2019";
-        String e14 = "Seminarios de Resolución de Problemas - 2019";
+        String e14 = "Seminarios de Resolucion de Problemas - 2019";
 
         Date i1 = Date.valueOf("2010-02-20");
         InscripcionAEdicion ie1 = new InscripcionAEdicion("eleven11", i1, e1);

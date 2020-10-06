@@ -92,7 +92,7 @@ public class CargarCursos {
                 ret += ac8.createCurso("INCO", l8, lc8);
 
                 AltaCurso ac9 = new AltaCurso(
-                                "Herramientas de apoyo a la enseñanza de ingles. Instalacion y evaluacion",
+                                "Herramientas de apoyo a la ensenianza de ingles. Instalacion y evaluacion",
                                 "Se realizaran visitas a escuelas rurales participantes en un proyecto conjunto del grupo PLN y el Programa de Politicas Lingüisticas de ANEP, en el marco del cual se desarrollaron diferentes herramientas para uso de maestros que enseñan ingles con apoyo remoto de profesores especializados desde Montevideo.",
                                 12, 60, 4, "https://eva.fing.edu.uy/mod/folder/view.php?id=89398", date9);
                 List<String> l9 = new ArrayList();

@@ -102,14 +102,24 @@ public class InscripcionAEdicion {
         entitymanager.getTransaction().begin();
 
         Inscripcion_Edicion InscEdc = new Inscripcion_Edicion(edicion, es, FInscripcion);
-        entitymanager.persist(InscEdc);
+        
 
         List<Inscripcion_Edicion> inscriptosE = edicion.getInscriptos();
+        if(inscriptosE==null) {
+        	inscriptosE = new ArrayList<Inscripcion_Edicion>();
+        }
+        	
         inscriptosE.add(InscEdc);
+        edicion.setInscriptos(inscriptosE);
 
         List<Inscripcion_Edicion> inscripciones = es.getInscripciones();
+        if(inscripciones==null) {
+        	inscripciones = new ArrayList<Inscripcion_Edicion>();
+        }
         inscripciones.add(InscEdc);
-
+        es.setInscripciones(inscripciones);
+        
+        entitymanager.persist(InscEdc);
         entitymanager.getTransaction().commit();
         entitymanager.close();
         emfactory.close();

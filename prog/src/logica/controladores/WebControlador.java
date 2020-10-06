@@ -55,6 +55,13 @@ public class WebControlador implements IWeb {
 		}
 	}
 
+	public List<DTEdicionCurso> getDTEdicionCursoByDocente(String Nicknamedeltipo) {
+
+		List<DTEdicionCurso> retur = new ListaEdicionCurso().getDataTypeListByDosente(Nicknamedeltipo);
+		return retur;
+
+	}
+
 	public File getImagen(String folder, String name) {
 		return ControladorImagen.getController().getImagen(name, folder, RutaDir.getController().getDir());
 	}
@@ -95,6 +102,10 @@ public class WebControlador implements IWeb {
 	public List<DTCurso> ListaCursos() {
 		return new ListaCursos().getDataTypeList();
 	}
+	
+	public List<DTCurso> listaCursoPorCategoria(String cat){
+		return new ListaCursos().getDataTypeListPorCat(cat);
+	}
 
 	public List<DTFormacion> listFormaciones() {
 		return new ListaFormacion().getDataTypeList();
@@ -117,8 +128,20 @@ public class WebControlador implements IWeb {
 		}
 		return dtCategorias;
 	}
+	
+	public List<DTInscripcion_Edicion> listaInscripcionesPorEstudiante(String nick){
+		return new ListaInscripciones().getDTlistPorEstudiante(nick);
+	}
+	
+	public List<DTInscripcion_Edicion> listaInscripcionesPorEdicion(String edicion){
+		return new ListaInscripciones().getDTlistPorEdicion(edicion);
+	}
 
 	// Obtener DT
+
+	public boolean existeUsuario(String nick) {
+		return new ExisteUsuario().existeNickname(nick);
+	}
 
 	public DTEstudiante obtenerEstudiante(String nickname) {
 		return new ObtenerUsuario().getDTEstudianteByNickname(nickname);

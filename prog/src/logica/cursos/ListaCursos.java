@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import logica.entidades.Curso;
 import logica.entidades.Instituto;
 import logica.edicioncursos.ListaEdicionCurso;
-import logica.entidades.EdicionCurso;
+import logica.entidades.*;
 
 import javax.persistence.*;
 
@@ -59,6 +59,22 @@ public class ListaCursos {
         for (Curso curso : list) {
             DTCurso dtCurso = new DTCurso(curso);
             listOfDT.add(dtCurso);
+        }
+        return listOfDT;
+    }
+    
+    public List<DTCurso> getDataTypeListPorCat(String cat) {
+        List<Curso> list = getList();
+        List<DTCurso> listOfDT = new ArrayList();
+        for (Curso curso : list) {
+            DTCurso dtCurso = new DTCurso(curso);
+            List<Categoria> cats=curso.getCategoria();
+            for(Categoria c: cats) {
+            	if(c.getNombreCategoria().equals(cat)) {
+            		listOfDT.add(dtCurso);
+            	}
+            }
+            
         }
         return listOfDT;
     }
