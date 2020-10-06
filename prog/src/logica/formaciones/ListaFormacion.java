@@ -6,6 +6,7 @@ import logica.entidades.Formacion;
 
 import javax.persistence.*;
 
+import API.datatypes.DTCurso;
 import API.datatypes.DTFormacion;
 
 public class ListaFormacion {
@@ -30,6 +31,20 @@ public class ListaFormacion {
             listOfDT.add(dtFormacion);
         }
         return listOfDT;
+    }
+    
+    public List<DTFormacion> listaFormacionesPorCurso(String curso){
+    	List<DTFormacion> listOfDT = getDataTypeList();
+    	 List<DTFormacion> ret = new ArrayList();
+    	for(DTFormacion dt : listOfDT) {
+    		List<DTCurso> curs= dt.cursos;
+    		for(DTCurso c : curs) {
+    			if(c.nombreCurso.equals(curso)) {
+    				ret.add(dt);
+    			}
+    		}
+    	}
+    	return ret;
     }
 
     public List<DTFormacion> BusquedaFiltro(String busqueda) {

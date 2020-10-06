@@ -110,6 +110,10 @@ public class WebControlador implements IWeb {
 	public List<DTFormacion> listFormaciones() {
 		return new ListaFormacion().getDataTypeList();
 	}
+	
+	public List<DTFormacion> listaFormacionesPorCurso(String name){
+		return new ListaFormacion().listaFormacionesPorCurso(name);
+	}
 
 	public List<DTInscripcion_Edicion> listaIns() {
 		return new ListaInscripciones().getDTlist();

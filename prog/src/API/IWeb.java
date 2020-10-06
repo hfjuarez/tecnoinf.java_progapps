@@ -41,6 +41,8 @@ public interface IWeb {
 	public List<DTInscripcion_Edicion> listaInscripcionesPorEstudiante(String nick);
 	
 	public List<DTInscripcion_Edicion> listaInscripcionesPorEdicion(String edicion);
+	
+	public List<DTFormacion> listaFormacionesPorCurso(String name);
 
 	// Obtener DT
 	public boolean existeUsuario(String nick);
