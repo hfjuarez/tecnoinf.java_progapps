@@ -13,6 +13,8 @@ public interface IWeb {
 	public boolean validateUser(String nick, String pass);
 
 	public File getImagen(String folder, String name);
+	
+	public boolean setImagen(String folder, String name, File img);
 
 	// Listas
 

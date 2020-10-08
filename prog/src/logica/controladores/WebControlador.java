@@ -65,6 +65,17 @@ public class WebControlador implements IWeb {
 	public File getImagen(String folder, String name) {
 		return ControladorImagen.getController().getImagen(name, folder, RutaDir.getController().getDir());
 	}
+	
+	public boolean setImagen(String folder, String name, File img) {
+		try {
+			ControladorImagen.getController().setImagen(name,img, folder, RutaDir.getController().getDir());
+			return true;
+		}
+		catch(Exception e) {
+			return false;
+		}
+		
+	}
 
 	// Listas
 
