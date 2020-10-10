@@ -54,6 +54,36 @@ public class WebControlador implements IWeb {
 			return false;
 		}
 	}
+	
+	public List<String> listaNicknames(){
+		List<String> nickis = new ArrayList<String>();
+		List<DTDocente> ld = new ListaUsuarios().getDataTypeListDocente();
+		for(DTDocente d : ld) {
+			nickis.add("'"+d.nickname+"'");
+		}
+		
+		List<DTEstudiante> le = new ListaUsuarios().getDataTypeListEstudiante();
+		for(DTEstudiante d : le) {
+			nickis.add("'"+d.nickname+"'");
+		}
+		return nickis;
+		
+	}
+	
+	public List<String> listaEmails(){
+		List<String> mails = new ArrayList<String>();
+		List<DTDocente> ld = new ListaUsuarios().getDataTypeListDocente();
+		for(DTDocente d : ld) {
+			mails.add("'"+d.mail+"'");
+		}
+		
+		List<DTEstudiante> le = new ListaUsuarios().getDataTypeListEstudiante();
+		for(DTEstudiante d : le) {
+			mails.add("'"+d.mail+"'");
+		}
+		return mails;
+		
+	}
 
 	public List<DTEdicionCurso> getDTEdicionCursoByDocente(String Nicknamedeltipo) {
 

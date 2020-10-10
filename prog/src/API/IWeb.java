@@ -1,9 +1,11 @@
 package API;
 
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 
 import API.datatypes.*;
+import logica.usuarios.ListaUsuarios;
 
 import java.io.File;
 
@@ -17,6 +19,10 @@ public interface IWeb {
 	public boolean setImagen(String folder, String name, File img);
 
 	// Listas
+	
+	public List<String> listaNicknames();
+	
+	public List<String> listaEmails();
 
 	public List<DTInstituto> listaInstitutos();
 
