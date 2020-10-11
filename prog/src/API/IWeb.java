@@ -70,6 +70,8 @@ public interface IWeb {
 	public DTFormacion obtenerFormacion(String nombre);
 
 	public DTInstituto obtenerInstituto(String name);
+	
+	public DTEdicionCurso getEdicionActual(String nombreCurso);
 
 	// Alta categoria
 

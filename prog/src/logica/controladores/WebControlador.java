@@ -1,5 +1,6 @@
 package logica.controladores;
 
+import java.util.Calendar;
 import API.datatypes.*;
 
 import java.sql.Date;
@@ -54,35 +55,35 @@ public class WebControlador implements IWeb {
 			return false;
 		}
 	}
-	
-	public List<String> listaNicknames(){
+
+	public List<String> listaNicknames() {
 		List<String> nickis = new ArrayList<String>();
 		List<DTDocente> ld = new ListaUsuarios().getDataTypeListDocente();
-		for(DTDocente d : ld) {
-			nickis.add("'"+d.nickname+"'");
+		for (DTDocente d : ld) {
+			nickis.add("'" + d.nickname + "'");
 		}
-		
+
 		List<DTEstudiante> le = new ListaUsuarios().getDataTypeListEstudiante();
-		for(DTEstudiante d : le) {
-			nickis.add("'"+d.nickname+"'");
+		for (DTEstudiante d : le) {
+			nickis.add("'" + d.nickname + "'");
 		}
 		return nickis;
-		
+
 	}
-	
-	public List<String> listaEmails(){
+
+	public List<String> listaEmails() {
 		List<String> mails = new ArrayList<String>();
 		List<DTDocente> ld = new ListaUsuarios().getDataTypeListDocente();
-		for(DTDocente d : ld) {
-			mails.add("'"+d.mail+"'");
+		for (DTDocente d : ld) {
+			mails.add("'" + d.mail + "'");
 		}
-		
+
 		List<DTEstudiante> le = new ListaUsuarios().getDataTypeListEstudiante();
-		for(DTEstudiante d : le) {
-			mails.add("'"+d.mail+"'");
+		for (DTEstudiante d : le) {
+			mails.add("'" + d.mail + "'");
 		}
 		return mails;
-		
+
 	}
 
 	public List<DTEdicionCurso> getDTEdicionCursoByDocente(String Nicknamedeltipo) {
@@ -95,16 +96,15 @@ public class WebControlador implements IWeb {
 	public File getImagen(String folder, String name) {
 		return ControladorImagen.getController().getImagen(name, folder, RutaDir.getController().getDir());
 	}
-	
+
 	public boolean setImagen(String folder, String name, File img) {
 		try {
-			ControladorImagen.getController().setImagen(name,img, folder, RutaDir.getController().getDir());
+			ControladorImagen.getController().setImagen(name, img, folder, RutaDir.getController().getDir());
 			return true;
-		}
-		catch(Exception e) {
+		} catch (Exception e) {
 			return false;
 		}
-		
+
 	}
 
 	// Listas
@@ -143,16 +143,16 @@ public class WebControlador implements IWeb {
 	public List<DTCurso> ListaCursos() {
 		return new ListaCursos().getDataTypeList();
 	}
-	
-	public List<DTCurso> listaCursoPorCategoria(String cat){
+
+	public List<DTCurso> listaCursoPorCategoria(String cat) {
 		return new ListaCursos().getDataTypeListPorCat(cat);
 	}
 
 	public List<DTFormacion> listFormaciones() {
 		return new ListaFormacion().getDataTypeList();
 	}
-	
-	public List<DTFormacion> listaFormacionesPorCurso(String name){
+
+	public List<DTFormacion> listaFormacionesPorCurso(String name) {
 		return new ListaFormacion().listaFormacionesPorCurso(name);
 	}
 
@@ -173,12 +173,12 @@ public class WebControlador implements IWeb {
 		}
 		return dtCategorias;
 	}
-	
-	public List<DTInscripcion_Edicion> listaInscripcionesPorEstudiante(String nick){
+
+	public List<DTInscripcion_Edicion> listaInscripcionesPorEstudiante(String nick) {
 		return new ListaInscripciones().getDTlistPorEstudiante(nick);
 	}
-	
-	public List<DTInscripcion_Edicion> listaInscripcionesPorEdicion(String edicion){
+
+	public List<DTInscripcion_Edicion> listaInscripcionesPorEdicion(String edicion) {
 		return new ListaInscripciones().getDTlistPorEdicion(edicion);
 	}
 
@@ -214,6 +214,21 @@ public class WebControlador implements IWeb {
 
 	public DTCategoria obtenerCategoria(String nombreCategoria) {
 		return new ObtenerCategoria().geDTCategoria(nombreCategoria);
+	}
+
+	public DTEdicionCurso getEdicionActual(String nombreCurso) {
+		List<DTEdicionCurso> list = ListaEdicionesCurso(nombreCurso);
+		Calendar c = Calendar.getInstance();
+		String dia = Integer.toString(c.get(Calendar.DATE));
+		String mes = Integer.toString(c.get(Calendar.MONTH));
+		String annio = Integer.toString(c.get(Calendar.YEAR));
+		Date fechaActual = Date.valueOf(annio + "-" + mes + "-" + dia);
+		for (DTEdicionCurso ediCavani : list) {
+			if (ediCavani.fechaIncio.compareTo(fechaActual) * fechaActual.compareTo(ediCavani.fechaFin) >= 0) {
+				return ediCavani;
+			}
+		}
+		return null;
 	}
 
 	// public DTInscripcion_Edicion obtenerDTInscripcion_Edicion(String
