@@ -16,7 +16,7 @@ public class RutaDir {
      }
 
      private RutaDir() {
-    	 dir= new File("C:\\Users\\Admin\\eclipse-workspace\\progAppsWeb\\WebContent");
+    	 dir= new File("C:\\Program Files\\Apache Software Foundation\\Tomcat 9.0\\webapps\\progAppsWeb");
      }
 
 	public File getDir() {
