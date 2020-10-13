@@ -15,13 +15,13 @@ public interface IWeb {
 	public boolean validateUser(String nick, String pass);
 
 	public File getImagen(String folder, String name);
-	
+
 	public boolean setImagen(String folder, String name, File img);
 
 	// Listas
-	
+
 	public List<String> listaNicknames();
-	
+
 	public List<String> listaEmails();
 
 	public List<DTInstituto> listaInstitutos();
@@ -45,11 +45,11 @@ public interface IWeb {
 	public List<DTCategoria> listaCat();
 
 	public List<DTCategoria> listaCatDeFormacion(String nombreFormacion);
-	
+
 	public List<DTInscripcion_Edicion> listaInscripcionesPorEstudiante(String nick);
-	
+
 	public List<DTInscripcion_Edicion> listaInscripcionesPorEdicion(String edicion);
-	
+
 	public List<DTFormacion> listaFormacionesPorCurso(String name);
 
 	// Obtener DT
@@ -70,7 +70,7 @@ public interface IWeb {
 	public DTFormacion obtenerFormacion(String nombre);
 
 	public DTInstituto obtenerInstituto(String name);
-	
+
 	public DTEdicionCurso getEdicionActual(String nombreCurso);
 
 	// Alta categoria
@@ -103,6 +103,7 @@ public interface IWeb {
 	public String crearEdicion(String nombreEdicion, String curso, Date FechaInicio, Date FechaFin, int Cupo,
 			Date fechaAlta, List<String> docentes, File imagen);
 
+	public void cambiarestado(String solteroHastaLaTumba, String ediCavani, String nik);
 	// Crear Programa de Formacion
 
 	public String crearFormacion(String nombreFormacion, String descr, Date FechaIni, Date FechaFin, Date FechaAlta,

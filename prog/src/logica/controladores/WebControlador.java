@@ -231,6 +231,9 @@ public class WebControlador implements IWeb {
 		return null;
 	}
 
+	public void cambiarestado(String solteroHastaLaTumba, String ediCavani, String nik) {
+		new InscripcionAEdicion().cambiarestado(solteroHastaLaTumba, ediCavani, nik);
+	}
 	// public DTInscripcion_Edicion obtenerDTInscripcion_Edicion(String
 	// nombreEdicion, String nickname) {
 	// return
