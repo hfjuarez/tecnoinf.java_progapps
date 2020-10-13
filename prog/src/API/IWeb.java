@@ -17,6 +17,10 @@ public interface IWeb {
 	public File getImagen(String folder, String name);
 
 	public boolean setImagen(String folder, String name, File img);
+	
+	public List<DTFormacion> BusquedaFiltroFormacion(String busqueda);
+	
+	public List<DTCurso> BusquedaFiltroCurso(String busqueda);
 
 	// Listas
 

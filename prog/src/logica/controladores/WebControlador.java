@@ -106,6 +106,14 @@ public class WebControlador implements IWeb {
 		}
 
 	}
+	
+	 public List<DTFormacion> BusquedaFiltroFormacion(String busqueda){
+		 return new ListaFormacion().BusquedaFiltro(busqueda);
+	 }
+	 
+	 public List<DTCurso> BusquedaFiltroCurso(String busqueda){
+		 return new ListaCursos().BusquedaFiltro(busqueda);
+	 }
 
 	// Listas
 
