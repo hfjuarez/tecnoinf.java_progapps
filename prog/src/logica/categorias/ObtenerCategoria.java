@@ -16,7 +16,7 @@ public class ObtenerCategoria {
         if (existeCategoria.existe()) {
             Categoria ret = new Categoria();
 
-            EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("CursoJPA");
+            EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("InstitutoJPA");
             EntityManager entitymanager = emfactory.createEntityManager();
             ret = entitymanager.find(Categoria.class, name);
             entitymanager.close();

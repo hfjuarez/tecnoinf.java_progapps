@@ -49,9 +49,9 @@ public class InscripcionAEdicion {
 					count++;
 				}
 			}
-			if(count<cupo) {
+			if (count < cupo) {
 				return true;
-			}else {
+			} else {
 				return false;
 			}
 
@@ -77,7 +77,7 @@ public class InscripcionAEdicion {
 		// if (new InscripcionAEdicion().existeInscripcion2(nik, ediCavani)) {
 		System.out.println("aca me tenes");
 		List<Inscripcion_Edicion> list = null;
-		EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("CursoJPA");
+		EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("InstitutoJPA");
 		EntityManager entitymanager = emfactory.createEntityManager();
 		entitymanager.getTransaction().begin();
 		Inscripcion_Edicion inss = null;
@@ -152,7 +152,7 @@ public class InscripcionAEdicion {
 		}
 
 		// ------------------------------------
-		EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("CursoJPA");
+		EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("InstitutoJPA");
 		EntityManager entitymanager = emfactory.createEntityManager();
 		entitymanager.getTransaction().begin();
 

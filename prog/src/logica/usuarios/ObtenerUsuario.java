@@ -24,7 +24,7 @@ public class ObtenerUsuario {
 
     public boolean isEstudiante(String nickname) {
         boolean ret = false;
-        EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("UsuarioJPA");
+        EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("InstitutoJPA");
         EntityManager entitymanager = emfactory.createEntityManager();
 
         Estudiante est = null;
@@ -42,7 +42,7 @@ public class ObtenerUsuario {
 
         if (new ExisteUsuario().existeNickname(nick)) {
 
-            EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("UsuarioJPA");
+            EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("InstitutoJPA");
             EntityManager entitymanager = emfactory.createEntityManager();
 
             Estudiante Uret = new Estudiante();
@@ -62,7 +62,7 @@ public class ObtenerUsuario {
 
         if (new ExisteUsuario().existeNickname(nick)) {
 
-            EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("UsuarioJPA");
+            EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("InstitutoJPA");
             EntityManager entitymanager = emfactory.createEntityManager();
 
             Docente Uret = new Docente();
@@ -93,7 +93,7 @@ public class ObtenerUsuario {
      * 
      * ExisteUsuario existeUsuario = new ExisteUsuario(nick, mail); if
      * (existeUsuario.existeMail()) { EntityManagerFactory emfactory =
-     * Persistence.createEntityManagerFactory("UsuarioJPA"); EntityManager
+     * Persistence.createEntityManagerFactory("InstitutoJPA"); EntityManager
      * entitymanager = emfactory.createEntityManager();
      * entitymanager.getTransaction().begin(); List<String> nicks = entitymanager
      * .createQuery("SELECT nickname FROM TABLE usuario WHERE mail=" + mail,

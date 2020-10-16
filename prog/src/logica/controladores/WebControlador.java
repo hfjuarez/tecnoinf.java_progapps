@@ -16,6 +16,8 @@ import logica.edicioncursos.*;
 import logica.formaciones.*;
 import logica.inscripciones.InscripcionAEdicion;
 import logica.inscripciones.ListaInscripciones;
+import logica.inscripciones.InscripcionAFormacion;
+import logica.inscripciones.ListaInscripcionesFor;
 import logica.institutos.*;
 import logica.usuarios.*;
 import API.*;
@@ -147,6 +149,10 @@ public class WebControlador implements IWeb {
 	public List<DTEdicionCurso> ListaEdicionesCurso(String nombreCurso) {
 		return new ListaEdicionCurso().getDataTypeListByCurso(nombreCurso);
 	}
+	
+    public List<DTInscripcion_Formacion> listaInsFor() {
+        return new ListaInscripcionesFor().getDTlist();
+    }
 
 	public List<DTCurso> ListaCursos() {
 		return new ListaCursos().getDataTypeList();
@@ -188,6 +194,14 @@ public class WebControlador implements IWeb {
 
 	public List<DTInscripcion_Edicion> listaInscripcionesPorEdicion(String edicion) {
 		return new ListaInscripciones().getDTlistPorEdicion(edicion);
+	}
+	
+	public List<DTInscripcion_Formacion> listaInscForPorEstudiante(String nick) {
+		return new ListaInscripcionesFor().getDTlistPorEstudiante(nick);
+	}
+
+	public List<DTInscripcion_Formacion> listaInscForPorFormacion(String formacion) {
+		return new ListaInscripcionesFor().getDTlistPorFormacion(formacion);
 	}
 
 	// Obtener DT
@@ -317,6 +331,26 @@ public class WebControlador implements IWeb {
 		}
 
 	}
+	
+	// Seguir Usuario
+	
+	public String SeguirUsuario(String nickName, String nickName2){
+    	if (new ObtenerUsuario().isEstudiante(nickName)) {
+    		return new SeguirUsuario(nickName, nickName2).SeguirUserEstudiante();
+    	} else {
+    		return new SeguirUsuario(nickName, nickName2).SeguirUserDocente();
+    	}
+    }
+	
+	//Dejar de Seguir usuario
+    
+    public String DejarSeguirUsuario(String nickName, String nickName2){
+    	if (new ObtenerUsuario().isEstudiante(nickName)) {
+    		return new DejarSeguirUsuario(nickName, nickName2).DejarSeguirUserEstudiante();
+    	} else {
+    		return new DejarSeguirUsuario(nickName, nickName2).DejarSeguirUserDocente();
+    	}
+    }
 
 	// Alta Curso
 
@@ -398,6 +432,12 @@ public class WebControlador implements IWeb {
 	public String regInscDeUsrEnCurso(String nickname, String nombreEdicion, Date Finsc) {
 		return new InscripcionAEdicion(nickname, Finsc, nombreEdicion).inscripcion();
 	}
+	
+    // Inscripcion a formacion
+
+    public String regInscDeUsrEnFormacion(String nickname, String nombreFormacion, Date Finsc) {
+            return new InscripcionAFormacion(nickname, Finsc, nombreFormacion).inscripcion();
+    }
 
 	// Consulta edicion Cursos
 

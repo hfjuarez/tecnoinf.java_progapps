@@ -24,6 +24,8 @@ public class Formacion {
 
 	@OneToMany(targetEntity = Curso.class)
 	private List cursos;
+	@OneToMany(targetEntity = Inscripcion_Formacion.class)
+	private List inscriptos;
 
 	public Formacion() {
 		super();
@@ -37,6 +39,7 @@ public class Formacion {
 		this.fechaFin = fechaFin;
 		this.fechaAlta = fechaAlta;
 		this.cursos = null;
+		this.inscriptos = null;
 	}
 
 	public String getNombreFormacion() {
@@ -105,5 +108,14 @@ public class Formacion {
 		}
 		return cats;
 	}
+	
+	public List getInscriptos() {
+		return inscriptos;
+	}
+
+	public void setInscriptos(List inscriptos) {
+		this.inscriptos = inscriptos;
+	}
+
 
 }

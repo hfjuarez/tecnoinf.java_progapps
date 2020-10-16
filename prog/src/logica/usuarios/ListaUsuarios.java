@@ -19,9 +19,9 @@ import java.io.File;
 import java.sql.Date;
 
 public class ListaUsuarios {
-   public List<Estudiante> getListEstudiante() {
+    public List<Estudiante> getListEstudiante() {
         List<Estudiante> list = null;
-        EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("UsuarioJPA");
+        EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("InstitutoJPA");
         EntityManager entitymanager = emfactory.createEntityManager();
 
         Query query = entitymanager.createQuery("Select e from Estudiante as e");
@@ -42,9 +42,10 @@ public class ListaUsuarios {
         }
         return listOfDT;
     }
-     public List<Docente> getListDocente() {
+
+    public List<Docente> getListDocente() {
         List<Docente> list = null;
-        EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("UsuarioJPA");
+        EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("InstitutoJPA");
         EntityManager entitymanager = emfactory.createEntityManager();
 
         Query query = entitymanager.createQuery("Select d from Docente as d");

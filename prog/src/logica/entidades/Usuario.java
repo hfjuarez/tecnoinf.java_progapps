@@ -3,6 +3,9 @@ package logica.entidades;
 import java.io.Serializable;
 import java.lang.String;
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.*;
 
 /**
@@ -21,6 +24,10 @@ public class Usuario implements Serializable {
 	private String mail;
 	private Date fechaNac;
 	private String passw;
+	@OneToMany(targetEntity = Usuario.class)
+	private List Seguidores;
+	@OneToMany(targetEntity = Usuario.class)
+	private List Siguiendo;
 	// private static final long serialVersionUID = 2L;
 
 	public Usuario() {
@@ -35,6 +42,8 @@ public class Usuario implements Serializable {
 		mail = email;
 		fechaNac = nac;
 		passw = passp;
+		Seguidores = null;
+		Siguiendo = null;
 	}
 
 	public String getNickname() {
@@ -83,6 +92,46 @@ public class Usuario implements Serializable {
 
 	public void setPass(String passw) {
 		this.passw = passw;
+	}
+	
+	public List getSeguidores() {
+		return Seguidores;
+	}
+
+	public void setSeguidores(List Seguidores) {
+		this.Seguidores = Seguidores;
+	}
+
+	public void addSeguidores(Usuario seguidor) {
+		if (Seguidores == null) {
+			Seguidores = new ArrayList<Usuario>();
+		}
+		this.Seguidores.add(seguidor);
+	}
+	
+	public void removeSeguidores(Usuario seguidor) {
+		
+		this.Seguidores.remove(seguidor);
+	}
+	
+	public List getSiguiendo() {
+		return Siguiendo;
+	}
+
+	public void setSiguiendo(List Siguiendo) {
+		this.Siguiendo = Siguiendo;
+	}
+
+	public void addSiguiendo(Usuario sigo) {
+		if (Siguiendo == null) {
+			Siguiendo = new ArrayList<Usuario>();
+		}
+		this.Siguiendo.add(sigo);
+	}
+	
+	public void removeSiguiendo(Usuario sigo) {
+		
+		this.Siguiendo.remove(sigo);
 	}
 
 }

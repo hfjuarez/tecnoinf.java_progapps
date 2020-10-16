@@ -12,7 +12,7 @@ import API.datatypes.DTFormacion;
 public class ListaFormacion {
     public List<Formacion> getList() {
         List<Formacion> list = null;
-        EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("CursoJPA");
+        EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("InstitutoJPA");
         EntityManager entitymanager = emfactory.createEntityManager();
 
         Query query = entitymanager.createQuery("Select i from Formacion as i");
@@ -32,19 +32,19 @@ public class ListaFormacion {
         }
         return listOfDT;
     }
-    
-    public List<DTFormacion> listaFormacionesPorCurso(String curso){
-    	List<DTFormacion> listOfDT = getDataTypeList();
-    	 List<DTFormacion> ret = new ArrayList();
-    	for(DTFormacion dt : listOfDT) {
-    		List<DTCurso> curs= dt.cursos;
-    		for(DTCurso c : curs) {
-    			if(c.nombreCurso.equals(curso)) {
-    				ret.add(dt);
-    			}
-    		}
-    	}
-    	return ret;
+
+    public List<DTFormacion> listaFormacionesPorCurso(String curso) {
+        List<DTFormacion> listOfDT = getDataTypeList();
+        List<DTFormacion> ret = new ArrayList();
+        for (DTFormacion dt : listOfDT) {
+            List<DTCurso> curs = dt.cursos;
+            for (DTCurso c : curs) {
+                if (c.nombreCurso.equals(curso)) {
+                    ret.add(dt);
+                }
+            }
+        }
+        return ret;
     }
 
     public List<DTFormacion> BusquedaFiltro(String busqueda) {

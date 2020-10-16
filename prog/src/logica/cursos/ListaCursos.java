@@ -14,7 +14,7 @@ import API.datatypes.*;
 public class ListaCursos {
     public List<Curso> getList() {
         List<Curso> list = null;
-        EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("CursoJPA");
+        EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("InstitutoJPA");
         EntityManager entitymanager = emfactory.createEntityManager();
 
         Query query = entitymanager.createQuery("Select i from Curso as i");
@@ -62,19 +62,19 @@ public class ListaCursos {
         }
         return listOfDT;
     }
-    
+
     public List<DTCurso> getDataTypeListPorCat(String cat) {
         List<Curso> list = getList();
         List<DTCurso> listOfDT = new ArrayList();
         for (Curso curso : list) {
             DTCurso dtCurso = new DTCurso(curso);
-            List<Categoria> cats=curso.getCategoria();
-            for(Categoria c: cats) {
-            	if(c.getNombreCategoria().equals(cat)) {
-            		listOfDT.add(dtCurso);
-            	}
+            List<Categoria> cats = curso.getCategoria();
+            for (Categoria c : cats) {
+                if (c.getNombreCategoria().equals(cat)) {
+                    listOfDT.add(dtCurso);
+                }
             }
-            
+
         }
         return listOfDT;
     }

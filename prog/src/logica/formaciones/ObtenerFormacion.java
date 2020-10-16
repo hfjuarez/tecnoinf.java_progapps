@@ -16,7 +16,7 @@ public class ObtenerFormacion {
         if (existeFormacion.existeFormCur(name)) {
             Formacion ret = new Formacion();
 
-            EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("CursoJPA");
+            EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("InstitutoJPA");
             EntityManager entitymanager = emfactory.createEntityManager();
             ret = entitymanager.find(Formacion.class, name);
             entitymanager.close();

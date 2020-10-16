@@ -94,7 +94,7 @@ public class AltaEdicionCurso {
                             + "ERROR: No se ingresaron docentes para esta edicion, por foavor ingrese minimo uno!\n";
                 }
 
-                EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("CursoJPA");
+                EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("InstitutoJPA");
                 EntityManager entitymanager = emfactory.createEntityManager();
                 entitymanager.getTransaction().begin();
 

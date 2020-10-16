@@ -11,7 +11,7 @@ import javax.persistence.Query;
 public class ExisteEdicionCurso {
     public boolean existeNombreCur(String nombreEdicionCurso) {
         boolean ret = false;
-        EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("CursoJPA");
+        EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("InstitutoJPA");
         EntityManager entitymanager = emfactory.createEntityManager();
 
         EdicionCurso est = null;

@@ -14,7 +14,7 @@ public class AltaCategoria {
         if (new ExisteCategoria(nombreCategoria).existe()) {
             return "ERROR: Ya existe una categoria con el nombre: " + nombreCategoria;
         } else {
-            EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("CursoJPA");
+            EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("InstitutoJPA");
             // @PersistenceContext(unitName="Eclipselink_JPA_Curso")
             EntityManager entitymanager = emfactory.createEntityManager();
             entitymanager.getTransaction().begin();

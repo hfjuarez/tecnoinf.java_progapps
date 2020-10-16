@@ -17,6 +17,8 @@ import logica.edicioncursos.*;
 import logica.formaciones.*;
 import logica.inscripciones.InscripcionAEdicion;
 import logica.inscripciones.ListaInscripciones;
+import logica.inscripciones.InscripcionAFormacion;
+import logica.inscripciones.ListaInscripcionesFor;
 import logica.institutos.*;
 import logica.usuarios.*;
 
@@ -77,6 +79,10 @@ public class LControlador implements ILogica {
 
         public List<DTInscripcion_Edicion> listaIns() {
                 return new ListaInscripciones().getDTlist();
+        }
+        
+        public List<DTInscripcion_Formacion> listaInsFor() {
+            return new ListaInscripcionesFor().getDTlist();
         }
 
         public List<DTCategoria> listaCat() {
@@ -200,6 +206,26 @@ public class LControlador implements ILogica {
                 }
 
         }
+        
+        //Seguir usuario
+        
+        public String SeguirUsuario(String nickName, String nickName2){
+        	if (new ObtenerUsuario().isEstudiante(nickName)) {
+        		return new SeguirUsuario(nickName, nickName2).SeguirUserEstudiante();
+        	} else {
+        		return new SeguirUsuario(nickName, nickName2).SeguirUserDocente();
+        	}
+        }
+        
+        //Dejar de Seguir usuario
+        
+        public String DejarSeguirUsuario(String nickName, String nickName2){
+        	if (new ObtenerUsuario().isEstudiante(nickName)) {
+        		return new DejarSeguirUsuario(nickName, nickName2).DejarSeguirUserEstudiante();
+        	} else {
+        		return new DejarSeguirUsuario(nickName, nickName2).DejarSeguirUserDocente();
+        	}
+        }
 
         // Alta Curso
 
@@ -281,6 +307,12 @@ public class LControlador implements ILogica {
 
         public String regInscDeUsrEnCurso(String nickname, String nombreEdicion, Date Finsc) {
                 return new InscripcionAEdicion(nickname, Finsc, nombreEdicion).inscripcion();
+        }
+        
+        // Inscripcion a formacion
+
+        public String regInscDeUsrEnFormacion(String nickname, String nombreFormacion, Date Finsc) {
+                return new InscripcionAFormacion(nickname, Finsc, nombreFormacion).inscripcion();
         }
 
         // Consulta edicion Cursos

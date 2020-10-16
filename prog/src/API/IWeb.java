@@ -53,8 +53,16 @@ public interface IWeb {
 	public List<DTInscripcion_Edicion> listaInscripcionesPorEstudiante(String nick);
 
 	public List<DTInscripcion_Edicion> listaInscripcionesPorEdicion(String edicion);
+	
+	public List<DTInscripcion_Formacion> listaInsFor();
+	
+	public List<DTInscripcion_Formacion> listaInscForPorEstudiante(String nick);
+
+	public List<DTInscripcion_Formacion> listaInscForPorFormacion(String formacion);
 
 	public List<DTFormacion> listaFormacionesPorCurso(String name);
+	
+	public List<DTFormacion> listFormaciones();
 
 	// Obtener DT
 	public boolean existeUsuario(String nick);
@@ -96,6 +104,14 @@ public interface IWeb {
 	// Modificar Datos de Usuario
 
 	public String ModificarUsuario(String nick, String nombre, String apellido, Date fechaNac, File imagen);
+	
+	// Seguir Usuario
+	
+	public String SeguirUsuario(String nickName, String nickName2);
+	
+	// Dejar Seguir Usuario
+	
+	public String DejarSeguirUsuario(String nickName, String nickName2);
 
 	// Alta Curso
 
@@ -120,6 +136,10 @@ public interface IWeb {
 	// Inscripcion a edicion de curso
 
 	public String regInscDeUsrEnCurso(String nickname, String nombrecurso, Date Finsc);
+	
+	// Inscripcion a formacion
+    
+    public String regInscDeUsrEnFormacion(String nickname, String nombreFormacion, Date Finsc);
 
 	// Consulta edicion Cursos
 

@@ -59,7 +59,7 @@ public class AltaFormacion {
             if (hasErrorEmpty()) {
                 return retorno + "ERROR: No se permiten campos nulos , por favor complete todos los campos!\n";
             } else {
-                EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("CursoJPA");
+                EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("InstitutoJPA");
                 EntityManager entitymanager = emfactory.createEntityManager();
                 entitymanager.getTransaction().begin();
 

@@ -19,6 +19,9 @@ public class Estudiante extends Usuario {
 
 	@OneToMany(targetEntity = Inscripcion_Edicion.class)
 	private List inscripciones;
+	
+	@OneToMany(targetEntity = Inscripcion_Formacion.class)
+	private List insc_formacion;
 
 	public Estudiante() {
 		super();
@@ -27,6 +30,7 @@ public class Estudiante extends Usuario {
 	public Estudiante(String nick, String name, String ape, String mail, Date nac, String passp) {
 		super(nick, name, ape, mail, nac, passp);
 		inscripciones=null;
+		insc_formacion=null;
 
 	}
 
@@ -36,6 +40,14 @@ public class Estudiante extends Usuario {
 
 	public void setInscripciones(List<Inscripcion_Edicion> inscripciones) {
 		this.inscripciones = inscripciones;
+	}
+	
+	public List getInscFormacion() {
+		return insc_formacion;
+	}
+
+	public void setInscFormacion(List<Inscripcion_Formacion> insc_formacion) {
+		this.insc_formacion = insc_formacion;
 	}
 
 	@Override

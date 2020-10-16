@@ -24,6 +24,8 @@ public interface ILogica {
       public List<DTEdicionCurso> ListaEdicionesCurso(String nombreCurso);
 
       public List<DTInscripcion_Edicion> listaIns();
+      
+      public List<DTInscripcion_Formacion> listaInsFor();
 
       public List<DTCurso> ListaCursos();
 
@@ -66,6 +68,13 @@ public interface ILogica {
       // Modificar Datos de Usuario
 
       public String ModificarUsuario(String nick, String nombre, String apellido, Date fechaNac, File imagen);
+      
+      // Seguir Usuario
+      
+      public String SeguirUsuario(String nickName, String nickName2);
+      
+      // Dejar Seguir User
+      public String DejarSeguirUsuario(String nickName, String nickName2);
 
       // Alta Curso
 
@@ -88,6 +97,10 @@ public interface ILogica {
       // Inscripcion a edicion de curso
 
       public String regInscDeUsrEnCurso(String nickname, String nombrecurso, Date Finsc);
+      
+      // Inscripcion a formacion
+      
+      public String regInscDeUsrEnFormacion(String nickname, String nombreFormacion, Date Finsc);
 
       // Consulta edicion Cursos
 

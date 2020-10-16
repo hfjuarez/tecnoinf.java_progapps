@@ -21,7 +21,8 @@ public class AgregarCursoAFormacion {
     private boolean existeCursoEnFormacion(List<String> nombreCursos) {
         Formacion f = new ObtenerFormacion().getFormacion(nom_for);
         List<Curso> cursos = f.getCursos();
-        if (cursos == null) return false;
+        if (cursos == null)
+            return false;
         for (Curso cursito : cursos) {
             if (nombreCursos.contains(cursito.getNombreCurso())) {
                 return true;
@@ -42,22 +43,19 @@ public class AgregarCursoAFormacion {
         String retorno = "";
         String cur;
         List<Curso> cursos = new ArrayList();
-        //if(nombreCursos.size()==1) {
-        //	cur=nombreCursos.get(0);
-        //	ObtenerCurso oc = new ObtenerCurso();
-        //    Curso cursoFor = oc.getCurso(cur);
-        //    if( cursoFor != null) {
-        //    	cursos.add(cursoFor);
-            	
-            	
-        //    }else {
-        //    	return retorno + "ERROR: No existe el curso: " + cur
-        //                + ", por favor ingrese un curso existente!\n";
-        //    }
-        //}
-        
-        
-        
+        // if(nombreCursos.size()==1) {
+        // cur=nombreCursos.get(0);
+        // ObtenerCurso oc = new ObtenerCurso();
+        // Curso cursoFor = oc.getCurso(cur);
+        // if( cursoFor != null) {
+        // cursos.add(cursoFor);
+
+        // }else {
+        // return retorno + "ERROR: No existe el curso: " + cur
+        // + ", por favor ingrese un curso existente!\n";
+        // }
+        // }
+
         if (retorno.isEmpty()) {
 
             if (!nombreCursos.isEmpty()) {
@@ -77,7 +75,7 @@ public class AgregarCursoAFormacion {
         if (!existeCursoEnFormacion(nombreCursos)) {
 
             if (hasErrorNotExists().isEmpty()) {
-                EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("CursoJPA");
+                EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("InstitutoJPA");
                 EntityManager entitymanager = emfactory.createEntityManager();
                 entitymanager.getTransaction().begin();
 

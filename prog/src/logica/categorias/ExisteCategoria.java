@@ -16,7 +16,7 @@ public class ExisteCategoria {
 
     public boolean existe() {
         boolean ret = false;
-        EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("CursoJPA");
+        EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("InstitutoJPA");
         EntityManager entitymanager = emfactory.createEntityManager();
 
         Categoria categoria = null;

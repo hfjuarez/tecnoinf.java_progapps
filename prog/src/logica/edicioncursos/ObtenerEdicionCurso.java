@@ -17,7 +17,7 @@ public class ObtenerEdicionCurso {
         if (existeCurso.existeNombreCur(name)) {
             EdicionCurso ret = new EdicionCurso();
 
-            EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("CursoJPA");
+            EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("InstitutoJPA");
             EntityManager entitymanager = emfactory.createEntityManager();
             ret = entitymanager.find(EdicionCurso.class, name);
             entitymanager.close();

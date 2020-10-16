@@ -14,16 +14,15 @@ public class ExisteCurso {
 
     public boolean existeNombreCur(String nombreCurso) {
         boolean ret = false;
-        EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("CursoJPA");
+        EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("InstitutoJPA");
         EntityManager entitymanager = emfactory.createEntityManager();
 
         Curso est = null;
-        if(nombreCurso!=null ) {
-        	est = entitymanager.find(Curso.class, nombreCurso);
-        }else {
-        	JOptionPane.showMessageDialog(null, "Curso vacio ");
+        if (nombreCurso != null) {
+            est = entitymanager.find(Curso.class, nombreCurso);
+        } else {
+            JOptionPane.showMessageDialog(null, "Curso vacio ");
         }
-        
 
         if (est != null) {
             ret = true;

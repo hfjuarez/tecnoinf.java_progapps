@@ -27,7 +27,7 @@ public class ListaInscripciones {
 
     public List<Inscripcion_Edicion> getList() {
         List<Inscripcion_Edicion> list = null;
-        EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("CursoJPA");
+        EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("InstitutoJPA");
         EntityManager entitymanager = emfactory.createEntityManager();
 
         Query query = entitymanager.createQuery("Select i from Inscripcion_Edicion as i");

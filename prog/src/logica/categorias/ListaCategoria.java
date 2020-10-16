@@ -13,7 +13,7 @@ public class ListaCategoria {
 
     public List<Categoria> getList() {
         List<Categoria> list = null;
-        EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("CursoJPA");
+        EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("InstitutoJPA");
         EntityManager entitymanager = emfactory.createEntityManager();
 
         Query query = entitymanager.createQuery("Select i from Categoria as i");

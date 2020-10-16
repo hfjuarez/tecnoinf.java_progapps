@@ -28,7 +28,7 @@ public class AltaUsuario {
         ape = apellido;
         mail = email;
         nacDate = nac;
-        this.passw=passp;
+        this.passw = passp;
     }
 
     private boolean hasErrorEmpty() {
@@ -50,8 +50,8 @@ public class AltaUsuario {
             ret = ret + "ERROR: Ya existe el usuario con nickname: " + nick + "\n";
         if (existeUsuario.existeMail(mail))
             ret = ret + "ERROR: Ya existe el usuario con mail: " + mail + "\n";
-        if(passw.isEmpty()) {
-        	ret+="ERROR: La Contrasenia no puede ser vacia!";
+        if (passw.isEmpty()) {
+            ret += "ERROR: La Contrasenia no puede ser vacia!";
         }
         return ret;
     }
@@ -63,11 +63,11 @@ public class AltaUsuario {
         }
         retorno = retorno + hasErrorAlredyExists();
         if (retorno.isEmpty()) {
-            EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("UsuarioJPA");
+            EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("InstitutoJPA");
             EntityManager entitymanager = emfactory.createEntityManager();
             entitymanager.getTransaction().begin();
 
-            Estudiante estudiante = new Estudiante(nick, name, ape, mail, nacDate,passw);
+            Estudiante estudiante = new Estudiante(nick, name, ape, mail, nacDate, passw);
 
             entitymanager.persist(estudiante);
             entitymanager.getTransaction().commit();
@@ -88,7 +88,7 @@ public class AltaUsuario {
         if (retorno.isEmpty()) {
             Instituto instituto = new ObtenerInstituto(nombreInstituto).getInstituto();
             if (instituto != null) {
-                EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("UsuarioJPA");
+                EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("InstitutoJPA");
                 EntityManager entitymanager = emfactory.createEntityManager();
                 entitymanager.getTransaction().begin();
 

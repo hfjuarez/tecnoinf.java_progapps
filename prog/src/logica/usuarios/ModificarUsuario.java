@@ -37,7 +37,7 @@ public class ModificarUsuario {
             if (new ObtenerUsuario().isEstudiante(nick)) {
                 // Estudiante usr = new ObtenerUsuario().getEstudianteByNickname(nick);
                 // System.out.println("EL estudiante es: "+ usr);
-                EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("UsuarioJPA");
+                EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("InstitutoJPA");
                 EntityManager entitymanager = emfactory.createEntityManager();
                 entitymanager.getTransaction().begin();
 
@@ -75,7 +75,7 @@ public class ModificarUsuario {
         if (retorno.isEmpty()) {
             if (!new ObtenerUsuario().isEstudiante(nick)) {
                 // Docente usr = new ObtenerUsuario().getDocenteByNickname(nick);
-                EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("UsuarioJPA");
+                EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("InstitutoJPA");
                 EntityManager entitymanager = emfactory.createEntityManager();
                 entitymanager.getTransaction().begin();
 

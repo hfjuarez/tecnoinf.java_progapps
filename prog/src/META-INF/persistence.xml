@@ -11,6 +11,7 @@
 		<class>logica.entidades.EdicionCurso</class>
             <class>logica.entidades.Inscripcion_Edicion</class>
             <class>logica.entidades.Formacion</class>
+            <class>logica.entidades.Inscripcion_Formacion</class>
 	      
 	      
 	   
@@ -27,7 +28,7 @@
          
             </properties>
 	</persistence-unit>
-	<persistence-unit name="UsuarioJPA">
+	<persistence-unit name="InstitutoJPA">
 		<class>logica.entidades.Instituto</class>
 	      <class>logica.entidades.Usuario</class>
 	      <class>logica.entidades.Docente</class>
@@ -36,6 +37,7 @@
 		<class>logica.entidades.EdicionCurso</class>
             <class>logica.entidades.Inscripcion_Edicion</class>
 	      <class>logica.entidades.Estudiante</class>
+	      <class>logica.entidades.Inscripcion_Formacion</class>
 	      
 	     
 	      
@@ -50,7 +52,7 @@
          
             </properties>
 	</persistence-unit>
-	<persistence-unit name="CursoJPA">
+	<persistence-unit name="InstitutoJPA">
 		<class>logica.entidades.Instituto</class>
 	      <class>logica.entidades.Usuario</class>
 	      <class>logica.entidades.Estudiante</class>
@@ -60,6 +62,7 @@
 		<class>logica.entidades.EdicionCurso</class>
             <class>logica.entidades.Inscripcion_Edicion</class>
             <class>logica.entidades.Formacion</class>
+            <class>logica.entidades.Inscripcion_Formacion</class>
 
             <properties>
       

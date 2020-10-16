@@ -32,7 +32,7 @@ public class ExisteUsuario {
 
     public boolean existeMail(String mail) {
 
-        EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("UsuarioJPA");
+        EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("InstitutoJPA");
         EntityManager entitymanager = emfactory.createEntityManager();
         
         Query query1 = entitymanager.createQuery("SELECT e.mail FROM Estudiante as e");

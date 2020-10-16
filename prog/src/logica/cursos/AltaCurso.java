@@ -115,7 +115,7 @@ public class AltaCurso {
             Instituto instituto = new ObtenerInstituto(nombreInstituto).getInstituto();
 
             if (instituto != null) {
-                EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("CursoJPA");
+                EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("InstitutoJPA");
                 EntityManager entitymanager = emfactory.createEntityManager();
                 entitymanager.getTransaction().begin();
                 Curso curso = new Curso(nom_cur, des_cur, dur_mes, cant_horas, cant_credito, curURL, fech_alta,
