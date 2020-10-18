@@ -7,6 +7,7 @@ import logica.cursos.*;
 import logica.edicioncursos.*;
 import logica.inscripciones.*;
 import logica.formaciones.*;
+import API.datatypes.*;
 import java.sql.Date;
 import java.util.*;
 import java.util.List;
@@ -79,6 +80,12 @@ class testCargaDatos {
 		Date datee4 = Date.valueOf("1987-09-12");
 		Date datee5 = Date.valueOf("1964-11-27");
 		Date datee6 = Date.valueOf("1978-12-23");
+		Date dateH = Date.valueOf("2000-06-04");
+		AltaUsuario aueh = new AltaUsuario("hrfj", "Hernan", "Fabrica", "hrfj@gmail.com", dateH, "h");
+		ret = aueh.createEstudiante();
+		if (!ret.isEmpty()) {
+			fail(ret);
+		}
 		AltaUsuario aue1 = new AltaUsuario("eleven11", "Eleven", "", "eleven11@gmail.com", datee1, "LzrZzge5");
 		ret = aue1.createEstudiante();
 		if (!ret.isEmpty()) {
@@ -473,6 +480,12 @@ class testCargaDatos {
 		String e14 = "Seminarios de Resolucion de Problemas - 2019";
 
 		Date i1 = Date.valueOf("2010-02-20");
+		InscripcionAEdicion ieh1 = new InscripcionAEdicion("hrfj", i1, e1);
+		ret = ieh1.inscripcion();
+		if (!ret.isEmpty()) {
+			fail(ret);
+		}
+		i1 = Date.valueOf("2010-02-20");
 		InscripcionAEdicion ie1 = new InscripcionAEdicion("eleven11", i1, e1);
 		ret = ie1.inscripcion();
 		if (!ret.isEmpty()) {
@@ -874,6 +887,102 @@ class testCargaDatos {
 		if (!ret.isEmpty()) {
 			fail(ret);
 		}
+
+		// Lista categorias
+
+		List<DTCategoria> list = new ListaCategoria().getDataTypeList();
+		if (list.isEmpty()) {
+			fail("Lista no esperada!");
+		}
+
+		List<String> list1 = new ListaCategoria().getListPorFormacion("EFI Ingenieria Mecanica");
+		if (list1.isEmpty()) {
+			fail("Lista no esperada!");
+		}
+
+		List<DTCurso> list2 = new ListaCursos().getDataTypeListPorCat("Educativo");
+		if (list2.isEmpty()) {
+			fail("Lista no esperada!");
+		}
+
+		List<DTCurso> list3 = new ListaCursos().getDataTypeListConInstituto("IMPII");
+		if (list3.isEmpty()) {
+			fail("Lista no esperada!");
+		}
+
+		list3 = new ListaCursos().BusquedaFiltro("o");
+		if (list3.isEmpty()) {
+			fail("Lista no esperada!");
+		}
+
+		List<DTEdicionCurso> list4 = new ListaEdicionCurso().getDataTypeList();
+		if (list4.isEmpty()) {
+			fail("Lista no esperada!");
+		}
+		list4 = new ListaEdicionCurso().getDataTypeListByCurso("Dalavuelta");
+		if (list4.isEmpty()) {
+			fail("Lista no esperada!");
+		}
+		list4 = new ListaEdicionCurso().getDataTypeListByDosente("phils");
+		if (list4.isEmpty()) {
+			fail("Lista no esperada!");
+		}
+		List<DTFormacion> list5 = new ListaFormacion().listaFormacionesPorCurso("Flor del Ceibo");
+		if (list5.isEmpty()) {
+			fail("Lista no esperada!");
+		}
+
+		list5 = new ListaFormacion().BusquedaFiltro("o");
+		if (list5.isEmpty()) {
+			fail("Lista no esperada!");
+		}
+
+		List<DTInscripcion_Edicion> list6 = new ListaInscripciones().getDTlist();
+		if (list6.isEmpty()) {
+			fail("Lista no esperada!");
+		}
+		list6 = new ListaInscripciones().getDTlistPorEstudiante("hrfj");
+		if (list6.isEmpty()) {
+			fail("Lista no esperada!");
+		}
+		list6 = new ListaInscripciones().getDTlistPorEdicion("Dalavuelta - 2018");
+		if (list6.isEmpty()) {
+			fail("Lista no esperada!");
+		}
+
+		List<DTInstituto> listi = new ListaInstitutos().getDataTypeList();
+		if (list6.isEmpty()) {
+			fail("Lista no esperada!");
+		}
+
+		List<DTInscripcion_Formacion> list7 = new ListaInscripcionesFor().getDTlist();
+		if (list7.isEmpty()) {
+			fail("Lista no esperada!");
+		}
+
+		List<DTInscripcion_Formacion> list8 = new ListaInscripcionesFor().getDTlistPorEstudiante("costas");
+		if (list7.isEmpty()) {
+			fail("Lista no esperada!");
+		}
+
+		list8 = new ListaInscripcionesFor().getDTlistPorFormacion("EFI Ingenieria Mecanica");
+		if (list7.isEmpty()) {
+			fail("Lista no esperada!");
+		}
+
+		List<DTEstudiante> list0=new ListaUsuarios().getDataTypeListEstudiante();
+		if (list0.isEmpty()) {
+			fail("Lista no esperada!");
+		}
+
+		List<DTDocente> list01=new ListaUsuarios().getDataTypeListDocente();
+		if (list01.isEmpty()) {
+			fail("Lista no esperada!");
+		}
+		ModificarUsuario mu = new ModificarUsuario("hrfj", "Hernan", "Fabrica", Date.valueOf("2000-06-04"));
+		mu.modificarEstudiante();
+		ModificarUsuario mu1 = new ModificarUsuario("phils", "Philip", "Schiller", date7);
+		mu1.modificarDocente();
 	}
 
 }

@@ -11,8 +11,6 @@ public class DTInstituto {
 		nombreInstituto = instituto.getNombreInstituto();
 	}
 
-	@Override
-	public String toString() {
-		return "DTInstituto [nombreInstituto=" + nombreInstituto + "]";
-	}
+
+
 }

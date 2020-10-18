@@ -15,8 +15,5 @@ public class DTCategoria {
         nombreCategoria = categoria.getNombreCategoria();
     }
 
-    @Override
-    public String toString() {
-        return "DTCategoria [nombreCategoria=" + nombreCategoria + "]";
-    }
+
 }

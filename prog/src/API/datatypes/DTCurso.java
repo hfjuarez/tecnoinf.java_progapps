@@ -24,19 +24,6 @@ public class DTCurso {
 		super();
 	}
 
-	public DTCurso(String nombreCurso, String descCurso, int duracionMeses, int cantidadHoras, int cantidadCreditos,
-			String uRL, Date fechaAlta, DTInstituto instituto, List<DTCategoria> categorias) {
-		super();
-		this.nombreCurso = nombreCurso;
-		this.descCurso = descCurso;
-		this.duracionMeses = duracionMeses;
-		this.cantidadHoras = cantidadHoras;
-		this.cantidadCreditos = cantidadCreditos;
-		URL = uRL;
-		this.fechaAlta = fechaAlta;
-		this.instituto = instituto;
-		this.categorias = categorias;
-	}
 
 	public DTCurso(Curso curso) {
 		super();
@@ -69,12 +56,6 @@ public class DTCurso {
 
 	}
 
-	@Override
-	public String toString() {
-		return "DTCurso [nombreCurso=" + nombreCurso + ", descCurso=" + descCurso + ", duracionMeses=" + duracionMeses
-				+ ", cantidadHoras=" + cantidadHoras + ", cantidadCreditos=" + cantidadCreditos + ", URL=" + URL
-				+ ", fechaAlta=" + fechaAlta + ", instituto=" + instituto + ", previas=" + previas + ", categorias="
-				+ categorias + "]";
-	}
+
 
 }
