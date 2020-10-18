@@ -22,8 +22,10 @@ public class DejarSeguirUsuario {
 		nickSeguido = nickName;
 		nickSeguidor = nickName2;
 	}
+	
+	public DejarSeguirUsuario() {}
 
-	private boolean ExisteSeguidor(String nickSeguido, String nickSeguidor) {
+	public boolean ExisteSeguidor(String nickSeguido, String nickSeguidor) {
 		if (new ObtenerUsuario().isEstudiante(nickSeguido)) {
 
 			Estudiante est = new ObtenerUsuario().getEstudianteByNickname(nickSeguido);

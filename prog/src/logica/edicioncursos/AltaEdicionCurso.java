@@ -67,6 +67,7 @@ public class AltaEdicionCurso {
         if (retorno.isEmpty()) {
             ObtenerCurso oCurso = new ObtenerCurso();
             Curso cursoCurso = oCurso.getCurso(curso);
+            System.out.println("EL cursooo: "+cursoCurso+" --- n:"+ cursoCurso.getNombreCurso());
             if (cursoCurso != null) {
                 if (!docentes.isEmpty()) {
                     ObtenerUsuario oc = new ObtenerUsuario();

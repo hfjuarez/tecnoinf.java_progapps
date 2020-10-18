@@ -242,11 +242,13 @@ public class WebControlador implements IWeb {
 		List<DTEdicionCurso> list = ListaEdicionesCurso(nombreCurso);
 		Calendar c = Calendar.getInstance();
 		String dia = Integer.toString(c.get(Calendar.DATE));
-		String mes = Integer.toString(c.get(Calendar.MONTH));
+		String mes = Integer.toString(c.get(Calendar.MONTH)+1);
 		String annio = Integer.toString(c.get(Calendar.YEAR));
 		Date fechaActual = Date.valueOf(annio + "-" + mes + "-" + dia);
+
 		for (DTEdicionCurso ediCavani : list) {
-			if (ediCavani.fechaIncio.compareTo(fechaActual) * fechaActual.compareTo(ediCavani.fechaFin) >= 0) {
+
+			if (ediCavani.fechaFin.compareTo(fechaActual) >= 0) {
 				return ediCavani;
 			}
 		}
@@ -350,6 +352,12 @@ public class WebControlador implements IWeb {
     	} else {
     		return new DejarSeguirUsuario(nickName, nickName2).DejarSeguirUserDocente();
     	}
+    }
+    
+    //Este me sigue
+    
+    public boolean esteSigueAEste(String este1, String este2) {
+    	return new DejarSeguirUsuario().ExisteSeguidor(este2,este1);
     }
 
 	// Alta Curso

@@ -57,13 +57,16 @@ public class SeguirUsuario {
 		if (!ExisteSeguidor(nickSeguido, nickSeguidor)) {
 
 			if (new ObtenerUsuario().isEstudiante(nickSeguido)) {
-				EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("InstitutoJPA");
-				EntityManager entitymanager = emfactory.createEntityManager();
-				entitymanager.getTransaction().begin();
-
-				Estudiante usr_seguido = entitymanager.find(Estudiante.class, nickSeguido);
+				
 
 				if (new ObtenerUsuario().isEstudiante(nickSeguidor)) {
+					
+					EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("InstitutoJPA");
+					EntityManager entitymanager = emfactory.createEntityManager();
+					entitymanager.getTransaction().begin();
+					
+					
+					Estudiante usr_seguido = entitymanager.find(Estudiante.class, nickSeguido);
 
 					Estudiante usr_seguidor = entitymanager.find(Estudiante.class, nickSeguidor);
 					usr_seguido.addSeguidores(usr_seguidor);
@@ -75,11 +78,19 @@ public class SeguirUsuario {
 					emfactory.close();
 				}
 				if (!new ObtenerUsuario().isEstudiante(nickSeguidor)) {
+					
+					EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("InstitutoJPA");
+					EntityManager entitymanager = emfactory.createEntityManager();
+					entitymanager.getTransaction().begin();
+					
+					
+					Estudiante usr_seguido = entitymanager.find(Estudiante.class, nickSeguido);
 
 					Docente usr_seguidor = entitymanager.find(Docente.class, nickSeguidor);
+					System.out.println("el usu: "+nickSeguidor);
 					usr_seguido.addSeguidores(usr_seguidor);
 					usr_seguidor.addSiguiendo(usr_seguido);
-
+					
 					entitymanager.getTransaction().commit();
 
 					entitymanager.close();
@@ -98,14 +109,16 @@ public class SeguirUsuario {
 		if (!ExisteSeguidor(nickSeguido, nickSeguidor)) {
 
 			if (!new ObtenerUsuario().isEstudiante(nickSeguido)) {
-				EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("InstitutoJPA");
-				EntityManager entitymanager = emfactory.createEntityManager();
-				entitymanager.getTransaction().begin();
+				
 
-				Docente usr_seguido = entitymanager.find(Docente.class, nickSeguido);
+				
 
 				if (new ObtenerUsuario().isEstudiante(nickSeguidor)) {
-
+					EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("InstitutoJPA");
+					EntityManager entitymanager = emfactory.createEntityManager();
+					entitymanager.getTransaction().begin();
+					Docente usr_seguido = entitymanager.find(Docente.class, nickSeguido);
+					
 					Estudiante usr_seguidor = entitymanager.find(Estudiante.class, nickSeguidor);
 					usr_seguido.addSeguidores(usr_seguidor);
 					usr_seguidor.addSiguiendo(usr_seguido);
@@ -116,10 +129,15 @@ public class SeguirUsuario {
 					emfactory.close();
 				}
 				if (!new ObtenerUsuario().isEstudiante(nickSeguidor)) {
-
+					EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("InstitutoJPA");
+					EntityManager entitymanager = emfactory.createEntityManager();
+					entitymanager.getTransaction().begin();
+					Docente usr_seguido = entitymanager.find(Docente.class, nickSeguido);
+					
 					Docente usr_seguidor = entitymanager.find(Docente.class, nickSeguidor);
 					usr_seguido.addSeguidores(usr_seguidor);
 					usr_seguidor.addSiguiendo(usr_seguido);
+					
 
 					entitymanager.getTransaction().commit();
 

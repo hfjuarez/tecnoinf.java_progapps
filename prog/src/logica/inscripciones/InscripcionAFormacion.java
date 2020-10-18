@@ -133,21 +133,21 @@ public class InscripcionAFormacion {
 
 		Inscripcion_Formacion InscEdc = new Inscripcion_Formacion(forma, es, FInscripcion);
 
-		List<Inscripcion_Formacion> inscriptosE = forma.getInscriptos();
-		if (inscriptosE == null) {
-			inscriptosE = new ArrayList<Inscripcion_Formacion>();
-		}
-
-		inscriptosE.add(InscEdc);
-		forma.setInscriptos(inscriptosE);
-		// entitymanager.persist(forma);
-
-		List<Inscripcion_Formacion> inscripciones = es.getInscFormacion();
-		if (inscripciones == null) {
-			inscripciones = new ArrayList<Inscripcion_Formacion>();
-		}
-		inscripciones.add(InscEdc);
-		es.setInscFormacion(inscripciones);
+//		List<Inscripcion_Formacion> inscriptosE = forma.getInscriptos();
+//		if (inscriptosE == null) {
+//			inscriptosE = new ArrayList<Inscripcion_Formacion>();
+//		}
+//
+//		inscriptosE.add(InscEdc);
+//		forma.setInscriptos(inscriptosE);
+//		// entitymanager.persist(forma);
+//
+//		List<Inscripcion_Formacion> inscripciones = es.getInscFormacion();
+//		if (inscripciones == null) {
+//			inscripciones = new ArrayList<Inscripcion_Formacion>();
+//		}
+//		inscripciones.add(InscEdc);
+//		es.setInscFormacion(inscripciones);
 		// entitymanager.persist(es);
 
 		entitymanager.persist(InscEdc);

@@ -2,6 +2,12 @@ package API.datatypes;
 
 import java.lang.String;
 import java.sql.Date;
+import java.util.List;
+
+import javax.persistence.OneToMany;
+
+import logica.entidades.Usuario;
+
 import java.io.File;
 
 public class DTUsuario {
@@ -13,7 +19,8 @@ public class DTUsuario {
 	public Date fechaNac;
 	public File image;
 	public String passw;
-
+	public List Seguidores;
+	public List Siguiendo;
 	public DTUsuario() {
 	}
 
@@ -25,6 +32,10 @@ public class DTUsuario {
 		mail = email;
 		fechaNac = nac;
 		passw = passp;
+		
 	}
+
+
+	
 
 }
