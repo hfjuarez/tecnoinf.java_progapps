@@ -103,7 +103,9 @@ public class Formacion {
 		for (Curso curso : cursitos) {
 			List<Categoria> catsCurso = curso.getCategoria();
 			for (Categoria cat : catsCurso) {
-				cats.add(cat.getNombreCategoria());
+				if(!cats.contains(cat.getNombreCategoria())) {
+					cats.add(cat.getNombreCategoria());
+				}
 			}
 		}
 		return cats;

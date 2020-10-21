@@ -725,6 +725,7 @@ class testCargaDatos {
 		if (!ret.isEmpty()) {
 			fail(ret);
 		}
+		
 		Date i41 = Date.valueOf("2019-03-04");
 		InscripcionAEdicion ie41 = new InscripcionAEdicion("weiss", i41, e13);
 		ret = ie41.inscripcion();
