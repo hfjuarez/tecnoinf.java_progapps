@@ -18,6 +18,7 @@ public class DTEdicionCurso {
 	public Date fechaAltaEdicion;
 	public List docentes;
 	public List inscriptos;
+	public boolean cerrado;
 
 
 	public DTEdicionCurso(EdicionCurso eCurso) {
@@ -41,6 +42,7 @@ public class DTEdicionCurso {
 			inscripto.add(ins);
 		}
 		this.inscriptos = inscripto;
+		this.cerrado=eCurso.getCerrado();
 	}
 
 	@Override

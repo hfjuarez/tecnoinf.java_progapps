@@ -24,15 +24,16 @@ public class InscripcionAEdicion {
 	Date FInscripcion;
 	String NEstudiante;
 	String NEdicion;
+	String urlVideo;
 
 	public InscripcionAEdicion() {
 	}
 
-	public InscripcionAEdicion(String nombreEstudiante, Date FechaIns, String Edicion) {
+	public InscripcionAEdicion(String nombreEstudiante, Date FechaIns, String Edicion, String urlVideo) {
 		NEstudiante = nombreEstudiante;
 		FInscripcion = FechaIns;
 		NEdicion = Edicion;
-
+		this.urlVideo = urlVideo;
 	}
 
 	public boolean existeCupo() {
@@ -69,6 +70,32 @@ public class InscripcionAEdicion {
 			}
 		}
 		return false;
+	}
+
+	public void asignarNota(int nota, String ediCavani, String nik) {
+		List<Inscripcion_Edicion> list = null;
+		EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("InstitutoJPA");
+		EntityManager entitymanager = emfactory.createEntityManager();
+		entitymanager.getTransaction().begin();
+		Inscripcion_Edicion inss = null;
+
+		Query query = entitymanager.createQuery("Select i from Inscripcion_Edicion as i");
+		list = (List<Inscripcion_Edicion>) query.getResultList();
+		for (Inscripcion_Edicion inscripcion : list) {
+			if ((inscripcion.getEdicionCurso().getNombreEdicion().equals(ediCavani))
+					&& (inscripcion.getEstudiante().getNickname().equals(nik))) {
+				inss = inscripcion;
+				inss.setNota(nota);
+				entitymanager.persist(inss);
+
+			}
+		}
+
+		entitymanager.getTransaction().commit();
+		entitymanager.close();
+		emfactory.close();
+		// }
+
 	}
 
 	public void cambiarestado(String solteroHastaLaTumba, String ediCavani, String nik) {
@@ -156,7 +183,7 @@ public class InscripcionAEdicion {
 		EntityManager entitymanager = emfactory.createEntityManager();
 		entitymanager.getTransaction().begin();
 
-		Inscripcion_Edicion InscEdc = new Inscripcion_Edicion(edicion, es, FInscripcion);
+		Inscripcion_Edicion InscEdc = new Inscripcion_Edicion(edicion, es, FInscripcion, urlVideo);
 
 		List<Inscripcion_Edicion> inscriptosE = edicion.getInscriptos();
 		if (inscriptosE == null) {

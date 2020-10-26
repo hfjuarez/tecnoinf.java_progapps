@@ -25,12 +25,15 @@ public class Inscripcion_Edicion {
     private Estudiante estudiante;
     private Date fecha;
     private String estado;
+    private String urlVideo;
+    private int nota;
+ 
 
     public Inscripcion_Edicion() {
         super();
     }
 
-    public Inscripcion_Edicion(EdicionCurso edicionCurso, Estudiante estudiante, Date fecha) {
+    public Inscripcion_Edicion(EdicionCurso edicionCurso, Estudiante estudiante, Date fecha, String urlVideo) {
         super();
         // this.nicknameEstudiante = estudiante.getNickname();
         // this.nombreEdicionCurso = edicionCurso.getNombreEdicion();
@@ -38,18 +41,17 @@ public class Inscripcion_Edicion {
         this.estudiante = estudiante;
         this.fecha = fecha;
         this.estado = "Inscripto";
+        this.urlVideo = urlVideo;
+        this.nota = 0;
     }
 
-    public void setEdicionCurso(EdicionCurso edicionCurso) {
-        this.edicionCurso = edicionCurso;
+    public int getNota() {
+        return nota;
     }
+    
 
-    public void setEstudiante(Estudiante estudiante) {
-        this.estudiante = estudiante;
-    }
-
-    public void setFecha(Date fecha) {
-        this.fecha = fecha;
+    public void setNota(int nota) {
+        this.nota = nota;
     }
 
     public Estudiante getEstudiante() {
@@ -60,16 +62,20 @@ public class Inscripcion_Edicion {
         return edicionCurso;
     }
 
-    public Date getFecha() {
-        return fecha;
-    }
-
     public void setEstado(String estado) {
         this.estado = estado;
     }
 
+    public Date getFecha() {
+        return fecha;
+    }
+
     public String getEstado() {
         return estado;
+    }
+
+    public String getUrlVideo() {
+        return urlVideo;
     }
 
 }

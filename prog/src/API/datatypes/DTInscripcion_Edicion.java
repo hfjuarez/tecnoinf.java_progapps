@@ -9,6 +9,8 @@ public class DTInscripcion_Edicion {
     public DTEstudiante estudiante;
     public Date fecha;
     public String estado;
+    public String urlVideo;
+    public int nota;
 
     public DTInscripcion_Edicion() {
 
@@ -19,5 +21,7 @@ public class DTInscripcion_Edicion {
         this.estudiante = new DTEstudiante(ins.getEstudiante());
         this.fecha = ins.getFecha();
         this.estado = ins.getEstado();
+        this.urlVideo = ins.getUrlVideo();
+        this.nota = ins.getNota();
     }
 }

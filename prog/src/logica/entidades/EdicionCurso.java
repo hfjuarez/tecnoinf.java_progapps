@@ -26,6 +26,8 @@ public class EdicionCurso {
 	private List docentes;
 	@OneToMany(targetEntity = Inscripcion_Edicion.class)
 	private List inscriptos;
+	private boolean cerrado=false;
+    
 
 	public EdicionCurso() {
 		super();
@@ -42,6 +44,14 @@ public class EdicionCurso {
 		docentes = Doc;
 		inscriptos=null;
 	}
+	
+	public boolean getCerrado() {
+		return this.cerrado;
+	}
+	
+	public void setCerrado() {
+    	this.cerrado=true;
+    }
 
 	public String getNombreEdicion() {
 		return this.nombreEdicion;

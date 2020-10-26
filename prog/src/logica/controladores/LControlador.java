@@ -80,9 +80,9 @@ public class LControlador implements ILogica {
         public List<DTInscripcion_Edicion> listaIns() {
                 return new ListaInscripciones().getDTlist();
         }
-        
+
         public List<DTInscripcion_Formacion> listaInsFor() {
-            return new ListaInscripcionesFor().getDTlist();
+                return new ListaInscripcionesFor().getDTlist();
         }
 
         public List<DTCategoria> listaCat() {
@@ -153,7 +153,8 @@ public class LControlador implements ILogica {
                                 if (imagen != null) {
                                         try {
                                                 System.out.println("imagino");
-                                                i.setImagen(nickname, imagen, "usuarios", RutaDir.getController().getDir());
+                                                i.setImagen(nickname, imagen, "usuarios",
+                                                                RutaDir.getController().getDir());
                                         } catch (Exception e) {
                                                 System.out.println("Errovich");
                                         }
@@ -176,7 +177,8 @@ public class LControlador implements ILogica {
                                 ControladorImagen i = ControladorImagen.getController();
                                 if (imagen != null) {
                                         try {
-                                                i.setImagen(nickname, imagen, "usuarios", RutaDir.getController().getDir());
+                                                i.setImagen(nickname, imagen, "usuarios",
+                                                                RutaDir.getController().getDir());
                                         } catch (Exception e) {
 
                                         }
@@ -206,25 +208,25 @@ public class LControlador implements ILogica {
                 }
 
         }
-        
-        //Seguir usuario
-        
-        public String SeguirUsuario(String nickName, String nickName2){
-        	if (new ObtenerUsuario().isEstudiante(nickName)) {
-        		return new SeguirUsuario(nickName, nickName2).SeguirUserEstudiante();
-        	} else {
-        		return new SeguirUsuario(nickName, nickName2).SeguirUserDocente();
-        	}
+
+        // Seguir usuario
+
+        public String SeguirUsuario(String nickName, String nickName2) {
+                if (new ObtenerUsuario().isEstudiante(nickName)) {
+                        return new SeguirUsuario(nickName, nickName2).SeguirUserEstudiante();
+                } else {
+                        return new SeguirUsuario(nickName, nickName2).SeguirUserDocente();
+                }
         }
-        
-        //Dejar de Seguir usuario
-        
-        public String DejarSeguirUsuario(String nickName, String nickName2){
-        	if (new ObtenerUsuario().isEstudiante(nickName)) {
-        		return new DejarSeguirUsuario(nickName, nickName2).DejarSeguirUserEstudiante();
-        	} else {
-        		return new DejarSeguirUsuario(nickName, nickName2).DejarSeguirUserDocente();
-        	}
+
+        // Dejar de Seguir usuario
+
+        public String DejarSeguirUsuario(String nickName, String nickName2) {
+                if (new ObtenerUsuario().isEstudiante(nickName)) {
+                        return new DejarSeguirUsuario(nickName, nickName2).DejarSeguirUserEstudiante();
+                } else {
+                        return new DejarSeguirUsuario(nickName, nickName2).DejarSeguirUserDocente();
+                }
         }
 
         // Alta Curso
@@ -265,7 +267,8 @@ public class LControlador implements ILogica {
                         if (imagen != null) {
                                 try {
 
-                                        i.setImagen(nombreEdicion, imagen, "ediciones", RutaDir.getController().getDir());
+                                        i.setImagen(nombreEdicion, imagen, "ediciones",
+                                                        RutaDir.getController().getDir());
                                 } catch (Exception e) {
                                         System.out.println("Errovich");
                                 }
@@ -287,7 +290,8 @@ public class LControlador implements ILogica {
                         if (imagen != null) {
                                 try {
 
-                                        i.setImagen(nombreFormacion, imagen, "formaciones", RutaDir.getController().getDir());
+                                        i.setImagen(nombreFormacion, imagen, "formaciones",
+                                                        RutaDir.getController().getDir());
                                 } catch (Exception e) {
                                         System.out.println("Errovich");
                                 }
@@ -306,9 +310,9 @@ public class LControlador implements ILogica {
         // Inscripcion a edicion de curso
 
         public String regInscDeUsrEnCurso(String nickname, String nombreEdicion, Date Finsc) {
-                return new InscripcionAEdicion(nickname, Finsc, nombreEdicion).inscripcion();
+                return new InscripcionAEdicion(nickname, Finsc, nombreEdicion, "").inscripcion();
         }
-        
+
         // Inscripcion a formacion
 
         public String regInscDeUsrEnFormacion(String nickname, String nombreFormacion, Date Finsc) {

@@ -6,6 +6,12 @@ import API.datatypes.*;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+import javax.persistence.Query;
+
 import java.io.IOException;
 
 import java.io.File;
@@ -13,6 +19,8 @@ import java.io.File;
 import logica.cursos.*;
 import logica.categorias.*;
 import logica.edicioncursos.*;
+import logica.entidades.EdicionCurso;
+import logica.entidades.Inscripcion_Edicion;
 import logica.formaciones.*;
 import logica.inscripciones.InscripcionAEdicion;
 import logica.inscripciones.ListaInscripciones;
@@ -108,14 +116,14 @@ public class WebControlador implements IWeb {
 		}
 
 	}
-	
-	 public List<DTFormacion> BusquedaFiltroFormacion(String busqueda){
-		 return new ListaFormacion().BusquedaFiltro(busqueda);
-	 }
-	 
-	 public List<DTCurso> BusquedaFiltroCurso(String busqueda){
-		 return new ListaCursos().BusquedaFiltro(busqueda);
-	 }
+
+	public List<DTFormacion> BusquedaFiltroFormacion(String busqueda) {
+		return new ListaFormacion().BusquedaFiltro(busqueda);
+	}
+
+	public List<DTCurso> BusquedaFiltroCurso(String busqueda) {
+		return new ListaCursos().BusquedaFiltro(busqueda);
+	}
 
 	// Listas
 
@@ -149,10 +157,10 @@ public class WebControlador implements IWeb {
 	public List<DTEdicionCurso> ListaEdicionesCurso(String nombreCurso) {
 		return new ListaEdicionCurso().getDataTypeListByCurso(nombreCurso);
 	}
-	
-    public List<DTInscripcion_Formacion> listaInsFor() {
-        return new ListaInscripcionesFor().getDTlist();
-    }
+
+	public List<DTInscripcion_Formacion> listaInsFor() {
+		return new ListaInscripcionesFor().getDTlist();
+	}
 
 	public List<DTCurso> ListaCursos() {
 		return new ListaCursos().getDataTypeList();
@@ -195,7 +203,7 @@ public class WebControlador implements IWeb {
 	public List<DTInscripcion_Edicion> listaInscripcionesPorEdicion(String edicion) {
 		return new ListaInscripciones().getDTlistPorEdicion(edicion);
 	}
-	
+
 	public List<DTInscripcion_Formacion> listaInscForPorEstudiante(String nick) {
 		return new ListaInscripcionesFor().getDTlistPorEstudiante(nick);
 	}
@@ -242,7 +250,7 @@ public class WebControlador implements IWeb {
 		List<DTEdicionCurso> list = ListaEdicionesCurso(nombreCurso);
 		Calendar c = Calendar.getInstance();
 		String dia = Integer.toString(c.get(Calendar.DATE));
-		String mes = Integer.toString(c.get(Calendar.MONTH)+1);
+		String mes = Integer.toString(c.get(Calendar.MONTH) + 1);
 		String annio = Integer.toString(c.get(Calendar.YEAR));
 		Date fechaActual = Date.valueOf(annio + "-" + mes + "-" + dia);
 
@@ -333,32 +341,32 @@ public class WebControlador implements IWeb {
 		}
 
 	}
-	
+
 	// Seguir Usuario
-	
-	public String SeguirUsuario(String nickName, String nickName2){
-    	if (new ObtenerUsuario().isEstudiante(nickName)) {
-    		return new SeguirUsuario(nickName, nickName2).SeguirUserEstudiante();
-    	} else {
-    		return new SeguirUsuario(nickName, nickName2).SeguirUserDocente();
-    	}
-    }
-	
-	//Dejar de Seguir usuario
-    
-    public String DejarSeguirUsuario(String nickName, String nickName2){
-    	if (new ObtenerUsuario().isEstudiante(nickName)) {
-    		return new DejarSeguirUsuario(nickName, nickName2).DejarSeguirUserEstudiante();
-    	} else {
-    		return new DejarSeguirUsuario(nickName, nickName2).DejarSeguirUserDocente();
-    	}
-    }
-    
-    //Este me sigue
-    
-    public boolean esteSigueAEste(String este1, String este2) {
-    	return new DejarSeguirUsuario().ExisteSeguidor(este2,este1);
-    }
+
+	public String SeguirUsuario(String nickName, String nickName2) {
+		if (new ObtenerUsuario().isEstudiante(nickName)) {
+			return new SeguirUsuario(nickName, nickName2).SeguirUserEstudiante();
+		} else {
+			return new SeguirUsuario(nickName, nickName2).SeguirUserDocente();
+		}
+	}
+
+	// Dejar de Seguir usuario
+
+	public String DejarSeguirUsuario(String nickName, String nickName2) {
+		if (new ObtenerUsuario().isEstudiante(nickName)) {
+			return new DejarSeguirUsuario(nickName, nickName2).DejarSeguirUserEstudiante();
+		} else {
+			return new DejarSeguirUsuario(nickName, nickName2).DejarSeguirUserDocente();
+		}
+	}
+
+	// Este me sigue
+
+	public boolean esteSigueAEste(String este1, String este2) {
+		return new DejarSeguirUsuario().ExisteSeguidor(este2, este1);
+	}
 
 	// Alta Curso
 
@@ -408,6 +416,10 @@ public class WebControlador implements IWeb {
 
 	}
 
+	public void asignarNotaAEstudianteEdicionCurso(int nota, String ediCavani, String nik) {
+		new InscripcionAEdicion().asignarNota(nota, ediCavani, nik);
+	}
+
 	// Crear Programa de Formacion
 
 	public String crearFormacion(String nombreFormacion, String descr, Date FechaIni, Date FechaFin, Date FechaAlta,
@@ -437,15 +449,15 @@ public class WebControlador implements IWeb {
 
 	// Inscripcion a edicion de curso
 
-	public String regInscDeUsrEnCurso(String nickname, String nombreEdicion, Date Finsc) {
-		return new InscripcionAEdicion(nickname, Finsc, nombreEdicion).inscripcion();
+	public String regInscDeUsrEnCurso(String nickname, String nombreEdicion, Date Finsc, String urlVideo) {
+		return new InscripcionAEdicion(nickname, Finsc, nombreEdicion, urlVideo).inscripcion();
 	}
-	
-    // Inscripcion a formacion
 
-    public String regInscDeUsrEnFormacion(String nickname, String nombreFormacion, Date Finsc) {
-            return new InscripcionAFormacion(nickname, Finsc, nombreFormacion).inscripcion();
-    }
+	// Inscripcion a formacion
+
+	public String regInscDeUsrEnFormacion(String nickname, String nombreFormacion, Date Finsc) {
+		return new InscripcionAFormacion(nickname, Finsc, nombreFormacion).inscripcion();
+	}
 
 	// Consulta edicion Cursos
 
@@ -483,6 +495,29 @@ public class WebControlador implements IWeb {
 
 	public String crearCategoria(String nombreCategoria) {
 		return new AltaCategoria().create(nombreCategoria);
+	}
+
+	/**
+	 * 
+	 */
+	public void cerrarEdicionCurso(String nombreEdicion) {
+		EdicionCurso edi = new ObtenerEdicionCurso().getEdicionCurso(nombreEdicion);
+		if (edi != null) {
+			
+			EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("InstitutoJPA");
+			EntityManager entitymanager = emfactory.createEntityManager();
+			entitymanager.getTransaction().begin();
+			EdicionCurso ediCavani = entitymanager.find( EdicionCurso.class, nombreEdicion );
+			ediCavani.setCerrado();
+			//entitymanager.persist(ediCavani);
+
+			entitymanager.getTransaction().commit();
+			entitymanager.close();
+			emfactory.close();
+		}
+
+		
+		// }
 	}
 
 }

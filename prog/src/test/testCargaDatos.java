@@ -345,6 +345,16 @@ class testCargaDatos {
 		if (!ret.isEmpty()) {
 			fail(ret);
 		}
+		Date fInicio44 = Date.valueOf("2020-08-20");
+		Date fFin44 = Date.valueOf("2020-12-25");
+		Date fAlta44 = Date.valueOf("2020-10-20");
+		AltaEdicionCurso aec44 = new AltaEdicionCurso("Dalavuelta - 2020", "Dalavuelta", fInicio44, fFin44, 15, fAlta44);
+		List<String> l444 = new ArrayList();
+		l444.add("phils");
+		ret = aec44.createEdicionCurso(l444);
+		if (!ret.isEmpty()) {
+			fail(ret);
+		}
 		Date fInicio5 = Date.valueOf("2018-08-10");
 		Date fFin5 = Date.valueOf("2018-11-10");
 		Date fAlta5 = Date.valueOf("2018-07-08");
@@ -461,6 +471,8 @@ class testCargaDatos {
 		if (!ret.isEmpty()) {
 			fail(ret);
 		}
+		
+		
 
 		// Cargar Inscripciones Edicion
 
@@ -480,284 +492,284 @@ class testCargaDatos {
 		String e14 = "Seminarios de Resolucion de Problemas - 2019";
 
 		Date i1 = Date.valueOf("2010-02-20");
-		InscripcionAEdicion ieh1 = new InscripcionAEdicion("hrfj", i1, e1);
+		InscripcionAEdicion ieh1 = new InscripcionAEdicion("hrfj", i1, e1, "");
 		ret = ieh1.inscripcion();
 		if (!ret.isEmpty()) {
 			fail(ret);
 		}
 		i1 = Date.valueOf("2010-02-20");
-		InscripcionAEdicion ie1 = new InscripcionAEdicion("eleven11", i1, e1);
+		InscripcionAEdicion ie1 = new InscripcionAEdicion("eleven11", i1, e1, "");
 		ret = ie1.inscripcion();
 		if (!ret.isEmpty()) {
 			fail(ret);
 		}
 		Date i2 = Date.valueOf("2010-02-25");
-		InscripcionAEdicion ie2 = new InscripcionAEdicion("chechi", i2, e1);
+		InscripcionAEdicion ie2 = new InscripcionAEdicion("chechi", i2, e1, "");
 		ret = ie2.inscripcion();
 		if (!ret.isEmpty()) {
 			fail(ret);
 		}
 		Date i3 = Date.valueOf("2012-07-12");
-		InscripcionAEdicion ie3 = new InscripcionAEdicion("costas", i3, e2);
+		InscripcionAEdicion ie3 = new InscripcionAEdicion("costas", i3, e2, "");
 		ret = ie3.inscripcion();
 		if (!ret.isEmpty()) {
 			fail(ret);
 		}
 		Date i4 = Date.valueOf("2012-07-15");
-		InscripcionAEdicion ie4 = new InscripcionAEdicion("roro", i4, e2);
+		InscripcionAEdicion ie4 = new InscripcionAEdicion("roro", i4, e2, "");
 		ret = ie4.inscripcion();
 		if (!ret.isEmpty()) {
 			fail(ret);
 		}
 		Date i5 = Date.valueOf("2012-07-30");
-		InscripcionAEdicion ie5 = new InscripcionAEdicion("weiss", i5, e2);
+		InscripcionAEdicion ie5 = new InscripcionAEdicion("weiss", i5, e2, "");
 		ret = ie5.inscripcion();
 		if (!ret.isEmpty()) {
 			fail(ret);
 		}
 		Date i6 = Date.valueOf("2018-03-10");
-		InscripcionAEdicion ie6 = new InscripcionAEdicion("roro", i6, e3);
+		InscripcionAEdicion ie6 = new InscripcionAEdicion("roro", i6, e3, "");
 		ret = ie6.inscripcion();
 		if (!ret.isEmpty()) {
 			fail(ret);
 		}
 		Date i7 = Date.valueOf("2018-03-15");
-		InscripcionAEdicion ie7 = new InscripcionAEdicion("jeffw", i7, e3);
+		InscripcionAEdicion ie7 = new InscripcionAEdicion("jeffw", i7, e3, "");
 		ret = ie7.inscripcion();
 		if (!ret.isEmpty()) {
 			fail(ret);
 		}
 		Date i8 = Date.valueOf("2017-07-25");
-		InscripcionAEdicion ie8 = new InscripcionAEdicion("chechi", i8, e4);
+		InscripcionAEdicion ie8 = new InscripcionAEdicion("chechi", i8, e4, "");
 		ret = ie8.inscripcion();
 		if (!ret.isEmpty()) {
 			fail(ret);
 		}
 		Date i9 = Date.valueOf("2017-07-28");
-		InscripcionAEdicion ie9 = new InscripcionAEdicion("eleven11", i9, e4);
+		InscripcionAEdicion ie9 = new InscripcionAEdicion("eleven11", i9, e4, "");
 		ret = ie9.inscripcion();
 		if (!ret.isEmpty()) {
 			fail(ret);
 		}
 		Date i10 = Date.valueOf("2017-08-02");
-		InscripcionAEdicion ie10 = new InscripcionAEdicion("roro", i10, e4);
+		InscripcionAEdicion ie10 = new InscripcionAEdicion("roro", i10, e4, "");
 		ret = ie10.inscripcion();
 		if (!ret.isEmpty()) {
 			fail(ret);
 		}
 		Date i11 = Date.valueOf("2017-08-10");
-		InscripcionAEdicion ie11 = new InscripcionAEdicion("costas", i11, e4);
+		InscripcionAEdicion ie11 = new InscripcionAEdicion("costas", i11, e4, "");
 		ret = ie11.inscripcion();
 		if (!ret.isEmpty()) {
 			fail(ret);
 		}
 		Date i12 = Date.valueOf("2017-08-15");
-		InscripcionAEdicion ie12 = new InscripcionAEdicion("jeffw", i12, e4);
+		InscripcionAEdicion ie12 = new InscripcionAEdicion("jeffw", i12, e4, "");
 		ret = ie12.inscripcion();
 		if (!ret.isEmpty()) {
 			fail(ret);
 		}
 		Date i13 = Date.valueOf("2018-07-18");
-		InscripcionAEdicion ie13 = new InscripcionAEdicion("costas", i13, e5);
+		InscripcionAEdicion ie13 = new InscripcionAEdicion("costas", i13, e5, "");
 		ret = ie13.inscripcion();
 		if (!ret.isEmpty()) {
 			fail(ret);
 		}
 		Date i14 = Date.valueOf("2018-07-20");
-		InscripcionAEdicion ie14 = new InscripcionAEdicion("chechi", i14, e5);
+		InscripcionAEdicion ie14 = new InscripcionAEdicion("chechi", i14, e5, "");
 		ret = ie14.inscripcion();
 		if (!ret.isEmpty()) {
 			fail(ret);
 		}
 		Date i15 = Date.valueOf("2018-07-29");
-		InscripcionAEdicion ie15 = new InscripcionAEdicion("eleven11", i15, e5);
+		InscripcionAEdicion ie15 = new InscripcionAEdicion("eleven11", i15, e5, "");
 		ret = ie15.inscripcion();
 		if (!ret.isEmpty()) {
 			fail(ret);
 		}
 		Date i16 = Date.valueOf("2018-08-05");
-		InscripcionAEdicion ie16 = new InscripcionAEdicion("weiss", i16, e5);
+		InscripcionAEdicion ie16 = new InscripcionAEdicion("weiss", i16, e5, "");
 		ret = ie16.inscripcion();
 		if (!ret.isEmpty()) {
 			fail(ret);
 		}
 		Date i17 = Date.valueOf("2019-02-23");
-		InscripcionAEdicion ie17 = new InscripcionAEdicion("roro", i17, e6);
+		InscripcionAEdicion ie17 = new InscripcionAEdicion("roro", i17, e6, "");
 		ret = ie17.inscripcion();
 		if (!ret.isEmpty()) {
 			fail(ret);
 		}
 		Date i18 = Date.valueOf("2019-02-25");
-		InscripcionAEdicion ie18 = new InscripcionAEdicion("weiss", i18, e6);
+		InscripcionAEdicion ie18 = new InscripcionAEdicion("weiss", i18, e6, "");
 		ret = ie18.inscripcion();
 		if (!ret.isEmpty()) {
 			fail(ret);
 		}
 		Date i19 = Date.valueOf("2019-02-28");
-		InscripcionAEdicion ie19 = new InscripcionAEdicion("chechi", i19, e6);
+		InscripcionAEdicion ie19 = new InscripcionAEdicion("chechi", i19, e6, "");
 		ret = ie19.inscripcion();
 		if (!ret.isEmpty()) {
 			fail(ret);
 		}
 		Date i20 = Date.valueOf("2019-03-03");
-		InscripcionAEdicion ie20 = new InscripcionAEdicion("eleven11", i20, e6);
+		InscripcionAEdicion ie20 = new InscripcionAEdicion("eleven11", i20, e6, "");
 		ret = ie20.inscripcion();
 		if (!ret.isEmpty()) {
 			fail(ret);
 		}
 		Date i21 = Date.valueOf("2017-02-18");
-		InscripcionAEdicion ie21 = new InscripcionAEdicion("weiss", i21, e7);
+		InscripcionAEdicion ie21 = new InscripcionAEdicion("weiss", i21, e7, "");
 		ret = ie21.inscripcion();
 		if (!ret.isEmpty()) {
 			fail(ret);
 		}
 		Date i22 = Date.valueOf("2017-02-20");
-		InscripcionAEdicion ie22 = new InscripcionAEdicion("roro", i22, e7);
+		InscripcionAEdicion ie22 = new InscripcionAEdicion("roro", i22, e7, "");
 		ret = ie22.inscripcion();
 		if (!ret.isEmpty()) {
 			fail(ret);
 		}
 		Date i23 = Date.valueOf("2017-03-03");
-		InscripcionAEdicion ie23 = new InscripcionAEdicion("eleven11", i23, e7);
+		InscripcionAEdicion ie23 = new InscripcionAEdicion("eleven11", i23, e7, "");
 		ret = ie23.inscripcion();
 		if (!ret.isEmpty()) {
 			fail(ret);
 		}
 		Date i24 = Date.valueOf("2017-03-05");
-		InscripcionAEdicion ie24 = new InscripcionAEdicion("chechi", i24, e7);
+		InscripcionAEdicion ie24 = new InscripcionAEdicion("chechi", i24, e7, "");
 		ret = ie24.inscripcion();
 		if (!ret.isEmpty()) {
 			fail(ret);
 		}
 		Date i25 = Date.valueOf("2019-02-18");
-		InscripcionAEdicion ie25 = new InscripcionAEdicion("jeffw", i25, e8);
+		InscripcionAEdicion ie25 = new InscripcionAEdicion("jeffw", i25, e8, "");
 		ret = ie25.inscripcion();
 		if (!ret.isEmpty()) {
 			fail(ret);
 		}
 		Date i26 = Date.valueOf("2019-02-22");
-		InscripcionAEdicion ie26 = new InscripcionAEdicion("costas", i26, e8);
+		InscripcionAEdicion ie26 = new InscripcionAEdicion("costas", i26, e8, "");
 		ret = ie26.inscripcion();
 		if (!ret.isEmpty()) {
 			fail(ret);
 		}
 		Date i27 = Date.valueOf("2019-08-18");
-		InscripcionAEdicion ie27 = new InscripcionAEdicion("weiss", i27, e9);
+		InscripcionAEdicion ie27 = new InscripcionAEdicion("weiss", i27, e9, "");
 		ret = ie27.inscripcion();
 		if (!ret.isEmpty()) {
 			fail(ret);
 		}
 		Date i28 = Date.valueOf("2019-08-22");
-		InscripcionAEdicion ie28 = new InscripcionAEdicion("chechi", i28, e9);
+		InscripcionAEdicion ie28 = new InscripcionAEdicion("chechi", i28, e9, "");
 		ret = ie28.inscripcion();
 		if (!ret.isEmpty()) {
 			fail(ret);
 		}
 		Date i29 = Date.valueOf("2019-09-03");
-		InscripcionAEdicion ie29 = new InscripcionAEdicion("roro", i29, e9);
+		InscripcionAEdicion ie29 = new InscripcionAEdicion("roro", i29, e9, "");
 		ret = ie29.inscripcion();
 		if (!ret.isEmpty()) {
 			fail(ret);
 		}
 		Date i30 = Date.valueOf("2019-07-13");
-		InscripcionAEdicion ie30 = new InscripcionAEdicion("chechi", i30, e10);
+		InscripcionAEdicion ie30 = new InscripcionAEdicion("chechi", i30, e10, "");
 		ret = ie30.inscripcion();
 		if (!ret.isEmpty()) {
 			fail(ret);
 		}
 		Date i31 = Date.valueOf("2019-07-20");
-		InscripcionAEdicion ie31 = new InscripcionAEdicion("weiss", i31, e10);
+		InscripcionAEdicion ie31 = new InscripcionAEdicion("weiss", i31, e10, "");
 		ret = ie31.inscripcion();
 		if (!ret.isEmpty()) {
 			fail(ret);
 		}
 		Date i32 = Date.valueOf("2019-07-22");
-		InscripcionAEdicion ie32 = new InscripcionAEdicion("roro", i32, e10);
+		InscripcionAEdicion ie32 = new InscripcionAEdicion("roro", i32, e10, "");
 		ret = ie32.inscripcion();
 		if (!ret.isEmpty()) {
 			fail(ret);
 		}
 		Date i33 = Date.valueOf("2019-06-04");
-		InscripcionAEdicion ie33 = new InscripcionAEdicion("weiss", i33, e11);
+		InscripcionAEdicion ie33 = new InscripcionAEdicion("weiss", i33, e11, "");
 		ret = ie33.inscripcion();
 		if (!ret.isEmpty()) {
 			fail(ret);
 		}
 		Date i34 = Date.valueOf("2019-07-18");
-		InscripcionAEdicion ie34 = new InscripcionAEdicion("eleven11", i34, e11);
+		InscripcionAEdicion ie34 = new InscripcionAEdicion("eleven11", i34, e11, "");
 		ret = ie34.inscripcion();
 		if (!ret.isEmpty()) {
 			fail(ret);
 		}
 		Date i35 = Date.valueOf("2019-08-20");
-		InscripcionAEdicion ie35 = new InscripcionAEdicion("jeffw", i35, e11);
+		InscripcionAEdicion ie35 = new InscripcionAEdicion("jeffw", i35, e11, "");
 		ret = ie35.inscripcion();
 		if (!ret.isEmpty()) {
 			fail(ret);
 		}
 		Date i36 = Date.valueOf("2019-07-12");
-		InscripcionAEdicion ie36 = new InscripcionAEdicion("chechi", i36, e12);
+		InscripcionAEdicion ie36 = new InscripcionAEdicion("chechi", i36, e12, "");
 		ret = ie36.inscripcion();
 		if (!ret.isEmpty()) {
 			fail(ret);
 		}
 		Date i37 = Date.valueOf("2019-07-14");
-		InscripcionAEdicion ie37 = new InscripcionAEdicion("roro", i37, e12);
+		InscripcionAEdicion ie37 = new InscripcionAEdicion("roro", i37, e12, "");
 		ret = ie37.inscripcion();
 		if (!ret.isEmpty()) {
 			fail(ret);
 		}
 		Date i38 = Date.valueOf("2019-07-25");
-		InscripcionAEdicion ie38 = new InscripcionAEdicion("eleven11", i38, e12);
+		InscripcionAEdicion ie38 = new InscripcionAEdicion("eleven11", i38, e12, "");
 		ret = ie38.inscripcion();
 		if (!ret.isEmpty()) {
 			fail(ret);
 		}
 		Date i39 = Date.valueOf("2019-08-05");
-		InscripcionAEdicion ie39 = new InscripcionAEdicion("jeffw", i39, e12);
+		InscripcionAEdicion ie39 = new InscripcionAEdicion("jeffw", i39, e12, "");
 		ret = ie39.inscripcion();
 		if (!ret.isEmpty()) {
 			fail(ret);
 		}
 		Date i40 = Date.valueOf("2019-03-05");
-		InscripcionAEdicion ie40 = new InscripcionAEdicion("costas", i40, e13);
+		InscripcionAEdicion ie40 = new InscripcionAEdicion("costas", i40, e13, "");
 		ret = ie40.inscripcion();
 		if (!ret.isEmpty()) {
 			fail(ret);
 		}
-		
+
 		Date i41 = Date.valueOf("2019-03-04");
-		InscripcionAEdicion ie41 = new InscripcionAEdicion("weiss", i41, e13);
+		InscripcionAEdicion ie41 = new InscripcionAEdicion("weiss", i41, e13, "");
 		ret = ie41.inscripcion();
 		if (!ret.isEmpty()) {
 			fail(ret);
 		}
 		Date i42 = Date.valueOf("2019-03-07");
-		InscripcionAEdicion ie42 = new InscripcionAEdicion("roro", i42, e13);
+		InscripcionAEdicion ie42 = new InscripcionAEdicion("roro", i42, e13, "");
 		ret = ie42.inscripcion();
 		if (!ret.isEmpty()) {
 			fail(ret);
 		}
 		Date i43 = Date.valueOf("2019-07-15");
-		InscripcionAEdicion ie43 = new InscripcionAEdicion("weiss", i43, e14);
+		InscripcionAEdicion ie43 = new InscripcionAEdicion("weiss", i43, e14, "");
 		ret = ie43.inscripcion();
 		if (!ret.isEmpty()) {
 			fail(ret);
 		}
 		Date i44 = Date.valueOf("2019-07-20");
-		InscripcionAEdicion ie44 = new InscripcionAEdicion("costas", i44, e14);
+		InscripcionAEdicion ie44 = new InscripcionAEdicion("costas", i44, e14, "");
 		ret = ie44.inscripcion();
 		if (!ret.isEmpty()) {
 			fail(ret);
 		}
 		Date i45 = Date.valueOf("2019-08-06");
-		InscripcionAEdicion ie45 = new InscripcionAEdicion("roro", i45, e14);
+		InscripcionAEdicion ie45 = new InscripcionAEdicion("roro", i45, e14, "");
 		ret = ie45.inscripcion();
 		if (!ret.isEmpty()) {
 			fail(ret);
 		}
 		Date i46 = Date.valueOf("2019-08-30");
-		InscripcionAEdicion ie46 = new InscripcionAEdicion("chechi", i46, e14);
+		InscripcionAEdicion ie46 = new InscripcionAEdicion("chechi", i46, e14, "");
 		ret = ie46.inscripcion();
 		if (!ret.isEmpty()) {
 			fail(ret);
@@ -971,12 +983,12 @@ class testCargaDatos {
 			fail("Lista no esperada!");
 		}
 
-		List<DTEstudiante> list0=new ListaUsuarios().getDataTypeListEstudiante();
+		List<DTEstudiante> list0 = new ListaUsuarios().getDataTypeListEstudiante();
 		if (list0.isEmpty()) {
 			fail("Lista no esperada!");
 		}
 
-		List<DTDocente> list01=new ListaUsuarios().getDataTypeListDocente();
+		List<DTDocente> list01 = new ListaUsuarios().getDataTypeListDocente();
 		if (list01.isEmpty()) {
 			fail("Lista no esperada!");
 		}
