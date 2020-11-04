@@ -207,4 +207,59 @@ public class InscripcionAEdicion {
 
 		return "";
 	}
+	
+	public String BorrarInscripcion(String nedicion, String nickname)
+	{
+
+		Estudiante es = null;
+
+		if (nickname.isEmpty()) {
+			return "ERROR: El nombre del estudiante no debe estar vacio";
+		}
+
+		if (nedicion.isEmpty()) {
+			return "ERROR: El nombre de la edicion no debe ser vacio.";
+		}
+
+		ObtenerEdicionCurso ObtEdicion = new ObtenerEdicionCurso();
+		EdicionCurso edicion = ObtEdicion.getEdicionCurso(nedicion);
+
+		if (edicion == null) {
+			return "ERROR: La edicion no existe.";
+		}
+
+		ObtenerUsuario ObtUsuario = new ObtenerUsuario();
+
+		if (ObtUsuario.isEstudiante(nickname)) {
+			es = ObtUsuario.getEstudianteByNickname(nickname);
+		} else {
+			return "ERROR: El usuario no es un estudiante";
+		}
+
+		// ------------------------------------
+		EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("InstitutoJPA");
+		EntityManager entitymanager = emfactory.createEntityManager();
+		entitymanager.getTransaction().begin();
+
+		List<Inscripcion_Edicion> ediciones = new ArrayList<Inscripcion_Edicion>();
+		ListaInscripciones inscritas = new ListaInscripciones();
+		ediciones = inscritas.getList();
+		for(Inscripcion_Edicion edicionn : ediciones)
+		{
+			if(edicionn.getEstudiante().getNickname().equals(nickname))
+			{
+				if(edicionn.getEdicionCurso().getNombreEdicion().equals(nedicion))
+				{
+					
+					int a = entitymanager.createQuery("delete from Inscripcion_Edicion as i where i.nEstudiante=("+"'"+nickname+"'"+") and i.nEdicion=("+"'"+nedicion+"'"+")").executeUpdate();
+					entitymanager.getTransaction().commit();
+					entitymanager.close();
+					emfactory.close();
+					return "";
+				}
+			}
+		}
+
+		return "ERROR: La edicion no fue encontrada.";
+	}
 }

@@ -3,15 +3,22 @@ package logica.usuarios;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.Query;
+
+import API.datatypes.DTEstudiante;
+
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 
 import logica.entidades.Usuario;
 import logica.formaciones.ObtenerFormacion;
 import logica.entidades.Estudiante;
 import logica.entidades.Formacion;
+import logica.entidades.Seguir;
 import logica.entidades.Curso;
 import logica.entidades.Docente;
+import API.datatypes.*;
 
 public class SeguirUsuario {
 
@@ -22,132 +29,71 @@ public class SeguirUsuario {
 		nickSeguido = nickName;
 		nickSeguidor = nickName2;
 	}
+	
+	public SeguirUsuario(){}
 
-	private boolean ExisteSeguidor(String nickSeguido, String nickSeguidor) {
-		if (new ObtenerUsuario().isEstudiante(nickSeguido)) {
+	public String Seguirr()
+	{
+        EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("InstitutoJPA");
+        EntityManager entitymanager = emfactory.createEntityManager();
+        entitymanager.getTransaction().begin();
+        
+        Seguir seg = new Seguir();
+        seg.setSeguido(nickSeguido);
+        seg.setSeguidor(nickSeguidor);
+        
+        
+        entitymanager.persist(seg);
+        entitymanager.getTransaction().commit();
 
-			Estudiante est = new ObtenerUsuario().getEstudianteByNickname(nickSeguido);
-			List<Estudiante> seguidores = est.getSeguidores();
-			if (seguidores == null)
-				return false;
-			for (Estudiante estus : seguidores) {
-				if (nickSeguidor == estus.getNickname()) {
-					return true;
-				}
-			}
-			return false;
-		} else {
-			Docente doc = new ObtenerUsuario().getDocenteByNickname(nickSeguido);
-			List<Docente> seguidores = doc.getSeguidores();
-			if (seguidores == null)
-				return false;
-			for (Docente docs : seguidores) {
-				if (nickSeguidor == docs.getNickname()) {
-					return true;
-				}
-			}
-			return false;
-		}
+        entitymanager.close();
+        emfactory.close();
+        
+        return "";
+        
+	}
+	
+	public List<Seguir> getList()
+	{
+	        List<Seguir> list = null;
+	        EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("InstitutoJPA");
+	        EntityManager entitymanager = emfactory.createEntityManager();
+
+	        Query query = entitymanager.createQuery("Select s from Seguir as s");
+	        list = (List<Seguir>) query.getResultList();
+
+	        entitymanager.close();
+	        emfactory.close();
+	        return list;
 
 	}
-
-	public String SeguirUserEstudiante() {
-
-		String retorno = "";
-		if (!ExisteSeguidor(nickSeguido, nickSeguidor)) {
-
-			if (new ObtenerUsuario().isEstudiante(nickSeguido)) {
-				
-
-				if (new ObtenerUsuario().isEstudiante(nickSeguidor)) {
-					
-					EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("InstitutoJPA");
-					EntityManager entitymanager = emfactory.createEntityManager();
-					entitymanager.getTransaction().begin();
-					
-					
-					Estudiante usr_seguido = entitymanager.find(Estudiante.class, nickSeguido);
-
-					Estudiante usr_seguidor = entitymanager.find(Estudiante.class, nickSeguidor);
-					usr_seguido.addSeguidores(usr_seguidor);
-					usr_seguidor.addSiguiendo(usr_seguido);
-
-					entitymanager.getTransaction().commit();
-
-					entitymanager.close();
-					emfactory.close();
-				}
-				if (!new ObtenerUsuario().isEstudiante(nickSeguidor)) {
-					
-					EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("InstitutoJPA");
-					EntityManager entitymanager = emfactory.createEntityManager();
-					entitymanager.getTransaction().begin();
-					
-					
-					Estudiante usr_seguido = entitymanager.find(Estudiante.class, nickSeguido);
-
-					Docente usr_seguidor = entitymanager.find(Docente.class, nickSeguidor);
-					System.out.println("el usu: "+nickSeguidor);
-					usr_seguido.addSeguidores(usr_seguidor);
-					usr_seguidor.addSiguiendo(usr_seguido);
-					
-					entitymanager.getTransaction().commit();
-
-					entitymanager.close();
-					emfactory.close();
-				}
+	
+	 public List<DTSeguir> getDataTypeListSeguir() {
+	        List<Seguir> list = getList();
+	        List<DTSeguir> listOfDT = new ArrayList();
+	        for (Seguir estudiante : list) {
+	            DTSeguir dtEstudiante = new DTSeguir(estudiante.getSeguidor(),estudiante.getSeguido());
+	            listOfDT.add(dtEstudiante);
+	        }
+	        return listOfDT;
+	    }
+	
+	
+	
+	public List<String> seguidores(String seguid)
+	{
+		List<DTSeguir> list = new ArrayList<DTSeguir>();
+		List<String> lists = new ArrayList<String>();
+		list=getDataTypeListSeguir();
+		for(DTSeguir seguido : list)
+		{
+			if(seguid.equals(seguido.Seguido))
+			{
+				lists.add("'"+seguido.Seguidor+"'");
 			}
-		} else {
-			return retorno + "ERROR: Ya sigue a este usuario \n";
 		}
-		return retorno;
-	}
-
-	public String SeguirUserDocente() {
-
-		String retorno = "";
-		if (!ExisteSeguidor(nickSeguido, nickSeguidor)) {
-
-			if (!new ObtenerUsuario().isEstudiante(nickSeguido)) {
-				
-
-				
-
-				if (new ObtenerUsuario().isEstudiante(nickSeguidor)) {
-					EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("InstitutoJPA");
-					EntityManager entitymanager = emfactory.createEntityManager();
-					entitymanager.getTransaction().begin();
-					Docente usr_seguido = entitymanager.find(Docente.class, nickSeguido);
-					
-					Estudiante usr_seguidor = entitymanager.find(Estudiante.class, nickSeguidor);
-					usr_seguido.addSeguidores(usr_seguidor);
-					usr_seguidor.addSiguiendo(usr_seguido);
-
-					entitymanager.getTransaction().commit();
-
-					entitymanager.close();
-					emfactory.close();
-				}
-				if (!new ObtenerUsuario().isEstudiante(nickSeguidor)) {
-					EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("InstitutoJPA");
-					EntityManager entitymanager = emfactory.createEntityManager();
-					entitymanager.getTransaction().begin();
-					Docente usr_seguido = entitymanager.find(Docente.class, nickSeguido);
-					
-					Docente usr_seguidor = entitymanager.find(Docente.class, nickSeguidor);
-					usr_seguido.addSeguidores(usr_seguidor);
-					usr_seguidor.addSiguiendo(usr_seguido);
-					
-
-					entitymanager.getTransaction().commit();
-
-					entitymanager.close();
-					emfactory.close();
-				}
-			}
-		} else {
-			return retorno + "ERROR: Ya sigue a este usuario \n";
-		}
-		return retorno;
+		
+		
+		return lists;
 	}
 }

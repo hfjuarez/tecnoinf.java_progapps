@@ -69,12 +69,6 @@ public interface ILogica {
 
       public String ModificarUsuario(String nick, String nombre, String apellido, Date fechaNac, File imagen);
       
-      // Seguir Usuario
-      
-      public String SeguirUsuario(String nickName, String nickName2);
-      
-      // Dejar Seguir User
-      public String DejarSeguirUsuario(String nickName, String nickName2);
 
       // Alta Curso
 

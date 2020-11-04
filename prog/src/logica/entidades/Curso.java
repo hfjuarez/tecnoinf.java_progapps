@@ -24,6 +24,7 @@ public class Curso {
 	private int cantidadCreditos;
 	private String URL;
 	private Date fechaAlta;
+	private int ValoracionPromedio;
 	@ManyToOne
 	private Instituto instituto;
 	@OneToMany(targetEntity = Curso.class)
@@ -136,6 +137,14 @@ public class Curso {
 
 	public void addCategoria(Categoria categoria) {
 		this.categorias.add(categoria);
+	}
+
+	public int getValoracionPromedio() {
+		return ValoracionPromedio;
+	}
+
+	public void setValoracionPromedio(int valoracionPromedio) {
+		ValoracionPromedio = valoracionPromedio;
 	}
 
 }

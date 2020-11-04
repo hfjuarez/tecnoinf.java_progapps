@@ -27,6 +27,8 @@ public class Inscripcion_Edicion {
     private String estado;
     private String urlVideo;
     private int nota;
+    private String nEstudiante;
+    private String nEdicion;
  
 
     public Inscripcion_Edicion() {
@@ -43,6 +45,8 @@ public class Inscripcion_Edicion {
         this.estado = "Inscripto";
         this.urlVideo = urlVideo;
         this.nota = 0;
+        this.nEstudiante= estudiante.getNickname();
+        this.nEdicion = edicionCurso.getNombreEdicion();
     }
 
     public int getNota() {

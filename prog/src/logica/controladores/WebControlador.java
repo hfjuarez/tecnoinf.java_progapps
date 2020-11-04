@@ -20,6 +20,7 @@ import logica.cursos.*;
 import logica.categorias.*;
 import logica.edicioncursos.*;
 import logica.entidades.EdicionCurso;
+import logica.entidades.Valoracion;
 import logica.entidades.Inscripcion_Edicion;
 import logica.formaciones.*;
 import logica.inscripciones.InscripcionAEdicion;
@@ -344,28 +345,24 @@ public class WebControlador implements IWeb {
 
 	// Seguir Usuario
 
-	public String SeguirUsuario(String nickName, String nickName2) {
-		if (new ObtenerUsuario().isEstudiante(nickName)) {
-			return new SeguirUsuario(nickName, nickName2).SeguirUserEstudiante();
-		} else {
-			return new SeguirUsuario(nickName, nickName2).SeguirUserDocente();
-		}
-	}
+//	public String SeguirUsuario(String nickName, String nickName2) {
+//		if (new ObtenerUsuario().isEstudiante(nickName)) {
+//			return new SeguirUsuario(nickName, nickName2).SeguirUserEstudiante();
+//		} else {
+//			return new SeguirUsuario(nickName, nickName2).SeguirUserDocente();
+//		}
+//	}
 
 	// Dejar de Seguir usuario
 
 	public String DejarSeguirUsuario(String nickName, String nickName2) {
-		if (new ObtenerUsuario().isEstudiante(nickName)) {
-			return new DejarSeguirUsuario(nickName, nickName2).DejarSeguirUserEstudiante();
-		} else {
-			return new DejarSeguirUsuario(nickName, nickName2).DejarSeguirUserDocente();
-		}
+			return new DejarSeguirUsuario(nickName, nickName2).DejarSeguir();
 	}
 
 	// Este me sigue
 
-	public boolean esteSigueAEste(String este1, String este2) {
-		return new DejarSeguirUsuario().ExisteSeguidor(este2, este1);
+	public String SeguirUsuarioo(String este1, String este2) {
+		return new SeguirUsuario(este1,este2).Seguirr();
 	}
 
 	// Alta Curso
@@ -517,7 +514,29 @@ public class WebControlador implements IWeb {
 		}
 
 		
-		// }
+		
 	}
+
+	public List<String> ObtenerCursoPorEstudiante(String nick){
+			ListaCursos curso = new ListaCursos();
+			List<String> cursos = curso.ListCursosPorUsuario(nick);
+			return cursos;
+		}
+
+	public String AltaValoracion(String nick, String NombreCurso, int puntos) {
+		String valo = new Valoraciones(nick, NombreCurso, puntos).CrearValoracion();
+		return valo;
+	}
+	
+	public String BorrarInscripcion(String nedicion,String nickname)
+	{
+		return new InscripcionAEdicion().BorrarInscripcion(nedicion, nickname);
+	}
+
+	public List<String> ListSeguidores(String Seguido)
+	{
+		return new SeguirUsuario().seguidores(Seguido);
+	}
+	
 
 }

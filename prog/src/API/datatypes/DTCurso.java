@@ -19,6 +19,7 @@ public class DTCurso {
 	public DTInstituto instituto;
 	public List<DTCurso> previas;
 	public List<DTCategoria> categorias;
+	public int Promedio;
 
 	public DTCurso() {
 		super();
@@ -35,6 +36,7 @@ public class DTCurso {
 		URL = curso.getURL();
 		this.fechaAlta = curso.getFechaAlta();
 		this.instituto = new DTInstituto(curso.getInstituto());
+		this.Promedio = curso.getValoracionPromedio();
 
 		List<Curso> previaList = curso.getPrevias();
 		List<DTCurso> previaDTList = new ArrayList();

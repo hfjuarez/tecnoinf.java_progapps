@@ -25,118 +25,20 @@ public class DejarSeguirUsuario {
 	
 	public DejarSeguirUsuario() {}
 
-	public boolean ExisteSeguidor(String nickSeguido, String nickSeguidor) {
-		if (new ObtenerUsuario().isEstudiante(nickSeguido)) {
-
-			Estudiante est = new ObtenerUsuario().getEstudianteByNickname(nickSeguido);
-			List<Estudiante> seguidores = est.getSeguidores();
-			if (seguidores == null)
-				return false;
-			for (Estudiante estus : seguidores) {
-				if (nickSeguidor == estus.getNickname()) {
-					return true;
-				}
-			}
-			return false;
-		} else {
-			Docente doc = new ObtenerUsuario().getDocenteByNickname(nickSeguido);
-			List<Docente> seguidores = doc.getSeguidores();
-			if (seguidores == null)
-				return false;
-			for (Docente docs : seguidores) {
-				if (nickSeguidor == docs.getNickname()) {
-					return true;
-				}
-			}
-			return false;
-		}
-
-	}
-
-	public String DejarSeguirUserEstudiante() {
-
-		String retorno = "";
-		if (ExisteSeguidor(nickSeguido, nickSeguidor)) {
-
-			if (new ObtenerUsuario().isEstudiante(nickSeguido)) {
-				EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("InstitutoJPA");
-				EntityManager entitymanager = emfactory.createEntityManager();
-				entitymanager.getTransaction().begin();
-
-				Estudiante usr_seguido = entitymanager.find(Estudiante.class, nickSeguido);
-
-				if (new ObtenerUsuario().isEstudiante(nickSeguidor)) {
-
-					Estudiante usr_seguidor = entitymanager.find(Estudiante.class, nickSeguidor);
-					usr_seguido.removeSeguidores(usr_seguidor);
-					usr_seguidor.removeSiguiendo(usr_seguido);
-
-					entitymanager.getTransaction().commit();
-
-					entitymanager.close();
-					emfactory.close();
-				}
-				if (!new ObtenerUsuario().isEstudiante(nickSeguidor)) {
-
-					Docente usr_seguidor = entitymanager.find(Docente.class, nickSeguidor);
-					usr_seguido.removeSeguidores(usr_seguidor);
-					usr_seguidor.removeSiguiendo(usr_seguido);
-
-					entitymanager.getTransaction().commit();
-
-					entitymanager.close();
-					emfactory.close();
-				}
-
-			}
-		} else {
-			return retorno + "ERROR: No sigue a este usuario \n";
-		}
-
-		return retorno;
-	}
-
-	public String DejarSeguirUserDocente() {
-
-		String retorno = "";
-		if (ExisteSeguidor(nickSeguido, nickSeguidor)) {
-
-			if (!new ObtenerUsuario().isEstudiante(nickSeguido)) {
-				EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("InstitutoJPA");
-				EntityManager entitymanager = emfactory.createEntityManager();
-				entitymanager.getTransaction().begin();
-
-				Docente usr_seguido = entitymanager.find(Docente.class, nickSeguido);
-
-				if (new ObtenerUsuario().isEstudiante(nickSeguidor)) {
-
-					Estudiante usr_seguidor = entitymanager.find(Estudiante.class, nickSeguidor);
-					usr_seguido.removeSeguidores(usr_seguidor);
-					usr_seguidor.removeSiguiendo(usr_seguido);
-
-					entitymanager.getTransaction().commit();
-
-					entitymanager.close();
-					emfactory.close();
-				}
-				if (!new ObtenerUsuario().isEstudiante(nickSeguidor)) {
-
-					Docente usr_seguidor = entitymanager.find(Docente.class, nickSeguidor);
-					usr_seguido.removeSeguidores(usr_seguidor);
-					usr_seguidor.removeSiguiendo(usr_seguido);
-
-					entitymanager.getTransaction().commit();
-
-					entitymanager.close();
-					emfactory.close();
-				}
-			}
-		} else {
-			return retorno + "ERROR: No sigue a este usuario \n";
-		}
-
-		return retorno;
-
+	public String DejarSeguir()
+	{
+		EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("InstitutoJPA");
+        EntityManager entitymanager = emfactory.createEntityManager();
+        entitymanager.getTransaction().begin();
+        
+        int a = entitymanager.createQuery("delete from Seguir as s where s.Seguidor=("+"'"+nickSeguidor+"'"+") and s.Seguido=("+"'"+nickSeguido+"'"+")").executeUpdate();
+        
+        entitymanager.getTransaction().commit();
+        entitymanager.close();
+        emfactory.close();
+        
+        return "";
+        
 	}
 
 }

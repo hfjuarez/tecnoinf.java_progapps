@@ -211,23 +211,6 @@ public class LControlador implements ILogica {
 
         // Seguir usuario
 
-        public String SeguirUsuario(String nickName, String nickName2) {
-                if (new ObtenerUsuario().isEstudiante(nickName)) {
-                        return new SeguirUsuario(nickName, nickName2).SeguirUserEstudiante();
-                } else {
-                        return new SeguirUsuario(nickName, nickName2).SeguirUserDocente();
-                }
-        }
-
-        // Dejar de Seguir usuario
-
-        public String DejarSeguirUsuario(String nickName, String nickName2) {
-                if (new ObtenerUsuario().isEstudiante(nickName)) {
-                        return new DejarSeguirUsuario(nickName, nickName2).DejarSeguirUserEstudiante();
-                } else {
-                        return new DejarSeguirUsuario(nickName, nickName2).DejarSeguirUserDocente();
-                }
-        }
 
         // Alta Curso
 

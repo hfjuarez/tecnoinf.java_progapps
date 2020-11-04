@@ -12,6 +12,8 @@
             <class>logica.entidades.Inscripcion_Edicion</class>
             <class>logica.entidades.Formacion</class>
             <class>logica.entidades.Inscripcion_Formacion</class>
+            <class>logica.entidades.Valoracion</class>
+            <class>logica.entidades.Seguir</class>
 	      
 	      
 	   

@@ -6,6 +6,7 @@ import logica.entidades.Curso;
 import logica.entidades.Instituto;
 import logica.edicioncursos.ListaEdicionCurso;
 import logica.entidades.*;
+import logica.inscripciones.*;
 
 import javax.persistence.*;
 
@@ -93,4 +94,19 @@ public class ListaCursos {
         }
         return DTList;
     }
+
+    public List<String> ListCursosPorUsuario(String nick)
+    {
+        List<String> NombreCursos = new ArrayList();
+        ListaInscripciones inscripcion  = new ListaInscripciones();
+        List<DTInscripcion_Edicion> inscripciones = inscripcion.getDTlistPorEstudiante(nick);
+        for(DTInscripcion_Edicion edi : inscripciones)
+        {
+            NombreCursos.add(edi.edicionCurso.curso.nombreCurso);
+        }
+        return NombreCursos;
+    }
+
+
+
 }

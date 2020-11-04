@@ -107,7 +107,7 @@ public interface IWeb {
 
 	// Seguir Usuario
 
-	public String SeguirUsuario(String nickName, String nickName2);
+	public String SeguirUsuarioo(String nickName, String nickName2);
 
 	// Dejar Seguir Usuario
 
@@ -164,4 +164,13 @@ public interface IWeb {
 	public List<DTEstudiante> consultaUsuarioEstudiante();
 	
 	public void cerrarEdicionCurso(String nombreEdicion);
+
+	public List<String> ObtenerCursoPorEstudiante(String nick);
+
+	public String AltaValoracion(String nick, String NombreCurso, int puntos);
+	
+	public String BorrarInscripcion(String nedicion,String nickname);
+	
+	public List<String> ListSeguidores(String Seguido);
+
 }
