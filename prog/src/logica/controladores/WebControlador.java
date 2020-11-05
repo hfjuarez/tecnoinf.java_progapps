@@ -345,24 +345,24 @@ public class WebControlador implements IWeb {
 
 	// Seguir Usuario
 
-//	public String SeguirUsuario(String nickName, String nickName2) {
-//		if (new ObtenerUsuario().isEstudiante(nickName)) {
-//			return new SeguirUsuario(nickName, nickName2).SeguirUserEstudiante();
-//		} else {
-//			return new SeguirUsuario(nickName, nickName2).SeguirUserDocente();
-//		}
-//	}
+	// public String SeguirUsuario(String nickName, String nickName2) {
+	// if (new ObtenerUsuario().isEstudiante(nickName)) {
+	// return new SeguirUsuario(nickName, nickName2).SeguirUserEstudiante();
+	// } else {
+	// return new SeguirUsuario(nickName, nickName2).SeguirUserDocente();
+	// }
+	// }
 
 	// Dejar de Seguir usuario
 
 	public String DejarSeguirUsuario(String nickName, String nickName2) {
-			return new DejarSeguirUsuario(nickName, nickName2).DejarSeguir();
+		return new DejarSeguirUsuario(nickName, nickName2).DejarSeguir();
 	}
 
 	// Este me sigue
 
 	public String SeguirUsuarioo(String este1, String este2) {
-		return new SeguirUsuario(este1,este2).Seguirr();
+		return new SeguirUsuario(este1, este2).Seguirr();
 	}
 
 	// Alta Curso
@@ -500,43 +500,44 @@ public class WebControlador implements IWeb {
 	public void cerrarEdicionCurso(String nombreEdicion) {
 		EdicionCurso edi = new ObtenerEdicionCurso().getEdicionCurso(nombreEdicion);
 		if (edi != null) {
-			
+
 			EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("InstitutoJPA");
 			EntityManager entitymanager = emfactory.createEntityManager();
 			entitymanager.getTransaction().begin();
-			EdicionCurso ediCavani = entitymanager.find( EdicionCurso.class, nombreEdicion );
+			EdicionCurso ediCavani = entitymanager.find(EdicionCurso.class, nombreEdicion);
 			ediCavani.setCerrado();
-			//entitymanager.persist(ediCavani);
+			// entitymanager.persist(ediCavani);
 
 			entitymanager.getTransaction().commit();
 			entitymanager.close();
 			emfactory.close();
 		}
 
-		
-		
 	}
 
-	public List<String> ObtenerCursoPorEstudiante(String nick){
-			ListaCursos curso = new ListaCursos();
-			List<String> cursos = curso.ListCursosPorUsuario(nick);
-			return cursos;
-		}
+	public List<String> ObtenerCursoPorEstudiante(String nick) {
+		ListaCursos curso = new ListaCursos();
+		List<String> cursos = curso.ListCursosPorUsuario(nick);
+		return cursos;
+	}
 
 	public String AltaValoracion(String nick, String NombreCurso, int puntos) {
 		String valo = new Valoraciones(nick, NombreCurso, puntos).CrearValoracion();
 		return valo;
 	}
-	
-	public String BorrarInscripcion(String nedicion,String nickname)
-	{
+
+	public String BorrarInscripcion(String nedicion, String nickname) {
 		return new InscripcionAEdicion().BorrarInscripcion(nedicion, nickname);
 	}
 
-	public List<String> ListSeguidores(String Seguido)
-	{
+	public List<String> ListSeguidores(String Seguido) {
 		return new SeguirUsuario().seguidores(Seguido);
 	}
-	
+
+	public boolean obtenerCertificado(String nFormacion, String nickname) {
+		boolean ret = new obtenerCertificado().aproboFormacion(nFormacion, nickname);
+		return ret;
+
+	}
 
 }

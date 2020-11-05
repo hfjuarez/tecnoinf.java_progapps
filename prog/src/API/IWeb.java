@@ -162,15 +162,17 @@ public interface IWeb {
 	public List<DTDocente> consultaUsuarioDocente();
 
 	public List<DTEstudiante> consultaUsuarioEstudiante();
-	
+
 	public void cerrarEdicionCurso(String nombreEdicion);
 
 	public List<String> ObtenerCursoPorEstudiante(String nick);
 
 	public String AltaValoracion(String nick, String NombreCurso, int puntos);
-	
-	public String BorrarInscripcion(String nedicion,String nickname);
-	
+
+	public String BorrarInscripcion(String nedicion, String nickname);
+
 	public List<String> ListSeguidores(String Seguido);
+
+	public boolean obtenerCertificado(String nFormacion, String nickname);
 
 }
