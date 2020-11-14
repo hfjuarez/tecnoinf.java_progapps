@@ -539,5 +539,24 @@ public class WebControlador implements IWeb {
 		return ret;
 
 	}
+	
+	public String HacerComentario(String out,String nik,String edi)
+	{
+		return new ManejadorComentarios().AltaComentario(out, nik, edi);
+	}
+	
+	public String HacerRespuesta(int idCom,String nik,String edi,String out)
+	{
+		return new ManejadorComentarios().AltaRespuesta(idCom, nik, edi, out);
+	}
+	
+	public List<DTComentarios> getDTListComentarios()
+	{
+		return new ManejadorComentarios().getDataTypeList();
+	}
 
+	public boolean UsuarioInscriptoo(String nEdicion,String nick)
+	{
+		return new ListaInscripciones().UsuarioInscripto(nEdicion, nick);
+	}
 }

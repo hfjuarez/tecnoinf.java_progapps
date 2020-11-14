@@ -82,4 +82,20 @@ public class Inscripcion_Edicion {
         return urlVideo;
     }
 
+	public String getnEstudiante() {
+		return nEstudiante;
+	}
+
+	public void setnEstudiante(String nEstudiante) {
+		this.nEstudiante = nEstudiante;
+	}
+
+	public String getnEdicion() {
+		return nEdicion;
+	}
+
+	public void setnEdicion(String nEdicion) {
+		this.nEdicion = nEdicion;
+	}
+
 }

@@ -70,4 +70,18 @@ public class ListaInscripciones {
         }
         return ret;
     }
+    
+    public boolean UsuarioInscripto(String nEdicion,String nick)
+    {
+		List<Inscripcion_Edicion> inscriptos = getList();
+		for(Inscripcion_Edicion ins : inscriptos)
+		{
+			if ((ins.getEdicionCurso().getNombreEdicion().equals(nEdicion))
+					&& (ins.getEstudiante().getNickname().equals(nick))) {
+				return true;
+
+			}
+		}
+    	return false;
+    }
 }

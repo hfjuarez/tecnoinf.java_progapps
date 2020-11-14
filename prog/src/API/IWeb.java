@@ -174,5 +174,13 @@ public interface IWeb {
 	public List<String> ListSeguidores(String Seguido);
 
 	public boolean obtenerCertificado(String nFormacion, String nickname);
+	
+	public String HacerComentario(String out,String nik,String edi);
+	
+	public String HacerRespuesta(int idCom,String nik,String edi,String out);
+	
+	public List<DTComentarios> getDTListComentarios();
+	
+	public boolean UsuarioInscriptoo(String nEdicion,String nick);
 
 }
