@@ -11,9 +11,9 @@ public class DTFormacion {
 
 	public String nombreFormacion;
 	public String descFormacion;
-	public Date fechaInicio;
-	public Date fechaFin;
-	public Date fechaAlta;
+	public String fechaInicio;
+	public String fechaFin;
+	public String fechaAlta;
 	public List cursos;
 
 	public DTFormacion() {
@@ -24,9 +24,9 @@ public class DTFormacion {
 		super();
 		this.nombreFormacion = formacion.getNombreFormacion();
 		this.descFormacion = formacion.getDescFormacion();
-		this.fechaInicio = formacion.getFechaInicio();
-		this.fechaFin = formacion.getFechaFin();
-		this.fechaAlta = formacion.getFechaAlta();
+		this.fechaInicio = formacion.getFechaInicio().toString();
+		this.fechaFin = formacion.getFechaFin().toString();
+		this.fechaAlta = formacion.getFechaAlta().toString();
 
 		List<Curso> cursosFormacion = formacion.getCursos();
 		List<DTCurso> dtCursos = new ArrayList();
@@ -35,7 +35,7 @@ public class DTFormacion {
 			DTCurso dtCurso = new DTCurso(curso);
 			dtCursos.add(dtCurso);
 		}
-		this.cursos = dtCursos; 
+		this.cursos = dtCursos;
 
 	}
 

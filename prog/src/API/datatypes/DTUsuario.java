@@ -16,11 +16,12 @@ public class DTUsuario {
 	public String nombre;
 	public String apellido;
 	public String mail;
-	public Date fechaNac;
+	public String fechaNac;
 	public File image;
 	public String passw;
 	public List Seguidores;
 	public List Siguiendo;
+
 	public DTUsuario() {
 	}
 
@@ -30,12 +31,9 @@ public class DTUsuario {
 		nombre = name;
 		apellido = ape;
 		mail = email;
-		fechaNac = nac;
+		fechaNac = nac.toString();
 		passw = passp;
-		
+
 	}
-
-
-	
 
 }

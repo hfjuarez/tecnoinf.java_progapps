@@ -257,7 +257,7 @@ public class WebControlador implements IWeb {
 
 		for (DTEdicionCurso ediCavani : list) {
 
-			if (ediCavani.fechaFin.compareTo(fechaActual) >= 0) {
+			if (ediCavani.fechaFin.compareTo(fechaActual.toString()) >= 0) {
 				return ediCavani;
 			}
 		}

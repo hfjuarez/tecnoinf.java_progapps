@@ -15,7 +15,7 @@ public class DTCurso {
 	public int cantidadHoras;
 	public int cantidadCreditos;
 	public String URL;
-	public Date fechaAlta;
+	public String fechaAlta;
 	public DTInstituto instituto;
 	public List<DTCurso> previas;
 	public List<DTCategoria> categorias;
@@ -25,7 +25,6 @@ public class DTCurso {
 		super();
 	}
 
-
 	public DTCurso(Curso curso) {
 		super();
 		this.nombreCurso = curso.getNombreCurso();
@@ -34,7 +33,7 @@ public class DTCurso {
 		this.cantidadHoras = curso.getCantidadHoras();
 		this.cantidadCreditos = curso.getCantidadCreditos();
 		URL = curso.getURL();
-		this.fechaAlta = curso.getFechaAlta();
+		this.fechaAlta = curso.getFechaAlta().toString();
 		this.instituto = new DTInstituto(curso.getInstituto());
 		this.Promedio = curso.getValoracionPromedio();
 
@@ -57,7 +56,5 @@ public class DTCurso {
 		this.categorias = categoriasDTList;
 
 	}
-
-
 
 }

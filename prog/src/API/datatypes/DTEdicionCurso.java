@@ -12,22 +12,21 @@ public class DTEdicionCurso {
 
 	public String nombreEdicion;
 	public DTCurso curso;
-	public Date fechaIncio;
-	public Date fechaFin;
+	public String fechaIncio;
+	public String fechaFin;
 	public int cupo;
-	public Date fechaAltaEdicion;
+	public String fechaAltaEdicion;
 	public List docentes;
 	public List inscriptos;
 	public boolean cerrado;
 
-
 	public DTEdicionCurso(EdicionCurso eCurso) {
 		nombreEdicion = eCurso.getNombreEdicion();
 		curso = new DTCurso(eCurso.getCurso());
-		fechaIncio = eCurso.getFechaInicio();
-		fechaFin = eCurso.getFechaFin();
+		fechaIncio = eCurso.getFechaInicio().toString();
+		fechaFin = eCurso.getFechaFin().toString();
 		cupo = eCurso.getCupo();
-		fechaAltaEdicion = eCurso.getFechaAltaEdicion();
+		fechaAltaEdicion = eCurso.getFechaAltaEdicion().toString();
 		List<Docente> docentesList = eCurso.getDocentes();
 		ArrayList<DTDocente> listDTDocentes = new ArrayList();
 		for (Docente doc : docentesList) {
@@ -42,7 +41,7 @@ public class DTEdicionCurso {
 			inscripto.add(ins);
 		}
 		this.inscriptos = inscripto;
-		this.cerrado=eCurso.getCerrado();
+		this.cerrado = eCurso.getCerrado();
 	}
 
 	@Override

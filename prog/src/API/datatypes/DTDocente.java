@@ -26,7 +26,8 @@ public class DTDocente extends DTUsuario {
 	@Override
 	public String toString() {
 		return "DTDocente [instituto=" + instituto + ", nickname=" + nickname + ", nombre=" + nombre + ", apellido="
-				+ apellido + ", mail=" + mail + ", fechaNac=" + fechaNac + ", image=" + image + ", passwd=" + passw+ "]";
+				+ apellido + ", mail=" + mail + ", fechaNac=" + fechaNac + ", image=" + image + ", passwd=" + passw
+				+ "]";
 	}
 
 }
